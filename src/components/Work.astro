@@ -1,0 +1,124 @@
+﻿---
+import { useTranslations } from '../i18n';
+
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const items = [
+  {
+    industry: t("Business Websites"),
+    description: t("Professional websites built around your business, not around a template."),
+  },
+  {
+    industry: t("E-commerce"),
+    description: t("Online stores designed to make buying simple and managing products easy."),
+  },
+  {
+    industry: t("AI Automation"),
+    description: t("Automations that save time, reduce repetitive work and improve everyday operations."),
+  },
+];
+---
+<section id="work" class="qct-section qct-work" aria-labelledby="qct-work-title">
+<div class="container">
+<div class="qct-section__header">
+<p class="qct-section__eyebrow">{t('Capability Concepts')}</p>
+<h2 id="qct-work-title" class="qct-section__title">
+{t('Every project starts with a business.')} {t('Not a template.')}
+</h2>
+<p class="qct-section__lead">
+{t('Every company has different goals, different customers, different challenges, different opportunities.')} {t('That is why we never start with a design. We start by understanding the business.')}
+</p>
+</div>
+
+<div class="qct-work__grid">
+{items.map((item) => (
+<article class="qct-work-card">
+<div class="qct-work-card__meta">
+<p>{item.industry}</p>
+</div>
+<div class="qct-work-card__body">
+<p>{item.description}</p>
+</div>
+<a class="qct-work-card__link" href="#contact">{t('Explore Capability')}</a>
+</article>
+))}
+</div>
+
+<p class="qct-section__lead qct-work__footnote">
+{t('Every project is planned, designed and developed specifically for the business behind it.')}
+</p>
+</div>
+</section>
+
+<style>
+.qct-work {
+padding-block: var(--qct-home-section-space, 5rem);
+border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.qct-section__header {
+max-width: 640px;
+margin-bottom: 3rem;
+}
+.qct-section__eyebrow {
+color: var(--qct-accent);
+font-size: 0.85rem;
+font-weight: 700;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+margin-bottom: 0.75rem;
+}
+.qct-section__title {
+font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+line-height: 1.2;
+margin-bottom: 1rem;
+}
+.qct-section__lead {
+opacity: 0.75;
+line-height: 1.6;
+}
+.qct-work__grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+gap: 1.5rem;
+}
+.qct-work-card {
+display: flex;
+flex-direction: column;
+padding: 2rem 1.5rem;
+border: 1px solid rgba(255, 255, 255, 0.08);
+border-radius: 16px;
+background: rgba(255, 255, 255, 0.02);
+min-height: 220px;
+}
+.qct-work-card__meta p {
+color: var(--qct-accent);
+font-weight: 700;
+font-size: 1rem;
+margin-bottom: 0.75rem;
+}
+.qct-work-card__body p {
+opacity: 0.8;
+line-height: 1.5;
+font-size: 0.95rem;
+}
+.qct-work-card__link {
+margin-top: auto;
+padding-top: 1.25rem;
+color: var(--qct-fg);
+text-decoration: none;
+font-weight: 600;
+font-size: 0.9rem;
+opacity: 0.85;
+}
+.qct-work-card__link:hover {
+color: var(--qct-accent);
+opacity: 1;
+}
+.qct-work__footnote {
+margin-top: 2.5rem;
+}
+</style>

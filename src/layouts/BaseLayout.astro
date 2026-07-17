@@ -1,0 +1,43 @@
+﻿---
+interface Props {
+title: string;
+}
+const { title } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{title}</title>
+</head>
+<body>
+<slot name="header" />
+<main>
+<slot />
+</main>
+<slot name="footer" />
+</body>
+</html>
+
+<style is:global>
+:root {
+--qct-bg: #0d0d0d;
+--qct-fg: #f4f4f4;
+--qct-accent: #c9a84c;
+}
+* {
+box-sizing: border-box;
+}
+body {
+margin: 0;
+background: var(--qct-bg);
+color: var(--qct-fg);
+font-family: system-ui, sans-serif;
+}
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 1.5rem;
+}
+</style>

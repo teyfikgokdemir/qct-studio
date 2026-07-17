@@ -1,0 +1,123 @@
+﻿---
+import { useTranslations } from '../i18n';
+
+interface Props {
+  lang: string;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const faqs = [
+  { q: t("How long does a website project take?"), a: t("Every project is different, but most business websites are completed within a few weeks.") },
+  { q: t("Can you redesign our existing website?"), a: t("Yes. We can improve an existing website or build a completely new one.") },
+  { q: t("Will our website work on mobile devices?"), a: t("Every website we build is fully responsive and designed for phones, tablets and desktops.") },
+  { q: t("Do you provide support after launch?"), a: t("Yes. We continue supporting our clients after launch whenever they need us.") },
+  { q: t("Can you help with SEO and digital marketing?"), a: t("Yes. We can also help improve visibility, traffic and online enquiries after launch.") },
+];
+---
+<section id="contact" class="qct-section qct-contact">
+<div class="container qct-contact__grid">
+<div class="qct-contact__content">
+<p class="qct-section__eyebrow">{t('Contact')}</p>
+<h2 class="qct-section__title">{t('Let us map the best digital path for your business.')}</h2>
+<p class="qct-section__lead">
+{t('Send the essentials and we will review the project direction. You can also email us directly at')} <a href="mailto:info@qctstudio.com">info@qctstudio.com</a>.
+</p>
+
+<div class="qct-faq">
+<h3>{t('FAQ')}</h3>
+{faqs.map((faq) => (
+<details>
+<summary>{faq.q}</summary>
+<p>{faq.a}</p>
+</details>
+))}
+</div>
+</div>
+
+<div class="qct-contact-card">
+<p>{t('Use the address that matches your inquiry.')}</p>
+<p><a href="mailto:info@qctstudio.com">info@qctstudio.com</a></p>
+<a class="qct-btn qct-btn--primary" href="mailto:info@qctstudio.com">{t('Contact Us')}</a>
+</div>
+</div>
+</section>
+
+<style>
+.qct-contact {
+padding-block: var(--qct-home-section-space, 5rem);
+border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.qct-contact__grid {
+display: grid;
+grid-template-columns: 1.4fr 1fr;
+gap: 3rem;
+}
+@media (max-width: 800px) {
+.qct-contact__grid {
+grid-template-columns: 1fr;
+}
+}
+.qct-section__eyebrow {
+color: var(--qct-accent);
+font-size: 0.85rem;
+font-weight: 700;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+margin-bottom: 0.75rem;
+}
+.qct-section__title {
+font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+margin-bottom: 1rem;
+}
+.qct-section__lead {
+opacity: 0.8;
+line-height: 1.6;
+margin-bottom: 2rem;
+}
+.qct-section__lead a {
+color: var(--qct-accent);
+}
+.qct-faq h3 {
+font-size: 1.1rem;
+margin-bottom: 1rem;
+}
+.qct-faq details {
+border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+padding-block: 0.85rem;
+}
+.qct-faq summary {
+cursor: pointer;
+font-weight: 600;
+}
+.qct-faq p {
+opacity: 0.75;
+margin-top: 0.5rem;
+font-size: 0.92rem;
+line-height: 1.5;
+}
+.qct-contact-card {
+align-self: start;
+padding: 2rem;
+border: 1px solid rgba(255, 255, 255, 0.1);
+border-radius: 16px;
+background: rgba(255, 255, 255, 0.03);
+}
+.qct-contact-card p {
+margin-bottom: 0.75rem;
+opacity: 0.85;
+}
+.qct-contact-card a {
+color: var(--qct-accent);
+}
+.qct-contact-card .qct-btn {
+display: inline-block;
+margin-top: 1rem;
+padding: 0.7rem 1.5rem;
+border-radius: 999px;
+background: var(--qct-accent);
+color: #0d0d0d;
+text-decoration: none;
+font-weight: 600;
+}
+</style>
