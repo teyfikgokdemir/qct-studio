@@ -1,5 +1,5 @@
 ﻿---
-import { useTranslations, languages, getHomeUrl } from '../i18n';
+import { useTranslations, languages, getHomeUrl, getLocalizedUrl } from '../i18n';
 
 interface Props {
   lang: string;
@@ -13,9 +13,10 @@ const home = getHomeUrl(lang);
 <div class="container qct-header__inner">
 <a href={home} class="qct-header__logo">QCT Studio</a>
 <nav class="qct-header__nav">
-<a href={`${home}#services`}>{t('Services')}</a>
-<a href={`${home}#about`}>{t('About')}</a>
-<a href={`${home}#contact`}>{t('Contact')}</a>
+<a href={getLocalizedUrl(lang, '/services/')}>{t('Services')}</a>
+<a href={getLocalizedUrl(lang, '/about/')}>{t('About')}</a>
+<a href={getLocalizedUrl(lang, '/careers/')}>{t('Careers')}</a>
+<a href={getLocalizedUrl(lang, '/contact/')}>{t('Contact')}</a>
 </nav>
 <div class="qct-header__lang">
 {langCodes.map((code) => {

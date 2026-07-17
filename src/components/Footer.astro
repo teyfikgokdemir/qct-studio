@@ -1,12 +1,23 @@
-﻿---
+---
+import { useTranslations, getLocalizedUrl } from '../i18n';
+
+interface Props {
+  lang?: string;
+}
+const { lang = 'en' } = Astro.props;
+const t = useTranslations(lang);
 ---
 <footer class="qct-footer">
 <div class="container qct-footer__inner">
-<p>&copy; 2026 QCT Studio. All rights reserved.</p>
+<p>{t('&copy; 2026 QCT Studio')}. {t('All rights reserved.')}</p>
 <div class="qct-footer__links">
-<a href="#services">Services</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
+<a href={getLocalizedUrl(lang, '/services/')}>{t('Services')}</a>
+<a href={getLocalizedUrl(lang, '/about/')}>{t('About')}</a>
+<a href={getLocalizedUrl(lang, '/careers/')}>{t('Careers')}</a>
+<a href={getLocalizedUrl(lang, '/contact/')}>{t('Contact')}</a>
+<a href={getLocalizedUrl(lang, '/privacy-policy/')}>{t('Privacy Policy')}</a>
+<a href={getLocalizedUrl(lang, '/cookie-policy/')}>{t('Cookie Policy')}</a>
+<a href={getLocalizedUrl(lang, '/terms-conditions/')}>{t('Terms & Conditions')}</a>
 </div>
 </div>
 </footer>
@@ -28,6 +39,7 @@ opacity: 0.7;
 }
 .qct-footer__links {
 display: flex;
+flex-wrap: wrap;
 gap: 1.25rem;
 }
 .qct-footer__links a {
