@@ -1,4 +1,4 @@
-﻿---
+---
 import { useTranslations, getLocalizedUrl } from '../i18n';
 
 interface Props {
@@ -6,167 +6,103 @@ interface Props {
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const url = (path: string) => getLocalizedUrl(lang, path);
 
 const services = [
-  {
-    image: "website-design",
-    kicker: t("Website Design"),
-    title: t("Premium websites"),
-    text: t("Clear positioning, sharp visuals and conversion-focused structure from the first screen."),
-    url: "/website-design/",
-  },
-  {
-    image: "ecommerce",
-    kicker: t("E-commerce"),
-    title: t("E-commerce stores"),
-    text: t("Product pages, mobile checkout and order flows built for serious online selling."),
-    url: "/e-commerce/",
-  },
-  {
-    image: "whatsapp",
-    kicker: t("WhatsApp Commerce"),
-    title: t("Sell inside the conversation"),
-    text: t("Turn customer questions into catalog views, order summaries and follow-up flows inside WhatsApp."),
-    url: "/whatsapp-commerce/",
-  },
-  {
-    image: "seo-geo",
-    kicker: t("SEO & Performance"),
-    title: t("Fast, visible and measurable"),
-    text: t("Technical SEO, Core Web Vitals and semantic structure for long-term visibility."),
-    url: "/seo-performance/",
-  },
-  {
-    image: "meta-ads",
-    kicker: t("Meta Ads Landing Pages"),
-    title: t("Campaign landing pages"),
-    text: t("Focused pages that match ad intent, explain the offer and drive the next action."),
-    url: "/meta-ads-landing-pages/",
-  },
-  {
-    image: "ai-automation",
-    kicker: t("AI Automation"),
-    title: t("AI automation"),
-    text: t("Automations that save time, reduce repetitive work and improve everyday operations."),
-    url: "/ai-automation/",
-  },
+	{
+		modifier: 'qct-service-card--website qct-service-card--featured qct-service-card--website-image',
+		preview: 'website',
+		image: 'homepage-service-website-design.webp',
+		href: url('/website-design/'),
+		kicker: t('Website Design'),
+		title: t('Premium websites'),
+		text: t('Clear positioning, sharp visuals and conversion-focused structure from the first screen.'),
+	},
+	{
+		modifier: 'qct-service-card--commerce qct-service-card--service-image',
+		preview: 'commerce',
+		image: 'homepage-service-ecommerce.webp',
+		href: url('/e-commerce/'),
+		kicker: t('E-commerce'),
+		title: t('E-commerce stores'),
+		text: t('Product pages, mobile checkout and order flows built for serious online selling.'),
+	},
+	{
+		modifier: 'qct-service-card--whatsapp-service qct-service-card--service-image',
+		preview: 'whatsapp',
+		image: 'homepage-service-whatsapp.webp',
+		href: url('/whatsapp-commerce/'),
+		kicker: t('WhatsApp Commerce'),
+		title: t('Sell inside the conversation'),
+		text: t('Turn customer questions into catalog views, order summaries and follow-up flows inside WhatsApp.'),
+	},
+	{
+		modifier: 'qct-service-card--performance qct-service-card--service-image',
+		preview: 'performance',
+		image: 'homepage-service-seo-geo.webp',
+		href: url('/seo-performance/'),
+		kicker: t('SEO & Performance'),
+		title: t('Fast, visible and measurable'),
+		text: t('Technical SEO, Core Web Vitals and semantic structure for long-term visibility.'),
+	},
+	{
+		modifier: 'qct-service-card--landing qct-service-card--wide qct-service-card--service-image',
+		preview: 'landing',
+		image: 'homepage-service-meta-ads.webp',
+		href: url('/meta-ads-landing-pages/'),
+		kicker: t('Meta Ads Landing Pages'),
+		title: t('Campaign landing pages'),
+		text: t('Focused pages that match ad intent, explain the offer and drive the next action.'),
+	},
+	{
+		modifier: 'qct-service-card--automation qct-service-card--service-image',
+		preview: 'automation',
+		image: 'homepage-service-ai-automation.webp',
+		href: url('/ai-automation/'),
+		kicker: t('AI Automation'),
+		title: t('AI automation'),
+		text: t('Automations that save time, reduce repetitive work and improve everyday operations.'),
+	},
 ];
 ---
 <section id="services" class="qct-section qct-services" aria-labelledby="qct-services-title">
-<div class="container">
-<div class="qct-section__header">
-<p class="qct-section__eyebrow">{t('Services')}</p>
-<h2 id="qct-services-title" class="qct-section__title">
-{t('Digital systems built for Balkan businesses ready to look premium.')}
-</h2>
-<p class="qct-section__lead">
-{t('Each service is designed to improve trust, speed and conversion before you spend more on ads.')}
-</p>
-</div>
+	<div class="container">
+		<div class="qct-section__header qct-section__header--split">
+			<div>
+				<p class="qct-section__eyebrow">{t('Services')}</p>
+				<h2 id="qct-services-title" class="qct-section__title">
+					{t('Digital systems built for Balkan businesses ready to look premium.')}
+				</h2>
+			</div>
+			<p class="qct-section__lead">
+				{t('Each service is designed to improve trust, speed and conversion before you spend more on ads.')}
+			</p>
+		</div>
 
-<div class="qct-services__grid">
-{services.map((service) => (
-<a class="qct-service-card" href={getLocalizedUrl(lang, service.url)}>
-<span class="qct-service-card__image">
-<img
-src={`/images/services/homepage-service-${service.image}.webp`}
-width="1440"
-height="480"
-loading="lazy"
-decoding="async"
-alt=""
-/>
-</span>
-<span class="qct-service-card__kicker">{service.kicker}</span>
-<span class="qct-service-card__title">{service.title}</span>
-<span class="qct-service-card__text">{service.text}</span>
-<span class="qct-service-card__cta">{t('Learn more')}</span>
-</a>
-))}
-</div>
-</div>
+		<div class="qct-services__grid">
+			{services.map((service) => (
+				<a class={`qct-service-card ${service.modifier}`} href={service.href} data-qct-reveal>
+					<span class="qct-service-card__top">
+						<span class="qct-service-card__icon" aria-hidden="true"></span>
+						<span class="qct-service-card__kicker">{service.kicker}</span>
+					</span>
+
+					<span class="qct-service-card__body">
+						<span class="qct-service-card__title">{service.title}</span>
+						<span class="qct-service-card__text">{service.text}</span>
+					</span>
+
+					<span class={`qct-service-preview qct-svc-scene qct-svc-scene--${service.preview}`} aria-hidden="true">
+						{service.preview === 'website' ? (
+							<img class="qct-service-website-image" src={`/images/services/${service.image}`} width="1440" height="480" loading="lazy" decoding="async" alt="" />
+						) : (
+							<img class="qct-service-card-image" src={`/images/services/${service.image}`} width="1440" height="480" loading="lazy" decoding="async" alt="" />
+						)}
+					</span>
+
+					<span class="qct-service-card__cta">{t('Learn more')}</span>
+				</a>
+			))}
+		</div>
+	</div>
 </section>
-
-<style>
-.qct-services {
-padding-block: var(--qct-home-section-space, 5rem);
-}
-.qct-section__header {
-max-width: 640px;
-margin-bottom: 3rem;
-}
-.qct-section__eyebrow {
-color: var(--qct-accent);
-font-size: 0.85rem;
-font-weight: 700;
-letter-spacing: 0.08em;
-text-transform: uppercase;
-margin-bottom: 0.75rem;
-}
-.qct-section__title {
-font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-line-height: 1.2;
-margin-bottom: 1rem;
-}
-.qct-section__lead {
-opacity: 0.75;
-line-height: 1.6;
-}
-.qct-services__grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-gap: 1.5rem;
-}
-.qct-service-card {
-display: flex;
-flex-direction: column;
-background: rgba(255, 255, 255, 0.03);
-border: 1px solid rgba(255, 255, 255, 0.08);
-border-radius: 16px;
-overflow: hidden;
-text-decoration: none;
-color: var(--qct-fg);
-transition: border-color 0.2s ease, transform 0.2s ease;
-}
-.qct-service-card:hover {
-border-color: var(--qct-accent);
-transform: translateY(-2px);
-}
-.qct-service-card__image {
-display: block;
-aspect-ratio: 3 / 1;
-overflow: hidden;
-background: #000;
-}
-.qct-service-card__image img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-display: block;
-}
-.qct-service-card__kicker {
-font-size: 0.8rem;
-color: var(--qct-accent);
-font-weight: 600;
-padding: 1.25rem 1.25rem 0;
-}
-.qct-service-card__title {
-font-size: 1.2rem;
-font-weight: 700;
-padding: 0.5rem 1.25rem 0;
-}
-.qct-service-card__text {
-opacity: 0.75;
-font-size: 0.95rem;
-line-height: 1.5;
-padding: 0.5rem 1.25rem 1.25rem;
-}
-.qct-service-card__cta {
-margin-top: auto;
-padding: 1rem 1.25rem;
-border-top: 1px solid rgba(255, 255, 255, 0.08);
-font-size: 0.9rem;
-font-weight: 600;
-color: var(--qct-accent);
-}
-</style>

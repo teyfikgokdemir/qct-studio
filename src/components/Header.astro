@@ -1,84 +1,55 @@
-﻿---
-import { useTranslations, languages, getHomeUrl, getLocalizedUrl } from '../i18n';
+---
+import { useTranslations, getLocalizedUrl, languages } from '../i18n';
 
 interface Props {
   lang: string;
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-const langCodes = Object.keys(languages);
-const home = getHomeUrl(lang);
+const url = (path: string) => getLocalizedUrl(lang, path);
 ---
-<header class="qct-header">
-<div class="container qct-header__inner">
-<a href={home} class="qct-header__logo">QCT Studio</a>
-<nav class="qct-header__nav">
-<a href={getLocalizedUrl(lang, '/services/')}>{t('Services')}</a>
-<a href={getLocalizedUrl(lang, '/about/')}>{t('About')}</a>
-<a href={getLocalizedUrl(lang, '/careers/')}>{t('Careers')}</a>
-<a href={getLocalizedUrl(lang, '/contact/')}>{t('Contact')}</a>
-</nav>
-<div class="qct-header__lang">
-{langCodes.map((code) => {
-  const isActive = code === lang;
-  const linkClass = isActive ? 'qct-header__lang-link active' : 'qct-header__lang-link';
-  return <a href={getHomeUrl(code)} class={linkClass}>{code.toUpperCase()}</a>;
-})}
-</div>
-</div>
+<header id="masthead" class="site-header" data-site-header>
+	<div class="site-header__inner container">
+		<div class="site-branding">
+			<a class="site-title" href={url('/')} rel="home">{t('QCT Studio')}</a>
+		</div>
+
+		<button class="site-menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-menu-toggle>
+			<span class="screen-reader-text">{t('Open menu')}</span>
+			<span class="site-menu-toggle__bar"></span>
+			<span class="site-menu-toggle__bar"></span>
+		</button>
+
+		<nav id="site-navigation" class="main-navigation" aria-label={t('Primary menu')}>
+			<ul class="primary-menu">
+				<li><a href={url('/')}>{t('Home')}</a></li>
+				<li><a href={url('/about/')}>{t('About')}</a></li>
+				<li class="menu-item-has-children">
+					<button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle>
+						<span>{t('Services')}</span>
+					</button>
+					<ul class="sub-menu">
+						<li><a href={url('/services/')}>{t('Services overview')}</a></li>
+						<li><a href={url('/website-design/')}>{t('Website Design')}</a></li>
+						<li><a href={url('/e-commerce/')}>{t('E-commerce')}</a></li>
+						<li><a href={url('/whatsapp-commerce/')}>{t('WhatsApp Commerce')}</a></li>
+						<li><a href={url('/seo-performance/')}>{t('SEO & Performance')}</a></li>
+						<li><a href={url('/meta-ads-landing-pages/')}>{t('Meta Ads Landing Pages')}</a></li>
+						<li><a href={url('/ai-automation/')}>{t('AI Automation')}</a></li>
+					</ul>
+				</li>
+				<li><a href={url('/careers/')}>{t('Careers')}</a></li>
+				<li><a href={url('/contact/')}>{t('Contact')}</a></li>
+			</ul>
+
+			<div class="site-language-switcher">
+				{Object.entries(languages).map(([code, label]) => (
+					<a
+						href={code === lang ? url('/') : (code === 'en' ? '/' : `/${code}/`)}
+						aria-current={code === lang ? 'true' : undefined}
+					>{label}</a>
+				))}
+			</div>
+		</nav>
+	</div>
 </header>
-<style>
-.qct-header {
-position: sticky;
-top: 0;
-z-index: 50;
-background: rgba(13, 13, 13, 0.85);
-backdrop-filter: blur(8px);
-border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-.qct-header__inner {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding-block: 1rem;
-gap: 1.5rem;
-}
-.qct-header__logo {
-color: var(--qct-fg);
-font-weight: 700;
-text-decoration: none;
-letter-spacing: 0.02em;
-}
-.qct-header__nav {
-display: flex;
-gap: 1.5rem;
-}
-.qct-header__nav a {
-color: var(--qct-fg);
-text-decoration: none;
-font-size: 0.95rem;
-opacity: 0.85;
-}
-.qct-header__nav a:hover {
-opacity: 1;
-color: var(--qct-accent);
-}
-.qct-header__lang {
-display: flex;
-gap: 0.75rem;
-}
-.qct-header__lang-link {
-color: var(--qct-fg);
-text-decoration: none;
-font-size: 0.85rem;
-opacity: 0.6;
-}
-.qct-header__lang-link:hover {
-opacity: 1;
-}
-.qct-header__lang-link.active {
-opacity: 1;
-color: var(--qct-accent);
-font-weight: 600;
-}
-</style>

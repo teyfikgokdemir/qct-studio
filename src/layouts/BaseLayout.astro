@@ -1,43 +1,49 @@
-﻿---
-interface Props {
-title: string;
+---
+export interface Props {
+	title: string;
+	description?: string;
+	lang?: string;
 }
-const { title } = Astro.props;
+
+const {
+	title,
+	description = 'QCT Studio — websites, e-commerce and AI automation for businesses across Albania and North Macedonia.',
+	lang = 'en',
+} = Astro.props;
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>{title}</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>{title}</title>
+	<meta name="description" content={description} />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+	<!-- Ported as-is from the WordPress theme's assets/css — BEM classes kept identical -->
+	<link rel="stylesheet" href="/styles/base.css" />
+	<link rel="stylesheet" href="/styles/utilities.css" />
+	<link rel="stylesheet" href="/styles/components.css" />
+	<link rel="stylesheet" href="/styles/home.css" />
+	<link rel="stylesheet" href="/styles/pages.css" />
+	<link rel="stylesheet" href="/styles/services.css" />
+	<link rel="stylesheet" href="/styles/animations.css" />
 </head>
 <body>
-<slot name="header" />
-<main>
-<slot />
-</main>
-<slot name="footer" />
+	<div id="page" class="site">
+		<a class="skip-link screen-reader-text" href="#primary">Skip to content</a>
+
+		<slot name="header" />
+
+		<main id="primary" class="site-main">
+			<slot />
+		</main>
+
+		<slot name="footer" />
+	</div>
+
+	<!-- Ported as-is from the WordPress theme's assets/js -->
+	<script src="/scripts/main.js" is:inline></script>
+	<script src="/scripts/animations.js" is:inline></script>
 </body>
 </html>
-
-<style is:global>
-:root {
---qct-bg: #0d0d0d;
---qct-fg: #f4f4f4;
---qct-accent: #c9a84c;
-}
-* {
-box-sizing: border-box;
-}
-body {
-margin: 0;
-background: var(--qct-bg);
-color: var(--qct-fg);
-font-family: system-ui, sans-serif;
-}
-.container {
-max-width: 1200px;
-margin: 0 auto;
-padding: 0 1.5rem;
-}
-</style>

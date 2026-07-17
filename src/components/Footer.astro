@@ -2,51 +2,58 @@
 import { useTranslations, getLocalizedUrl } from '../i18n';
 
 interface Props {
-  lang?: string;
+  lang: string;
 }
-const { lang = 'en' } = Astro.props;
+const { lang } = Astro.props;
 const t = useTranslations(lang);
+const url = (path: string) => getLocalizedUrl(lang, path);
 ---
-<footer class="qct-footer">
-<div class="container qct-footer__inner">
-<p>{t('&copy; 2026 QCT Studio')}. {t('All rights reserved.')}</p>
-<div class="qct-footer__links">
-<a href={getLocalizedUrl(lang, '/services/')}>{t('Services')}</a>
-<a href={getLocalizedUrl(lang, '/about/')}>{t('About')}</a>
-<a href={getLocalizedUrl(lang, '/careers/')}>{t('Careers')}</a>
-<a href={getLocalizedUrl(lang, '/contact/')}>{t('Contact')}</a>
-<a href={getLocalizedUrl(lang, '/privacy-policy/')}>{t('Privacy Policy')}</a>
-<a href={getLocalizedUrl(lang, '/cookie-policy/')}>{t('Cookie Policy')}</a>
-<a href={getLocalizedUrl(lang, '/terms-conditions/')}>{t('Terms & Conditions')}</a>
-</div>
-</div>
-</footer>
+<footer id="colophon" class="site-footer">
+	<div class="site-footer__inner container">
+		<div class="site-footer__columns">
+			<div class="site-footer__group site-footer__brand">
+				<h2>{t('QCT Studio')}</h2>
+				<p>{t('Websites, e-commerce and digital systems for businesses across the Balkans.')}</p>
 
-<style>
-.qct-footer {
-border-top: 1px solid rgba(255, 255, 255, 0.08);
-padding-block: 2rem;
-margin-top: 4rem;
-}
-.qct-footer__inner {
-display: flex;
-align-items: center;
-justify-content: space-between;
-flex-wrap: wrap;
-gap: 1rem;
-font-size: 0.9rem;
-opacity: 0.7;
-}
-.qct-footer__links {
-display: flex;
-flex-wrap: wrap;
-gap: 1.25rem;
-}
-.qct-footer__links a {
-color: var(--qct-fg);
-text-decoration: none;
-}
-.qct-footer__links a:hover {
-color: var(--qct-accent);
-}
-</style>
+				<div class="site-footer__social" aria-label={t('Social links')}>
+					<p class="site-footer__group-title">{t('Social')}</p>
+					<a href="https://www.linkedin.com/company/qctstudio" target="_blank" rel="noopener noreferrer">{t('LinkedIn')}</a>
+					<a href="https://www.instagram.com/qctstudio_albania/" target="_blank" rel="noopener noreferrer">{t('Instagram')}</a>
+					<a href="https://www.facebook.com/qctalbania/" target="_blank" rel="noopener noreferrer">{t('Facebook')}</a>
+					<a href="https://www.tiktok.com/@qctstudio" target="_blank" rel="noopener noreferrer">{t('TikTok')}</a>
+				</div>
+			</div>
+
+			<nav class="site-footer__group site-footer__nav" aria-label={t('Services')}>
+				<h2>{t('Services')}</h2>
+				<a href={url('/website-design/')}>{t('Website Design')}</a>
+				<a href={url('/e-commerce/')}>{t('E-commerce')}</a>
+				<a href={url('/whatsapp-commerce/')}>{t('WhatsApp Commerce')}</a>
+				<a href={url('/seo-performance/')}>{t('SEO')}</a>
+				<a href={url('/meta-ads-landing-pages/')}>{t('Meta Ads')}</a>
+				<a href={url('/ai-automation/')}>{t('AI Automation')}</a>
+			</nav>
+
+			<nav class="site-footer__group site-footer__company" aria-label={t('Company')}>
+				<h2>{t('Company')}</h2>
+				<a href={url('/about/')}>{t('About')}</a>
+				<a href={url('/careers/')}>{t('Careers')}</a>
+				<a href={url('/contact/')}>{t('Contact')}</a>
+				<a href={url('/privacy-policy/')}>{t('Privacy Policy')}</a>
+				<a href={url('/terms-conditions/')}>{t('Terms & Conditions')}</a>
+			</nav>
+
+			<div class="site-footer__group site-footer__markets">
+				<h2>{t('Contact')}</h2>
+				<p><span aria-hidden="true"></span><a href="mailto:info@qctstudio.com">{t('info@qctstudio.com')}</a></p>
+				<p><span aria-hidden="true"></span><a href="mailto:careers@qctstudio.com">{t('careers@qctstudio.com')}</a></p>
+			</div>
+		</div>
+
+		<div class="site-footer__bottom">
+			<div class="site-footer__copyright">
+				<p set:html={t('&copy; 2026 QCT Studio')} />
+			</div>
+		</div>
+	</div>
+</footer>
