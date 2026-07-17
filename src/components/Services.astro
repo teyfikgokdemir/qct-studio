@@ -1,5 +1,5 @@
 ﻿---
-import { useTranslations } from '../i18n';
+import { useTranslations, getLocalizedUrl } from '../i18n';
 
 interface Props {
   lang: string;
@@ -66,7 +66,7 @@ const services = [
 
 <div class="qct-services__grid">
 {services.map((service) => (
-<a class="qct-service-card" href={service.url}>
+<a class="qct-service-card" href={getLocalizedUrl(lang, service.url)}>
 <span class="qct-service-card__image">
 <img
 src={`/images/services/homepage-service-${service.image}.webp`}

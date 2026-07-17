@@ -7,14 +7,15 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const langCodes = Object.keys(languages);
+const home = getHomeUrl(lang);
 ---
 <header class="qct-header">
 <div class="container qct-header__inner">
-<a href={getHomeUrl(lang)} class="qct-header__logo">QCT Studio</a>
+<a href={home} class="qct-header__logo">QCT Studio</a>
 <nav class="qct-header__nav">
-<a href="#services">{t('Services')}</a>
-<a href="#about">{t('About')}</a>
-<a href="#contact">{t('Contact')}</a>
+<a href={`${home}#services`}>{t('Services')}</a>
+<a href={`${home}#about`}>{t('About')}</a>
+<a href={`${home}#contact`}>{t('Contact')}</a>
 </nav>
 <div class="qct-header__lang">
 {langCodes.map((code) => {

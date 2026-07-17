@@ -30,3 +30,8 @@ export function useTranslations(lang) {
 export function getHomeUrl(lang) {
   return lang === defaultLang ? "/" : `/${lang}/`;
 }
+
+// path should start and end with "/", e.g. "/website-design/"
+export function getLocalizedUrl(lang, path) {
+  return lang === defaultLang ? path : `/${lang}${path}`;
+}
