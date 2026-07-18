@@ -1,5 +1,6 @@
 ---
 import { useTranslations, getHomeUrl } from '../i18n';
+import CookieConsent from '../components/CookieConsent.astro';
 
 const SITE_URL = 'https://qctstudio.com';
 const LOCALES: Record<string, string> = { en: 'en_US', sq: 'sq_AL', mk: 'mk_MK', sr: 'sr_RS' };
@@ -190,15 +191,6 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	<script type="application/ld+json" set:html={JSON.stringify(graphSchema)} />
 	<slot name="schema" />
 
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-GPHPRQG328"></script>
-	<script is:inline>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', 'G-GPHPRQG328');
-	</script>
-
 	<!-- Ported as-is from the WordPress theme's assets/css — BEM classes kept identical.
 	     home.css / pages.css are mutually exclusive, matching the original WP enqueue.php,
 	     so a page only ships the stylesheet it actually uses.
@@ -219,7 +211,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 </head>
 <body>
 	<div id="page" class="site">
-		<a class="skip-link screen-reader-text" href="#primary">Skip to content</a>
+		<a class="skip-link screen-reader-text" href="#primary">{t('Skip to content')}</a>
 
 		<slot name="header" />
 
@@ -229,6 +221,8 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 
 		<slot name="footer" />
 	</div>
+
+	<CookieConsent lang={lang} />
 
 	<!-- Ported as-is from the WordPress theme's assets/js -->
 	<script src="/scripts/main.js" is:inline></script>
