@@ -11,7 +11,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
-<BaseLayout title={`${t('E-commerce')} — QCT Studio`} lang={lang} description={t('We build e-commerce websites for established businesses that need clear product pages, smooth mobile shopping and a checkout people can complete with confidence. Your store should be easy for customers to use and easy for your team to manage.')}>
+<BaseLayout title={`${t('E-commerce')} — QCT Studio`} lang={lang} description={t('We build e-commerce websites for established businesses that need clear product pages, smooth mobile shopping and a checkout people can complete with confidence. Your store should be easy for customers to use and easy for your team to manage.')} breadcrumbLabel={t('E-commerce')} service={{ name: t('E-commerce'), description: t('We build e-commerce websites for established businesses that need clear product pages, smooth mobile shopping and a checkout people can complete with confidence. Your store should be easy for customers to use and easy for your team to manage.') }}>
   <Header slot="header" lang={lang} />
   <ServicePage
     lang={lang}

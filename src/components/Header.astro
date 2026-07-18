@@ -1,5 +1,5 @@
 ---
-import { useTranslations, getLocalizedUrl, languages } from '../i18n';
+import { useTranslations, getLocalizedUrl, getPathWithoutLocale, languages } from '../i18n';
 
 interface Props {
   lang: string;
@@ -7,6 +7,10 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
+
+// Path of the current page with any locale prefix stripped, e.g. "/sq/about/" -> "/about/".
+// Used so the language switcher links to the translated version of THIS page, not just home.
+const currentPath = getPathWithoutLocale(Astro.url.pathname);
 ---
 <header id="masthead" class="site-header" data-site-header>
 	<div class="site-header__inner container">
@@ -45,7 +49,7 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 			<div class="site-language-switcher">
 				{Object.entries(languages).map(([code, label]) => (
 					<a
-						href={code === lang ? url('/') : (code === 'en' ? '/' : `/${code}/`)}
+						href={getLocalizedUrl(code, currentPath)}
 						aria-current={code === lang ? 'true' : undefined}
 					>{label}</a>
 				))}
