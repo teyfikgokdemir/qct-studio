@@ -73,21 +73,36 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.message)}
     bottom: 1rem;
     box-shadow: 0 16px 42px rgba(0, 0, 0, 0.3);
     color: #25d366;
-    display: inline-flex;
-    height: 52px;
+    box-sizing: border-box;
+    display: flex !important;
+    flex: 0 0 52px;
+    height: 52px !important;
     justify-content: center;
+    line-height: 0;
+    max-height: 52px;
+    max-width: 52px;
+    min-height: 52px !important;
+    min-width: 52px !important;
+    overflow: visible;
+    padding: 0 !important;
     position: fixed;
     right: 1rem;
     text-decoration: none;
     transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
-    width: 52px;
+    width: 52px !important;
     z-index: 9000;
   }
 
   .qct-whatsapp svg {
-    fill: currentColor;
-    height: 23px;
-    width: 23px;
+    display: block !important;
+    fill: currentColor !important;
+    flex: 0 0 23px;
+    height: 23px !important;
+    max-height: 23px;
+    max-width: 23px;
+    min-height: 23px;
+    min-width: 23px;
+    width: 23px !important;
   }
 
   .qct-whatsapp:hover,
