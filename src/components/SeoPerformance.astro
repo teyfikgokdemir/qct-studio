@@ -4,14 +4,16 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import ServicePage from './service/ServicePage.astro';
 import { useTranslations } from '../i18n';
+import { getPageSeo } from '../i18n/seo';
 
 interface Props {
   lang: string;
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const seo = getPageSeo('seo-performance', lang);
 ---
-<BaseLayout title={`${t('SEO & GEO Performance')} — QCT Studio`} lang={lang} description={t('Your website should be easy for both people and search systems to understand. We improve technical SEO, content structure and GEO readiness so your business is easier to discover through Google and modern AI-powered search.')} breadcrumbLabel={t('SEO & GEO Performance')} service={{ name: t('SEO & GEO Performance'), description: t('Your website should be easy for both people and search systems to understand. We improve technical SEO, content structure and GEO readiness so your business is easier to discover through Google and modern AI-powered search.') }}>
+<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('SEO & GEO Performance')} service={{ name: t('SEO & GEO Performance'), description: t('Your website should be easy for both people and search systems to understand. We improve technical SEO, content structure and GEO readiness so your business is easier to discover through Google and modern AI-powered search.') }}>
   <Header slot="header" lang={lang} />
   <ServicePage
     lang={lang}

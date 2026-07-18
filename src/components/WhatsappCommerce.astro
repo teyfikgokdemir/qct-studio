@@ -4,14 +4,16 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import ServicePage from './service/ServicePage.astro';
 import { useTranslations } from '../i18n';
+import { getPageSeo } from '../i18n/seo';
 
 interface Props {
   lang: string;
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const seo = getPageSeo('whatsapp-commerce', lang);
 ---
-<BaseLayout title={`${t('WhatsApp Commerce')} — QCT Studio`} lang={lang} description={t('Many customers prefer to ask questions before they buy. We help businesses connect their website, ads and product pages with a clearer WhatsApp journey, making enquiries easier to answer and conversations easier to turn into customers.')} breadcrumbLabel={t('WhatsApp Commerce')} service={{ name: t('WhatsApp Commerce'), description: t('Many customers prefer to ask questions before they buy. We help businesses connect their website, ads and product pages with a clearer WhatsApp journey, making enquiries easier to answer and conversations easier to turn into customers.') }}>
+<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('WhatsApp Commerce')} service={{ name: t('WhatsApp Commerce'), description: t('Many customers prefer to ask questions before they buy. We help businesses connect their website, ads and product pages with a clearer WhatsApp journey, making enquiries easier to answer and conversations easier to turn into customers.') }}>
   <Header slot="header" lang={lang} />
   <ServicePage
     lang={lang}

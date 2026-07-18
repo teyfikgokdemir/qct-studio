@@ -4,14 +4,16 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import ServicePage from './service/ServicePage.astro';
 import { useTranslations } from '../i18n';
+import { getPageSeo } from '../i18n/seo';
 
 interface Props {
   lang: string;
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const seo = getPageSeo('meta-ads', lang);
 ---
-<BaseLayout title={`${t('Meta Ads Landing Pages')} — QCT Studio`} lang={lang} description={t('A successful advertising campaign needs more than clicks. We build focused landing pages that match your ads, reduce distractions and help visitors become enquiries instead of leaving after a few seconds.')} breadcrumbLabel={t('Meta Ads Landing Pages')} service={{ name: t('Meta Ads Landing Pages'), description: t('A successful advertising campaign needs more than clicks. We build focused landing pages that match your ads, reduce distractions and help visitors become enquiries instead of leaving after a few seconds.') }}>
+<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('Meta Ads Landing Pages')} service={{ name: t('Meta Ads Landing Pages'), description: t('A successful advertising campaign needs more than clicks. We build focused landing pages that match your ads, reduce distractions and help visitors become enquiries instead of leaving after a few seconds.') }}>
   <Header slot="header" lang={lang} />
   <ServicePage
     lang={lang}
