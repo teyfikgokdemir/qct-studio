@@ -9,18 +9,22 @@ const phoneNumber = '905433856656';
 const copy = {
   en: {
     label: 'Chat with QCT Studio on WhatsApp',
+    button: 'Talk to us',
     message: 'Hello QCT Studio, I would like to discuss a digital project.',
   },
   sq: {
     label: 'Bisedoni me QCT Studio në WhatsApp',
+    button: 'Na kontaktoni',
     message: 'Përshëndetje QCT Studio, dëshiroj të diskutoj një projekt digjital.',
   },
   mk: {
     label: 'Разговарајте со QCT Studio на WhatsApp',
+    button: 'Разговарајте со нас',
     message: 'Здраво QCT Studio, би сакал/а да разговарам за дигитален проект.',
   },
   sr: {
     label: 'Razgovarajte sa QCT Studio putem WhatsApp-a',
+    button: 'Razgovarajte s nama',
     message: 'Zdravo QCT Studio, želeo/la bih da razgovaram o digitalnom projektu.',
   },
 };
@@ -38,10 +42,12 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.message)}
   data-whatsapp-link
   data-lang={lang}
 >
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M20.52 3.48A11.81 11.81 0 0 0 12.1 0C5.56 0 .24 5.32.24 11.87c0 2.09.55 4.13 1.59 5.93L.14 24l6.35-1.67a11.84 11.84 0 0 0 5.61 1.43h.01c6.54 0 11.86-5.33 11.86-11.87 0-3.17-1.22-6.16-3.45-8.41Zm-8.41 18.27h-.01a9.83 9.83 0 0 1-5.01-1.37l-.36-.21-3.77.99 1.01-3.67-.24-.38a9.84 9.84 0 1 1 8.38 4.64Zm5.4-7.37c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.66.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.64.07-.29-.15-1.25-.46-2.38-1.47a8.9 8.9 0 0 1-1.64-2.04c-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.52.15-.17.2-.29.3-.49.09-.2.04-.37-.03-.52-.08-.15-.67-1.61-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.19 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.19-.56-.34Z"/>
-  </svg>
-  <span>WhatsApp</span>
+  <span class="qct-whatsapp__icon" aria-hidden="true">
+    <svg viewBox="0 0 24 24">
+      <path d="M20.52 3.48A11.81 11.81 0 0 0 12.1 0C5.56 0 .24 5.32.24 11.87c0 2.09.55 4.13 1.59 5.93L.14 24l6.35-1.67a11.84 11.84 0 0 0 5.61 1.43h.01c6.54 0 11.86-5.33 11.86-11.87 0-3.17-1.22-6.16-3.45-8.41Zm-8.41 18.27h-.01a9.83 9.83 0 0 1-5.01-1.37l-.36-.21-3.77.99 1.01-3.67-.24-.38a9.84 9.84 0 1 1 8.38 4.64Zm5.4-7.37c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.66.15-.2.3-.76.96-.93 1.16-.17.2-.34.22-.64.07-.29-.15-1.25-.46-2.38-1.47a8.9 8.9 0 0 1-1.64-2.04c-.17-.3-.02-.46.13-.6.13-.13.3-.34.44-.52.15-.17.2-.29.3-.49.09-.2.04-.37-.03-.52-.08-.15-.67-1.61-.91-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.19 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.19-.56-.34Z"/>
+    </svg>
+  </span>
+  <span class="qct-whatsapp__label">{c.button}</span>
 </a>
 
 <script is:inline>
@@ -66,46 +72,71 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.message)}
 <style>
   .qct-whatsapp {
     align-items: center;
-    background: #25d366;
-    border: 1px solid rgba(255, 255, 255, 0.38);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    background: rgba(23, 21, 26, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 999px;
     bottom: 1rem;
-    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
-    color: #07140c;
+    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.3);
+    color: #f8f5ef;
     display: inline-flex;
-    font-size: 0.86rem;
+    font-size: 0.82rem;
     font-weight: 800;
-    gap: 0.55rem;
-    min-height: 48px;
-    padding: 0.7rem 1rem;
+    gap: 0.7rem;
+    min-height: 52px;
+    padding: 0.45rem 1rem 0.45rem 0.45rem;
     position: fixed;
     right: 1rem;
     text-decoration: none;
-    transition: box-shadow 180ms ease, transform 180ms ease;
+    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
     z-index: 9000;
+  }
+
+  .qct-whatsapp__icon {
+    align-items: center;
+    background: #25d366;
+    border-radius: 999px;
+    color: #07140c;
+    display: inline-flex;
+    height: 38px;
+    justify-content: center;
+    width: 38px;
+  }
+
+  .qct-whatsapp__icon svg {
+    fill: currentColor;
+    height: 19px;
+    width: 19px;
   }
 
   .qct-whatsapp:hover,
   .qct-whatsapp:focus-visible {
-    box-shadow: 0 18px 44px rgba(37, 211, 102, 0.3);
+    border-color: rgba(37, 211, 102, 0.48);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.36), 0 0 0 4px rgba(37, 211, 102, 0.08);
+    color: #fff;
     transform: translateY(-2px);
   }
 
-  .qct-whatsapp svg {
-    fill: currentColor;
-    height: 21px;
-    width: 21px;
+  .qct-whatsapp:focus-visible {
+    outline: 2px solid #f8f5ef;
+    outline-offset: 3px;
   }
 
   @media (max-width: 560px) {
     .qct-whatsapp {
-      height: 48px;
+      height: 52px;
       justify-content: center;
       padding: 0;
-      width: 48px;
+      width: 52px;
     }
 
-    .qct-whatsapp span {
+    .qct-whatsapp__icon {
+      height: 38px;
+      width: 38px;
+    }
+
+    .qct-whatsapp__label {
       position: absolute;
       width: 1px;
       height: 1px;
