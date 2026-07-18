@@ -61,6 +61,7 @@ const homeUrl = new URL(getHomeUrl(lang), SITE_URL).toString();
 const organizationId = `${SITE_URL}/#organization`;
 const websiteId = `${SITE_URL}/#website`;
 const webpageId = `${canonicalUrl}#webpage`;
+const founderId = `${SITE_URL}/#founder`;
 
 const organizationSchema = {
 	'@type': 'Organization',
@@ -78,6 +79,17 @@ const organizationSchema = {
 	},
 	image: { '@id': `${organizationId}/logo` },
 	description: 'QCT Studio builds websites, e-commerce stores, WhatsApp Commerce and AI automation for established businesses across Albania and North Macedonia.',
+	foundingDate: '2024',
+	foundingLocation: {
+		'@type': 'Place',
+		name: 'Istanbul, Türkiye',
+		address: {
+			'@type': 'PostalAddress',
+			addressLocality: 'Istanbul',
+			addressCountry: 'TR',
+		},
+	},
+	founder: { '@id': founderId },
 	areaServed: AREA_SERVED,
 	email: 'info@qctstudio.com',
 	contactPoint: [
@@ -90,6 +102,19 @@ const organizationSchema = {
 		'https://www.instagram.com/qctstudio_albania/',
 		'https://www.facebook.com/qctalbania/',
 		'https://www.tiktok.com/@qctstudio',
+	],
+};
+
+const founderSchema = {
+	'@type': 'Person',
+	'@id': founderId,
+	name: 'Teyfik Gökdemir',
+	jobTitle: 'Founder',
+	url: new URL('/about/', SITE_URL).toString(),
+	worksFor: { '@id': organizationId },
+	sameAs: [
+		'https://www.linkedin.com/in/teyfik-g%C3%B6kdemir-0b1a9758',
+		'https://www.instagram.com/teyfikgokdemir/',
 	],
 };
 
@@ -148,7 +173,7 @@ if (service) {
 	webpageSchema.mainEntity = { '@id': serviceId };
 }
 
-const graph = [organizationSchema, websiteSchema, webpageSchema, breadcrumbSchema, serviceSchema].filter(Boolean);
+const graph = [organizationSchema, founderSchema, websiteSchema, webpageSchema, breadcrumbSchema, serviceSchema].filter(Boolean);
 const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 ---
 <!doctype html>
