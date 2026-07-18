@@ -10,16 +10,20 @@ export interface Props {
 	image?: string;
 	type?: 'website' | 'article';
 	noindex?: boolean;
+	isHome?: boolean;
 }
 
 const {
 	title,
 	description = 'QCT Studio — websites, e-commerce and AI automation for businesses across Albania and North Macedonia.',
 	lang = 'en',
-	image = '/og-default.jpg',
+	image = '/og-default.png',
 	type = 'website',
 	noindex = false,
+	isHome = false,
 } = Astro.props;
+
+const ogImageType = image.toLowerCase().endsWith('.png') ? 'image/png' : 'image/jpeg';
 
 // Current path with the locale prefix stripped, e.g. /sq/about/ -> /about/
 const rawPath = Astro.url.pathname;
@@ -84,6 +88,9 @@ const websiteSchema = {
 	<meta property="og:description" content={description} />
 	<meta property="og:url" content={canonicalUrl} />
 	<meta property="og:image" content={ogImageUrl} />
+	<meta property="og:image:type" content={ogImageType} />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
 	<meta property="og:locale" content={LOCALES[lang] ?? 'en_US'} />
 	{LANGS.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={LOCALES[l]} />)}
 
@@ -98,14 +105,23 @@ const websiteSchema = {
 	<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
 	<slot name="schema" />
 
-	<!-- Ported as-is from the WordPress theme's assets/css — BEM classes kept identical -->
+	<!-- Ported as-is from the WordPress theme's assets/css — BEM classes kept identical.
+	     home.css / pages.css are mutually exclusive, matching the original WP enqueue.php,
+	     so a page only ships the stylesheet it actually uses.
+	     services.css is intentionally NOT loaded: its classes (.qct-premium-service-card,
+	     .qct-service-img) don't match any markup in this theme (real class is
+	     .qct-service-card) — it was dead weight in the original WP enqueue too. -->
 	<link rel="stylesheet" href="/styles/base.css" />
-	<link rel="stylesheet" href="/styles/utilities.css" />
 	<link rel="stylesheet" href="/styles/components.css" />
-	<link rel="stylesheet" href="/styles/home.css" />
-	<link rel="stylesheet" href="/styles/pages.css" />
-	<link rel="stylesheet" href="/styles/services.css" />
-	<link rel="stylesheet" href="/styles/animations.css" />
+	{isHome ? (
+		<>
+			<link rel="stylesheet" href="/styles/home.css" />
+			<link rel="stylesheet" href="/styles/animations.css" />
+		</>
+	) : (
+		<link rel="stylesheet" href="/styles/pages.css" />
+	)}
+	<link rel="stylesheet" href="/styles/utilities.css" />
 </head>
 <body>
 	<div id="page" class="site">
@@ -122,6 +138,6 @@ const websiteSchema = {
 
 	<!-- Ported as-is from the WordPress theme's assets/js -->
 	<script src="/scripts/main.js" is:inline></script>
-	<script src="/scripts/animations.js" is:inline></script>
+	{isHome && <script src="/scripts/animations.js" is:inline></script>}
 </body>
 </html>
