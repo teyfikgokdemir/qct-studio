@@ -129,19 +129,19 @@ const t = useTranslations(lang);
 
 <style>
   .qct-trust {
-    padding: clamp(4rem, 8vw, 8rem) 0;
+    padding: clamp(3.5rem, 6vw, 6rem) 0;
     color: #f8f5ef;
     background: #17151a;
   }
 
   .qct-trust .container {
     display: grid;
-    gap: clamp(3rem, 7vw, 7rem);
+    gap: clamp(3rem, 5vw, 5rem);
   }
 
   .qct-trust__intro,
   .qct-trust__work {
-    max-width: 1100px;
+    max-width: 1040px;
   }
 
   .qct-trust__eyebrow,
@@ -154,11 +154,16 @@ const t = useTranslations(lang);
   }
 
   .qct-trust h2 {
-    max-width: 900px;
-    margin: 0.8rem 0 1.2rem;
-    font-size: clamp(2.4rem, 6vw, 5.5rem);
-    line-height: 0.98;
-    letter-spacing: -0.055em;
+    max-width: 820px;
+    margin: 0.75rem 0 1rem;
+    font-size: clamp(2.25rem, 4vw, 4rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  .qct-trust__work h2 {
+    max-width: 720px;
+    font-size: clamp(2.15rem, 3.5vw, 3.5rem);
   }
 
   .qct-trust__intro > p:not(.qct-trust__eyebrow),
@@ -186,7 +191,7 @@ const t = useTranslations(lang);
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1px;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 1.25rem;
@@ -194,14 +199,14 @@ const t = useTranslations(lang);
   }
 
   .qct-trust__grid article {
-    min-height: 290px;
-    padding: clamp(1.5rem, 3vw, 2.5rem);
+    min-height: 230px;
+    padding: clamp(1.4rem, 2.25vw, 2rem);
     background: #211e24;
   }
 
   .qct-trust__grid h3 {
     margin: 1rem 0 0.75rem;
-    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    font-size: clamp(1.6rem, 2.2vw, 2rem);
   }
 
   .qct-trust__grid p,
