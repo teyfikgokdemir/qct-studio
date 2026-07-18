@@ -11,7 +11,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
-<BaseLayout title={`${t('Meta Ads Landing Pages')} — QCT Studio`}>
+<BaseLayout title={`${t('Meta Ads Landing Pages')} — QCT Studio`} lang={lang} description={t('A successful advertising campaign needs more than clicks. We build focused landing pages that match your ads, reduce distractions and help visitors become enquiries instead of leaving after a few seconds.')}>
   <Header slot="header" lang={lang} />
   <ServicePage
     lang={lang}

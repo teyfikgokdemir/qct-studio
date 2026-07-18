@@ -173,6 +173,16 @@ const workUrl = `${homeUrl}#work`;
   </div>
 </section>
 
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.items.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+})} />
+
 <section class="qct-section qct-svc-section qct-svc-section--alt">
   <div class="container">
     <div class="qct-section__header">

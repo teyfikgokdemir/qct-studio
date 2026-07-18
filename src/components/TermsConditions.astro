@@ -11,7 +11,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
-<BaseLayout title={`${t('Terms & Conditions')} — QCT Studio`}>
+<BaseLayout title={`${t('Terms & Conditions')} — QCT Studio`} lang={lang} description={t('Plain-language terms for how visitors use the QCT Studio website and what they should reasonably expect from it.')}>
   <Header slot="header" lang={lang} />
   <LegalPage
     lang={lang}

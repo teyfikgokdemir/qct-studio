@@ -59,6 +59,16 @@ const homeUrl = getHomeUrl(lang);
         </section>
       ))}
 
+      <script type="application/ld+json" set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqItems.map((item) => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: { '@type': 'Answer', text: item.a },
+        })),
+      })} />
+
       <section id="faq" class="qct-legal-card">
         <h2>{faqTitle}</h2>
         <div class="qct-legal-faq">

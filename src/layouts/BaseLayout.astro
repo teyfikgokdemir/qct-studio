@@ -1,15 +1,64 @@
 ---
+const SITE_URL = 'https://qctstudio.com';
+const LOCALES: Record<string, string> = { en: 'en_US', sq: 'sq_AL', mk: 'mk_MK', sr: 'sr_RS' };
+const LANGS = ['en', 'sq', 'mk', 'sr'];
+
 export interface Props {
 	title: string;
 	description?: string;
 	lang?: string;
+	image?: string;
+	type?: 'website' | 'article';
+	noindex?: boolean;
 }
 
 const {
 	title,
 	description = 'QCT Studio — websites, e-commerce and AI automation for businesses across Albania and North Macedonia.',
 	lang = 'en',
+	image = '/og-default.jpg',
+	type = 'website',
+	noindex = false,
 } = Astro.props;
+
+// Current path with the locale prefix stripped, e.g. /sq/about/ -> /about/
+const rawPath = Astro.url.pathname;
+const pathNoLocale = (() => {
+	const parts = rawPath.split('/').filter(Boolean);
+	if (parts[0] && LANGS.includes(parts[0]) && parts[0] !== 'en') {
+		return '/' + parts.slice(1).join('/') + (parts.length > 1 ? '/' : '');
+	}
+	return rawPath.endsWith('/') || rawPath === '' ? rawPath || '/' : rawPath + '/';
+})();
+
+const localizedPath = (l: string) => (l === 'en' ? pathNoLocale : `/${l}${pathNoLocale}`);
+const canonicalUrl = new URL(localizedPath(lang), SITE_URL).toString();
+const ogImageUrl = new URL(image, SITE_URL).toString();
+
+const organizationSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Organization',
+	name: 'QCT Studio',
+	url: SITE_URL,
+	logo: new URL('/favicon.svg', SITE_URL).toString(),
+	description: 'QCT Studio builds websites, e-commerce stores, WhatsApp Commerce and AI automation for established businesses across Albania and North Macedonia.',
+	areaServed: ['Albania', 'North Macedonia', 'Balkans'],
+	email: 'info@qctstudio.com',
+	sameAs: [
+		'https://www.linkedin.com/company/qctstudio',
+		'https://www.instagram.com/qctstudio_albania/',
+		'https://www.facebook.com/qctalbania/',
+		'https://www.tiktok.com/@qctstudio',
+	],
+};
+
+const websiteSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	name: 'QCT Studio',
+	url: SITE_URL,
+	inLanguage: LANGS,
+};
 ---
 <!doctype html>
 <html lang={lang}>
@@ -18,7 +67,36 @@ const {
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>{title}</title>
 	<meta name="description" content={description} />
+	{noindex && <meta name="robots" content="noindex, nofollow" />}
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+	<!-- Canonical + hreflang: every language version points at every other, plus x-default -->
+	<link rel="canonical" href={canonicalUrl} />
+	{LANGS.map((l) => (
+		<link rel="alternate" hreflang={l} href={new URL(localizedPath(l), SITE_URL).toString()} />
+	))}
+	<link rel="alternate" hreflang="x-default" href={new URL(localizedPath('en'), SITE_URL).toString()} />
+
+	<!-- Open Graph -->
+	<meta property="og:type" content={type} />
+	<meta property="og:site_name" content="QCT Studio" />
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:url" content={canonicalUrl} />
+	<meta property="og:image" content={ogImageUrl} />
+	<meta property="og:locale" content={LOCALES[lang] ?? 'en_US'} />
+	{LANGS.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={LOCALES[l]} />)}
+
+	<!-- Twitter Card -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description} />
+	<meta name="twitter:image" content={ogImageUrl} />
+
+	<!-- Structured data: Organization + WebSite (site-wide, every page) -->
+	<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+	<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+	<slot name="schema" />
 
 	<!-- Ported as-is from the WordPress theme's assets/css — BEM classes kept identical -->
 	<link rel="stylesheet" href="/styles/base.css" />

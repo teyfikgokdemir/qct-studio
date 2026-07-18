@@ -11,7 +11,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
-<BaseLayout title={`${t('WhatsApp Commerce')} — QCT Studio`}>
+<BaseLayout title={`${t('WhatsApp Commerce')} — QCT Studio`} lang={lang} description={t('Many customers prefer to ask questions before they buy. We help businesses connect their website, ads and product pages with a clearer WhatsApp journey, making enquiries easier to answer and conversations easier to turn into customers.')}>
   <Header slot="header" lang={lang} />
   <ServicePage
     lang={lang}
