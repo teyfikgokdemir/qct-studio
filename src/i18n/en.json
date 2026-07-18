@@ -1,11 +1,11 @@
 {
+  "404": "404",
   "&copy; 2026 QCT Studio": "&copy; 2026 QCT Studio",
   "+18%": "+18%",
   "01": "01",
   "02": "02",
   "03": "03",
   "04": "04",
-  "404": "404",
   "A CMS setup that makes product, stock and page updates easier for your team.": "A CMS setup that makes product, stock and page updates easier for your team.",
   "A better WhatsApp flow makes conversations easier to manage.": "A better WhatsApp flow makes conversations easier to manage.",
   "A better store helps customers move from interest to order.": "A better store helps customers move from interest to order.",
@@ -1023,5 +1023,6 @@
   "scale": "scale",
   "sell": "sell",
   "to help your business look as professional online as it already is offline.": "to help your business look as professional online as it already is offline.",
-  "to launch.": "to launch."
+  "to launch.": "to launch.",
+  "That's why every decision we make has one goal:": "That's why every decision we make has one goal:"
 }
