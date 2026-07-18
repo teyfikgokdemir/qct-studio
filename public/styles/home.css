@@ -5458,3 +5458,9 @@
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 }
+
+/* QCT WCAG contrast correction */
+.qct-work-editorial__hero small,
+.qct-work-store > header span {
+  color: #ff8b82;
+}
