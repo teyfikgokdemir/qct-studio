@@ -1,4 +1,5 @@
 export type SeoPage =
+  | 'home'
   | 'about'
   | 'services'
   | 'website-design'
@@ -19,6 +20,10 @@ interface SeoEntry {
 
 const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
   en: {
+    home: {
+      title: 'QCT Studio — Websites, E-commerce & AI for the Balkans',
+      description: 'QCT Studio builds websites, e-commerce stores and AI automation for businesses across Albania and North Macedonia.',
+    },
     about: {
       title: 'About QCT Studio — Digital Partner for Balkan Businesses',
       description: 'Meet QCT Studio, founded in Istanbul by Teyfik Gökdemir to build trusted websites, e-commerce and digital systems for Balkan businesses.',
@@ -61,6 +66,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
     },
   },
   sq: {
+    home: {
+      title: 'QCT Studio — Faqe interneti, E-commerce dhe AI në Ballkan',
+      description: 'QCT Studio ndërton faqe interneti, dyqane online dhe automatizime me AI për biznese në Shqipëri dhe Maqedoninë e Veriut.',
+    },
     about: {
       title: 'Rreth QCT Studio — Partner Digjital për Bizneset Ballkanike',
       description: 'Njihuni me QCT Studio, themeluar në Stamboll nga Teyfik Gökdemir për të ndërtuar faqe, e-commerce dhe sisteme digjitale për bizneset ballkanike.',
@@ -103,6 +112,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
     },
   },
   mk: {
+    home: {
+      title: 'QCT Studio — Веб-страници, е-трговија и AI за Балканот',
+      description: 'QCT Studio изработува веб-страници, онлајн продавници и AI автоматизации за компании во Албанија и Северна Македонија.',
+    },
     about: {
       title: 'За QCT Studio — Дигитален партнер за балкански компании',
       description: 'Запознајте го QCT Studio, основано во Истанбул од Teyfik Gökdemir за веб-страници, е-трговија и дигитални системи за балкански компании.',
