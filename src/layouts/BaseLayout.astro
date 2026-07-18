@@ -1,6 +1,7 @@
 ---
 import { useTranslations, getHomeUrl } from '../i18n';
 import CookieConsent from '../components/CookieConsent.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 const SITE_URL = 'https://qctstudio.com';
 const LOCALES: Record<string, string> = { en: 'en_US', sq: 'sq_AL', mk: 'mk_MK', sr: 'sr_RS' };
@@ -248,6 +249,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	</div>
 
 	<CookieConsent lang={lang} />
+	<WhatsAppButton lang={lang} />
 
 	<!-- Ported as-is from the WordPress theme's assets/js -->
 	<script src="/scripts/main.js?v=20260718-3" is:inline></script>
