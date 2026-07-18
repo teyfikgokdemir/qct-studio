@@ -1,11 +1,11 @@
 {
+  "404": "404",
   "&copy; 2026 QCT Studio": "&copy; 2026 QCT Studio",
   "+18%": "+18%",
   "01": "01",
   "02": "02",
   "03": "03",
   "04": "04",
-  "404": "404",
   "A CMS setup that makes product, stock and page updates easier for your team.": "CMS поставка што ги прави ажурирањата на производи, залихи и страници полесни за вашиот тим.",
   "A better WhatsApp flow makes conversations easier to manage.": "Подобар WhatsApp тек ги прави разговорите полесни за управување.",
   "A better store helps customers move from interest to order.": "Подобрата продавница им помага на клиентите да преминат од интерес до нарачка.",
@@ -23,7 +23,7 @@
   "A smooth journey for customers moving from phone browsing to WhatsApp messaging.": "Непречено патување за клиентите што се движат од прелистување на телефон до WhatsApp пораки.",
   "A store can lose sales long before the basket opens.": "Продавницата може да изгуби продажба многу пред да се отвори кошничката.",
   "A straightforward process from planning to launch.": "Јасен процес од планирање до лансирање.",
-  "A straightforward process from the first conversation": "A straightforward process from the first conversation",
+  "A straightforward process from the first conversation": "Едноставен процес од првиот разговор",
   "A straightforward process from the first conversation to launch.": "Јасен процес од првиот разговор до лансирањето.",
   "A strong advertisement deserves a page that continues the conversation instead of interrupting it.": "Силната реклама заслужува страница што го продолжува разговорот наместо да го прекинува.",
   "A structured approach to long-term visibility.": "Структуриран пристап за долгорочна видливост.",
@@ -359,7 +359,7 @@
   "HOW WE WORK TOGETHER": "HOW WE WORK TOGETHER",
   "Has your website?": "Дали и вашата веб-страница?",
   "Helpful page content that reduces repeated questions before the chat begins.": "Корисна содржина на страницата што ги намалува повторените прашања пред да започне разговорот.",
-  "Hero actions": "Hero actions",
+  "Hero actions": "Акции во воведниот дел",
   "Home": "Дома",
   "How can I ask a question about these terms?": "Како можам да поставам прашање за овие услови?",
   "How can I manage cookies?": "Како можам да управувам со колачињата?",
@@ -1022,6 +1022,6 @@
   "qctstudio.com/website-design": "qctstudio.com/website-design",
   "scale": "скалира",
   "sell": "продава",
-  "to help your business look as professional online as it already is offline.": "to help your business look as professional online as it already is offline.",
-  "to launch.": "to launch."
+  "to help your business look as professional online as it already is offline.": "да му помогнеме на вашиот бизнис онлајн да изгледа исто толку професионално колку што е веќе офлајн.",
+  "to launch.": "до лансирање."
 }
