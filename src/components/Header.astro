@@ -3,14 +3,15 @@ import { useTranslations, getLocalizedUrl, getPathWithoutLocale, languages, lang
 
 interface Props {
   lang: string;
+  languagePath?: string;
 }
-const { lang } = Astro.props;
+const { lang, languagePath } = Astro.props;
 const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
 
 // Path of the current page with any locale prefix stripped, e.g. "/sq/about/" -> "/about/".
 // Used so the language switcher links to the translated version of THIS page, not just home.
-const currentPath = getPathWithoutLocale(Astro.url.pathname);
+const currentPath = languagePath ?? getPathWithoutLocale(Astro.url.pathname);
 ---
 <header id="masthead" class="site-header" data-site-header>
 	<div class="site-header__inner container">
