@@ -4,14 +4,16 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import ServicePage from './service/ServicePage.astro';
 import { useTranslations } from '../i18n';
+import { getPageSeo } from '../i18n/seo';
 
 interface Props {
   lang: string;
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const seo = getPageSeo('contact', lang);
 ---
-<BaseLayout title={`${t('Contact')} — QCT Studio`} lang={lang} description={t('QCT Studio works with businesses across the Balkans that need websites, e-commerce, WhatsApp Commerce, SEO, GEO and landing pages. The first conversation should be practical, so a clear brief helps us understand the business and the work that needs attention.')} pageType="ContactPage" breadcrumbLabel={t('Contact')}>
+<BaseLayout title={seo.title} lang={lang} description={seo.description} pageType="ContactPage" breadcrumbLabel={t('Contact')}>
   <Header slot="header" lang={lang} />
   <section class="qct-contact-channels">
     <div class="container">
