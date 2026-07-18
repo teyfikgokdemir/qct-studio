@@ -21,6 +21,7 @@ function attribute(tag, name) {
 function expectedUrl(file) {
   const relative = path.relative(DIST, file).split(path.sep).join('/');
   if (relative === 'index.html') return `${SITE}/`;
+  if (relative === '404.html') return `${SITE}/404/`;
   if (relative.endsWith('/index.html')) {
     return `${SITE}/${relative.slice(0, -'index.html'.length)}`;
   }
