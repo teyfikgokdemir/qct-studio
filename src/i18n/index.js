@@ -1,4 +1,4 @@
-﻿import en from "./en.json";
+import en from "./en.json";
 import sq from "./sq.json";
 import mk from "./mk.json";
 import sr from "./sr.json";
@@ -9,7 +9,6 @@ export const languages = {
   en: "English",
   sq: "Shqip",
   mk: "Македонски",
-  sr: "Srpski",
 };
 
 export const defaultLang = "en";

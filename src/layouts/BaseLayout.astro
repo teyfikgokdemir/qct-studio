@@ -4,7 +4,7 @@ import CookieConsent from '../components/CookieConsent.astro';
 
 const SITE_URL = 'https://qctstudio.com';
 const LOCALES: Record<string, string> = { en: 'en_US', sq: 'sq_AL', mk: 'mk_MK', sr: 'sr_RS' };
-const LANGS = ['en', 'sq', 'mk', 'sr'];
+const LANGS = ['en', 'sq', 'mk'];
 const AREA_SERVED = [
 	{ '@type': 'Country', name: 'Albania' },
 	{ '@type': 'Country', name: 'North Macedonia' },
@@ -158,7 +158,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>{title}</title>
 	<meta name="description" content={description} />
-	{noindex && <meta name="robots" content="noindex, nofollow" />}
+	{(noindex || lang === 'sr') && <meta name="robots" content="noindex, nofollow" />}
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
 	<!-- Canonical + hreflang: every language version points at every other, plus x-default -->
@@ -197,17 +197,17 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	     services.css is intentionally NOT loaded: its classes (.qct-premium-service-card,
 	     .qct-service-img) don't match any markup in this theme (real class is
 	     .qct-service-card) — it was dead weight in the original WP enqueue too. -->
-	<link rel="stylesheet" href="/styles/base.css" />
-	<link rel="stylesheet" href="/styles/components.css" />
+	<link rel="stylesheet" href="/styles/base.css?v=20260718-3" />
+	<link rel="stylesheet" href="/styles/components.css?v=20260718-3" />
 	{isHome ? (
 		<>
-			<link rel="stylesheet" href="/styles/home.css" />
-			<link rel="stylesheet" href="/styles/animations.css" />
+			<link rel="stylesheet" href="/styles/home.css?v=20260718-3" />
+			<link rel="stylesheet" href="/styles/animations.css?v=20260718-3" />
 		</>
 	) : (
-		<link rel="stylesheet" href="/styles/pages.css" />
+		<link rel="stylesheet" href="/styles/pages.css?v=20260718-3" />
 	)}
-	<link rel="stylesheet" href="/styles/utilities.css" />
+	<link rel="stylesheet" href="/styles/utilities.css?v=20260718-3" />
 </head>
 <body>
 	<div id="page" class="site">
@@ -225,7 +225,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	<CookieConsent lang={lang} />
 
 	<!-- Ported as-is from the WordPress theme's assets/js -->
-	<script src="/scripts/main.js" is:inline></script>
-	{isHome && <script src="/scripts/animations.js" is:inline></script>}
+	<script src="/scripts/main.js?v=20260718-3" is:inline></script>
+	{isHome && <script src="/scripts/animations.js?v=20260718-3" is:inline></script>}
 </body>
 </html>
