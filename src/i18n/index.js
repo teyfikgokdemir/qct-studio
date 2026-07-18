@@ -9,6 +9,7 @@ export const languages = {
   en: "English",
   sq: "Shqip",
   mk: "Македонски",
+  sr: "Srpski",
 };
 
 export const defaultLang = "en";
