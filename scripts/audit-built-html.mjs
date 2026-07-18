@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const DIST = 'dist';
 const SITE = 'https://qctstudio.com';
-const expectedHreflangs = ['en', 'sq', 'mk', 'x-default'];
+const expectedHreflangs = ['en', 'sq', 'mk', 'sr', 'x-default'];
 const htmlFiles = [];
 
 function walk(directory) {
