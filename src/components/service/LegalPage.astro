@@ -76,14 +76,19 @@ const homeUrl = getHomeUrl(lang);
 
 <style>
 .qct-legal-hero,
-.qct-legal-body {
-  color: var(--qct-color-text, #17151a);
+.qct-legal-body,
+.qct-legal-hero *,
+.qct-legal-body * {
+  color: var(--qct-color-text, #17151a) !important;
 }
 .qct-legal-hero .qct-section__lead,
-.qct-legal-card p {
+.qct-legal-card p,
+.qct-legal-toc a {
   color: var(--qct-color-muted, #686268) !important;
 }
-.qct-legal-hero .qct-section__eyebrow {
+.qct-legal-hero .qct-section__eyebrow,
+.qct-breadcrumb a:hover,
+.qct-legal-toc a:hover {
   color: var(--qct-color-accent, #e75757) !important;
 }
 .qct-breadcrumb {
