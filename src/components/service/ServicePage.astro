@@ -203,6 +203,17 @@ const workUrl = `${homeUrl}#work`;
 </section>
 
 <style>
+.qct-svc-hero .qct-section__lead,
+.qct-svc-section .qct-section__lead,
+.qct-svc-card p,
+.qct-svc-step p,
+.qct-svc-faq p {
+  color: var(--qct-color-muted, #686268) !important;
+}
+.qct-svc-hero .qct-section__eyebrow,
+.qct-svc-section .qct-section__eyebrow {
+  color: var(--qct-color-accent, #e75757) !important;
+}
 .qct-breadcrumb {
   display: flex;
   gap: 0.5rem;
@@ -228,8 +239,9 @@ const workUrl = `${homeUrl}#work`;
   margin: 0.75rem 0 1.25rem;
 }
 .qct-svc-hero__lead {
+  color: var(--qct-color-muted, #686268);
   font-size: 1.1rem;
-  opacity: 0.8;
+  opacity: 0.95;
   line-height: 1.6;
   max-width: 680px;
   margin-bottom: 2rem;
