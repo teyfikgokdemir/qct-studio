@@ -5,8 +5,8 @@ import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 const SITE_URL = 'https://qctstudio.com';
 const LOCALES: Record<string, string> = { en: 'en_US', sq: 'sq_AL', mk: 'mk_MK', sr: 'sr_RS' };
-const INDEXED_LANGS = ['en', 'sq', 'mk'];
-const ROUTE_LANGS = [...INDEXED_LANGS, 'sr'];
+const INDEXED_LANGS = ['en', 'sq', 'mk', 'sr'];
+const ROUTE_LANGS = INDEXED_LANGS;
 const AREA_SERVED = [
 	{ '@type': 'Country', name: 'Albania' },
 	{ '@type': 'Country', name: 'North Macedonia' },
@@ -42,7 +42,7 @@ const {
 } = Astro.props;
 
 const t = useTranslations(lang);
-const isIndexable = !noindex && lang !== 'sr';
+const isIndexable = !noindex;
 const ogImageType = image.toLowerCase().endsWith('.png') ? 'image/png' : 'image/jpeg';
 
 // Current path with the locale prefix stripped, e.g. /sq/about/ -> /about/

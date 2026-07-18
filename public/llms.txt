@@ -26,4 +26,4 @@ Albania, North Macedonia, and the wider Balkans.
 
 ## Languages
 
-This site is available in English (default), Albanian (/sq/), and Macedonian (/mk/).
+This site is available in English (default), Albanian (/sq/), Macedonian (/mk/), and Serbian (/sr/).

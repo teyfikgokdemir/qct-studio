@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const sourceRoot = 'src';
-const locales = ['sq', 'mk'];
+const locales = ['sq', 'mk', 'sr'];
 const usedKeys = new Set();
 
 const allowedUnchanged = new Set([
@@ -20,6 +20,7 @@ const allowedUnchanged = new Set([
   '&copy; 2026 QCT Studio',
   'info@qctstudio.com',
   'careers@qctstudio.com',
+  'support@qctstudio.com',
   'qctstudio.com',
 ]);
 

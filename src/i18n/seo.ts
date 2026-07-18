@@ -11,7 +11,7 @@ export type SeoPage =
   | 'careers'
   | 'contact';
 
-type IndexedLang = 'en' | 'sq' | 'mk';
+type IndexedLang = 'en' | 'sq' | 'mk' | 'sr';
 
 interface SeoEntry {
   title: string;
@@ -157,9 +157,56 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
       description: 'Контактирајте го QCT Studio за веб-страници, е-трговија, SEO, GEO, рекламни страници и AI автоматизација на Балканот.',
     },
   },
+  sr: {
+    home: {
+      title: 'QCT Studio — Sajtovi, e-commerce i AI za Balkan',
+      description: 'QCT Studio izrađuje sajtove, internet prodavnice i AI automatizacije za kompanije u Albaniji, Severnoj Makedoniji i širom Balkana.',
+    },
+    about: {
+      title: 'O QCT Studiju — Digitalni partner za Balkan',
+      description: 'Upoznajte QCT Studio, koji je Teyfik Gökdemir osnovao u Istanbulu za izradu sajtova, e-commerce sistema i digitalnih rešenja za Balkan.',
+    },
+    services: {
+      title: 'Sajtovi, e-commerce, SEO i AI usluge — QCT Studio',
+      description: 'Istražite dizajn sajtova, e-commerce, WhatsApp Commerce, SEO, GEO, Meta Ads stranice i AI automatizaciju za kompanije na Balkanu.',
+    },
+    'website-design': {
+      title: 'Dizajn sajtova za balkanske kompanije — QCT Studio',
+      description: 'Premium dizajn sajtova za kompanije na Balkanu kojima su potrebni snažnije poverenje, jasnije pozicioniranje i bolje mobilne performanse.',
+    },
+    'e-commerce': {
+      title: 'Izrada e-commerce prodavnica — QCT Studio',
+      description: 'E-commerce prodavnice sa jasnim stranicama proizvoda, pouzdanom naplatom i jednostavnom mobilnom kupovinom za kompanije na Balkanu.',
+    },
+    'ai-automation': {
+      title: 'AI automatizacija poslovnih procesa — QCT Studio',
+      description: 'Praktična AI automatizacija koja smanjuje ponavljajući rad, poboljšava obradu upita i zadržava kontrolu važnih odluka u vašem timu.',
+    },
+    'seo-performance': {
+      title: 'SEO & GEO za Google i AI pretragu — QCT Studio',
+      description: 'Tehnički SEO, struktura sadržaja i GEO spremnost koji pomažu balkanskim kompanijama da se pojave na Google-u i u AI pretragama.',
+    },
+    'whatsapp-commerce': {
+      title: 'WhatsApp Commerce rešenja — QCT Studio',
+      description: 'Povežite sajt, oglase i interesovanje za proizvode sa jasnijim WhatsApp prodajnim tokom koji olakšava upravljanje upitima i prodajom.',
+    },
+    'meta-ads': {
+      title: 'Dizajn odredišnih stranica za Meta Ads — QCT Studio',
+      description: 'Fokusirane stranice usklađene sa Meta Ads kampanjama koje smanjuju ometanja, jačaju poruku oglasa i stvaraju kvalitetnije upite.',
+    },
+    careers: {
+      title: 'Karijera u QCT Studiju — Pridružite se timu',
+      description: 'Istražite prilike u QCT Studiju za odgovorne ljude koji jasno komuniciraju i žele da stvaraju koristan digitalni rad za Balkan.',
+    },
+    contact: {
+      title: 'Kontaktirajte QCT Studio — Pokrenite digitalni projekat',
+      description: 'Kontaktirajte QCT Studio za sajtove, e-commerce, SEO, GEO, odredišne stranice i AI automatizaciju za vaš biznis na Balkanu.',
+    },
+  },
+
 };
 
 export function getPageSeo(page: SeoPage, lang: string): SeoEntry {
-  const indexedLang: IndexedLang = lang === 'sq' || lang === 'mk' ? lang : 'en';
+  const indexedLang: IndexedLang = lang === 'sq' || lang === 'mk' || lang === 'sr' ? lang : 'en';
   return seo[indexedLang][page];
 }

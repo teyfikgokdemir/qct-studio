@@ -510,11 +510,11 @@ main :where([id]) {
 	width: 18px;
 }
 
-.site-menu-toggle[aria-expanded="true"] .site-menu-toggle__bar:first-of-type {
+.site-menu-toggle[aria-expanded="true"] .site-menu-toggle__bar:nth-of-type(2) {
 	transform: translateY(3.5px) rotate(45deg);
 }
 
-.site-menu-toggle[aria-expanded="true"] .site-menu-toggle__bar:last-of-type {
+.site-menu-toggle[aria-expanded="true"] .site-menu-toggle__bar:nth-of-type(3) {
 	transform: translateY(-3.5px) rotate(-45deg);
 }
 

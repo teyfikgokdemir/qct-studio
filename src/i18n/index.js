@@ -6,9 +6,17 @@ import sr from "./sr.json";
 const dictionaries = { en, sq, mk, sr };
 
 export const languages = {
+  en: "EN",
+  sq: "SQ",
+  mk: "MK",
+  sr: "SR",
+};
+
+export const languageNames = {
   en: "English",
   sq: "Shqip",
   mk: "Македонски",
+  sr: "Srpski",
 };
 
 export const defaultLang = "en";

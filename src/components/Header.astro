@@ -1,5 +1,5 @@
 ---
-import { useTranslations, getLocalizedUrl, getPathWithoutLocale, languages } from '../i18n';
+import { useTranslations, getLocalizedUrl, getPathWithoutLocale, languages, languageNames } from '../i18n';
 
 interface Props {
   lang: string;
@@ -51,6 +51,9 @@ const currentPath = getPathWithoutLocale(Astro.url.pathname);
 					<a
 						href={getLocalizedUrl(code, currentPath)}
 						aria-current={code === lang ? 'true' : undefined}
+						hreflang={code}
+						lang={code}
+						aria-label={languageNames[code as keyof typeof languageNames]}
 					>{label}</a>
 				))}
 			</div>
