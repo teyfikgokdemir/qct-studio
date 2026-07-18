@@ -7,10 +7,9 @@ export default defineConfig({
   site: 'https://qctstudio.com',
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/sr/'),
       i18n: {
         defaultLocale: 'en',
-        locales: { en: 'en-US', sq: 'sq-AL', mk: 'mk-MK' },
+        locales: { en: 'en-US', sq: 'sq-AL', mk: 'mk-MK', sr: 'sr-RS' },
       },
     }),
   ],
