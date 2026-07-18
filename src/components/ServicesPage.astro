@@ -4,12 +4,14 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import ServicePage from './service/ServicePage.astro';
 import { useTranslations, getLocalizedUrl } from '../i18n';
+import { getPageSeo } from '../i18n/seo';
 
 interface Props {
   lang: string;
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const seo = getPageSeo('services', lang);
 
 const serviceLinks = [
   { title: t('Website Design'), text: t('Premium websites that help customers understand and trust your business.'), cta: t('Explore Website Design'), href: getLocalizedUrl(lang, '/website-design/') },
@@ -20,7 +22,7 @@ const serviceLinks = [
   { title: t('AI Automation'), text: t('Practical workflows for lead routing, enquiries, handoffs and repetitive administration.'), cta: t('Explore AI Automation'), href: getLocalizedUrl(lang, '/ai-automation/') },
 ];
 ---
-<BaseLayout title={`${t('Services')} — QCT Studio`} lang={lang} description={t('QCT Studio provides website design, e-commerce, WhatsApp Commerce, SEO and GEO, Meta Ads landing pages, and practical AI automation for established businesses in Albania and North Macedonia. Services can also be combined for broader Balkan projects when the market and customer journey require it.')} pageType="CollectionPage" breadcrumbLabel={t('Services')}>
+<BaseLayout title={seo.title} lang={lang} description={seo.description} pageType="CollectionPage" breadcrumbLabel={t('Services')}>
   <Header slot="header" lang={lang} />
   <ServicePage
     lang={lang}
