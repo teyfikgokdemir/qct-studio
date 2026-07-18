@@ -9,32 +9,19 @@ import Process from '../components/Process.astro';
 import Work from '../components/Work.astro';
 import FinalCta from '../components/FinalCta.astro';
 import Contact from '../components/Contact.astro';
+import { getPageSeo } from '../i18n/seo';
 
 interface Props {
   lang: string;
 }
 const { lang } = Astro.props;
 
-const homepageSeo = {
-  en: {
-    title: 'QCT Studio — Websites, E-commerce & AI Automation for the Balkans',
-    description: 'QCT Studio builds websites, e-commerce stores and AI automation for businesses across Albania and North Macedonia.',
-  },
-  sq: {
-    title: 'QCT Studio — Faqe interneti, E-commerce dhe automatizim me AI për Ballkanin',
-    description: 'QCT Studio ndërton faqe interneti, dyqane online dhe automatizime me AI për biznese në Shqipëri dhe Maqedoninë e Veriut.',
-  },
-  mk: {
-    title: 'QCT Studio — Веб-страници, е-трговија и AI автоматизација за Балканот',
-    description: 'QCT Studio изработува веб-страници, онлајн продавници и AI автоматизации за компании во Албанија и Северна Македонија.',
-  },
-  sr: {
-    title: 'QCT Studio — Sajtovi, e-commerce i AI automatizacija za Balkan',
-    description: 'QCT Studio izrađuje sajtove, online prodavnice i AI automatizacije za kompanije u Albaniji i Severnoj Makedoniji.',
-  },
-};
-
-const seo = homepageSeo[lang as keyof typeof homepageSeo] ?? homepageSeo.en;
+const seo = lang === 'sr'
+  ? {
+      title: 'QCT Studio — Sajtovi, e-commerce i AI automatizacija za Balkan',
+      description: 'QCT Studio izrađuje sajtove, online prodavnice i AI automatizacije za kompanije u Albaniji i Severnoj Makedoniji.',
+    }
+  : getPageSeo('home', lang);
 ---
 <BaseLayout title={seo.title} description={seo.description} lang={lang} isHome={true}>
 <Header slot="header" lang={lang} />
