@@ -7,10 +7,11 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run audit:i18n && astro build",
+    "build": "npm run audit:i18n && npm run audit:metadata && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "audit:i18n": "node scripts/audit-translations.mjs"
+    "audit:i18n": "node scripts/audit-translations.mjs",
+    "audit:metadata": "node scripts/audit-metadata.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
