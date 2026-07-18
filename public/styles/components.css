@@ -360,6 +360,29 @@ main :where([id]) {
 	padding: 7px 12px;
 }
 
+.site-footer__social .site-footer__group-title {
+	flex-basis: 100%;
+}
+
+.site-footer__social a {
+	height: 42px;
+	justify-content: center;
+	min-height: 42px;
+	padding: 0;
+	width: 42px;
+}
+
+.site-footer__social svg {
+	fill: currentColor;
+	height: 18px;
+	width: 18px;
+}
+
+.site-footer__social a:hover,
+.site-footer__social a:focus-visible {
+	transform: translateY(-2px);
+}
+
 .site-footer__social a:hover,
 .site-footer__social a:focus-visible,
 .site-footer__language a:hover,
