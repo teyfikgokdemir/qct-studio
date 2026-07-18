@@ -4,14 +4,16 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import ServicePage from './service/ServicePage.astro';
 import { useTranslations } from '../i18n';
+import { getPageSeo } from '../i18n/seo';
 
 interface Props {
   lang: string;
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const seo = getPageSeo('careers', lang);
 ---
-<BaseLayout title={`${t('Careers')} — QCT Studio`} lang={lang} description={t('QCT Studio is small by design. The work suits people who take responsibility, communicate clearly and want to build useful digital work for businesses that care about how they are seen online.')} breadcrumbLabel={t('Careers')}>
+<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('Careers')}>
   <Header slot="header" lang={lang} />
   <ServicePage
     lang={lang}
