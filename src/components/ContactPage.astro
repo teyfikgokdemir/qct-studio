@@ -15,13 +15,6 @@ const seo = getPageSeo('contact', lang);
 ---
 <BaseLayout title={seo.title} lang={lang} description={seo.description} pageType="ContactPage" breadcrumbLabel={t('Contact')}>
   <Header slot="header" lang={lang} />
-  <section class="qct-contact-channels">
-    <div class="container">
-      <a href="mailto:info@qctstudio.com"><span aria-hidden="true">01</span><strong>info@qctstudio.com</strong></a>
-      <a href="mailto:support@qctstudio.com"><span aria-hidden="true">02</span><strong>support@qctstudio.com</strong></a>
-      <a href="mailto:careers@qctstudio.com"><span aria-hidden="true">03</span><strong>careers@qctstudio.com</strong></a>
-    </div>
-  </section>
   <ServicePage
     lang={lang}
     eyebrow={t('Contact')}
@@ -91,30 +84,3 @@ const seo = getPageSeo('contact', lang);
   <Footer slot="footer" lang={lang} />
 </BaseLayout>
 
-<style>
-.qct-contact-channels {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-block: 1.25rem;
-}
-.qct-contact-channels .container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem 2.5rem;
-}
-.qct-contact-channels a {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  color: var(--qct-color-text, #17151a);
-  text-decoration: none;
-  font-weight: 600;
-}
-.qct-contact-channels a span {
-  color: var(--qct-color-accent, #e75757);
-  font-size: 0.85rem;
-  opacity: 0.8;
-}
-.qct-contact-channels a:hover {
-  color: var(--qct-color-accent, #e75757);
-}
-</style>
