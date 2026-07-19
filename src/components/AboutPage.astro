@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import ServicePage from './service/ServicePage.astro';
-import { useTranslations } from '../i18n';
+import { useTranslations, getLocalizedUrl } from '../i18n';
 import { getPageSeo } from '../i18n/seo';
 
 interface Props {
@@ -11,6 +11,7 @@ interface Props {
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const url = (path: string) => getLocalizedUrl(lang, path);
 const seo = getPageSeo('about', lang);
 ---
 <BaseLayout title={seo.title} lang={lang} description={seo.description} pageType="AboutPage" breadcrumbLabel={t('About')}>
@@ -109,7 +110,7 @@ const seo = getPageSeo('about', lang);
 
           <article>
             <span>{t('Performance apparel e-commerce')}</span>
-            <h3>HEADWEAR</h3>
+            <h3><a href={url('/work/headwear/')}>HEADWEAR</a></h3>
             <p>{t('A multilingual online store for performance and outdoor products.')}</p>
             <a href="https://www.head-wear.com/" target="_blank" rel="noopener">{t('Project website')}</a>
           </article>
