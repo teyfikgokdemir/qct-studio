@@ -386,11 +386,16 @@ main :where([id]) {
 .site-footer__social a:hover,
 .site-footer__social a:focus-visible,
 .site-footer__language a:hover,
-.site-footer__language a:focus-visible,
-.site-footer__language a[aria-current="true"] {
+.site-footer__language a:focus-visible {
 	background: rgba(255, 255, 255, 0.08);
-	border-color: rgba(91, 52, 120, 0.34);
+	border-color: rgba(255, 255, 255, 0.22);
 	color: #ffffff;
+}
+
+.site-footer__language a[aria-current="true"] {
+	background: rgba(230, 57, 70, 0.1);
+	border-color: rgba(230, 57, 70, 0.38);
+	color: var(--qct-color-accent);
 }
 
 .site-footer__language span {
@@ -657,9 +662,12 @@ main :where([id]) {
 }
 
 .site-language-switcher a:hover,
-.site-language-switcher a:focus-visible,
+.site-language-switcher a:focus-visible {
+	color: #ffffff;
+}
+
 .site-language-switcher a[aria-current="true"] {
-	color: var(--qct-color-plum);
+	color: var(--qct-color-accent);
 }
 
 .site-menu-toggle:focus-visible,
