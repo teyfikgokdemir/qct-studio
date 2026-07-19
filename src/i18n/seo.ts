@@ -10,6 +10,7 @@ export type SeoPage =
   | 'meta-ads'
   | 'careers'
   | 'contact'
+  | 'work'
   | 'headwear-case-study';
 
 type IndexedLang = 'en' | 'sq' | 'mk' | 'sr';
@@ -65,6 +66,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
       title: 'Contact QCT Studio — Start Your Digital Project',
       description: 'Contact QCT Studio about websites, e-commerce, SEO, GEO, landing pages and AI automation for your business in the Balkans.',
     },
+    work: {
+      title: 'Selected Digital Work & Case Studies — QCT Studio',
+      description: 'Explore live website and e-commerce work by QCT Studio for HEADWEAR, Misima Group, Artman Group and Phiaderm across different industries.',
+    },
     'headwear-case-study': {
       title: 'HEADWEAR E-commerce Case Study — QCT Studio',
       description: 'See how QCT Studio structured a multilingual e-commerce experience for HEADWEAR performance and outdoor products across devices and markets.',
@@ -115,6 +120,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
     contact: {
       title: 'Kontaktoni QCT Studio — Nisni Projektin Tuaj',
       description: 'Kontaktoni QCT Studio për faqe interneti, e-commerce, SEO, GEO, faqe reklamash dhe automatizim me AI në Ballkan.',
+    },
+    work: {
+      title: 'Punë Digjitale dhe Projekte të Zgjedhura — QCT Studio',
+      description: 'Shikoni faqe dhe projekte e-commerce aktive nga QCT Studio për HEADWEAR, Misima Group, Artman Group dhe Phiaderm në industri të ndryshme.',
     },
     'headwear-case-study': {
       title: 'HEADWEAR — Projekt E-commerce nga QCT Studio',
@@ -167,6 +176,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
       title: 'Контактирајте го QCT Studio — Започнете проект',
       description: 'Контактирајте го QCT Studio за веб-страници, е-трговија, SEO, GEO, рекламни страници и AI автоматизација на Балканот.',
     },
+    work: {
+      title: 'Избрани дигитални проекти и студии — QCT Studio',
+      description: 'Разгледајте активни веб и e-commerce проекти од QCT Studio за HEADWEAR, Misima Group, Artman Group и Phiaderm во различни индустрии.',
+    },
     'headwear-case-study': {
       title: 'HEADWEAR — Студија за е-трговија | QCT Studio',
       description: 'Погледнете како QCT Studio обликува повеќејазично e-commerce искуство за performance и outdoor производите на HEADWEAR.',
@@ -217,6 +230,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
     contact: {
       title: 'Kontaktirajte QCT Studio — Pokrenite digitalni projekat',
       description: 'Kontaktirajte QCT Studio za sajtove, e-commerce, SEO, GEO, odredišne stranice i AI automatizaciju za vaš biznis na Balkanu.',
+    },
+    work: {
+      title: 'Izabrani digitalni projekti i studije — QCT Studio',
+      description: 'Pogledajte aktivne web i e-commerce projekte QCT Studija za HEADWEAR, Misima Group, Artman Group i Phiaderm u različitim industrijama.',
     },
     'headwear-case-study': {
       title: 'HEADWEAR — E-commerce studija | QCT Studio',
