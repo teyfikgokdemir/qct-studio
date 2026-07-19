@@ -97,7 +97,7 @@ const seo = getPageSeo('about', lang);
 
       <div class="qct-trust__work" aria-labelledby="qct-work-title">
         <p class="qct-trust__eyebrow">{t('SELECTED WORK')}</p>
-        <h2 id="qct-work-title">{t('Real businesses. Live digital work.')}</h2>
+        <h2 id="qct-work-title"><a href={url('/work/')}>{t('Real businesses. Live digital work.')}</a></h2>
         <p>{t('Selected projects across e-commerce, performance products and corporate supply.')}</p>
 
         <div class="qct-trust__grid">
@@ -168,6 +168,8 @@ const seo = getPageSeo('about', lang);
     max-width: 720px;
     font-size: clamp(2.15rem, 3.5vw, 3.5rem);
   }
+
+  .qct-trust__work h2 a { color: inherit; text-decoration: none; }
 
   .qct-trust__intro > p:not(.qct-trust__eyebrow),
   .qct-trust__work > p:not(.qct-trust__eyebrow) {
