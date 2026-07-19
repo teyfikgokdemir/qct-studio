@@ -92,11 +92,11 @@ const services = [
 						<span class="qct-service-card__text">{service.text}</span>
 					</span>
 
-					<span class={`qct-service-preview qct-svc-scene qct-svc-scene--${service.preview}`} aria-hidden="true">
+					<span class={`qct-service-preview qct-svc-scene qct-svc-scene--${service.preview}`}>
 						{service.preview === 'website' ? (
-							<img class="qct-service-website-image" src={`/images/services/${service.image}`} width="1440" height="480" loading="lazy" decoding="async" alt="" />
+							<img class="qct-service-website-image" src={`/images/services/${service.image}`} width="1440" height="480" loading="lazy" decoding="async" alt={`${service.kicker}: ${service.title}`} />
 						) : (
-							<img class="qct-service-card-image" src={`/images/services/${service.image}`} width="1440" height="480" loading="lazy" decoding="async" alt="" />
+							<img class="qct-service-card-image" src={`/images/services/${service.image}`} width="1440" height="480" loading="lazy" decoding="async" alt={`${service.kicker}: ${service.title}`} />
 						)}
 					</span>
 
