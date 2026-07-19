@@ -1,0 +1,202 @@
+---
+import { useTranslations } from '../i18n';
+
+interface Props { lang: string; }
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section id="teyfik-gokdemir" class="qct-founder-profile" aria-labelledby="qct-founder-name">
+  <div class="container qct-founder-profile__layout">
+    <figure class="qct-founder-profile__portrait">
+      <img
+        src="/images/teyfik-gokdemir-qct-studio.webp"
+        width="900"
+        height="1213"
+        alt={t('QCT Studio founder Teyfik Gökdemir')}
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+
+    <div class="qct-founder-profile__content">
+      <p class="qct-founder-profile__eyebrow">{t('FOUNDER')}</p>
+      <h2 id="qct-founder-name">Teyfik Gökdemir</h2>
+      <p class="qct-founder-profile__role">{t('Founder, QCT Studio')}</p>
+
+      <div class="qct-founder-profile__copy">
+        <p>{t('Teyfik Gökdemir has more than 10 years of experience across digital commerce, web technologies and brand growth. He founded QCT Studio to help businesses turn disconnected digital channels into coherent, manageable and measurable systems.')}</p>
+        <p>{t('His work covers e-commerce architecture, web design and development, user experience, technical SEO, AI search visibility, campaign landing pages, WhatsApp sales journeys and AI-supported business automation. He evaluates technology decisions not only from a development perspective, but also through their impact on customer journeys, sales operations, team capacity and long-term maintainability.')}</p>
+        <p>{t('He has experience with businesses selling through Etsy, Amazon, local marketplaces and independent e-commerce stores. Working in Turkish and English, he leads QCT Studio’s regional digital projects.')}</p>
+      </div>
+
+      <dl class="qct-founder-profile__facts">
+        <div><dt>{t('Experience')}</dt><dd>{t('More than 10 years')}</dd></div>
+        <div><dt>{t('Working languages')}</dt><dd>{t('Turkish and English')}</dd></div>
+        <div><dt>{t('Commerce channels')}</dt><dd>Etsy, Amazon, {t('local marketplaces and independent e-commerce stores')}</dd></div>
+      </dl>
+
+      <div class="qct-founder-profile__approach">
+        <p class="qct-founder-profile__eyebrow">{t('APPROACH')}</p>
+        <h3>{t('Technology should serve a commercial purpose.')}</h3>
+        <p>{t('We begin by understanding the business, its customer journey and its most important constraint—not by prescribing a platform or tool. Technical decisions are evaluated together with commercial goals, team capacity, measurability and long-term operating costs. Our aim is to build systems that reduce unnecessary complexity and remain practical for the teams responsible for running them.')}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .qct-founder-profile {
+    background: #f4f0e8;
+    color: #17151a;
+    padding: clamp(4rem, 7vw, 7rem) 0;
+  }
+
+  .qct-founder-profile__layout {
+    align-items: start;
+    display: grid;
+    gap: clamp(2.5rem, 6vw, 6.5rem);
+    grid-template-columns: minmax(280px, 0.78fr) minmax(0, 1.22fr);
+  }
+
+  .qct-founder-profile__portrait {
+    margin: 0;
+  }
+
+  .qct-founder-profile__portrait img {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+
+  .qct-founder-profile__content {
+    min-width: 0;
+  }
+
+  .qct-founder-profile__eyebrow {
+    color: #a83d3d;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    margin: 0 0 0.9rem;
+    text-transform: uppercase;
+  }
+
+  .qct-founder-profile h2 {
+    font-size: clamp(2.5rem, 5vw, 4.75rem);
+    letter-spacing: -0.05em;
+    line-height: 0.98;
+    margin: 0;
+  }
+
+  .qct-founder-profile__role {
+    color: #4f494e;
+    font-size: 1.06rem;
+    font-weight: 750;
+    margin: 1rem 0 0;
+  }
+
+  .qct-founder-profile__copy {
+    border-top: 1px solid rgba(23, 21, 26, 0.18);
+    margin-top: clamp(2rem, 4vw, 3rem);
+    padding-top: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  .qct-founder-profile__copy p,
+  .qct-founder-profile__approach p {
+    color: #5e575d;
+    font-size: 1rem;
+    line-height: 1.75;
+    margin: 0 0 1.2rem;
+    max-width: 760px;
+  }
+
+  .qct-founder-profile__facts {
+    border-top: 1px solid rgba(23, 21, 26, 0.18);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: clamp(2rem, 4vw, 3rem) 0 0;
+  }
+
+  .qct-founder-profile__facts div {
+    border-bottom: 1px solid rgba(23, 21, 26, 0.18);
+    min-width: 0;
+    padding: 1.15rem clamp(0.8rem, 2vw, 1.4rem) 1.15rem 0;
+  }
+
+  .qct-founder-profile__facts div:not(:last-child) {
+    border-right: 1px solid rgba(23, 21, 26, 0.18);
+    padding-left: clamp(0.8rem, 2vw, 1.4rem);
+  }
+
+  .qct-founder-profile__facts div:first-child {
+    padding-left: 0;
+  }
+
+  .qct-founder-profile__facts dt {
+    color: #6b6369;
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .qct-founder-profile__facts dd {
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 0.55rem 0 0;
+    overflow-wrap: break-word;
+  }
+
+  .qct-founder-profile__approach {
+    border-left: 3px solid #e75757;
+    margin-top: clamp(2.5rem, 5vw, 4.5rem);
+    padding-left: clamp(1.25rem, 3vw, 2rem);
+  }
+
+  .qct-founder-profile__approach h3 {
+    font-size: clamp(1.7rem, 3vw, 2.65rem);
+    line-height: 1.08;
+    margin: 0 0 1.1rem;
+    max-width: 18ch;
+  }
+
+  @media (max-width: 820px) {
+    .qct-founder-profile__layout {
+      grid-template-columns: 1fr;
+    }
+
+    .qct-founder-profile__portrait {
+      max-width: 580px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .qct-founder-profile {
+      padding: 3.5rem 0;
+    }
+
+    .qct-founder-profile h2 {
+      font-size: clamp(2.35rem, 11vw, 3.2rem);
+    }
+
+    .qct-founder-profile__facts {
+      grid-template-columns: 1fr;
+    }
+
+    .qct-founder-profile__facts div,
+    .qct-founder-profile__facts div:not(:last-child),
+    .qct-founder-profile__facts div:first-child {
+      border-right: 0;
+      padding: 1rem 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .qct-founder-profile *,
+    .qct-founder-profile *::before,
+    .qct-founder-profile *::after {
+      scroll-behavior: auto;
+      transition-duration: 0.01ms;
+    }
+  }
+</style>

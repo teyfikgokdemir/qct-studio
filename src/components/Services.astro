@@ -17,6 +17,7 @@ const services = [
 		kicker: t('Website Design'),
 		title: t('Premium websites'),
 		text: t('Clear positioning, sharp visuals and conversion-focused structure from the first screen.'),
+		cta: t('Explore Website Design'),
 	},
 	{
 		modifier: 'qct-service-card--commerce qct-service-card--service-image',
@@ -26,6 +27,7 @@ const services = [
 		kicker: t('E-commerce'),
 		title: t('E-commerce stores'),
 		text: t('Product pages, mobile checkout and order flows built for serious online selling.'),
+		cta: t('Explore E-commerce'),
 	},
 	{
 		modifier: 'qct-service-card--whatsapp-service qct-service-card--service-image',
@@ -35,6 +37,7 @@ const services = [
 		kicker: t('WhatsApp Commerce'),
 		title: t('Sell inside the conversation'),
 		text: t('Turn customer questions into catalog views, order summaries and follow-up flows inside WhatsApp.'),
+		cta: t('Explore WhatsApp Commerce'),
 	},
 	{
 		modifier: 'qct-service-card--performance qct-service-card--service-image',
@@ -44,6 +47,7 @@ const services = [
 		kicker: t('SEO & Performance'),
 		title: t('Fast, visible and measurable'),
 		text: t('Technical SEO, Core Web Vitals and semantic structure for long-term visibility.'),
+		cta: t('Explore SEO & GEO Performance'),
 	},
 	{
 		modifier: 'qct-service-card--landing qct-service-card--wide qct-service-card--service-image',
@@ -53,6 +57,7 @@ const services = [
 		kicker: t('Meta Ads Landing Pages'),
 		title: t('Campaign landing pages'),
 		text: t('Focused pages that match ad intent, explain the offer and drive the next action.'),
+		cta: t('Explore Meta Ads Landing Pages'),
 	},
 	{
 		modifier: 'qct-service-card--automation qct-service-card--service-image',
@@ -62,6 +67,7 @@ const services = [
 		kicker: t('AI Automation'),
 		title: t('AI automation'),
 		text: t('Automations that save time, reduce repetitive work and improve everyday operations.'),
+		cta: t('Explore AI Automation'),
 	},
 ];
 ---
@@ -100,7 +106,7 @@ const services = [
 						)}
 					</span>
 
-					<span class="qct-service-card__cta">{t('Learn more')}</span>
+					<span class="qct-service-card__cta">{service.cta}</span>
 				</a>
 			))}
 		</div>

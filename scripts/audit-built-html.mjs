@@ -4,6 +4,33 @@ import path from 'node:path';
 const DIST = 'dist';
 const SITE = 'https://qctstudio.com';
 const expectedHreflangs = ['en', 'sq', 'mk', 'sr', 'x-default'];
+const founderId = `${SITE}/about/#teyfik-gokdemir`;
+const organizationId = `${SITE}/#organization`;
+const founderImage = `${SITE}/images/teyfik-gokdemir-qct-studio.webp`;
+const founderExpertise = [
+  'E-commerce infrastructure and store architecture',
+  'Web design and development',
+  'User experience and conversion optimisation',
+  'Technical SEO and search visibility',
+  'GEO, AEO and AIO foundations',
+  'Campaign landing pages',
+  'WhatsApp sales systems',
+  'AI-supported business automation',
+  'Analytics and measurement',
+  'Marketplace and independent-store strategy',
+];
+const genericLinkTexts = new Set([
+  'learn more',
+  'read more',
+  'click here',
+  'more',
+  'mësoni më shumë',
+  'lexo më shumë',
+  'дознајте повеќе',
+  'прочитајте повеќе',
+  'saznajte više',
+  'pročitajte više',
+]);
 const pageSchemaTypes = new Set([
   'WebPage',
   'AboutPage',
@@ -73,6 +100,18 @@ function schemaNodes(value) {
   return [...current, ...graph];
 }
 
+function visibleText(html) {
+  return html
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, '')
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&#(?:x0*27|39);/gi, "'")
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 walk(DIST);
 
 const errors = [];
@@ -96,6 +135,11 @@ for (const file of htmlFiles) {
   const isNoindex = robots.includes('noindex');
   const expectedCanonical = expectedUrl(file);
   const expectedLang = expectedLanguage(file);
+  const relativeFile = path.relative(DIST, file).split(path.sep).join('/');
+
+  if (/qctcommerce\.com/i.test(html)) {
+    errors.push(`${file}: must not contain a qctcommerce.com reference in Phase 9A.`);
+  }
 
   const htmlLang = html.match(/<html\s+[^>]*lang=["']([^"']+)["']/i)?.[1] ?? null;
   if (htmlLang !== expectedLang) {
@@ -105,6 +149,11 @@ for (const file of htmlFiles) {
   const titleTags = html.match(/<title>([\s\S]*?)<\/title>/gi) ?? [];
   if (titleTags.length !== 1 || !titleTags[0].replace(/<\/?title>/gi, '').trim()) {
     errors.push(`${file}: expected one non-empty title, found ${titleTags.length}.`);
+  }
+
+  const h1Tags = html.match(/<h1\b[^>]*>[\s\S]*?<\/h1>/gi) ?? [];
+  if (h1Tags.length !== 1 || !visibleText(h1Tags[0])) {
+    errors.push(`${file}: expected one non-empty H1, found ${h1Tags.length}.`);
   }
 
   const description = metaContent(html, 'name', 'description');
@@ -200,6 +249,62 @@ for (const file of htmlFiles) {
     if (!nodes.some((node) => pageSchemaTypes.has(node['@type']))) {
       errors.push(`${file}: JSON-LD is missing a WebPage-compatible node.`);
     }
+
+    const organizations = nodes.filter((node) => node['@type'] === 'Organization' && node['@id'] === organizationId);
+    if (organizations.length !== 1 || organizations[0]?.founder?.['@id'] !== founderId) {
+      errors.push(`${file}: QCT Studio Organization must reference the canonical founder @id.`);
+    }
+
+    const people = nodes.filter((node) => node['@type'] === 'Person');
+    const founder = people.find((node) => node['@id'] === founderId);
+    if (people.length !== 1 || !founder) {
+      errors.push(`${file}: expected one Person with canonical @id ${founderId}.`);
+    } else {
+      if (founder.name !== 'Teyfik Gökdemir' || founder.jobTitle !== 'Founder, QCT Studio') {
+        errors.push(`${file}: founder name or job title is incorrect.`);
+      }
+      if (founder.worksFor?.['@id'] !== organizationId || founder.image !== founderImage) {
+        errors.push(`${file}: founder worksFor or image relationship is incorrect.`);
+      }
+      if (JSON.stringify(founder.knowsLanguage) !== JSON.stringify(['Turkish', 'English'])) {
+        errors.push(`${file}: founder knowsLanguage must contain only Turkish and English.`);
+      }
+      if (JSON.stringify(founder.knowsAbout) !== JSON.stringify(founderExpertise)) {
+        errors.push(`${file}: founder knowsAbout differs from the verified expertise list.`);
+      }
+      for (const forbiddenField of ['sameAs', 'address', 'alumniOf', 'award', 'hasCredential']) {
+        if (forbiddenField in founder) errors.push(`${file}: founder contains unverified ${forbiddenField}.`);
+      }
+    }
+  }
+
+  if (/^(?:sq\/|mk\/|sr\/)?about\/index\.html$/.test(relativeFile)) {
+    const founderSection = html.match(/<section\b[^>]*id=["']teyfik-gokdemir["'][^>]*>[\s\S]*?<\/section>/i)?.[0];
+    if (!founderSection) {
+      errors.push(`${file}: visible founder section is missing.`);
+    } else {
+      const portrait = tags(founderSection, 'img').find(
+        (tag) => attribute(tag, 'src') === '/images/teyfik-gokdemir-qct-studio.webp',
+      );
+      if (!portrait) {
+        errors.push(`${file}: founder portrait is missing.`);
+      } else if (
+        !attribute(portrait, 'alt')?.trim()
+        || attribute(portrait, 'width') !== '900'
+        || attribute(portrait, 'height') !== '1213'
+        || attribute(portrait, 'loading') !== 'lazy'
+        || attribute(portrait, 'decoding') !== 'async'
+      ) {
+        errors.push(`${file}: founder portrait accessibility or intrinsic-size attributes are incorrect.`);
+      }
+    }
+  }
+
+  for (const match of html.matchAll(/<a\b[^>]*>([\s\S]*?)<\/a>/gi)) {
+    const text = visibleText(match[1]).toLocaleLowerCase('en');
+    if (genericLinkTexts.has(text)) {
+      errors.push(`${file}: non-descriptive visible link text "${visibleText(match[1])}".`);
+    }
   }
 
   const anchorTags = tags(html, 'a');
@@ -221,6 +326,23 @@ for (const file of htmlFiles) {
       errors.push(`${file}: internal link does not resolve to a generated page: ${href}.`);
     }
   }
+}
+
+if (!fs.existsSync(path.join(DIST, 'images', 'teyfik-gokdemir-qct-studio.webp'))) {
+  errors.push('dist: optimized founder portrait is missing.');
+}
+
+const originalPortraitMatches = [];
+function findOriginalPortrait(directory) {
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const file = path.join(directory, entry.name);
+    if (entry.isDirectory()) findOriginalPortrait(file);
+    else if (entry.name === 'teyfik-gokdemir-original.png') originalPortraitMatches.push(file);
+  }
+}
+findOriginalPortrait(DIST);
+if (originalPortraitMatches.length) {
+  errors.push(`dist: source founder PNG must not be published (${originalPortraitMatches.join(', ')}).`);
 }
 
 console.log(`HTML SEO audit: ${htmlFiles.length} files, ${indexable} indexable, ${noindex} noindex.`);

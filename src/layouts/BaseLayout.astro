@@ -64,7 +64,7 @@ const homeUrl = new URL(getHomeUrl(lang), SITE_URL).toString();
 const organizationId = `${SITE_URL}/#organization`;
 const websiteId = `${SITE_URL}/#website`;
 const webpageId = `${canonicalUrl}#webpage`;
-const founderId = `${SITE_URL}/#founder`;
+const founderId = `${SITE_URL}/about/#teyfik-gokdemir`;
 
 const organizationSchema = {
 	'@type': 'Organization',
@@ -112,12 +112,22 @@ const founderSchema = {
 	'@type': 'Person',
 	'@id': founderId,
 	name: 'Teyfik Gökdemir',
-	jobTitle: 'Founder',
-	url: new URL('/about/', SITE_URL).toString(),
+	jobTitle: 'Founder, QCT Studio',
+	url: founderId,
 	worksFor: { '@id': organizationId },
-	sameAs: [
-		'https://www.linkedin.com/in/teyfik-g%C3%B6kdemir-0b1a9758',
-		'https://www.instagram.com/teyfikgokdemir/',
+	image: new URL('/images/teyfik-gokdemir-qct-studio.webp', SITE_URL).toString(),
+	knowsLanguage: ['Turkish', 'English'],
+	knowsAbout: [
+		'E-commerce infrastructure and store architecture',
+		'Web design and development',
+		'User experience and conversion optimisation',
+		'Technical SEO and search visibility',
+		'GEO, AEO and AIO foundations',
+		'Campaign landing pages',
+		'WhatsApp sales systems',
+		'AI-supported business automation',
+		'Analytics and measurement',
+		'Marketplace and independent-store strategy',
 	],
 };
 

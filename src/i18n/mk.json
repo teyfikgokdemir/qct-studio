@@ -1061,5 +1061,20 @@
   "Project website": "Веб-страница на проектот",
   "Corporate supply website": "Веб-страница за корпоративно снабдување",
   "A corporate website for an Istanbul-based supplier.": "Корпоративна веб-страница за снабдувач со седиште во Истанбул.",
-  "Work": "Проекти"
+  "Work": "Проекти",
+  "FOUNDER": "ОСНОВАЧ",
+  "Founder, QCT Studio": "Основач, QCT Studio",
+  "QCT Studio founder Teyfik Gökdemir": "Основачот на QCT Studio, Teyfik Gökdemir",
+  "Teyfik Gökdemir has more than 10 years of experience across digital commerce, web technologies and brand growth. He founded QCT Studio to help businesses turn disconnected digital channels into coherent, manageable and measurable systems.": "Teyfik Gökdemir има повеќе од 10 години искуство во дигиталната трговија, веб-технологиите и развојот на брендови. Тој го основа QCT Studio за да им помогне на бизнисите да ги претворат неповрзаните дигитални канали во усогласени, управливи и мерливи системи.",
+  "His work covers e-commerce architecture, web design and development, user experience, technical SEO, AI search visibility, campaign landing pages, WhatsApp sales journeys and AI-supported business automation. He evaluates technology decisions not only from a development perspective, but also through their impact on customer journeys, sales operations, team capacity and long-term maintainability.": "Неговата работа опфаќа архитектура за е-трговија, веб-дизајн и развој, корисничко искуство, техничко SEO, видливост во AI пребарувањето, лендинг-страници за кампањи, продажни патеки преку WhatsApp и деловна автоматизација поддржана со AI. Технолошките одлуки не ги оценува само од развоен аспект, туку и според нивното влијание врз патеката на клиентот, продажните операции, капацитетот на тимот и долгорочното одржување.",
+  "He has experience with businesses selling through Etsy, Amazon, local marketplaces and independent e-commerce stores. Working in Turkish and English, he leads QCT Studio’s regional digital projects.": "Има искуство со бизниси што продаваат преку Etsy, Amazon, локални пазари и независни продавници за е-трговија. Работејќи на турски и англиски, тој ги води регионалните дигитални проекти на QCT Studio.",
+  "Experience": "Искуство",
+  "More than 10 years": "Повеќе од 10 години",
+  "Working languages": "Работни јазици",
+  "Turkish and English": "Турски и англиски",
+  "Commerce channels": "Продажни канали",
+  "local marketplaces and independent e-commerce stores": "локални пазари и независни продавници за е-трговија",
+  "APPROACH": "ПРИСТАП",
+  "Technology should serve a commercial purpose.": "Технологијата треба да служи на деловна цел.",
+  "We begin by understanding the business, its customer journey and its most important constraint—not by prescribing a platform or tool. Technical decisions are evaluated together with commercial goals, team capacity, measurability and long-term operating costs. Our aim is to build systems that reduce unnecessary complexity and remain practical for the teams responsible for running them.": "Почнуваме со разбирање на бизнисот, патеката на клиентот и најважното ограничување, а не со однапред избрана платформа или алатка. Техничките одлуки ги разгледуваме заедно со деловните цели, капацитетот на тимот, мерливоста и долгорочните оперативни трошоци. Нашата цел е да изградиме системи што ја намалуваат непотребната сложеност и остануваат практични за тимовите што секојдневно ги управуваат."
 }

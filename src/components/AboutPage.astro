@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
 import ServicePage from './service/ServicePage.astro';
+import FounderProfile from './FounderProfile.astro';
 import { useTranslations, getLocalizedUrl } from '../i18n';
 import { getPageSeo } from '../i18n/seo';
 
@@ -81,6 +82,8 @@ const seo = getPageSeo('about', lang);
       cta: t('Start Your Project'),
     }}
   />
+
+  <FounderProfile lang={lang} />
 
   <section class="qct-trust" aria-labelledby="qct-founding-title">
     <div class="container">
