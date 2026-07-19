@@ -7,7 +7,7 @@ const entries = [...source.matchAll(entryPattern)].map((match) => ({
   description: match[2],
 }));
 
-const expectedEntries = 44;
+const expectedEntries = 48;
 const errors = [];
 
 if (entries.length !== expectedEntries) {
