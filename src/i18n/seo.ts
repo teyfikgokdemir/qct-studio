@@ -13,7 +13,8 @@ export type SeoPage =
   | 'work'
   | 'headwear-case-study'
   | 'misima-case-study'
-  | 'artman-case-study';
+  | 'artman-case-study'
+  | 'phiaderm-case-study';
 
 type IndexedLang = 'en' | 'sq' | 'mk' | 'sr';
 
@@ -84,6 +85,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
       title: 'Artman Group Corporate Website Case Study — QCT Studio',
       description: 'See how QCT Studio structured the Artman Group corporate website to clarify a broad supply portfolio and support B2B enquiries across Türkiye.',
     },
+    'phiaderm-case-study': {
+      title: 'Phiaderm Beauty E-commerce Case Study — QCT Studio',
+      description: 'Follow QCT Studio’s pre-launch Phiaderm e-commerce work with affiliated agency Rexcode, focused on a refined storefront and secure Shopify foundations.',
+    },
   },
 
   sq: {
@@ -146,6 +151,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
     'artman-case-study': {
       title: 'Artman Group — Studim Rasti për Faqen Korporative',
       description: 'Shikoni si QCT Studio strukturoi faqen korporative të Artman Group për të qartësuar një portofol të gjerë furnizimi dhe kërkesat B2B.',
+    },
+    'phiaderm-case-study': {
+      title: 'Phiaderm — Studim Rasti për E-commerce Bukurie',
+      description: 'Ndiqni punën para lansimit të QCT Studio për Phiaderm me agjencinë e lidhur Rexcode, me fokus te dyqani i rafinuar dhe baza e sigurt Shopify.',
     },
   },
 
@@ -210,6 +219,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
       title: 'Artman Group — Студија за корпоративна веб-страница',
       description: 'Погледнете како QCT Studio ја структурира веб-страницата на Artman Group за јасно портфолио на снабдување и B2B барања низ Турција.',
     },
+    'phiaderm-case-study': {
+      title: 'Phiaderm — Студија за Beauty E-commerce',
+      description: 'Следете ја работата на QCT Studio за Phiaderm пред лансирање со поврзаната агенција Rexcode, со префинета продавница и сигурна Shopify основа.',
+    },
   },
 
   sr: {
@@ -272,6 +285,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
     'artman-case-study': {
       title: 'Artman Group — Studija korporativnog sajta',
       description: 'Pogledajte kako je QCT Studio strukturirao korporativni sajt Artman Group za jasan portfolio snabdevanja i B2B upite širom Turske.',
+    },
+    'phiaderm-case-study': {
+      title: 'Phiaderm — Studija Beauty E-commerce Projekta',
+      description: 'Pratite rad QCT Studija na Phiaderm projektu pre lansiranja sa povezanom agencijom Rexcode, uz prefinjenu prodavnicu i sigurnu Shopify osnovu.',
     },
   },
 
