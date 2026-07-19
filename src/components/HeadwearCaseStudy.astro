@@ -250,14 +250,14 @@ const c = copy[lang as keyof typeof copy] ?? copy.en;
 
 <style>
   .qct-case { color: #17151a; background: #f4f0e8; }
-  .qct-case__hero, .qct-case__section, .qct-case__cta { padding: clamp(4.5rem, 9vw, 8rem) 0; }
+  .qct-case__hero, .qct-case__section, .qct-case__cta { padding: clamp(3.75rem, 6.5vw, 6.5rem) 0; }
   .qct-case__hero { border-bottom: 1px solid rgba(23, 21, 26, 0.14); }
-  .qct-case__breadcrumb { margin: 0 0 4rem; font-weight: 700; }
+  .qct-case__breadcrumb { margin: 0 0 3rem; font-weight: 700; }
   .qct-case__breadcrumb a { color: inherit; }
   .qct-case__eyebrow { margin: 0 0 1rem; color: #e75757; font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
-  .qct-case h1 { max-width: 1050px; margin: 0; font-size: clamp(3rem, 7vw, 6.6rem); line-height: .96; letter-spacing: -.055em; }
-  .qct-case h2 { max-width: 850px; margin: 0 0 1.25rem; font-size: clamp(2.2rem, 4vw, 4rem); line-height: 1.02; letter-spacing: -.045em; }
-  .qct-case__lead, .qct-case__measure, .qct-case__split > div > p:last-child, .qct-case__cta p { max-width: 760px; color: #656066; font-size: clamp(1.05rem, 1.7vw, 1.3rem); line-height: 1.7; }
+  .qct-case h1 { max-width: 980px; margin: 0; font-size: clamp(2.75rem, 4.8vw, 5rem); line-height: .98; letter-spacing: -.045em; }
+  .qct-case h2 { max-width: 800px; margin: 0 0 1.25rem; font-size: clamp(2rem, 3.1vw, 3.25rem); line-height: 1.05; letter-spacing: -.035em; }
+  .qct-case__lead, .qct-case__measure, .qct-case__split > div > p:last-child, .qct-case__cta p { max-width: 720px; color: #656066; font-size: clamp(1rem, 1.25vw, 1.18rem); line-height: 1.65; }
   .qct-case__button { display: inline-flex; min-height: 52px; align-items: center; margin-top: 1.5rem; padding: .85rem 1.25rem; color: #17151a; background: #ef5959; border-radius: 999px; font-weight: 800; text-decoration: none; }
   .qct-case__split { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(280px, .7fr); gap: clamp(2.5rem, 6vw, 7rem); align-items: start; }
   .qct-case__facts { margin: 0; border-top: 1px solid rgba(23, 21, 26, .18); }
@@ -277,8 +277,10 @@ const c = copy[lang as keyof typeof copy] ?? copy.en;
   .qct-case__cta { text-align: center; }
   .qct-case__cta h2, .qct-case__cta p { margin-right: auto; margin-left: auto; }
   @media (max-width: 760px) {
-    .qct-case__hero, .qct-case__section, .qct-case__cta { padding: 4.5rem 0; }
-    .qct-case__breadcrumb { margin-bottom: 2.5rem; }
+    .qct-case__hero, .qct-case__section, .qct-case__cta { padding: 3.5rem 0; }
+    .qct-case__breadcrumb { margin-bottom: 2rem; }
+    .qct-case h1 { font-size: clamp(2.35rem, 11vw, 3.15rem); line-height: 1; }
+    .qct-case h2 { font-size: clamp(1.85rem, 8vw, 2.5rem); }
     .qct-case__split, .qct-case__grid { grid-template-columns: 1fr; }
     .qct-case__grid article { min-height: auto; }
   }
