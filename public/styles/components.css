@@ -2700,3 +2700,14 @@ main :where([id]) {
 		transition: none !important;
 	}
 }
+
+/* Active language: coral accent */
+.site-language-switcher a:hover,
+.site-language-switcher a:focus-visible {
+	color: color-mix(in srgb, var(--qct-color-accent) 72%, var(--qct-color-text));
+}
+
+.site-language-switcher a[aria-current="true"] {
+	color: var(--qct-color-accent);
+	font-weight: 700;
+}
