@@ -9,7 +9,8 @@ export type SeoPage =
   | 'whatsapp-commerce'
   | 'meta-ads'
   | 'careers'
-  | 'contact';
+  | 'contact'
+  | 'headwear-case-study';
 
 type IndexedLang = 'en' | 'sq' | 'mk' | 'sr';
 
@@ -64,7 +65,12 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
       title: 'Contact QCT Studio — Start Your Digital Project',
       description: 'Contact QCT Studio about websites, e-commerce, SEO, GEO, landing pages and AI automation for your business in the Balkans.',
     },
+    'headwear-case-study': {
+      title: 'HEADWEAR E-commerce Case Study — QCT Studio',
+      description: 'See how QCT Studio structured a multilingual e-commerce experience for HEADWEAR performance and outdoor products across devices and markets.',
+    },
   },
+
   sq: {
     home: {
       title: 'QCT Studio — Faqe interneti, E-commerce dhe AI në Ballkan',
@@ -110,7 +116,12 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
       title: 'Kontaktoni QCT Studio — Nisni Projektin Tuaj',
       description: 'Kontaktoni QCT Studio për faqe interneti, e-commerce, SEO, GEO, faqe reklamash dhe automatizim me AI në Ballkan.',
     },
+    'headwear-case-study': {
+      title: 'HEADWEAR — Projekt E-commerce nga QCT Studio',
+      description: 'Shikoni si QCT Studio strukturoi një përvojë shumëgjuhëshe e-commerce për produktet performance dhe outdoor të HEADWEAR.',
+    },
   },
+
   mk: {
     home: {
       title: 'QCT Studio — Веб-страници, е-трговија и AI за Балканот',
@@ -156,7 +167,12 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
       title: 'Контактирајте го QCT Studio — Започнете проект',
       description: 'Контактирајте го QCT Studio за веб-страници, е-трговија, SEO, GEO, рекламни страници и AI автоматизација на Балканот.',
     },
+    'headwear-case-study': {
+      title: 'HEADWEAR — Студија за е-трговија | QCT Studio',
+      description: 'Погледнете како QCT Studio обликува повеќејазично e-commerce искуство за performance и outdoor производите на HEADWEAR.',
+    },
   },
+
   sr: {
     home: {
       title: 'QCT Studio — Sajtovi, e-commerce i AI za Balkan',
@@ -202,7 +218,12 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
       title: 'Kontaktirajte QCT Studio — Pokrenite digitalni projekat',
       description: 'Kontaktirajte QCT Studio za sajtove, e-commerce, SEO, GEO, odredišne stranice i AI automatizaciju za vaš biznis na Balkanu.',
     },
+    'headwear-case-study': {
+      title: 'HEADWEAR — E-commerce studija | QCT Studio',
+      description: 'Pogledajte kako je QCT Studio oblikovao višejezično e-commerce iskustvo za HEADWEAR performance i outdoor proizvode.',
+    },
   },
+
 
 };
 
