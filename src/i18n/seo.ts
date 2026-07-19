@@ -11,7 +11,8 @@ export type SeoPage =
   | 'careers'
   | 'contact'
   | 'work'
-  | 'headwear-case-study';
+  | 'headwear-case-study'
+  | 'misima-case-study';
 
 type IndexedLang = 'en' | 'sq' | 'mk' | 'sr';
 
@@ -74,6 +75,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
       title: 'HEADWEAR E-commerce Case Study — QCT Studio',
       description: 'See how QCT Studio structured a multilingual e-commerce experience for HEADWEAR performance and outdoor products across devices and markets.',
     },
+    'misima-case-study': {
+      title: 'Misima Group Corporate Website Case Study — QCT Studio',
+      description: 'See how QCT Studio planned, designed and developed the 2025 Misima Group website for cosmetics services, brands and international B2B audiences.',
+    },
   },
 
   sq: {
@@ -128,6 +133,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
     'headwear-case-study': {
       title: 'HEADWEAR — Projekt E-commerce nga QCT Studio',
       description: 'Shikoni si QCT Studio strukturoi një përvojë shumëgjuhëshe e-commerce për produktet performance dhe outdoor të HEADWEAR.',
+    },
+    'misima-case-study': {
+      title: 'Misima Group — Studim Rasti për Faqen Korporative',
+      description: 'Shikoni si QCT Studio planifikoi, dizajnoi dhe zhvilloi në vitin 2025 faqen e Misima Group për shërbime kozmetike, marka dhe audienca B2B.',
     },
   },
 
@@ -184,6 +193,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
       title: 'HEADWEAR — Студија за е-трговија | QCT Studio',
       description: 'Погледнете како QCT Studio обликува повеќејазично e-commerce искуство за performance и outdoor производите на HEADWEAR.',
     },
+    'misima-case-study': {
+      title: 'Misima Group — Студија за корпоративна веб-страница',
+      description: 'Погледнете како QCT Studio ја планира, дизајнира и разви веб-страницата на Misima Group во 2025 за козметички услуги, брендови и B2B публика.',
+    },
   },
 
   sr: {
@@ -238,6 +251,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
     'headwear-case-study': {
       title: 'HEADWEAR — E-commerce studija | QCT Studio',
       description: 'Pogledajte kako je QCT Studio oblikovao višejezično e-commerce iskustvo za HEADWEAR performance i outdoor proizvode.',
+    },
+    'misima-case-study': {
+      title: 'Misima Group — Studija korporativnog sajta',
+      description: 'Pogledajte kako je QCT Studio 2025. planirao, dizajnirao i razvio sajt Misima Group za kozmetičke usluge, brendove i međunarodnu B2B publiku.',
     },
   },
 
