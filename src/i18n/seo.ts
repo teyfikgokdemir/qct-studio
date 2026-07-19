@@ -12,7 +12,8 @@ export type SeoPage =
   | 'contact'
   | 'work'
   | 'headwear-case-study'
-  | 'misima-case-study';
+  | 'misima-case-study'
+  | 'artman-case-study';
 
 type IndexedLang = 'en' | 'sq' | 'mk' | 'sr';
 
@@ -79,6 +80,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
       title: 'Misima Group Corporate Website Case Study — QCT Studio',
       description: 'See how QCT Studio planned, designed and developed the 2025 Misima Group website for cosmetics services, brands and international B2B audiences.',
     },
+    'artman-case-study': {
+      title: 'Artman Group Corporate Website Case Study — QCT Studio',
+      description: 'See how QCT Studio structured the Artman Group corporate website to clarify a broad supply portfolio and support B2B enquiries across Türkiye.',
+    },
   },
 
   sq: {
@@ -137,6 +142,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
     'misima-case-study': {
       title: 'Misima Group — Studim Rasti për Faqen Korporative',
       description: 'Shikoni si QCT Studio planifikoi, dizajnoi dhe zhvilloi në vitin 2025 faqen e Misima Group për shërbime kozmetike, marka dhe audienca B2B.',
+    },
+    'artman-case-study': {
+      title: 'Artman Group — Studim Rasti për Faqen Korporative',
+      description: 'Shikoni si QCT Studio strukturoi faqen korporative të Artman Group për të qartësuar një portofol të gjerë furnizimi dhe kërkesat B2B.',
     },
   },
 
@@ -197,6 +206,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
       title: 'Misima Group — Студија за корпоративна веб-страница',
       description: 'Погледнете како QCT Studio ја планира, дизајнира и разви веб-страницата на Misima Group во 2025 за козметички услуги, брендови и B2B публика.',
     },
+    'artman-case-study': {
+      title: 'Artman Group — Студија за корпоративна веб-страница',
+      description: 'Погледнете како QCT Studio ја структурира веб-страницата на Artman Group за јасно портфолио на снабдување и B2B барања низ Турција.',
+    },
   },
 
   sr: {
@@ -255,6 +268,10 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
     'misima-case-study': {
       title: 'Misima Group — Studija korporativnog sajta',
       description: 'Pogledajte kako je QCT Studio 2025. planirao, dizajnirao i razvio sajt Misima Group za kozmetičke usluge, brendove i međunarodnu B2B publiku.',
+    },
+    'artman-case-study': {
+      title: 'Artman Group — Studija korporativnog sajta',
+      description: 'Pogledajte kako je QCT Studio strukturirao korporativni sajt Artman Group za jasan portfolio snabdevanja i B2B upite širom Turske.',
     },
   },
 
