@@ -5,28 +5,19 @@ import Footer from './Footer.astro';
 import { getLocalizedUrl } from '../i18n';
 import { getPageSeo } from '../i18n/seo';
 
-interface Props {
-  lang: string;
-}
-
+interface Props { lang: string; }
 const { lang } = Astro.props;
 const url = (path: string) => getLocalizedUrl(lang, path);
 const seo = getPageSeo('work', lang);
 
 const copy = {
   en: {
-    breadcrumb: 'Home',
-    eyebrow: 'Selected work',
-    title: 'Real businesses. Digital work built to be used.',
+    breadcrumb: 'Home', eyebrow: 'Selected work', title: 'Real businesses. Digital work built to be used.',
     lead: 'A selection of live websites and commerce systems created by QCT Studio for product, beauty, manufacturing and corporate businesses.',
-    caseStudy: 'Read case study',
-    website: 'Visit website',
-    labels: {
-      headwear: 'Multilingual e-commerce',
-      misima: 'Cosmetics and B2B website',
-      artman: 'Corporate supply website',
-      phiaderm: 'Kozmetički e-commerce',
-    },
+    proofTitle: 'Evidence before claims.',
+    proofText: 'We publish observable project scope, live outputs and verified responsibilities. Performance figures, awards and client outcomes are shown only when they can be supported.',
+    caseStudy: 'Read case study', website: 'Visit live website', related: 'Related capability', review: 'Discuss a similar project',
+    labels: { headwear: 'Multilingual e-commerce', misima: 'Cosmetics and B2B website', artman: 'Corporate supply website', phiaderm: 'Beauty e-commerce' },
     descriptions: {
       headwear: 'A multilingual store for performance and outdoor products, structured around clear product discovery and mobile shopping.',
       misima: 'Website strategy, design and development for a cosmetics group serving brands and international markets.',
@@ -35,18 +26,12 @@ const copy = {
     },
   },
   sq: {
-    breadcrumb: 'Ballina',
-    eyebrow: 'Punë të përzgjedhura',
-    title: 'Biznese reale. Punë digjitale e ndërtuar për t’u përdorur.',
+    breadcrumb: 'Ballina', eyebrow: 'Punë të përzgjedhura', title: 'Biznese reale. Punë digjitale e ndërtuar për t’u përdorur.',
     lead: 'Një përzgjedhje faqesh dhe sistemesh commerce aktive, krijuar nga QCT Studio për biznese produktesh, bukurie, prodhimi dhe korporative.',
-    caseStudy: 'Lexoni studimin e rastit',
-    website: 'Vizitoni faqen',
-    labels: {
-      headwear: 'E-commerce shumëgjuhësh',
-      misima: 'Kozmetikë dhe faqe B2B',
-      artman: 'Faqe furnizimi korporativ',
-      phiaderm: 'E-commerce bukurie',
-    },
+    proofTitle: 'Dëshmi përpara pretendimeve.',
+    proofText: 'Publikojmë vetëm fushën e dukshme të projektit, rezultatet aktive dhe përgjegjësitë e verifikuara. Shifrat, çmimet dhe rezultatet e klientëve paraqiten vetëm kur mund të mbështeten.',
+    caseStudy: 'Lexoni studimin e rastit', website: 'Vizitoni faqen aktive', related: 'Aftësi e lidhur', review: 'Diskutoni një projekt të ngjashëm',
+    labels: { headwear: 'E-commerce shumëgjuhësh', misima: 'Kozmetikë dhe faqe B2B', artman: 'Faqe furnizimi korporativ', phiaderm: 'E-commerce bukurie' },
     descriptions: {
       headwear: 'Dyqan shumëgjuhësh për produkte performance dhe outdoor, i strukturuar për zbulim të qartë dhe blerje në celular.',
       misima: 'Strategji, dizajn dhe zhvillim faqeje për një grup kozmetik që u shërben markave dhe tregjeve ndërkombëtare.',
@@ -55,18 +40,12 @@ const copy = {
     },
   },
   mk: {
-    breadcrumb: 'Дома',
-    eyebrow: 'Избрани проекти',
-    title: 'Вистински бизниси. Дигитални решенија создадени за употреба.',
+    breadcrumb: 'Дома', eyebrow: 'Избрани проекти', title: 'Вистински бизниси. Дигитални решенија создадени за употреба.',
     lead: 'Избор од активни веб-страници и e-commerce системи создадени од QCT Studio за производни, козметички, индустриски и корпоративни бизниси.',
-    caseStudy: 'Прочитајте ја студијата',
-    website: 'Посетете ја веб-страницата',
-    labels: {
-      headwear: 'Повеќејазична е-трговија',
-      misima: 'Козметика и B2B веб-страница',
-      artman: 'Корпоративна веб-страница',
-      phiaderm: 'Козметичка е-трговија',
-    },
+    proofTitle: 'Докази пред тврдења.',
+    proofText: 'Објавуваме видлив опфат на проектот, активни резултати и потврдени одговорности. Бројки, награди и деловни резултати се прикажуваат само кога можат да се поткрепат.',
+    caseStudy: 'Прочитајте ја студијата', website: 'Посетете ја активната веб-страница', related: 'Поврзана услуга', review: 'Разговарајте за сличен проект',
+    labels: { headwear: 'Повеќејазична е-трговија', misima: 'Козметика и B2B веб-страница', artman: 'Корпоративна веб-страница', phiaderm: 'Козметичка е-трговија' },
     descriptions: {
       headwear: 'Повеќејазична продавница за performance и outdoor производи, со јасно откривање производи и мобилно купување.',
       misima: 'Стратегија, дизајн и развој на веб-страница за козметичка група што работи со брендови и меѓународни пазари.',
@@ -75,18 +54,12 @@ const copy = {
     },
   },
   sr: {
-    breadcrumb: 'Početna',
-    eyebrow: 'Izabrani projekti',
-    title: 'Pravi biznisi. Digitalni rad napravljen za stvarnu upotrebu.',
+    breadcrumb: 'Početna', eyebrow: 'Izabrani projekti', title: 'Pravi biznisi. Digitalni rad napravljen za stvarnu upotrebu.',
     lead: 'Izbor aktivnih sajtova i e-commerce sistema koje je QCT Studio izradio za proizvodne, kozmetičke, industrijske i korporativne biznise.',
-    caseStudy: 'Pročitajte studiju',
-    website: 'Posetite sajt',
-    labels: {
-      headwear: 'Višejezični e-commerce',
-      misima: 'Kozmetika i B2B sajt',
-      artman: 'Korporativni sajt za snabdevanje',
-      phiaderm: 'Beauty e-commerce',
-    },
+    proofTitle: 'Dokazi pre tvrdnji.',
+    proofText: 'Objavljujemo vidljiv obim projekta, aktivne rezultate i potvrđene odgovornosti. Brojke, nagrade i poslovni rezultati prikazuju se samo kada mogu da se potkrepe.',
+    caseStudy: 'Pročitajte studiju', website: 'Posetite aktivni sajt', related: 'Povezana usluga', review: 'Razgovarajte o sličnom projektu',
+    labels: { headwear: 'Višejezični e-commerce', misima: 'Kozmetika i B2B sajt', artman: 'Korporativni sajt za snabdevanje', phiaderm: 'Beauty e-commerce' },
     descriptions: {
       headwear: 'Višejezična prodavnica za performance i outdoor proizvode, organizovana za jasno otkrivanje proizvoda i mobilnu kupovinu.',
       misima: 'Strategija, dizajn i razvoj sajta za kozmetičku grupu koja radi sa brendovima i međunarodnim tržištima.',
@@ -98,41 +71,14 @@ const copy = {
 
 const c = copy[lang as keyof typeof copy] ?? copy.en;
 const projects = [
-  {
-    name: 'HEADWEAR',
-    label: c.labels.headwear,
-    description: c.descriptions.headwear,
-    href: url('/work/headwear/'),
-    external: 'https://www.head-wear.com/',
-    featured: true,
-  },
-  {
-    name: 'Misima Group',
-    label: c.labels.misima,
-    description: c.descriptions.misima,
-    href: url('/work/misima/'),
-    external: 'https://www.misima.com.tr/',
-  },
-  {
-    name: 'Artman Group',
-    label: c.labels.artman,
-    description: c.descriptions.artman,
-    href: url('/work/artman/'),
-    external: 'https://artmangroup.com.tr/',
-  },
-  {
-    name: 'Phiaderm',
-    label: c.labels.phiaderm,
-    description: c.descriptions.phiaderm,
-    href: url('/work/phiaderm/'),
-    external: 'https://www.phiaderm.com.tr/',
-  },
+  { name: 'HEADWEAR', label: c.labels.headwear, description: c.descriptions.headwear, href: url('/work/headwear/'), external: 'https://www.head-wear.com/', capability: url('/e-commerce/'), featured: true },
+  { name: 'Misima Group', label: c.labels.misima, description: c.descriptions.misima, href: url('/work/misima/'), external: 'https://www.misima.com.tr/', capability: url('/website-design/') },
+  { name: 'Artman Group', label: c.labels.artman, description: c.descriptions.artman, href: url('/work/artman/'), external: 'https://artmangroup.com.tr/', capability: url('/website-design/') },
+  { name: 'Phiaderm', label: c.labels.phiaderm, description: c.descriptions.phiaderm, href: url('/work/phiaderm/'), external: 'https://www.phiaderm.com.tr/', capability: url('/e-commerce/') },
 ];
 ---
-
 <BaseLayout title={seo.title} description={seo.description} lang={lang} pageType="CollectionPage" breadcrumbLabel={c.eyebrow}>
   <Header slot="header" lang={lang} />
-
   <main class="qct-work">
     <section class="qct-work__hero">
       <div class="container">
@@ -143,24 +89,41 @@ const projects = [
       </div>
     </section>
 
+    <section class="qct-work__proof" aria-labelledby="qct-work-proof-title">
+      <div class="container qct-work__proof-grid">
+        <p class="qct-work__eyebrow">QCT Studio standard</p>
+        <div>
+          <h2 id="qct-work-proof-title">{c.proofTitle}</h2>
+          <p>{c.proofText}</p>
+        </div>
+      </div>
+    </section>
+
     <section class="qct-work__projects" aria-label={c.eyebrow}>
       <div class="container qct-work__grid">
         {projects.map((project, index) => (
           <article class:list={['qct-work__card', { 'qct-work__card--featured': project.featured }]}>
             <div class="qct-work__number">0{index + 1}</div>
             <p class="qct-work__label">{project.label}</p>
-            <h2>{project.href ? <a href={project.href}>{project.name}</a> : project.name}</h2>
+            <h2><a href={project.href}>{project.name}</a></h2>
             <p class="qct-work__description">{project.description}</p>
             <div class="qct-work__links">
-              {project.href && <a href={project.href}>{c.caseStudy}</a>}
+              <a href={project.href}>{c.caseStudy}</a>
               <a href={project.external} target="_blank" rel="noopener">{c.website}</a>
+              <a href={project.capability}>{c.related}</a>
             </div>
           </article>
         ))}
       </div>
     </section>
-  </main>
 
+    <section class="qct-work__cta">
+      <div class="container qct-work__cta-inner">
+        <h2>{c.review}</h2>
+        <a class="qct-button qct-button--primary" href={`${url('/contact/')}#contact`}>{c.review}</a>
+      </div>
+    </section>
+  </main>
   <Footer slot="footer" lang={lang} />
 </BaseLayout>
 
@@ -172,9 +135,13 @@ const projects = [
   .qct-work__eyebrow, .qct-work__label { color: #e75757; font-size: .78rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
   .qct-work h1 { max-width: 900px; margin: .9rem 0 1.3rem; font-size: clamp(2.75rem, 5vw, 5.1rem); line-height: .98; letter-spacing: -.045em; }
   .qct-work__lead { max-width: 760px; margin: 0; color: #656066; font-size: clamp(1rem, 1.35vw, 1.2rem); line-height: 1.65; }
+  .qct-work__proof { padding: clamp(2.6rem, 5vw, 4.8rem) 0; border-bottom: 1px solid rgba(23, 21, 26, .14); }
+  .qct-work__proof-grid { display: grid; gap: 2rem; grid-template-columns: minmax(180px, .4fr) minmax(0, 1.6fr); }
+  .qct-work__proof h2 { font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -.04em; line-height: 1; margin: 0 0 1rem; }
+  .qct-work__proof p { color: #656066; line-height: 1.7; margin: 0; max-width: 760px; }
   .qct-work__projects { padding: clamp(3rem, 5vw, 4.5rem) 0; background: #17151a; }
   .qct-work__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; padding: 1px; background: rgba(248, 245, 239, .16); }
-  .qct-work__card { min-height: 300px; padding: clamp(1.5rem, 2.4vw, 2.25rem); color: #f8f5ef; background: #1d1a20; }
+  .qct-work__card { min-height: 320px; padding: clamp(1.5rem, 2.4vw, 2.25rem); color: #f8f5ef; background: #1d1a20; }
   .qct-work__card--featured { background: #251b29; }
   .qct-work__number { margin-bottom: 2.5rem; color: rgba(248, 245, 239, .38); font-weight: 800; }
   .qct-work__card h2 { margin: .75rem 0 1rem; font-size: clamp(1.75rem, 2.5vw, 2.5rem); line-height: 1; letter-spacing: -.035em; }
@@ -182,12 +149,16 @@ const projects = [
   .qct-work__description { max-width: 520px; color: rgba(248, 245, 239, .68); line-height: 1.65; }
   .qct-work__links { display: flex; flex-wrap: wrap; gap: 1.1rem; margin-top: 1.5rem; }
   .qct-work__links a { color: #f8f5ef; font-weight: 750; text-underline-offset: .25rem; }
+  .qct-work__cta { padding: clamp(3.5rem, 7vw, 6rem) 0; }
+  .qct-work__cta-inner { align-items: center; display: flex; gap: 2rem; justify-content: space-between; }
+  .qct-work__cta h2 { font-size: clamp(2rem, 4vw, 3.5rem); letter-spacing: -.04em; line-height: 1; margin: 0; max-width: 700px; }
   @media (max-width: 760px) {
     .qct-work__hero { padding: 3.5rem 0; }
     .qct-work__breadcrumb { margin-bottom: 2rem; }
     .qct-work h1 { font-size: clamp(2.35rem, 11vw, 3.15rem); }
-    .qct-work__grid { grid-template-columns: 1fr; }
+    .qct-work__proof-grid, .qct-work__grid { grid-template-columns: 1fr; }
     .qct-work__card { min-height: auto; padding: 1.5rem; }
     .qct-work__number { margin-bottom: 2rem; }
+    .qct-work__cta-inner { align-items: stretch; flex-direction: column; }
   }
 </style>
