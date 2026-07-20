@@ -25,3 +25,97 @@
 	z-index: 100000;
 }
 
+/* Shared CTA system */
+.qct-button,
+.qct-work__links a,
+.qct-trust__grid article > a,
+.qct-trust__founder a {
+	align-items: center;
+	border: 1px solid transparent;
+	border-radius: 999px;
+	box-sizing: border-box;
+	display: inline-flex;
+	font-weight: 800;
+	gap: .55rem;
+	justify-content: center;
+	line-height: 1.2;
+	min-height: 48px;
+	padding: .75rem 1.15rem;
+	text-align: center;
+	text-decoration: none !important;
+	transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.qct-button--primary,
+.qct-contact-form__submit {
+	background: #e75757;
+	border-color: #e75757;
+	color: #17151a;
+}
+
+.qct-button--secondary {
+	background: #ffffff;
+	border-color: rgba(23, 21, 26, .18);
+	color: #17151a;
+	box-shadow: 0 8px 24px rgba(23, 21, 26, .06);
+}
+
+.qct-work__links a,
+.qct-trust__grid article > a,
+.qct-trust__founder a {
+	background: rgba(255, 255, 255, .07);
+	border-color: rgba(255, 255, 255, .18);
+	color: #f8f5ef !important;
+}
+
+.qct-button:hover,
+.qct-button:focus-visible,
+.qct-work__links a:hover,
+.qct-work__links a:focus-visible,
+.qct-trust__grid article > a:hover,
+.qct-trust__grid article > a:focus-visible,
+.qct-trust__founder a:hover,
+.qct-trust__founder a:focus-visible {
+	transform: translateY(-2px);
+}
+
+.qct-button--primary:hover,
+.qct-button--primary:focus-visible,
+.qct-contact-form__submit:hover,
+.qct-contact-form__submit:focus-visible {
+	background: #ef6666;
+	border-color: #ef6666;
+}
+
+.qct-button--secondary:hover,
+.qct-button--secondary:focus-visible {
+	background: #f8f5ef;
+	border-color: rgba(23, 21, 26, .32);
+}
+
+.qct-work__links a:hover,
+.qct-work__links a:focus-visible,
+.qct-trust__grid article > a:hover,
+.qct-trust__grid article > a:focus-visible,
+.qct-trust__founder a:hover,
+.qct-trust__founder a:focus-visible {
+	background: #e75757;
+	border-color: #e75757;
+	color: #17151a !important;
+}
+
+@media (max-width: 640px) {
+	.qct-button,
+	.qct-contact-form__submit {
+		width: 100%;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.qct-button,
+	.qct-work__links a,
+	.qct-trust__grid article > a,
+	.qct-trust__founder a {
+		transition: none;
+	}
+}
