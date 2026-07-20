@@ -1,65 +1,130 @@
 ---
-import { useTranslations } from '../i18n';
-
 interface Props {
   lang: string;
 }
 const { lang } = Astro.props;
-const t = useTranslations(lang);
+
+const copy = {
+  en: {
+    eyebrow: 'Digital growth review',
+    title: 'Start with the commercial constraint, not a predetermined tool.',
+    lead: 'Share the current website, target market and the point where discovery, enquiries or sales are breaking down. We will use that context to identify the most practical first step.',
+    direct: 'Direct contact',
+    guidance: 'What to include',
+    items: [
+      ['Current situation', 'What the business sells, who it serves and which digital channels it uses today.'],
+      ['Target market', 'The country, buyer group or commercial route the business needs to reach.'],
+      ['Main constraint', 'Where product discovery, lead follow-up, conversion or internal operations currently slow down.'],
+      ['Useful evidence', 'The existing website, catalogue, campaign page or workflow that should be reviewed.'],
+    ],
+    primary: 'Request a digital growth review',
+    secondary: 'Email QCT Studio',
+    note: 'No technical specification is required. A concise commercial brief is enough to begin.',
+  },
+  sq: {
+    eyebrow: 'Rishikim i rritjes digjitale',
+    title: 'Filloni me pengesën tregtare, jo me një mjet të paracaktuar.',
+    lead: 'Ndani faqen aktuale, tregun e synuar dhe pikën ku zbulimi, kërkesat ose shitjet po ngecin. Këtë kontekst do ta përdorim për të përcaktuar hapin e parë më praktik.',
+    direct: 'Kontakt i drejtpërdrejtë',
+    guidance: 'Çfarë të përfshini',
+    items: [
+      ['Gjendja aktuale', 'Çfarë shet biznesi, kujt i shërben dhe cilat kanale digjitale përdor sot.'],
+      ['Tregu i synuar', 'Vendi, grupi i blerësve ose rruga tregtare që biznesi duhet të arrijë.'],
+      ['Pengesa kryesore', 'Ku po ngadalësohen zbulimi i produkteve, ndjekja e kërkesave, konvertimi ose operacionet.'],
+      ['Dëshmi të dobishme', 'Faqja, katalogu, landing page ose procesi ekzistues që duhet shqyrtuar.'],
+    ],
+    primary: 'Kërkoni një rishikim të rritjes digjitale',
+    secondary: 'Dërgoni email QCT Studio',
+    note: 'Nuk kërkohet specifikim teknik. Mjafton një përmbledhje e qartë tregtare.',
+  },
+  mk: {
+    eyebrow: 'Преглед на дигиталниот раст',
+    title: 'Започнете од деловното ограничување, не од однапред избрана алатка.',
+    lead: 'Споделете ја тековната веб-страница, целниот пазар и местото каде што запираат откривањето, барањата или продажбата. Тој контекст ќе ни помогне да го утврдиме најпрактичниот прв чекор.',
+    direct: 'Директен контакт',
+    guidance: 'Што да вклучите',
+    items: [
+      ['Тековна состојба', 'Што продава бизнисот, кому му служи и кои дигитални канали ги користи денес.'],
+      ['Целен пазар', 'Државата, групата купувачи или продажниот пат што треба да се достигне.'],
+      ['Главно ограничување', 'Каде се забавуваат откривањето производи, следењето барања, конверзијата или операциите.'],
+      ['Корисни докази', 'Постојната веб-страница, каталог, landing page или процес што треба да се разгледа.'],
+    ],
+    primary: 'Побарајте преглед на дигиталниот раст',
+    secondary: 'Испратете е-пошта до QCT Studio',
+    note: 'Не е потребна техничка спецификација. Доволен е краток и јасен деловен опис.',
+  },
+  sr: {
+    eyebrow: 'Pregled digitalnog rasta',
+    title: 'Počnite od poslovnog ograničenja, ne od unapred izabranog alata.',
+    lead: 'Podelite trenutni sajt, ciljno tržište i tačku na kojoj otkrivanje, upiti ili prodaja zastaju. Taj kontekst koristimo da odredimo najpraktičniji prvi korak.',
+    direct: 'Direktan kontakt',
+    guidance: 'Šta uključiti',
+    items: [
+      ['Trenutna situacija', 'Šta biznis prodaje, kome služi i koje digitalne kanale danas koristi.'],
+      ['Ciljno tržište', 'Država, grupa kupaca ili prodajni put koji biznis treba da dosegne.'],
+      ['Glavno ograničenje', 'Gde se usporavaju otkrivanje proizvoda, praćenje upita, konverzija ili operacije.'],
+      ['Korisni dokazi', 'Postojeći sajt, katalog, landing stranica ili proces koji treba pregledati.'],
+    ],
+    primary: 'Zatražite pregled digitalnog rasta',
+    secondary: 'Pošaljite email QCT Studio',
+    note: 'Tehnička specifikacija nije potrebna. Dovoljan je kratak i jasan poslovni opis.',
+  },
+};
+
+const c = copy[lang as keyof typeof copy] ?? copy.en;
+const reviewSubject = encodeURIComponent('QCT Studio digital growth review');
+const reviewBody = encodeURIComponent('Current website:\nTarget market:\nMain commercial constraint:\nUseful links or context:\n');
+const reviewUrl = `mailto:info@qctstudio.com?subject=${reviewSubject}&body=${reviewBody}`;
 ---
 <section id="contact" class="qct-section qct-contact" aria-labelledby="qct-contact-title">
-	<div class="container">
-		<div class="qct-contact__grid">
-			<div class="qct-contact__content">
-				<p class="qct-section__eyebrow">{t('Contact')}</p>
-				<h2 id="qct-contact-title" class="qct-section__title">
-					{t('Let us map the best digital path for your business.')}
-				</h2>
-				<p class="qct-section__lead">
-					{t('Send the essentials and we will review the project direction. You can also email us directly at info@qctstudio.com.')}
-				</p>
+  <div class="container">
+    <div class="qct-contact__grid">
+      <div class="qct-contact__content">
+        <p class="qct-section__eyebrow">{c.eyebrow}</p>
+        <h2 id="qct-contact-title" class="qct-section__title">{c.title}</h2>
+        <p class="qct-section__lead">{c.lead}</p>
+        <p class="qct-contact__note">{c.note}</p>
+        <div class="qct-contact__actions">
+          <a class="qct-button qct-button--primary" href={reviewUrl}>{c.primary}</a>
+          <a class="qct-button qct-button--secondary" href="mailto:info@qctstudio.com">{c.secondary}</a>
+        </div>
+        <div class="qct-contact__direct">
+          <span>{c.direct}</span>
+          <a href="mailto:info@qctstudio.com">info@qctstudio.com</a>
+        </div>
+      </div>
 
-				<div class="qct-contact__links">
-					<a href="mailto:info@qctstudio.com">{t('info@qctstudio.com')}</a>
-					<a href="https://qctstudio.com">{t('qctstudio.com')}</a>
-				</div>
-
-				<div class="qct-faq-ready" aria-labelledby="qct-faq-title">
-					<h3 id="qct-faq-title">{t('FAQ')}</h3>
-					<p>{t('Questions we hear most often.')}</p>
-					<details>
-						<summary>{t('How long does a website project take?')}</summary>
-						<p>{t('Every project is different, but most business websites are completed within a few weeks.')}</p>
-					</details>
-					<details>
-						<summary>{t('Can you redesign our existing website?')}</summary>
-						<p>{t('Yes. We can improve an existing website or build a completely new one.')}</p>
-					</details>
-					<details>
-						<summary>{t('Will our website work on mobile devices?')}</summary>
-						<p>{t('Every website we build is fully responsive and designed for phones, tablets and desktops.')}</p>
-					</details>
-					<details>
-						<summary>{t('Do you provide support after launch?')}</summary>
-						<p>{t('Yes. We continue supporting our clients after launch whenever they need us.')}</p>
-					</details>
-					<details>
-						<summary>{t('Can you help with SEO and digital marketing?')}</summary>
-						<p>{t('Yes. We can also help improve visibility, traffic and online enquiries after launch.')}</p>
-					</details>
-				</div>
-			</div>
-
-			<div class="qct-contact-form">
-				<div class="qct-form-field qct-form-field--full">
-					<p>{t('Use the address that matches your inquiry.')}</p>
-					<p><a href="mailto:info@qctstudio.com">{t('info@qctstudio.com')}</a></p>
-				</div>
-
-				<a class="qct-button qct-button--primary qct-contact-form__submit" href="mailto:info@qctstudio.com">
-					<span>{t('Contact Us')}</span>
-				</a>
-			</div>
-		</div>
-	</div>
+      <div class="qct-contact-review" aria-labelledby="qct-contact-guidance">
+        <p class="qct-contact-review__eyebrow" id="qct-contact-guidance">{c.guidance}</p>
+        <div class="qct-contact-review__list">
+          {c.items.map(([title, description], index) => (
+            <article>
+              <span>0{index + 1}</span>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<style>
+  .qct-contact__note { color: var(--qct-color-muted); line-height: 1.7; margin: 1.25rem 0 0; max-width: 680px; }
+  .qct-contact__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+  .qct-contact__direct { border-top: 1px solid var(--qct-color-line); display: grid; gap: .4rem; margin-top: 2.25rem; padding-top: 1.4rem; }
+  .qct-contact__direct span, .qct-contact-review__eyebrow { color: var(--qct-color-muted); font-size: .75rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+  .qct-contact__direct a { color: var(--qct-color-text); font-size: 1.05rem; font-weight: 750; text-underline-offset: .25em; }
+  .qct-contact-review { background: var(--qct-color-surface-raised); border: 1px solid var(--qct-color-line); padding: clamp(1.4rem, 3vw, 2.2rem); }
+  .qct-contact-review__eyebrow { margin: 0 0 1rem; }
+  .qct-contact-review__list { display: grid; gap: 0; }
+  .qct-contact-review article { border-top: 1px solid var(--qct-color-line); display: grid; gap: .55rem; padding: 1.25rem 0; }
+  .qct-contact-review article > span { color: var(--qct-color-accent-strong); font-size: .72rem; font-weight: 850; letter-spacing: .12em; }
+  .qct-contact-review h3 { color: var(--qct-color-text); font-size: 1.08rem; margin: 0; }
+  .qct-contact-review p { color: var(--qct-color-muted); line-height: 1.65; margin: 0; }
+  @media (max-width: 640px) {
+    .qct-contact__actions { align-items: stretch; flex-direction: column; }
+    .qct-contact__actions .qct-button { width: 100%; }
+  }
+</style>
