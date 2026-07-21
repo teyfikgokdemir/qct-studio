@@ -1,17 +1,19 @@
 (function () {
 	'use strict';
 
-	var hero = document.querySelector('[data-qct-hero]');
-	var room = hero ? hero.querySelector('[data-signal-room]') : null;
-
-	if (!hero || !room) {
-		return;
-	}
-
-	var controls = Array.prototype.slice.call(room.querySelectorAll('[data-signal-control]'));
-	var panels = Array.prototype.slice.call(room.querySelectorAll('[data-signal-panel]'));
-	var label = room.querySelector('[data-signal-label]');
 	var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+	var initSignalRoom = function () {
+		var hero = document.querySelector('[data-qct-hero]');
+		var room = hero ? hero.querySelector('[data-signal-room]') : null;
+
+		if (!hero || !room) {
+			return;
+		}
+
+		var controls = Array.prototype.slice.call(room.querySelectorAll('[data-signal-control]'));
+		var panels = Array.prototype.slice.call(room.querySelectorAll('[data-signal-panel]'));
+		var label = room.querySelector('[data-signal-label]');
 	var activeIndex = 0;
 	var intervalId = null;
 	var heroVisible = true;
@@ -128,13 +130,24 @@
 	document.addEventListener('visibilitychange', startRotation);
 	activateState(0, false);
 	startRotation();
+	};
 
-	var showcase = document.querySelector('[data-work-showcase]');
-	if (showcase) {
+	var initWorkShowcase = function () {
+		var showcase = document.querySelector('[data-work-showcase]');
+
+		if (!showcase) {
+			return;
+		}
+
 		var workPanels = Array.prototype.slice.call(showcase.querySelectorAll('[data-work-panel]'));
 		var workControls = Array.prototype.slice.call(showcase.querySelectorAll('[data-work-control]'));
 		var workPrevious = showcase.querySelector('[data-work-previous]');
 		var workNext = showcase.querySelector('[data-work-next]');
+
+		if (!workPanels.length || workPanels.length !== workControls.length || !workPrevious || !workNext) {
+			return;
+		}
+
 		var workIndex = 0;
 		var workTimer = null;
 		var workVisible = true;
@@ -187,11 +200,21 @@
 		}
 		activateWork(0);
 		startWork();
-	}
+	};
 
-	var processTimeline = document.querySelector('[data-process-timeline]');
-	if (processTimeline) {
+	var initProcessTimeline = function () {
+		var processTimeline = document.querySelector('[data-process-timeline]');
+
+		if (!processTimeline) {
+			return;
+		}
+
 		var processSteps = Array.prototype.slice.call(processTimeline.querySelectorAll('[data-process-step]'));
+
+		if (!processSteps.length) {
+			return;
+		}
+
 		processTimeline.classList.add('is-enhanced');
 		var activateProcess = function (activeStep) {
 			var activeProcessIndex = processSteps.indexOf(activeStep);
@@ -214,5 +237,9 @@
 			processSteps.forEach(function (step) { step.classList.add('is-resolved'); });
 			processTimeline.style.setProperty('--process-progress-number', 1);
 		}
-	}
+	};
+
+	initSignalRoom();
+	initWorkShowcase();
+	initProcessTimeline();
 })();
