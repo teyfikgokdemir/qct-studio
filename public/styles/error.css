@@ -1,0 +1,40 @@
+:is(.qct-blog-page, .qct-publication-archive, .qct-single-post, .qct-legal-page, .qct-error-page) {
+	background: var(--qct-color-background);
+	color: var(--qct-color-text);
+	overflow: visible;
+}
+
+:is(.qct-blog-page, .qct-publication-archive, .qct-single-post, .qct-legal-page, .qct-error-page) :is(a, summary):focus-visible {
+	outline: 2px solid var(--qct-color-plum);
+	outline-offset: 4px;
+}
+
+:is(.qct-blog-page, .qct-publication-archive, .qct-single-post, .qct-legal-page, .qct-error-page) .qct-button {
+	border-radius: 2px;
+	box-shadow: none;
+	font-weight: 650;
+	min-height: 48px;
+	padding: 12px 18px;
+	transform: none;
+}
+.qct-error-page {
+	min-height: 72vh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:is(.qct-blog-page, .qct-publication-archive, .qct-single-post, .qct-legal-page, .qct-error-page) :is(.qct-button, .qct-page-card, .qct-legal-card, .qct-blog-editorial::after, .qct-blog-editorial__note--lead) {
+		animation: none;
+		transition-duration: 0.01ms;
+	}
+}
+
+.qct-error-page,
+.qct-publication-archive,
+.qct-single-post {
+	background:
+		radial-gradient(circle at 12% 8%, rgba(230, 57, 70, 0.12), transparent 28rem),
+		radial-gradient(circle at 88% 14%, rgba(212, 255, 79, 0.07), transparent 25rem),
+		#050509;
+	min-height: 72vh;
+	overflow: hidden;
+}
