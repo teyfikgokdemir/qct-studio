@@ -4980,8 +4980,23 @@
 }
 
 .qct-final-cta .qct-button--secondary {
-	border-color: rgba(242, 239, 232, 0.48);
+	background: rgba(242, 239, 232, 0.08);
+	border-color: rgba(242, 239, 232, 0.64);
+	box-shadow: none;
 	color: var(--qct-color-on-plum);
+}
+
+.qct-final-cta .qct-button--secondary:hover,
+.qct-final-cta .qct-button--secondary:focus-visible {
+	background: rgba(242, 239, 232, 0.16);
+	border-color: var(--qct-color-on-plum);
+	color: var(--qct-color-on-plum);
+}
+
+.qct-final-cta .qct-button--secondary:active {
+	background: rgba(242, 239, 232, 0.24);
+	border-color: var(--qct-color-on-plum);
+	transform: translateY(0);
 }
 
 .qct-final-cta .qct-button:focus-visible {

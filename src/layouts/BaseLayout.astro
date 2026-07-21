@@ -55,6 +55,34 @@ const pathNoLocale = (() => {
 	return rawPath.endsWith('/') || rawPath === '' ? rawPath || '/' : rawPath + '/';
 })();
 
+type RouteGroup = 'home' | 'services' | 'work' | 'company' | 'legal' | 'error' | 'other';
+
+const routeSegments = pathNoLocale.split('/').filter(Boolean);
+const routeSlug = routeSegments[0] ?? '';
+const serviceRoutes = new Set([
+	'services',
+	'website-design',
+	'e-commerce',
+	'whatsapp-commerce',
+	'seo-performance',
+	'meta-ads-landing-pages',
+	'ai-automation',
+]);
+const companyRoutes = new Set(['about', 'careers', 'contact']);
+const legalRoutes = new Set(['privacy-policy', 'terms-conditions', 'cookie-policy']);
+
+const routeGroup: RouteGroup = (() => {
+	if (isHome || routeSegments.length === 0) return 'home';
+	if (legalRoutes.has(routeSlug)) return 'legal';
+	if (routeSlug === '404' || routeSlug === '404.html') return 'error';
+	if (serviceRoutes.has(routeSlug)) return 'services';
+	if (routeSlug === 'work') return 'work';
+	if (companyRoutes.has(routeSlug)) return 'company';
+	return 'other';
+})();
+
+const shouldLoadPagesStyles = routeGroup === 'legal' || routeGroup === 'error';
+
 const localizedPath = (l: string) => (l === 'en' ? pathNoLocale : `/${l}${pathNoLocale}`);
 const canonicalUrl = new URL(localizedPath(lang), SITE_URL).toString();
 const ogImageUrl = new URL(image, SITE_URL).toString();
@@ -230,21 +258,20 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	<slot name="schema" />
 
 	<!-- Ported as-is from the WordPress theme's assets/css — BEM classes kept identical.
-	     home.css / pages.css are mutually exclusive, matching the original WP enqueue.php,
-	     so a page only ships the stylesheet it actually uses.
+	     pages.css is limited to legal and error routes, where its selectors remain active.
 	     services.css is intentionally NOT loaded: its classes (.qct-premium-service-card,
 	     .qct-service-img) don't match any markup in this theme (real class is
 	     .qct-service-card) — it was dead weight in the original WP enqueue too. -->
 	<link rel="stylesheet" href="/styles/base.css?v=20260718-3" />
 	<link rel="stylesheet" href="/styles/components.css?v=20260718-3" />
-	{isHome ? (
+	{routeGroup === 'home' ? (
 		<>
 			<link rel="stylesheet" href="/styles/home.css?v=20260718-3" />
 			<link rel="stylesheet" href="/styles/animations.css?v=20260718-3" />
 		</>
-	) : (
+	) : shouldLoadPagesStyles ? (
 		<link rel="stylesheet" href="/styles/pages.css?v=20260718-3" />
-	)}
+	) : null}
 	<link rel="stylesheet" href="/styles/utilities.css?v=20260718-3" />
 </head>
 <body>
