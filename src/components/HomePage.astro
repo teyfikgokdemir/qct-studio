@@ -16,14 +16,19 @@ interface Props {
 }
 const { lang } = Astro.props;
 
-const seo = lang === 'sr'
+const seo = lang === 'en'
   ? {
-      title: 'QCT Studio — Sajtovi, e-commerce i AI automatizacija za Balkan',
-      description: 'QCT Studio izrađuje sajtove, online prodavnice i AI automatizacije za kompanije u Albaniji i Severnoj Makedoniji.',
+      title: 'QCT Studio — Websites, E-commerce & AI Systems for the Balkans',
+      description: 'Websites, e-commerce and AI systems for ambitious businesses across the Balkans.',
     }
-  : getPageSeo('home', lang);
+  : lang === 'sr'
+    ? {
+        title: 'QCT Studio — Sajtovi, e-commerce i AI automatizacija za Balkan',
+        description: 'QCT Studio izrađuje sajtove, online prodavnice i AI automatizacije za kompanije u Albaniji i Severnoj Makedoniji.',
+      }
+    : getPageSeo('home', lang);
 ---
-<BaseLayout title={seo.title} description={seo.description} lang={lang} isHome={true}>
+<BaseLayout title={seo.title} description={seo.description} image="/og-image.png" lang={lang} isHome={true}>
 <Header slot="header" lang={lang} />
 <Hero lang={lang} />
 <Problem lang={lang} />
