@@ -68,11 +68,11 @@ const seo = getPageSeo('about', lang);
       eyebrow: t('FAQ'),
       title: t('Questions we hear most often.'),
       items: [
-        { q: t('Why did QCT Studio start?'), a: t('It started from a simple observation. Good businesses were improving, but their websites were still showing the business they used to be.') },
+        { q: t('When was QCT Studio founded?'), a: t('QCT Studio was founded in Istanbul in 2025 by Teyfik Gökdemir as the Balkan-focused digital growth venture within the wider QCT ecosystem.') },
+        { q: t('How is QCT Studio connected to QCT Commerce?'), a: t('Both ventures were founded by Teyfik Gökdemir in 2025. QCT Studio focuses on Balkan markets, while QCT Commerce focuses on Türkiye.') },
         { q: t('What kind of work does QCT Studio focus on?'), a: t('We focus on websites, e-commerce, WhatsApp Commerce, SEO, GEO and campaign landing pages.') },
         { q: t('Why do Balkan markets matter to your work?'), a: t('They are markets where businesses are investing, modernising and growing, but their digital systems have not always kept pace.') },
         { q: t('How does QCT Studio work with clients?'), a: t('We start by understanding the business first. Products. Services. Customers. Sales process. Only then do we decide what needs to be built.') },
-        { q: t('Do you work on long-term projects?'), a: t('Yes. Business changes. The digital presence should change with it instead of being left alone after launch.') },
       ],
     }}
     final={{
@@ -90,9 +90,11 @@ const seo = getPageSeo('about', lang);
       <div class="qct-trust__intro">
         <p class="qct-trust__eyebrow">{t('FOUNDING STORY')}</p>
         <h2 id="qct-founding-title">{t('Founded in Istanbul. Built for Balkan businesses.')}</h2>
-        <p>{t('QCT Studio was founded in Istanbul in 2024 by Teyfik Gökdemir. The studio works primarily with businesses in Albania and North Macedonia, while supporting selected projects across the Balkans.')}</p>
+        <p>{t('QCT Studio was founded in Istanbul in 2025 by Teyfik Gökdemir. It is the Balkan-focused digital growth venture within the wider QCT ecosystem, alongside QCT Commerce for Türkiye and Mythborn for international markets.')}</p>
         <div class="qct-trust__founder">
           <strong>{t('Founder')}: Teyfik Gökdemir</strong>
+          <a href="https://teyfikgokdemir.com/" target="_blank" rel="noopener">{t('Founder website')}</a>
+          <a href="https://qctcommerce.com/" target="_blank" rel="noopener">QCT Commerce</a>
           <a href="https://www.linkedin.com/in/teyfik-g%C3%B6kdemir-0b1a9758" target="_blank" rel="noopener">{t('View LinkedIn')}</a>
           <a href="https://www.instagram.com/teyfikgokdemir/" target="_blank" rel="noopener">{t('View Instagram')}</a>
         </div>
@@ -131,7 +133,6 @@ const seo = getPageSeo('about', lang);
 
   <Footer slot="footer" lang={lang} />
 </BaseLayout>
-
 
 <style>
   .qct-trust {
@@ -230,12 +231,7 @@ const seo = getPageSeo('about', lang);
   }
 
   @media (max-width: 760px) {
-    .qct-trust__grid {
-      grid-template-columns: 1fr;
-    }
-
-    .qct-trust__grid article {
-      min-height: auto;
-    }
+    .qct-trust__grid { grid-template-columns: 1fr; }
+    .qct-trust__grid article { min-height: auto; }
   }
 </style>
