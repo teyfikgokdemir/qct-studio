@@ -2,13 +2,14 @@
 import { useTranslations, getLocalizedUrl } from '../i18n';
 
 interface Props {
-  lang: string;
+	lang: string;
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
 ---
 <footer id="colophon" class="site-footer">
+	<div class="site-footer__watermark" aria-hidden="true">QCT STUDIO</div>
 	<div class="site-footer__inner container">
 		<div class="site-footer__columns">
 			<div class="site-footer__group site-footer__brand">
@@ -72,3 +73,29 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 		</div>
 	</div>
 </footer>
+
+<style>
+	.site-footer { position: relative; overflow: hidden; isolation: isolate; }
+	.site-footer__inner { position: relative; z-index: 1; }
+	.site-footer__watermark {
+		position: absolute;
+		top: 1.1rem;
+		left: 50%;
+		z-index: 0;
+		font-size: clamp(5.5rem, 15vw, 14rem);
+		font-weight: 800;
+		line-height: .82;
+		letter-spacing: -.07em;
+		white-space: nowrap;
+		color: transparent;
+		-webkit-text-stroke: 1px rgba(255,255,255,.055);
+		text-shadow: 0 0 40px rgba(239,86,86,.04);
+		transform: translateX(-52%);
+		animation: qctFooterDrift 32s ease-in-out infinite alternate;
+		pointer-events: none;
+		user-select: none;
+	}
+	@keyframes qctFooterDrift { from { transform: translateX(-53%); } to { transform: translateX(-47%); } }
+	@media (max-width: 760px) { .site-footer__watermark { top: 2rem; font-size: clamp(4rem, 22vw, 7rem); animation: none; transform: translateX(-50%); } }
+	@media (prefers-reduced-motion: reduce) { .site-footer__watermark { animation: none; transform: translateX(-50%); } }
+</style>
