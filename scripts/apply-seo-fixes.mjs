@@ -16,4 +16,16 @@ if (source.includes(founderNeedle) && !source.includes("sameAs: ['https://teyfik
 }
 
 await writeFile(layoutPath, source, 'utf8');
-console.log('Applied QCT Studio founding-date and founder-identity fixes.');
+
+const consentPath = new URL('../src/components/CookieConsent.astro', import.meta.url);
+let consent = await readFile(consentPath, 'utf8');
+const replacements = new Map([
+  ["accept: 'Accept analytics'", "accept: 'Accept'"],
+  ["accept: 'Prano analitikën'", "accept: 'Prano'"],
+  ["accept: 'Прифати аналитика'", "accept: 'Прифати'"],
+  ["accept: 'Prihvati analitiku'", "accept: 'Prihvati'"],
+]);
+for (const [from, to] of replacements) consent = consent.replace(from, to);
+await writeFile(consentPath, consent, 'utf8');
+
+console.log('Applied QCT Studio schema, founder identity and consent-label fixes.');
