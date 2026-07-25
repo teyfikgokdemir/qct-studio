@@ -2,7 +2,7 @@
 import { useTranslations, getLocalizedUrl } from '../i18n';
 
 interface Props {
-  lang: string;
+	lang: string;
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
@@ -112,3 +112,50 @@ const services = [
 		</div>
 	</div>
 </section>
+
+<style>
+	@media (min-width: 1120px) and (min-height: 760px) {
+		.qct-services {
+			padding-block: clamp(46px, 5.5vh, 64px);
+		}
+
+		.qct-services .qct-section__header {
+			margin-bottom: clamp(24px, 3vh, 34px);
+		}
+
+		.qct-services .qct-section__title {
+			font-size: clamp(2.1rem, 3.6vw, 3.7rem);
+		}
+
+		.qct-services .qct-services__grid {
+			gap: 14px;
+		}
+
+		.qct-services .qct-service-card,
+		.qct-services .qct-service-card--featured,
+		.qct-services .qct-service-card--wide {
+			min-height: 246px;
+			padding: 16px 18px;
+			gap: 10px;
+		}
+
+		.qct-services .qct-service-card__title {
+			font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+		}
+
+		.qct-services .qct-service-card__text {
+			font-size: 0.82rem;
+			line-height: 1.38;
+		}
+
+		.qct-services .qct-service-preview {
+			height: 94px;
+			min-height: 94px;
+			padding: 8px;
+		}
+
+		.qct-services .qct-service-card__cta {
+			font-size: 0.78rem;
+		}
+	}
+</style>
