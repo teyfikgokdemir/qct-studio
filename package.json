@@ -12,7 +12,8 @@
     "astro": "astro",
     "audit:i18n": "node scripts/audit-translations.mjs",
     "audit:metadata": "node scripts/audit-metadata.mjs",
-    "audit:html": "node scripts/audit-built-html.mjs"
+    "audit:html": "node scripts/audit-built-html.mjs",
+    "indexnow:submit": "node scripts/indexnow-submit.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
