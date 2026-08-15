@@ -55,7 +55,7 @@ const currentPath = languagePath ?? getPathWithoutLocale(Astro.url.pathname);
 						aria-current={code === lang ? 'true' : undefined}
 						hreflang={code}
 						lang={code}
-						aria-label={languageNames[code as keyof typeof languageNames]}
+						aria-label={`${languageNames[code as keyof typeof languageNames]} (${label})`}
 					>{label}</a>
 				))}
 			</div>

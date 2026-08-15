@@ -961,6 +961,6 @@ main :where([id]) {
 }
 
 .site-language-switcher a[aria-current="true"] {
-	color: var(--qct-color-accent);
-	font-weight: 700;
-}
+		color: #a63f47;
+		font-weight: 700;
+	}

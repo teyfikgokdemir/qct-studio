@@ -108,7 +108,7 @@ const organizationSchema = {
 	},
 	image: { '@id': `${organizationId}/logo` },
 	description: 'QCT Studio builds websites, e-commerce stores, WhatsApp Commerce and AI automation for established businesses across Albania and North Macedonia.',
-	foundingDate: '2024',
+	foundingDate: '2025',
 	foundingLocation: {
 		'@type': 'Place',
 		name: 'Istanbul, Türkiye',
@@ -142,6 +142,7 @@ const founderSchema = {
 	url: founderId,
 	worksFor: { '@id': organizationId },
 	image: new URL('/images/teyfik-gokdemir-qct-studio.webp', SITE_URL).toString(),
+	sameAs: ['https://teyfikgokdemir.com/', 'https://www.linkedin.com/in/teyfik-g%C3%B6kdemir-0b1a9758'],
 	knowsLanguage: ['Turkish', 'English'],
 	knowsAbout: [
 		'E-commerce infrastructure and store architecture',
