@@ -1,0 +1,126 @@
+---
+import { useTranslations, getLocalizedUrl } from '../i18n';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const url = (path: string) => getLocalizedUrl(lang, path);
+
+const scenes = [
+  {
+    id: 'website',
+    number: '01',
+    kicker: t('Website Design'),
+    title: t('Premium websites'),
+    text: t('Clear positioning, sharp visuals and conversion-focused structure from the first screen.'),
+    href: url('/website-design/'),
+    cta: t('Explore Website Design'),
+    image: '/images/services/homepage-service-website-design.webp',
+  },
+  {
+    id: 'commerce',
+    number: '02',
+    kicker: t('E-commerce'),
+    title: t('E-commerce stores'),
+    text: t('Product pages, mobile checkout and order flows built for serious online selling.'),
+    href: url('/e-commerce/'),
+    cta: t('Explore E-commerce'),
+    image: '/images/services/homepage-service-ecommerce.webp',
+  },
+  {
+    id: 'automation',
+    number: '03',
+    kicker: t('AI Automation'),
+    title: t('AI automation'),
+    text: t('Automations that save time, reduce repetitive work and improve everyday operations.'),
+    href: url('/ai-automation/'),
+    cta: t('Explore AI Automation'),
+    image: '/images/services/homepage-service-ai-automation.webp',
+  },
+];
+---
+<section class="qct-kinetic" data-kinetic-story aria-labelledby="qct-kinetic-title">
+  <div class="qct-kinetic__sticky">
+    <div class="qct-kinetic__ambient" aria-hidden="true">
+      <i></i><i></i><i></i>
+    </div>
+
+    <div class="container qct-kinetic__shell">
+      <header class="qct-kinetic__header" data-qct-reveal>
+        <p class="qct-section__eyebrow">{t('Services')}</p>
+        <h2 id="qct-kinetic-title" class="qct-section__title">
+          {t('Digital systems built for Balkan businesses ready to look premium.')}
+        </h2>
+        <p class="qct-section__lead">
+          {t('Each service is designed to improve trust, speed and conversion before you spend more on ads.')}
+        </p>
+      </header>
+
+      <div class="qct-kinetic__experience">
+        <nav class="qct-kinetic__nav" aria-label={t('Services')}>
+          {scenes.map((scene, index) => (
+            <button
+              type="button"
+              class:list={['qct-kinetic__nav-item', { 'is-active': index === 0 }]}
+              data-kinetic-control={index}
+              aria-pressed={index === 0 ? 'true' : 'false'}
+            >
+              <span>{scene.number}</span>
+              <strong>{scene.kicker}</strong>
+            </button>
+          ))}
+        </nav>
+
+        <div class="qct-kinetic__stage" data-kinetic-stage>
+          <div class="qct-kinetic__stage-grid" aria-hidden="true"></div>
+          <div class="qct-kinetic__cursor" aria-hidden="true"></div>
+
+          {scenes.map((scene, index) => (
+            <article
+              class:list={['qct-kinetic-scene', `qct-kinetic-scene--${scene.id}`, { 'is-active': index === 0 }]}
+              data-kinetic-scene={index}
+              aria-hidden={index === 0 ? 'false' : 'true'}
+            >
+              <div class="qct-kinetic-scene__copy">
+                <span class="qct-kinetic-scene__index">{scene.number} / 03</span>
+                <p>{scene.kicker}</p>
+                <h3>{scene.title}</h3>
+                <div>{scene.text}</div>
+                <a href={scene.href}>{scene.cta}<span aria-hidden="true">↗</span></a>
+              </div>
+
+              <div class="qct-kinetic-scene__canvas" aria-hidden="true">
+                <div class="qct-kinetic-window">
+                  <div class="qct-kinetic-window__bar">
+                    <span></span><span></span><span></span>
+                    <i>qctstudio.com</i>
+                  </div>
+                  <div class="qct-kinetic-window__body">
+                    <img src={scene.image} width="1440" height="480" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" alt="" />
+                    <div class="qct-kinetic-window__scan"></div>
+                  </div>
+                </div>
+
+                <div class="qct-kinetic-float qct-kinetic-float--metric">
+                  <small>{scene.kicker}</small>
+                  <strong>{index === 0 ? '98' : index === 1 ? '24/7' : '3×'}</strong>
+                  <span>{index === 0 ? 'Performance' : index === 1 ? 'Commerce' : 'Workflow'}</span>
+                </div>
+
+                <div class="qct-kinetic-float qct-kinetic-float--status">
+                  <i></i>
+                  <span>{index === 0 ? 'Responsive' : index === 1 ? 'Checkout ready' : 'Connected'}</span>
+                </div>
+              </div>
+            </article>
+          ))}
+
+          <div class="qct-kinetic__progress" aria-hidden="true"><i data-kinetic-progress></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
