@@ -12,6 +12,12 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 // Path of the current page with any locale prefix stripped, e.g. "/sq/about/" -> "/about/".
 // Used so the language switcher links to the translated version of THIS page, not just home.
 const currentPath = languagePath ?? getPathWithoutLocale(Astro.url.pathname);
+const normalizePath = (path: string) => path === '/' ? '/' : `/${path.split('/').filter(Boolean).join('/')}/`;
+const normalizedCurrentPath = normalizePath(currentPath);
+const isCurrent = (path: string) => normalizedCurrentPath === normalizePath(path);
+const isWorkSection = normalizedCurrentPath.startsWith('/work/');
+const servicePaths = ['/services/', '/website-design/', '/e-commerce/', '/whatsapp-commerce/', '/seo-performance/', '/meta-ads-landing-pages/', '/ai-automation/'];
+const isServicesSection = servicePaths.some((path) => isCurrent(path));
 ---
 <header id="masthead" class="site-header" data-site-header>
 	<div class="site-header__inner container">
@@ -27,33 +33,33 @@ const currentPath = languagePath ?? getPathWithoutLocale(Astro.url.pathname);
 
 		<nav id="site-navigation" class="main-navigation" aria-label={t('Primary menu')}>
 			<ul class="primary-menu">
-				<li><a href={url('/')}>{t('Home')}</a></li>
-				<li><a href={url('/about/')}>{t('About')}</a></li>
-					<li class="menu-item-has-children">
-						<button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle>
-							<span>{t('Work')}</span>
-						</button>
-						<ul class="sub-menu">
-							<li><a href={url('/work/')}>{t('View Our Work')}</a></li>
-							<li><a href={url('/contact/')}>{t('Talk to Our Team')}</a></li>
-						</ul>
-					</li>
+				<li><a href={url('/')} aria-current={isCurrent('/') ? 'page' : undefined}>{t('Home')}</a></li>
+				<li><a href={url('/about/')} aria-current={isCurrent('/about/') ? 'page' : undefined}>{t('About')}</a></li>
 				<li class="menu-item-has-children">
-					<button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle>
+					<button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle data-current={isWorkSection ? 'true' : undefined}>
+						<span>{t('Work')}</span>
+					</button>
+					<ul class="sub-menu">
+						<li><a href={url('/work/')} aria-current={isCurrent('/work/') ? 'page' : undefined}>{t('View Our Work')}</a></li>
+						<li><a href={url('/contact/')} aria-current={isCurrent('/contact/') ? 'page' : undefined}>{t('Talk to Our Team')}</a></li>
+					</ul>
+				</li>
+				<li class="menu-item-has-children">
+					<button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle data-current={isServicesSection ? 'true' : undefined}>
 						<span>{t('Services')}</span>
 					</button>
 					<ul class="sub-menu">
-						<li><a href={url('/services/')}>{t('Services overview')}</a></li>
-						<li><a href={url('/website-design/')}>{t('Website Design')}</a></li>
-						<li><a href={url('/e-commerce/')}>{t('E-commerce')}</a></li>
-						<li><a href={url('/whatsapp-commerce/')}>{t('WhatsApp Commerce')}</a></li>
-						<li><a href={url('/seo-performance/')}>{t('SEO & Performance')}</a></li>
-						<li><a href={url('/meta-ads-landing-pages/')}>{t('Meta Ads Landing Pages')}</a></li>
-						<li><a href={url('/ai-automation/')}>{t('AI Automation')}</a></li>
+						<li><a href={url('/services/')} aria-current={isCurrent('/services/') ? 'page' : undefined}>{t('Services overview')}</a></li>
+						<li><a href={url('/website-design/')} aria-current={isCurrent('/website-design/') ? 'page' : undefined}>{t('Website Design')}</a></li>
+						<li><a href={url('/e-commerce/')} aria-current={isCurrent('/e-commerce/') ? 'page' : undefined}>{t('E-commerce')}</a></li>
+						<li><a href={url('/whatsapp-commerce/')} aria-current={isCurrent('/whatsapp-commerce/') ? 'page' : undefined}>{t('WhatsApp Commerce')}</a></li>
+						<li><a href={url('/seo-performance/')} aria-current={isCurrent('/seo-performance/') ? 'page' : undefined}>{t('SEO & Performance')}</a></li>
+						<li><a href={url('/meta-ads-landing-pages/')} aria-current={isCurrent('/meta-ads-landing-pages/') ? 'page' : undefined}>{t('Meta Ads Landing Pages')}</a></li>
+						<li><a href={url('/ai-automation/')} aria-current={isCurrent('/ai-automation/') ? 'page' : undefined}>{t('AI Automation')}</a></li>
 					</ul>
 				</li>
-				<li><a href={url('/careers/')}>{t('Careers')}</a></li>
-				<li><a href={url('/contact/')}>{t('Contact')}</a></li>
+				<li><a href={url('/careers/')} aria-current={isCurrent('/careers/') ? 'page' : undefined}>{t('Careers')}</a></li>
+				<li><a href={url('/contact/')} aria-current={isCurrent('/contact/') ? 'page' : undefined}>{t('Contact')}</a></li>
 			</ul>
 
 			<div class="site-language-switcher">
@@ -70,3 +76,4 @@ const currentPath = languagePath ?? getPathWithoutLocale(Astro.url.pathname);
 		</nav>
 	</div>
 </header>
+<button class="site-menu-backdrop" type="button" tabindex="-1" aria-hidden="true" data-menu-backdrop></button>

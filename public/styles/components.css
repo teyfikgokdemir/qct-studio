@@ -676,6 +676,10 @@ main :where([id]) {
 	border-color: var(--qct-color-line);
 	border-radius: 4px;
 	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+	max-height: calc(100dvh - var(--qct-header-height) - 16px);
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	scrollbar-gutter: stable;
 }
 
 .main-navigation a,
@@ -872,7 +876,10 @@ main :where([id]) {
 		flex-wrap: nowrap;
 		gap: 12px;
 		margin-left: auto;
+		max-height: none;
+		overflow: visible;
 		padding: 0;
+		scrollbar-gutter: auto;
 		white-space: nowrap;
 	}
 
@@ -980,6 +987,87 @@ main :where([id]) {
 }
 
 .site-language-switcher a[aria-current="true"] {
-		color: #a63f47;
-		font-weight: 700;
+			color: #a63f47;
+			font-weight: 700;
+		}
+
+/* Navigation state and motion refinement. */
+.site-header__inner {
+	transition: min-height 320ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.site-header.is-compact .site-header__inner {
+	min-height: 68px;
+}
+
+.site-title::before {
+	transition: height 260ms ease, transform 260ms ease;
+}
+
+.site-header.is-compact .site-title::before {
+	height: 16px;
+}
+
+.main-navigation a[aria-current="page"],
+.submenu-toggle[data-current="true"] {
+	color: var(--qct-color-text);
+}
+
+.main-navigation a[aria-current="page"] {
+	font-weight: 720;
+}
+
+.site-menu-backdrop {
+	background: rgba(7, 6, 10, .42);
+	border: 0;
+	display: block;
+	inset: 0;
+	opacity: 0;
+	pointer-events: none;
+	position: fixed;
+	transition: opacity 220ms ease;
+	visibility: hidden;
+	z-index: 49;
+}
+
+body.has-open-menu {
+	overflow: hidden;
+}
+
+body.has-open-menu .site-menu-backdrop {
+	opacity: 1;
+	pointer-events: auto;
+	visibility: visible;
+}
+
+body.has-open-menu .site-header {
+	background: color-mix(in srgb, var(--qct-color-background) 98%, transparent);
+}
+
+@media (min-width: 1000px) {
+	.site-header.is-compact .site-header__inner {
+		min-height: 64px;
 	}
+
+	.site-menu-backdrop {
+		display: none;
+	}
+
+	.primary-menu > li > a[aria-current="page"]::after,
+	.primary-menu > li > .submenu-toggle[data-current="true"]::after {
+		transform: scaleX(1);
+	}
+
+	.sub-menu a[aria-current="page"] {
+		background: color-mix(in srgb, var(--qct-color-accent) 10%, transparent);
+		border-color: color-mix(in srgb, var(--qct-color-accent) 54%, var(--qct-color-line));
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.site-header__inner,
+	.site-title::before,
+	.site-menu-backdrop {
+		transition: none;
+	}
+}

@@ -117,6 +117,7 @@
     var pointerY = 0;
     var scrollY = 0;
     var frame = null;
+    var heroMotionVisible = true;
 
     var render = function () {
       visual.style.setProperty('--hero-visual-x', (pointerX * 10).toFixed(2) + 'px');
@@ -146,10 +147,18 @@
     });
 
     window.addEventListener('scroll', function () {
+      if (!heroMotionVisible) return;
       var rect = hero.getBoundingClientRect();
       scrollY = clamp(-rect.top, 0, hero.offsetHeight);
       requestRender();
     }, { passive: true });
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        heroMotionVisible = entries[0].isIntersecting;
+        if (heroMotionVisible) requestRender();
+      }, { rootMargin: '18% 0px', threshold: 0 }).observe(hero);
+    }
   };
 
   var initKineticStory = function () {
@@ -161,6 +170,7 @@
     var stage = story.querySelector('[data-kinetic-stage]');
     var cursor = stage ? stage.querySelector('.qct-kinetic__cursor') : null;
     var activeIndex = -1;
+    var storyVisible = !('IntersectionObserver' in window);
 
     if (!scenes.length || scenes.length !== controls.length) return;
 
@@ -209,11 +219,19 @@
     };
 
     var requestSceneUpdate = function () {
+      if (!storyVisible) return;
       if (!sceneFrame) sceneFrame = window.requestAnimationFrame(updateActiveScene);
     };
 
     window.addEventListener('scroll', requestSceneUpdate, { passive: true });
     window.addEventListener('resize', requestSceneUpdate, { passive: true });
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        storyVisible = entries[0].isIntersecting;
+        if (storyVisible) requestSceneUpdate();
+      }, { rootMargin: '32% 0px', threshold: 0 }).observe(story);
+    }
 
     if (stage && cursor && !reduceMotion) {
       stage.addEventListener('pointermove', function (event) {
@@ -414,10 +432,18 @@
   initSignalRoom();
   initPageProgress();
   initHeroMotion();
-  initKineticStory();
-  initMotionReveals();
-  initPointerDepth();
-  initMagneticButtons();
-  initWorkShowcase();
-  initProcessTimeline();
+  var initBelowFoldMotion = function () {
+    initKineticStory();
+    initMotionReveals();
+    initPointerDepth();
+    initMagneticButtons();
+    initWorkShowcase();
+    initProcessTimeline();
+  };
+
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(initBelowFoldMotion, { timeout: 650 });
+  } else {
+    window.setTimeout(initBelowFoldMotion, 32);
+  }
 })();

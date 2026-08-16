@@ -262,12 +262,12 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	     .qct-service-img) don't match any markup in this theme (real class is
 	     .qct-service-card) — it was dead weight in the original WP enqueue too. -->
 	<link rel="stylesheet" href="/styles/base.css?v=20260718-3" />
-	<link rel="stylesheet" href="/styles/components.css?v=20260718-3" />
+	<link rel="stylesheet" href="/styles/components.css?v=20260817-2" />
 	{routeGroup === 'home' ? (
 		<>
 			<link rel="stylesheet" href="/styles/home.css?v=20260718-3" />
 			<link rel="stylesheet" href="/styles/animations.css?v=20260718-3" />
-			<link rel="stylesheet" href="/styles/motion-experience.css?v=20260817-1" />
+			<link rel="stylesheet" href="/styles/motion-experience.css?v=20260817-2" />
 		</>
 	) : routeGroup === 'legal' ? (
 		<link rel="stylesheet" href="/styles/legal.css?v=20260722-1" />
@@ -293,7 +293,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	<WhatsAppButton lang={lang} />
 
 	<!-- Ported as-is from the WordPress theme's assets/js -->
-	<script src="/scripts/main.js?v=20260718-3" is:inline></script>
-	{isHome && <script src="/scripts/animations.js?v=20260718-3" is:inline></script>}
+	<script src="/scripts/main.js?v=20260817-2" is:inline></script>
+	{isHome && <script src="/scripts/animations.js?v=20260817-2" is:inline></script>}
 </body>
 </html>
