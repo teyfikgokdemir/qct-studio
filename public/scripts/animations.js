@@ -232,18 +232,33 @@
     var selectors = [
       '[data-qct-reveal]',
       '.qct-problem .qct-section__header',
+      '.qct-problem-card',
       '.qct-services .qct-section__header',
       '.qct-process .qct-section__header',
       '.qct-work .qct-section__header',
       '.qct-final-cta__panel',
-      '.qct-contact__grid'
+      '.qct-contact__grid',
+      '.qct-contact-review article'
     ];
-    var items = Array.prototype.slice.call(document.querySelectorAll(selectors.join(',')));
+    var items = Array.from(new Set(Array.prototype.slice.call(document.querySelectorAll(selectors.join(',')))));
     if (!items.length) return;
 
-    items.forEach(function (item, index) {
+    var revealGroups = [
+      '.qct-problem__grid .qct-problem-card',
+      '.qct-services__grid .qct-service-card',
+      '.qct-process__timeline .qct-process-card',
+      '.qct-contact-review__list article'
+    ];
+
+    items.forEach(function (item) {
       item.setAttribute('data-qct-reveal', '');
-      item.style.setProperty('--reveal-order', index % 4);
+      item.style.setProperty('--reveal-order', 0);
+    });
+
+    revealGroups.forEach(function (selector) {
+      document.querySelectorAll(selector).forEach(function (item, index) {
+        item.style.setProperty('--reveal-order', index);
+      });
     });
 
     if (reduceMotion || !('IntersectionObserver' in window)) {
@@ -261,6 +276,46 @@
     }, { rootMargin: '0px 0px -9% 0px', threshold: 0.1 });
 
     items.forEach(function (item) { observer.observe(item); });
+  };
+
+  var initPointerDepth = function () {
+    if (reduceMotion || !window.matchMedia('(pointer: fine)').matches) return;
+
+    var cta = document.querySelector('.qct-final-cta__panel');
+    if (cta) {
+      cta.addEventListener('pointermove', function (event) {
+        var rect = cta.getBoundingClientRect();
+        var x = clamp((event.clientX - rect.left) / rect.width, 0, 1);
+        var y = clamp((event.clientY - rect.top) / rect.height, 0, 1);
+        cta.style.setProperty('--spot-x', (x * 100).toFixed(2) + '%');
+        cta.style.setProperty('--spot-y', (y * 100).toFixed(2) + '%');
+        cta.style.setProperty('--depth-x', ((x - 0.5) * 18).toFixed(2) + 'px');
+        cta.style.setProperty('--depth-y', ((y - 0.5) * 14).toFixed(2) + 'px');
+        cta.classList.add('is-pointer-active');
+      }, { passive: true });
+      cta.addEventListener('pointerleave', function () {
+        cta.style.setProperty('--depth-x', '0px');
+        cta.style.setProperty('--depth-y', '0px');
+        cta.classList.remove('is-pointer-active');
+      });
+    }
+
+    var showcase = document.querySelector('[data-work-showcase]');
+    if (showcase) {
+      showcase.addEventListener('pointermove', function (event) {
+        var preview = showcase.querySelector('.qct-work-card.is-active .qct-work-card__preview');
+        if (!preview) return;
+        var rect = preview.getBoundingClientRect();
+        var x = clamp((event.clientX - rect.left) / rect.width, 0, 1);
+        var y = clamp((event.clientY - rect.top) / rect.height, 0, 1);
+        showcase.style.setProperty('--work-depth-x', ((x - 0.5) * 9).toFixed(2) + 'deg');
+        showcase.style.setProperty('--work-depth-y', ((0.5 - y) * 7).toFixed(2) + 'deg');
+      }, { passive: true });
+      showcase.addEventListener('pointerleave', function () {
+        showcase.style.setProperty('--work-depth-x', '0deg');
+        showcase.style.setProperty('--work-depth-y', '0deg');
+      });
+    }
   };
 
   var initMagneticButtons = function () {
@@ -361,6 +416,7 @@
   initHeroMotion();
   initKineticStory();
   initMotionReveals();
+  initPointerDepth();
   initMagneticButtons();
   initWorkShowcase();
   initProcessTimeline();
