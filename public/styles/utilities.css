@@ -152,11 +152,6 @@
 	line-height: 1.45;
 }
 
-/* Preference button should not remain after a decision. */
-.qct-cookie-settings {
-	display: none !important;
-}
-
 @media (max-width: 760px) {
 	.qct-founder-profile .qct-founder-profile__facts {
 		grid-template-columns: 1fr;

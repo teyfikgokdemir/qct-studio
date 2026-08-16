@@ -987,9 +987,9 @@ main :where([id]) {
 }
 
 .site-language-switcher a[aria-current="true"] {
-			color: #a63f47;
-			font-weight: 700;
-		}
+	color: #a63f47;
+	font-weight: 700;
+}
 
 /* Navigation state and motion refinement. */
 .site-header__inner {
@@ -1070,4 +1070,101 @@ body.has-open-menu .site-header {
 	.site-menu-backdrop {
 		transition: none;
 	}
+}
+
+/* Progressive footer motion: content stays visible when scripting is unavailable. */
+@media (scripting: enabled) {
+	.site-footer [data-footer-reveal] {
+		opacity: 0;
+		transform: translateY(22px);
+		transition: opacity 620ms cubic-bezier(.16, 1, .3, 1), transform 620ms cubic-bezier(.16, 1, .3, 1);
+	}
+
+	.site-footer [data-footer-reveal].is-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.site-footer__columns [data-footer-reveal]:nth-child(2) {
+		transition-delay: 70ms;
+	}
+
+	.site-footer__columns [data-footer-reveal]:nth-child(3) {
+		transition-delay: 140ms;
+	}
+
+	.site-footer__columns [data-footer-reveal]:nth-child(4) {
+		transition-delay: 210ms;
+	}
+}
+
+.site-footer__nav a,
+.site-footer__company a,
+.site-footer__markets a {
+	position: relative;
+}
+
+.site-footer__nav a::after,
+.site-footer__company a::after,
+.site-footer__markets a::after {
+	background: color-mix(in srgb, var(--qct-color-accent) 72%, transparent);
+	bottom: 1px;
+	content: "";
+	height: 1px;
+	left: 0;
+	position: absolute;
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform 220ms ease;
+	width: 100%;
+}
+
+.site-footer__nav a:hover::after,
+.site-footer__nav a:focus-visible::after,
+.site-footer__company a:hover::after,
+.site-footer__company a:focus-visible::after,
+.site-footer__markets a:hover::after,
+.site-footer__markets a:focus-visible::after {
+	transform: scaleX(1);
+}
+
+@view-transition {
+	navigation: auto;
+}
+
+::view-transition-old(root) {
+	animation: qct-page-out 170ms ease both;
+}
+
+::view-transition-new(root) {
+	animation: qct-page-in 360ms cubic-bezier(.16, 1, .3, 1) both;
+}
+
+@keyframes qct-page-out {
+	to { opacity: .18; transform: translateY(-5px); }
+}
+
+@keyframes qct-page-in {
+	from { opacity: 0; transform: translateY(9px); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.site-footer [data-footer-reveal] {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+
+	.site-footer__nav a::after,
+	.site-footer__company a::after,
+	.site-footer__markets a::after {
+		transition: none;
+	}
+
+	::view-transition-old(root),
+	::view-transition-new(root) {
+		animation: none;
+	}
+
 }

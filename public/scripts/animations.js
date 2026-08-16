@@ -249,6 +249,7 @@
   var initMotionReveals = function () {
     var selectors = [
       '[data-qct-reveal]',
+      '[data-footer-reveal]',
       '.qct-problem .qct-section__header',
       '.qct-problem-card',
       '.qct-services .qct-section__header',

@@ -88,9 +88,34 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.message)}
     position: fixed;
     right: 1rem;
     text-decoration: none;
-    transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+    transition: border-color 180ms ease, box-shadow 180ms ease, opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
     width: 52px !important;
     z-index: 9000;
+  }
+
+  :global(body.has-cookie-banner) .qct-whatsapp {
+    bottom: calc(var(--qct-cookie-height, 100px) + 2rem);
+  }
+
+  :global(html[lang="mk"] body.has-cookie-banner) .qct-whatsapp {
+    bottom: calc(var(--qct-cookie-height, 121px) + 2rem);
+  }
+
+  @media (max-width: 760px) {
+    :global(body.has-cookie-banner) .qct-whatsapp {
+      bottom: calc(var(--qct-cookie-height, 179px) + 2rem);
+    }
+
+    :global(html[lang="mk"] body.has-cookie-banner) .qct-whatsapp {
+      bottom: calc(var(--qct-cookie-height, 200px) + 2rem);
+    }
+  }
+
+  :global(body.has-open-menu) .qct-whatsapp {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(8px) scale(0.94);
+    visibility: hidden;
   }
 
   .qct-whatsapp::after {

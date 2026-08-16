@@ -8,7 +8,7 @@
 	var submenuToggles = document.querySelectorAll('[data-submenu-toggle]');
 	var customSelects = document.querySelectorAll('[data-custom-select]');
 	var contactForms = document.querySelectorAll('.qct-contact-form');
-	var revealItems = document.querySelectorAll('[data-qct-reveal]');
+	var revealItems = document.querySelectorAll('[data-qct-reveal], [data-footer-reveal]');
 	var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	var desktopNavigation = window.matchMedia('(min-width: 1040px)');
 	var submenuCloseDelay = 225;
