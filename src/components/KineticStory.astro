@@ -82,7 +82,7 @@ const scenes = [
             <article
               class:list={['qct-kinetic-scene', `qct-kinetic-scene--${scene.id}`, { 'is-active': index === 0 }]}
               data-kinetic-scene={index}
-              aria-hidden={index === 0 ? 'false' : 'true'}
+              aria-hidden="false"
             >
               <div class="qct-kinetic-scene__copy">
                 <span class="qct-kinetic-scene__index">{scene.number} / 03</span>

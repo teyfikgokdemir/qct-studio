@@ -517,20 +517,19 @@ body::before {
   letter-spacing: .16em;
 }
 
-/* Scroll-driven service story */
+/* Scroll-revealed service story: scenes remain in the document flow. */
 .qct-kinetic {
   background: var(--motion-ink);
   color: #fff;
-  min-height: 360svh;
+  min-height: auto;
   position: relative;
 }
 
 .qct-kinetic__sticky {
-  min-height: 100svh;
+  min-height: auto;
   overflow: hidden;
-  padding: calc(var(--qct-header-height) + 28px) 0 28px;
-  position: sticky;
-  top: 0;
+  padding: clamp(88px, 11vw, 150px) 0;
+  position: relative;
 }
 
 .qct-kinetic__sticky::before {
@@ -594,12 +593,15 @@ body::before {
   display: grid;
   gap: 16px;
   grid-template-columns: minmax(155px, .26fr) minmax(0, 1.74fr);
-  min-height: min(57vh, 600px);
+  min-height: auto;
 }
 
 .qct-kinetic__nav {
+  align-self: start;
   display: grid;
   gap: 6px;
+  position: relative;
+  top: auto;
 }
 
 .qct-kinetic__nav-item {
@@ -642,7 +644,7 @@ body::before {
   border: 1px solid rgba(255,255,255,.13);
   border-radius: 30px;
   box-shadow: 0 40px 100px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.08);
-  min-height: 100%;
+  min-height: auto;
   overflow: hidden;
   position: relative;
 }
@@ -677,14 +679,18 @@ body::before {
   display: grid;
   gap: clamp(26px, 4vw, 64px);
   grid-template-columns: minmax(220px, .68fr) minmax(360px, 1.32fr);
-  inset: 0;
-  opacity: 0;
+  min-height: clamp(560px, 72vh, 720px);
+  opacity: .42;
   padding: clamp(26px, 4vw, 58px);
-  pointer-events: none;
-  position: absolute;
-  transform: translateY(42px) scale(.985);
+  pointer-events: auto;
+  position: relative;
+  transform: translateY(26px) scale(.99);
   transition: opacity 550ms var(--motion-ease-out), transform 700ms var(--motion-ease-out);
-  visibility: hidden;
+  visibility: visible;
+}
+
+.qct-kinetic-scene + .qct-kinetic-scene {
+  border-top: 1px solid rgba(255,255,255,.1);
 }
 
 .qct-kinetic-scene.is-active {
@@ -796,14 +802,8 @@ body::before {
 .qct-kinetic-float--status span { color: rgba(255,255,255,.7); font-size: .58rem; font-weight: 800; }
 
 .qct-kinetic__progress {
-  background: rgba(255,255,255,.1);
-  bottom: 0;
-  height: 3px;
-  left: 0;
-  position: absolute;
-  right: 0;
+  display: none;
 }
-.qct-kinetic__progress i { background: var(--motion-red); display: block; height: 100%; transform: scaleX(var(--kinetic-progress, 0)); transform-origin: 0 50%; width: 100%; }
 
 /* Stronger story rhythm across the existing homepage sections. */
 .qct-problem,
@@ -914,11 +914,11 @@ body::before {
   .qct-kinetic__header { grid-template-columns: 1fr; }
   .qct-kinetic__header .qct-section__eyebrow { grid-column: auto; }
   .qct-kinetic__experience { grid-template-columns: 1fr; min-height: auto; }
-  .qct-kinetic__nav { grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .qct-kinetic__nav { grid-template-columns: repeat(3, minmax(0,1fr)); position: relative; top: auto; }
   .qct-kinetic__nav-item { border-bottom: 1px solid rgba(255,255,255,.12); border-left: 0; min-height: 82px; padding: 12px; }
   .qct-kinetic__nav-item::before { inset: auto 0 -1px 0; height: 2px; transform: scaleX(0); transform-origin: 0 50%; width: auto; }
   .qct-kinetic__nav-item.is-active::before { transform: scaleX(1); }
-  .qct-kinetic__stage { min-height: 590px; }
+  .qct-kinetic__stage { min-height: auto; }
   .qct-kinetic-scene { grid-template-columns: minmax(0,.75fr) minmax(330px,1.25fr); }
 }
 
@@ -938,8 +938,8 @@ body::before {
   .qct-hero-chip--one { bottom: 18px; left: 8px; }
   .qct-hero-chip--two { right: 6px; top: 118px; }
   .qct-kinetic__nav-item strong { font-size: .68rem; }
-  .qct-kinetic__stage { min-height: 690px; }
-  .qct-kinetic-scene { align-content: start; grid-template-columns: 1fr; padding: 26px 20px; }
+  .qct-kinetic__stage { min-height: auto; }
+  .qct-kinetic-scene { align-content: start; grid-template-columns: 1fr; min-height: 650px; padding: 26px 20px; }
   .qct-kinetic-scene__index { margin-bottom: 22px; }
   .qct-kinetic-scene__canvas { min-height: 310px; }
   .qct-kinetic-window { left: 1%; width: 98%; }
@@ -967,7 +967,7 @@ body::before {
   .qct-kinetic__header .qct-section__title { font-size: 2.25rem; }
   .qct-kinetic__nav-item { min-height: 72px; padding: 9px; }
   .qct-kinetic__nav-item strong { font-size: .6rem; }
-  .qct-kinetic__stage { border-radius: 22px; min-height: 650px; }
+  .qct-kinetic__stage { border-radius: 22px; min-height: auto; }
   .qct-kinetic-scene__copy h3 { font-size: 2.25rem; }
   .qct-kinetic-scene__canvas { min-height: 270px; }
 }
@@ -978,8 +978,7 @@ body::before {
   .qct-kinetic { min-height: auto; }
   .qct-kinetic__sticky { min-height: auto; position: relative; }
   .qct-kinetic__stage { min-height: auto; }
-  .qct-kinetic-scene { display: none; inset: auto; opacity: 1; position: relative; transform: none; visibility: visible; }
-  .qct-kinetic-scene.is-active { display: grid; }
+  .qct-kinetic-scene { opacity: 1; position: relative; transform: none; visibility: visible; }
   [data-qct-reveal] { opacity: 1; transform: none; }
   .qct-prompt__text::after,
   .qct-hero__orbit,

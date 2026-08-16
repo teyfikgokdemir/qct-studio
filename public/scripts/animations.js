@@ -161,8 +161,6 @@
     var stage = story.querySelector('[data-kinetic-stage]');
     var cursor = stage ? stage.querySelector('.qct-kinetic__cursor') : null;
     var activeIndex = -1;
-    var progress = 0;
-    var frame = null;
 
     if (!scenes.length || scenes.length !== controls.length) return;
 
@@ -173,7 +171,7 @@
       scenes.forEach(function (scene, sceneIndex) {
         var active = sceneIndex === index;
         scene.classList.toggle('is-active', active);
-        scene.setAttribute('aria-hidden', active ? 'false' : 'true');
+        scene.setAttribute('aria-hidden', 'false');
       });
       controls.forEach(function (control, controlIndex) {
         var active = controlIndex === index;
@@ -182,34 +180,40 @@
       });
     };
 
-    var render = function () {
-      if (desktopMotion.matches && !reduceMotion) {
-        var rect = story.getBoundingClientRect();
-        var range = Math.max(story.offsetHeight - window.innerHeight, 1);
-        progress = clamp(-rect.top / range, 0, 1);
-        var index = Math.min(Math.floor(progress * scenes.length), scenes.length - 1);
-        story.style.setProperty('--kinetic-progress', progress.toFixed(4));
-        activate(index);
-      }
-      frame = null;
-    };
-
-    var requestRender = function () {
-      if (!frame) frame = window.requestAnimationFrame(render);
-    };
-
     controls.forEach(function (control, index) {
       control.addEventListener('click', function () {
-        if (desktopMotion.matches && !reduceMotion) {
-          var targetProgress = (index + 0.12) / scenes.length;
-          var storyTop = story.getBoundingClientRect().top + window.scrollY;
-          var range = Math.max(story.offsetHeight - window.innerHeight, 1);
-          window.scrollTo({ top: storyTop + range * targetProgress, behavior: 'smooth' });
-        } else {
-          activate(index);
-        }
+        activate(index);
+        scenes[index].scrollIntoView({
+          behavior: reduceMotion ? 'auto' : 'smooth',
+          block: 'center'
+        });
       });
     });
+
+    var sceneFrame = null;
+    var updateActiveScene = function () {
+      var viewportTarget = window.innerHeight * 0.52;
+      var nearestIndex = 0;
+      var nearestDistance = Infinity;
+      scenes.forEach(function (scene, index) {
+        var rect = scene.getBoundingClientRect();
+        var sceneCenter = rect.top + rect.height / 2;
+        var distance = Math.abs(sceneCenter - viewportTarget);
+        if (distance < nearestDistance) {
+          nearestDistance = distance;
+          nearestIndex = index;
+        }
+      });
+      activate(nearestIndex);
+      sceneFrame = null;
+    };
+
+    var requestSceneUpdate = function () {
+      if (!sceneFrame) sceneFrame = window.requestAnimationFrame(updateActiveScene);
+    };
+
+    window.addEventListener('scroll', requestSceneUpdate, { passive: true });
+    window.addEventListener('resize', requestSceneUpdate, { passive: true });
 
     if (stage && cursor && !reduceMotion) {
       stage.addEventListener('pointermove', function (event) {
@@ -220,11 +224,8 @@
       }, { passive: true });
     }
 
-    window.addEventListener('scroll', requestRender, { passive: true });
-    window.addEventListener('resize', requestRender, { passive: true });
-    desktopMotion.addEventListener('change', requestRender);
     activate(0);
-    requestRender();
+    requestSceneUpdate();
   };
 
   var initMotionReveals = function () {
