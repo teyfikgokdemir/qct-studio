@@ -101,7 +101,19 @@ const policyUrl = lang === 'en' ? '/cookie-policy/' : `/${lang}/cookie-policy/`;
       document.head.appendChild(script);
     };
 
+    const setBannerHeight = (height) => {
+      if (!height || !Number.isFinite(height)) return;
+      document.documentElement.style.setProperty('--qct-cookie-height', `${Math.ceil(height)}px`);
+    };
+
+    const updateBannerHeight = () => {
+      if (!banner || banner.hidden) return;
+      setBannerHeight(banner.offsetHeight);
+    };
+
     const closeBanner = () => {
+      document.body.classList.remove('has-cookie-banner');
+      document.documentElement.style.removeProperty('--qct-cookie-height');
       if (banner) banner.hidden = true;
       if (settings) settings.hidden = false;
     };
@@ -109,9 +121,26 @@ const policyUrl = lang === 'en' ? '/cookie-policy/' : `/${lang}/cookie-policy/`;
     const openBanner = () => {
       if (banner) banner.hidden = false;
       if (settings) settings.hidden = true;
+      document.body.classList.add('has-cookie-banner');
     };
 
-    const savedConsent = localStorage.getItem(storageKey);
+    const getSavedConsent = () => {
+      try {
+        return localStorage.getItem(storageKey);
+      } catch {
+        return null;
+      }
+    };
+
+    const saveConsent = (value) => {
+      try {
+        localStorage.setItem(storageKey, value);
+      } catch {
+        // Consent controls remain usable when storage is unavailable.
+      }
+    };
+
+    const savedConsent = getSavedConsent();
 
     if (savedConsent === 'granted') {
       loadAnalytics();
@@ -123,17 +152,29 @@ const policyUrl = lang === 'en' ? '/cookie-policy/' : `/${lang}/cookie-policy/`;
     }
 
     accept?.addEventListener('click', () => {
-      localStorage.setItem(storageKey, 'granted');
+      saveConsent('granted');
       loadAnalytics();
       closeBanner();
     });
 
     reject?.addEventListener('click', () => {
-      localStorage.setItem(storageKey, 'denied');
+      saveConsent('denied');
       closeBanner();
     });
 
     settings?.addEventListener('click', openBanner);
+
+    if (banner && 'ResizeObserver' in window) {
+      new ResizeObserver((entries) => {
+        if (banner.hidden) return;
+        const size = entries[0]?.borderBoxSize;
+        const blockSize = Array.isArray(size) ? size[0]?.blockSize : size?.blockSize;
+        setBannerHeight(blockSize || banner.offsetHeight);
+      }).observe(banner);
+    } else {
+      window.requestAnimationFrame(updateBannerHeight);
+      window.addEventListener('resize', () => window.requestAnimationFrame(updateBannerHeight), { passive: true });
+    }
   })();
 </script>
 
@@ -160,6 +201,7 @@ const policyUrl = lang === 'en' ? '/cookie-policy/' : `/${lang}/cookie-policy/`;
       0 24px 70px rgba(23, 21, 26, 0.3),
       0 4px 14px rgba(23, 21, 26, 0.16);
     backdrop-filter: blur(16px);
+    contain: layout;
   }
 
   .qct-cookie-consent[hidden],
@@ -244,6 +286,13 @@ const policyUrl = lang === 'en' ? '/cookie-policy/' : `/${lang}/cookie-policy/`;
     border-color: rgba(255, 255, 255, 0.14);
     font-size: 0.7rem;
     backdrop-filter: blur(10px);
+  }
+
+  :global(body.has-open-menu) .qct-cookie-consent,
+  :global(body.has-open-menu) .qct-cookie-settings {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
   }
 
   .qct-cookie-consent button:focus-visible,

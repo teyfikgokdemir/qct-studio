@@ -16,7 +16,7 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 	</div>
 	<div class="site-footer__inner container">
 		<div class="site-footer__columns">
-			<div class="site-footer__group site-footer__brand">
+				<div class="site-footer__group site-footer__brand" data-footer-reveal>
 				<h2>{t('QCT Studio')}</h2>
 				<p>{t('Websites, e-commerce and digital systems for businesses across the Balkans.')}</p>
 
@@ -41,7 +41,7 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 				</div>
 			</div>
 
-			<nav class="site-footer__group site-footer__nav" aria-label={t('Services')}>
+				<nav class="site-footer__group site-footer__nav" aria-label={t('Services')} data-footer-reveal>
 				<h2>{t('Services')}</h2>
 				<a href={url('/website-design/')}>{t('Website Design')}</a>
 				<a href={url('/e-commerce/')}>{t('E-commerce')}</a>
@@ -51,7 +51,7 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 				<a href={url('/ai-automation/')}>{t('AI Automation')}</a>
 			</nav>
 
-			<nav class="site-footer__group site-footer__company" aria-label={t('Company')}>
+				<nav class="site-footer__group site-footer__company" aria-label={t('Company')} data-footer-reveal>
 				<h2>{t('Company')}</h2>
 				<a href={url('/about/')}>{t('About')}</a>
 				<a href={url('/work/')}>{t('Work')}</a>
@@ -62,7 +62,7 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 				<a href={url('/cookie-policy/')}>{t('Cookie Policy')}</a>
 			</nav>
 
-			<div class="site-footer__group site-footer__markets">
+				<div class="site-footer__group site-footer__markets" data-footer-reveal>
 				<h2>{t('Contact')}</h2>
 				<p><span aria-hidden="true"></span><a href="mailto:info@qctstudio.com">{t('info@qctstudio.com')}</a></p>
 				<p><span aria-hidden="true"></span><a href="mailto:support@qctstudio.com">support@qctstudio.com</a></p>
@@ -70,7 +70,7 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 			</div>
 		</div>
 
-		<div class="site-footer__bottom">
+			<div class="site-footer__bottom">
 			<div class="site-footer__copyright">
 				<p set:html={t('&copy; 2026 QCT Studio')} />
 			</div>
