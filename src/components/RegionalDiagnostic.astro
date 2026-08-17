@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLocalizedUrl, languages, languageNames } from '../i18n';
+import { diagnosticCopy } from '../data/diagnosticCopy';
+import { marketUi, type MarketLang } from '../data/marketHubs';
+
+interface Props { lang: MarketLang }
+const { lang } = Astro.props;
+const copy = diagnosticCopy[lang];
+const ui = marketUi[lang] as { contact: string; home: string; footerNote: string; footerMarkets: string; footerServices: string; footerCompany: string };
+const url = (path: string) => getLocalizedUrl(lang, path);
+const path = '/regional-growth-diagnostic/';
+
+const faqSchema = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  '@id': `https://qctstudio.com${url(path)}#faq`,
+  inLanguage: lang,
+  mainEntity: copy.faqs.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })),
+};
+const serviceSchema = {
+  '@context': 'https://schema.org', '@type': 'Service',
+  '@id': `https://qctstudio.com${url(path)}#service`,
+  name: copy.eyebrow, description: copy.description,
+  serviceType: 'Digital growth system diagnostic',
+  provider: { '@id': 'https://qctstudio.com/#organization' },
+  areaServed: ['Albania', 'North Macedonia', 'Kosovo', 'Serbia'].map((name) => ({ '@type': 'Country', name })),
+  availableLanguage: ['English', 'Albanian', 'Macedonian', 'Serbian'],
+};
+---
+<BaseLayout title={copy.title} description={copy.description} lang={lang} pageType="WebPage" breadcrumbLabel={copy.eyebrow} v2Diagnostic={true}>
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <header slot="header" class="v2-header" data-v2-header>
+    <a class="v2-brand" href={url('/')} aria-label="QCT Studio"><i></i>QCT <b>Studio</b></a>
+    <nav id="v2-navigation" data-v2-nav aria-label="Primary navigation"><a href="#method">{copy.nav[0]}</a><a href="#outputs">{copy.nav[1]}</a><a href="#fit">{copy.nav[2]}</a></nav>
+    <div class="v2-header-actions">
+      <div class="v2-languages" aria-label="Language selector">{Object.entries(languages).map(([code, label]) => <a class:list={{ 'is-current': code === lang }} href={getLocalizedUrl(code, path)} aria-current={code === lang ? 'page' : undefined} hreflang={code} lang={code} aria-label={languageNames[code as keyof typeof languageNames]}>{label}</a>)}</div>
+      <a class="v2-header-cta" href="#diagnostic-form">{copy.start} <span>→</span></a>
+      <button class="v2-menu-button" type="button" data-v2-menu aria-expanded="false" aria-controls="v2-navigation"><span></span><span></span><span class="screen-reader-text">Open menu</span></button>
+    </div>
+  </header>
+
+  <div id="top" class="diagnostic-page v2-shell" data-v2-home>
+    <div class="v2-scroll-progress" data-v2-progress></div>
+    <section class="dg-hero">
+      <div class="dg-grid" aria-hidden="true"></div>
+      <div class="dg-radar" aria-hidden="true"><i></i><i></i><i></i><i></i><b>QCT</b><span>ACQUIRE</span><span>CONVERT</span><span>OPERATE</span></div>
+      <div class="dg-hero-content">
+        <div class="dg-breadcrumb"><a href={url('/')}>{ui.home}</a><span>/</span><span>{copy.eyebrow}</span></div>
+        <p class="dg-eyebrow"><i></i>{copy.eyebrow}</p>
+        <h1>{copy.headline}<em>{copy.accent}</em></h1>
+        <div class="dg-hero-bottom"><p>{copy.intro}</p><a class="v2-button primary" href="#diagnostic-form">{copy.start}<span>↓</span></a></div>
+        <div class="dg-proof">{copy.proof.map((item) => <span><i>✓</i>{item}</span>)}</div>
+      </div>
+    </section>
+
+    <section id="diagnostic-form" class="dg-form-section">
+      <div class="dg-form-intro" data-reveal><span>01 / INTAKE</span><h2>{copy.formTitle}</h2><p>{copy.formIntro}</p><div class="dg-form-progress" data-diagnostic-progress><i></i><i></i><i></i></div></div>
+      <form class="dg-form" action="/api/diagnostic" method="post" data-diagnostic-form novalidate>
+        <input type="hidden" name="locale" value={lang} />
+        <input type="hidden" name="source_path" value={url(path)} />
+        <input type="hidden" name="referrer" value="" data-diagnostic-referrer />
+        <input type="hidden" name="utm_source" value="" data-diagnostic-utm="utm_source" />
+        <input type="hidden" name="utm_medium" value="" data-diagnostic-utm="utm_medium" />
+        <input type="hidden" name="utm_campaign" value="" data-diagnostic-utm="utm_campaign" />
+        <input type="hidden" name="started_at" value="" data-diagnostic-started />
+        <div class="dg-honeypot" aria-hidden="true"><label>Leave empty<input name="website_confirm" tabindex="-1" autocomplete="off" /></label></div>
+
+        <ol class="dg-step-tabs" aria-label="Diagnostic progress">{copy.steps.map((step, index) => <li class:list={{ active: index === 0 }} data-diagnostic-tab={index}><span>0{index + 1}</span><b>{step}</b></li>)}</ol>
+
+        <fieldset class="dg-panel active" data-diagnostic-panel="0">
+          <legend>{copy.steps[0]}</legend>
+          <div class="dg-field-grid">
+            <label><span>{copy.labels.firstName} *</span><input type="text" name="first_name" required autocomplete="name" maxlength="100" placeholder={copy.placeholders.firstName} /></label>
+            <label><span>{copy.labels.workEmail} *</span><input type="email" name="work_email" required autocomplete="email" maxlength="180" placeholder={copy.placeholders.workEmail} /></label>
+            <label><span>{copy.labels.phone}</span><input type="tel" name="phone" autocomplete="tel" maxlength="40" placeholder={copy.placeholders.phone} /></label>
+            <label><span>{copy.labels.company} *</span><input type="text" name="company" required autocomplete="organization" maxlength="160" placeholder={copy.placeholders.company} /></label>
+            <label><span>{copy.labels.website}</span><input type="url" name="website" autocomplete="url" maxlength="300" placeholder={copy.placeholders.website} /></label>
+            <label><span>{copy.labels.country} *</span><select name="country" required><option value="">—</option>{copy.countries.map(([value, label]) => <option value={value}>{label}</option>)}</select></label>
+            <label class="wide"><span>{copy.labels.sector} *</span><select name="sector" required><option value="">—</option>{copy.sectors.map(([value, label]) => <option value={value}>{label}</option>)}</select></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="dg-panel" data-diagnostic-panel="1" hidden>
+          <legend>{copy.steps[1]}</legend>
+          <div class="dg-choice-group"><span class="dg-group-label">{copy.labels.stage} *</span><div class="dg-stage-grid">{copy.stages.map(([value, title, text]) => <label><input type="radio" name="digital_stage" value={value} required /><span><b>{title}</b><small>{text}</small></span></label>)}</div></div>
+          <div class="dg-choice-group" data-required-checkboxes><span class="dg-group-label">{copy.labels.leaks} *</span><div class="dg-check-grid">{copy.leaks.map(([value, label]) => <label><input type="checkbox" name="leaks" value={value} /><span>{label}</span></label>)}</div></div>
+        </fieldset>
+
+        <fieldset class="dg-panel" data-diagnostic-panel="2" hidden>
+          <legend>{copy.steps[2]}</legend>
+          <div class="dg-choice-group"><span class="dg-group-label">{copy.labels.goal} *</span><div class="dg-check-grid dg-goals">{copy.goals.map(([value, label]) => <label><input type="radio" name="primary_goal" value={value} required /><span>{label}</span></label>)}</div></div>
+          <div class="dg-field-grid dg-context-grid"><label><span>{copy.labels.volume}</span><input type="text" name="monthly_qualified_volume" maxlength="80" placeholder={copy.placeholders.volume} /></label><label class="wide"><span>{copy.labels.context} *</span><textarea name="context" required minlength="30" maxlength="2000" rows="6" placeholder={copy.placeholders.context}></textarea></label></div>
+          <label class="dg-consent"><input type="checkbox" name="consent" value="yes" required /><span>{copy.consent}</span></label>
+          <p class="dg-privacy">{copy.privacy} <a href={url('/privacy-policy/')}>{copy.privacyLink}</a></p>
+        </fieldset>
+
+        <div class="dg-form-message" data-diagnostic-message aria-live="polite"></div>
+        <div class="dg-form-actions"><button type="button" class="dg-back" data-diagnostic-back hidden>← {copy.back}</button><button type="button" class="dg-next" data-diagnostic-next>{copy.next} →</button><button type="submit" class="dg-submit" data-diagnostic-submit hidden data-label={copy.submit} data-loading={copy.submitting}>{copy.submit} →</button></div>
+        <div class="dg-result" data-diagnostic-success hidden tabindex="-1"><i>✓</i><h3>{copy.successTitle}</h3><p>{copy.successCopy}</p></div>
+        <script type="application/json" data-diagnostic-copy set:html={JSON.stringify({ required: copy.required, successTitle: copy.successTitle, successCopy: copy.successCopy, errorTitle: copy.errorTitle, errorCopy: copy.errorCopy })}></script>
+      </form>
+    </section>
+
+    <section id="method" class="dg-section dg-method"><div class="dg-section-label" data-reveal><span>02</span><i></i><b>{copy.nav[0]}</b></div><div class="dg-method-grid"><div data-reveal><h2>{copy.methodologyTitle}</h2><p>{copy.methodologyCopy}</p></div><div id="outputs" class="dg-outputs">{copy.outputs.map(([number, text]) => <article data-reveal><span>{number}</span><b>{text}</b><i>↘</i></article>)}</div></div></section>
+
+    <section id="fit" class="dg-section dg-fit"><div class="dg-section-label" data-reveal><span>03</span><i></i><b>{copy.nav[2]}</b></div><div class="dg-fit-grid"><div data-reveal><h2>{copy.fitTitle}</h2><p>{copy.fitCopy}</p><ul>{copy.fit.map((item) => <li><i>✓</i>{item}</li>)}</ul></div><div data-reveal><h3>{copy.notFitTitle}</h3><ul>{copy.notFit.map((item) => <li><i>×</i>{item}</li>)}</ul></div></div></section>
+
+    <section class="dg-section dg-faq"><div class="dg-faq-intro" data-reveal><div class="dg-section-label"><span>04</span><i></i><b>FAQ</b></div><h2>{copy.faqTitle}</h2></div><div class="dg-faq-list">{copy.faqs.map(([question, answer], index) => <details data-reveal><summary><span>0{index + 1}</span><b>{question}</b><i>+</i></summary><p>{answer}</p></details>)}</div></section>
+  </div>
+
+  <footer slot="footer" class="v2-footer"><div class="footer-top"><a class="v2-brand" href={url('/')}><i></i>QCT <b>Studio</b></a><p>{ui.footerNote}</p><a href="#top">↑ TOP</a></div><div class="footer-grid"><div><b>{ui.footerMarkets}</b><a href={url('/markets/albania/')}>Albania</a><a href={url('/markets/north-macedonia/')}>North Macedonia</a><a href={url('/markets/kosovo/')}>Kosovo</a><a href={url('/markets/serbia/')}>Serbia</a></div><div><b>{ui.footerServices}</b><a href={url('/website-design/')}>Web</a><a href={url('/e-commerce/')}>Commerce</a><a href={url('/seo-performance/')}>SEO · GEO · AEO</a><a href={url('/ai-automation/')}>CRM · AI</a></div><div><b>{ui.footerCompany}</b><a href={url('/about/')}>QCT Studio</a><a href={url('/work/')}>Work</a><a href={url('/contact/')}>{ui.contact}</a></div><div><b>Diagnostic</b><a href="#method">{copy.nav[0]}</a><a href="#outputs">{copy.nav[1]}</a><a href="#fit">{copy.nav[2]}</a></div></div><div class="footer-bottom"><span>© {new Date().getFullYear()} QCT Studio</span><span>Evidence-led · Privacy-aware</span></div></footer>
+</BaseLayout>

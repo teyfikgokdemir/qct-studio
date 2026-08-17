@@ -1,0 +1,20 @@
+name = "qct-studio"
+compatibility_date = "2026-08-17"
+pages_build_output_dir = "dist"
+
+# Production deployment remains intentionally unconfigured until final approval.
+# Create the resources in the approved Cloudflare account, then replace the placeholders.
+
+[[d1_databases]]
+binding = "LEADS_DB"
+database_name = "qct-studio-leads"
+database_id = "NOT_VERIFIED"
+migrations_dir = "migrations"
+
+[[kv_namespaces]]
+binding = "DIAGNOSTIC_RATE_LIMIT"
+id = "NOT_VERIFIED"
+
+# Configure as encrypted secrets, never commit real values:
+# LEAD_WEBHOOK_URL
+# LEAD_WEBHOOK_SECRET

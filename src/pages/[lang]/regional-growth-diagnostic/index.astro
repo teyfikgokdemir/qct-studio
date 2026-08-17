@@ -1,0 +1,12 @@
+---
+import RegionalDiagnostic from '../../../components/RegionalDiagnostic.astro';
+import { marketLanguages, type MarketLang } from '../../../data/marketHubs';
+
+export function getStaticPaths() {
+  return marketLanguages.filter((lang) => lang !== 'en').map((lang) => ({ params: { lang }, props: { lang } }));
+}
+
+interface Props { lang: MarketLang }
+const { lang } = Astro.props;
+---
+<RegionalDiagnostic lang={lang} />
