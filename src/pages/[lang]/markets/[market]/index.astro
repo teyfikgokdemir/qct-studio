@@ -1,0 +1,21 @@
+---
+import MarketHub from '../../../../components/MarketHub.astro';
+import { marketHubs, marketLanguages, type MarketDefinition, type MarketLang } from '../../../../data/marketHubs';
+
+export function getStaticPaths() {
+  return marketLanguages
+    .filter((lang) => lang !== 'en')
+    .flatMap((lang) => marketHubs.map((market) => ({
+      params: { lang, market: market.slug },
+      props: { market, lang },
+    })));
+}
+
+interface Props {
+  market: MarketDefinition;
+  lang: MarketLang;
+}
+
+const { market, lang } = Astro.props;
+---
+<MarketHub market={market} lang={lang} />

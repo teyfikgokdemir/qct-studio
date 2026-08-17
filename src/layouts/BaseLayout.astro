@@ -30,6 +30,8 @@ export interface Props {
 	service?: { name: string; description: string };
 	/** Enables the market-led V2 homepage shell without affecting existing localized homepages. */
 	v2Home?: boolean;
+	/** Enables the V2 editorial shell for market hub pages. */
+	v2Market?: boolean;
 }
 
 const {
@@ -44,6 +46,7 @@ const {
 	breadcrumbLabel,
 	service,
 	v2Home = false,
+	v2Market = false,
 } = Astro.props;
 
 const t = useTranslations(lang);
@@ -274,8 +277,11 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	     .qct-service-card) — it was dead weight in the original WP enqueue too. -->
 	<link rel="stylesheet" href="/styles/base.css?v=20260718-3" />
 	<link rel="stylesheet" href="/styles/components.css?v=20260718-3" />
-		{routeGroup === 'home' && v2Home ? (
-			<link rel="stylesheet" href="/styles/v2-home.css?v=20260817-1" />
+		{v2Home || v2Market ? (
+			<>
+				<link rel="stylesheet" href="/styles/v2-home.css?v=20260817-1" />
+				{v2Market && <link rel="stylesheet" href="/styles/market-hub.css?v=20260817-1" />}
+			</>
 		) : routeGroup === 'home' ? (
 			<>
 			<link rel="stylesheet" href="/styles/home.css?v=20260718-3" />
@@ -288,7 +294,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	) : null}
 	<link rel="stylesheet" href="/styles/utilities.css?v=20260718-3" />
 </head>
-	<body class:list={{ 'v2-body': v2Home }}>
+	<body class:list={{ 'v2-body': v2Home || v2Market }}>
 	<div id="page" class="site">
 		<a class="skip-link screen-reader-text" href="#primary">{t('Skip to content')}</a>
 
@@ -307,6 +313,6 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	<!-- Ported as-is from the WordPress theme's assets/js -->
 	<script src="/scripts/main.js?v=20260718-3" is:inline></script>
 		{isHome && !v2Home && <script src="/scripts/animations.js?v=20260718-3" is:inline></script>}
-		{v2Home && <script src="/scripts/v2-home.js?v=20260817-1" is:inline></script>}
+		{(v2Home || v2Market) && <script src="/scripts/v2-home.js?v=20260817-1" is:inline></script>}
 </body>
 </html>

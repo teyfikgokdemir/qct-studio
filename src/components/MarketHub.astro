@@ -1,0 +1,255 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLocalizedUrl, languages, languageNames } from '../i18n';
+import { marketHubs, marketUi, type MarketDefinition, type MarketLang } from '../data/marketHubs';
+
+interface Props {
+  market: MarketDefinition;
+  lang: MarketLang;
+}
+
+const { market, lang } = Astro.props;
+const copy = market.copy[lang];
+const ui = marketUi[lang] as {
+  nav: string[];
+  contact: string;
+  home: string;
+  region: string;
+  systemLabels: string[];
+  footerMarkets: string;
+  footerCompany: string;
+  footerServices: string;
+  footerNote: string;
+};
+const url = (path: string) => getLocalizedUrl(lang, path);
+const marketPath = `/markets/${market.slug}/`;
+const countryName = market.slug === 'north-macedonia'
+  ? 'North Macedonia'
+  : market.slug.charAt(0).toUpperCase() + market.slug.slice(1);
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `https://qctstudio.com${url(marketPath)}#faq`,
+  inLanguage: lang,
+  mainEntity: copy.faqs.map(([name, text]) => ({
+    '@type': 'Question',
+    name,
+    acceptedAnswer: { '@type': 'Answer', text },
+  })),
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': `https://qctstudio.com${url(marketPath)}#service`,
+  name: copy.title.replace(' — QCT Studio', ''),
+  description: copy.description,
+  serviceType: 'Digital growth system strategy and implementation',
+  provider: { '@id': 'https://qctstudio.com/#organization' },
+  areaServed: { '@type': 'Country', name: countryName, identifier: market.countryCode },
+  availableLanguage: ['English', 'Albanian', 'Macedonian', 'Serbian'],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: copy.playbookTitle,
+    itemListElement: copy.sectors.map((sector, index) => ({
+      '@type': 'Offer',
+      position: index + 1,
+      itemOffered: {
+        '@type': 'Service',
+        name: sector.name,
+        description: sector.system,
+        provider: { '@id': 'https://qctstudio.com/#organization' },
+        areaServed: { '@type': 'Country', name: countryName },
+      },
+    })),
+  },
+};
+---
+<BaseLayout
+  title={copy.title}
+  description={copy.description}
+  image="/images/v2/hero-network.webp"
+  lang={lang}
+  pageType="CollectionPage"
+  breadcrumbLabel={countryName}
+  v2Market={true}
+>
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+
+  <header slot="header" class="v2-header" data-v2-header>
+    <a class="v2-brand" href={url('/')} aria-label="QCT Studio"><i></i>QCT <b>Studio</b></a>
+    <nav id="v2-navigation" data-v2-nav aria-label="Primary navigation">
+      <a href="#market-gap">{ui.nav[0]}</a>
+      <a href="#playbooks">{ui.nav[1]}</a>
+      <a href="#system">{ui.nav[2]}</a>
+      <a href="#evidence">{ui.nav[3]}</a>
+    </nav>
+    <div class="v2-header-actions">
+      <div class="v2-languages" aria-label="Language selector">
+        {Object.entries(languages).map(([code, label]) => (
+          <a
+            class:list={{ 'is-current': code === lang }}
+            href={getLocalizedUrl(code, marketPath)}
+            aria-current={code === lang ? 'page' : undefined}
+            hreflang={code}
+            lang={code}
+            aria-label={languageNames[code as keyof typeof languageNames]}
+          >{label}</a>
+        ))}
+      </div>
+      <a class="v2-header-cta" href={url('/contact/')}>{ui.contact} <span>→</span></a>
+      <button class="v2-menu-button" type="button" data-v2-menu aria-expanded="false" aria-controls="v2-navigation">
+        <span></span><span></span><span class="screen-reader-text">Open menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="top" class="market-hub v2-shell" data-v2-home style={`--market-accent:${market.accent}`}>
+    <div class="v2-scroll-progress" data-v2-progress></div>
+
+    <section class="mh-hero" aria-labelledby="market-title">
+      <div class="mh-hero-grid" aria-hidden="true"></div>
+      <div class="mh-hero-orbit" aria-hidden="true">
+        <span class="mh-orbit mh-orbit-one"></span>
+        <span class="mh-orbit mh-orbit-two"></span>
+        <span class="mh-orbit mh-orbit-three"></span>
+        <b>{market.code}</b>
+        <i class="mh-node mh-node-a"></i><i class="mh-node mh-node-b"></i><i class="mh-node mh-node-c"></i>
+      </div>
+      <div class="mh-hero-content">
+        <div class="mh-breadcrumb"><a href={url('/')}>{ui.home}</a><span>/</span><span>{market.localName}</span></div>
+        <p class="mh-eyebrow"><i></i>{copy.eyebrow}</p>
+        <h1 id="market-title">{copy.headline}<em>{copy.headlineAccent}</em></h1>
+        <div class="mh-hero-bottom">
+          <p>{copy.intro}</p>
+          <div class="mh-actions">
+            <a class="v2-button primary" href={url('/contact/')}>{copy.primaryCta}<span>→</span></a>
+            <a class="v2-button ghost" href="#market-gap">{copy.secondaryCta}<span>↓</span></a>
+          </div>
+        </div>
+        <div class="mh-signal">
+          <span>{copy.signalLabel}</span>
+          <strong>{copy.signal}</strong>
+          <b>{market.code} / {lang.toUpperCase()} / 2026</b>
+        </div>
+      </div>
+    </section>
+
+    <section id="market-gap" class="mh-section mh-gap">
+      <div class="mh-section-index" data-reveal><span>01</span><i></i><b>{copy.gapTitle}</b></div>
+      <div class="mh-section-heading" data-reveal>
+        <h2>{copy.gapTitle}</h2>
+        <p>{copy.gapIntro}</p>
+      </div>
+      <div class="mh-facts">
+        {copy.facts.map((fact, index) => (
+          <article data-reveal>
+            <span>0{index + 1}</span>
+            <strong>{fact.value}</strong>
+            <h3>{fact.label}</h3>
+            <p>{fact.context}</p>
+            <a href={fact.sourceUrl} target="_blank" rel="noopener noreferrer">{fact.source}<b>↗</b></a>
+          </article>
+        ))}
+      </div>
+      <div class="mh-opportunity" data-reveal>
+        <span>{copy.opportunityTitle}</span>
+        <p>{copy.opportunityCopy}</p>
+        <div aria-hidden="true"><i></i><i></i><i></i><b>{market.code}</b></div>
+      </div>
+    </section>
+
+    <section id="playbooks" class="mh-section mh-playbooks">
+      <div class="mh-section-index" data-reveal><span>02</span><i></i><b>{copy.playbookTitle}</b></div>
+      <div class="mh-section-heading" data-reveal>
+        <h2>{copy.playbookTitle}</h2>
+        <p>{copy.playbookIntro}</p>
+      </div>
+      <div class="mh-sector-list">
+        {copy.sectors.map((sector, index) => (
+          <article data-reveal>
+            <div class="mh-sector-number">0{index + 1}</div>
+            <h3>{sector.name}</h3>
+            <div><span>Market need</span><p>{sector.need}</p></div>
+            <div><span>QCT system</span><p>{sector.system}</p></div>
+            <i>↘</i>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section id="system" class="mh-section mh-system">
+      <div class="mh-section-index" data-reveal><span>03</span><i></i><b>{copy.systemTitle}</b></div>
+      <div class="mh-section-heading" data-reveal>
+        <h2>{copy.systemTitle}</h2>
+        <p>{copy.systemIntro}</p>
+      </div>
+      <ol class="mh-system-flow">
+        <li data-reveal>
+          <span>01</span><b>{ui.systemLabels[0]}</b><h3>{copy.acquire}</h3><p>{copy.acquireCopy}</p><i>→</i>
+        </li>
+        <li data-reveal>
+          <span>02</span><b>{ui.systemLabels[1]}</b><h3>{copy.convert}</h3><p>{copy.convertCopy}</p><i>→</i>
+        </li>
+        <li data-reveal>
+          <span>03</span><b>{ui.systemLabels[2]}</b><h3>{copy.operate}</h3><p>{copy.operateCopy}</p><i>✓</i>
+        </li>
+      </ol>
+    </section>
+
+    <section id="evidence" class="mh-section mh-evidence">
+      <div class="mh-evidence-grid" data-reveal>
+        <div>
+          <div class="mh-section-index"><span>04</span><i></i><b>{copy.evidenceTitle}</b></div>
+          <h2>{copy.evidenceTitle}</h2>
+          <p>{copy.evidenceCopy}</p>
+          <small>✓ {copy.evidenceNote}</small>
+        </div>
+        <div class="mh-source-stack">
+          {copy.facts.map((fact, index) => (
+            <a href={fact.sourceUrl} target="_blank" rel="noopener noreferrer">
+              <span>{market.code}.{index + 1}</span><b>{fact.source}</b><i>{copy.sourceLabel} ↗</i>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="mh-section mh-faq">
+      <div class="mh-faq-intro" data-reveal>
+        <div class="mh-section-index"><span>05</span><i></i><b>FAQ</b></div>
+        <h2>{copy.faqTitle}</h2>
+        <p>{copy.faqIntro}</p>
+      </div>
+      <div class="mh-faq-list">
+        {copy.faqs.map(([question, answer], index) => (
+          <details data-reveal>
+            <summary><span>0{index + 1}</span><b>{question}</b><i>+</i></summary>
+            <p>{answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="mh-cta">
+      <div data-reveal>
+        <p>{ui.region} · {market.localName}</p>
+        <h2>{copy.ctaTitle}</h2>
+        <div><span>{copy.ctaCopy}</span><a class="v2-button primary" href={url('/contact/')}>{copy.primaryCta}<b>→</b></a></div>
+      </div>
+    </section>
+  </div>
+
+  <footer slot="footer" class="v2-footer mh-footer">
+    <div class="footer-top"><a class="v2-brand" href={url('/')}><i></i>QCT <b>Studio</b></a><p>{ui.footerNote}</p><a href="#top">↑ TOP</a></div>
+    <div class="footer-grid">
+      <div><b>{ui.footerMarkets}</b>{marketHubs.map((item) => <a href={url(`/markets/${item.slug}/`)}>{item.copy[lang].eyebrow.replace(' market system', '').replace('Пазарен систем: ', '').replace('Tržišni sistem: ', '').replace('Sistemi i tregut ', '')}</a>)}</div>
+      <div><b>{ui.footerServices}</b><a href={url('/website-design/')}>Web</a><a href={url('/e-commerce/')}>Commerce</a><a href={url('/seo-performance/')}>SEO · GEO · AEO</a><a href={url('/ai-automation/')}>CRM · AI</a></div>
+      <div><b>{ui.footerCompany}</b><a href={url('/about/')}>QCT Studio</a><a href={url('/work/')}>Work</a><a href={url('/contact/')}>{ui.contact}</a></div>
+      <div><b>{market.localName}</b><a href="#market-gap">{ui.nav[0]}</a><a href="#playbooks">{ui.nav[1]}</a><a href="#evidence">{ui.nav[3]}</a></div>
+    </div>
+    <div class="footer-bottom"><span>© {new Date().getFullYear()} QCT Studio</span><span>{market.code} · {lang.toUpperCase()} · Evidence-led</span></div>
+  </footer>
+</BaseLayout>

@@ -9,7 +9,7 @@ const description = 'QCT Studio connects multilingual websites, commerce, search
 
 const markets = [
   {
-    id: 'albania', local: 'Shqipëri', name: 'Albania',
+    id: 'albania', slug: 'albania', local: 'Shqipëri', name: 'Albania',
     signal: 'Social visibility is high. Owned conversion infrastructure is not.',
     metric: '83.1% use social media · 57.7% have a website',
     source: 'INSTAT enterprise ICT survey, 2024',
@@ -18,7 +18,7 @@ const markets = [
     playbook: ['Hospitality & direct demand', 'Retail & assisted commerce', 'Export-ready B2B websites'],
   },
   {
-    id: 'macedonia', local: 'Северна Македонија', name: 'North Macedonia',
+    id: 'macedonia', slug: 'north-macedonia', local: 'Северна Македонија', name: 'North Macedonia',
     signal: 'Connectivity is mature. Enterprise e-sales still trail the EU.',
     metric: '8.3% of enterprises made e-sales',
     source: 'Western Balkan E-commerce Report, 2024 (2022 data)',
@@ -27,7 +27,7 @@ const markets = [
     playbook: ['Verified-trust commerce', 'Multilingual lead systems', 'Exporter RFQ architecture'],
   },
   {
-    id: 'kosovo', local: 'Kosovë', name: 'Kosovo',
+    id: 'kosovo', slug: 'kosovo', local: 'Kosovë', name: 'Kosovo',
     signal: 'Businesses are connected and social-first, but online selling remains limited.',
     metric: '76.1% use social media · 4.8% report online sales',
     source: 'OECD Digital Society / enterprise data, 2022',
@@ -36,7 +36,7 @@ const markets = [
     playbook: ['Social-to-owned commerce', 'Diaspora demand funnels', 'Mobile-first lead capture'],
   },
   {
-    id: 'serbia', local: 'Srbija', name: 'Serbia',
+    id: 'serbia', slug: 'serbia', local: 'Srbija', name: 'Serbia',
     signal: 'Most firms already have a website. The gap is transactional maturity.',
     metric: '85.0% have a website · 28.4% sold online',
     source: 'Statistical Office of the Republic of Serbia, 2024',
@@ -110,7 +110,7 @@ const faqSchema = {
       <div data-reveal><div class="section-label"><span>01</span><i></i><b>Market intelligence</b></div><div class="section-heading"><h2>One region.<br /><em>Four different digital gaps.</em></h2><p>Local demand changes the architecture. Select a market to see the commercial gap our system is designed to close.</p></div></div>
       <div class="market-interface">
         <div class="market-tabs" role="tablist" aria-label="Target markets">{markets.map((market, index) => <button type="button" role="tab" aria-selected={index === 0 ? 'true' : 'false'} data-market-tab={market.id}><span>0{index + 1}</span><b>{market.local}</b><small>{market.name}</small><i>→</i></button>)}</div>
-        <div class="market-panels">{markets.map((market, index) => <article class:list={['market-panel', { 'is-active': index === 0 }]} data-market-panel={market.id} role="tabpanel"><div class="market-panel-top"><span>Verified market signal</span><b>DATA</b></div><h3>{market.signal}</h3><div class="market-metric"><strong>{market.metric}</strong><a href={market.sourceUrl} target="_blank" rel="noopener noreferrer">{market.source} ↗</a></div><p>{market.need}</p><div class="market-playbook">{market.playbook.map((item) => <span>✓ {item}</span>)}</div><a class="text-link" href={url('/contact/')}>Build the {market.name} playbook <span>→</span></a></article>)}</div>
+        <div class="market-panels">{markets.map((market, index) => <article class:list={['market-panel', { 'is-active': index === 0 }]} data-market-panel={market.id} role="tabpanel"><div class="market-panel-top"><span>Verified market signal</span><b>DATA</b></div><h3>{market.signal}</h3><div class="market-metric"><strong>{market.metric}</strong><a href={market.sourceUrl} target="_blank" rel="noopener noreferrer">{market.source} ↗</a></div><p>{market.need}</p><div class="market-playbook">{market.playbook.map((item) => <span>✓ {item}</span>)}</div><a class="text-link" href={url(`/markets/${market.slug}/`)}>Explore the {market.name} market system <span>→</span></a></article>)}</div>
       </div>
     </section>
 

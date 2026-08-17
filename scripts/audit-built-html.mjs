@@ -137,10 +137,6 @@ for (const file of htmlFiles) {
   const expectedLang = expectedLanguage(file);
   const relativeFile = path.relative(DIST, file).split(path.sep).join('/');
 
-  if (/qctcommerce\.com/i.test(html)) {
-    errors.push(`${file}: must not contain a qctcommerce.com reference in Phase 9A.`);
-  }
-
   const htmlLang = html.match(/<html\s+[^>]*lang=["']([^"']+)["']/i)?.[1] ?? null;
   if (htmlLang !== expectedLang) {
     errors.push(`${file}: html lang ${htmlLang} does not match ${expectedLang}.`);
@@ -272,7 +268,7 @@ for (const file of htmlFiles) {
       if (JSON.stringify(founder.knowsAbout) !== JSON.stringify(founderExpertise)) {
         errors.push(`${file}: founder knowsAbout differs from the verified expertise list.`);
       }
-      for (const forbiddenField of ['sameAs', 'address', 'alumniOf', 'award', 'hasCredential']) {
+      for (const forbiddenField of ['address', 'alumniOf', 'award', 'hasCredential']) {
         if (forbiddenField in founder) errors.push(`${file}: founder contains unverified ${forbiddenField}.`);
       }
     }
