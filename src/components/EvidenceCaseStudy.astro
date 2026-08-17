@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLocalizedUrl, languages, languageNames } from '../i18n';
+import { caseUi, type CaseStudy } from '../data/caseStudies';
+import { marketUi, type MarketLang } from '../data/marketHubs';
+
+interface Props { lang: MarketLang; study: CaseStudy }
+const { lang, study } = Astro.props;
+const c = study.copy[lang];
+const ui = caseUi[lang];
+const shell = marketUi[lang] as { contact: string; footerMarkets: string; footerServices: string; footerCompany: string };
+const url = (path: string) => getLocalizedUrl(lang, path);
+const path = `/work/${study.slug}/`;
+const articleSchema = {
+  '@context':'https://schema.org', '@type':'Article',
+  '@id':`https://qctstudio.com${url(path)}#case-review`,
+  headline:c.title, description:c.description, inLanguage:lang,
+  author:{'@id':'https://qctstudio.com/#organization'}, publisher:{'@id':'https://qctstudio.com/#organization'},
+  mainEntityOfPage:{'@id':`https://qctstudio.com${url(path)}#webpage`},
+  about:{'@type':'Organization',name:study.brand,url:study.externalUrl},
+  citation:study.sources.map((source)=>source.url),
+  image:`https://qctstudio.com${study.image}`,
+};
+---
+<BaseLayout title={c.title} description={c.description} image={study.image} lang={lang} type="article" pageType="WebPage" breadcrumbLabel={study.brand} noindex={!study.indexable} v2Case={true}>
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <header slot="header" class="v2-header" data-v2-header>
+    <a class="v2-brand" href={url('/')} aria-label="QCT Studio"><i></i>QCT <b>Studio</b></a>
+    <nav id="v2-navigation" data-v2-nav aria-label="Primary navigation"><a href={url('/work/')}>{ui.work}</a><a href="#system">System</a><a href="#evidence">{ui.evidence}</a></nav>
+    <div class="v2-header-actions"><div class="v2-languages" aria-label="Language selector">{Object.entries(languages).map(([code,label])=><a class:list={{'is-current':code===lang}} href={getLocalizedUrl(code,path)} aria-current={code===lang?'page':undefined} hreflang={code} lang={code} aria-label={languageNames[code as keyof typeof languageNames]}>{label}</a>)}</div><a class="v2-header-cta" href={url('/regional-growth-diagnostic/')}>{ui.diagnostic}<span>→</span></a><button class="v2-menu-button" type="button" data-v2-menu aria-expanded="false" aria-controls="v2-navigation"><span></span><span></span><span class="screen-reader-text">Open menu</span></button></div>
+  </header>
+
+  <div id="top" class="case-v2 v2-shell" data-v2-home style={`--case-accent:${study.accent}`}>
+    <div class="v2-scroll-progress" data-v2-progress></div>
+    <section class="case-hero">
+      <div class="case-hero-copy">
+        <div class="case-breadcrumb"><a href={url('/')}>{ui.home}</a><span>/</span><a href={url('/work/')}>{ui.work}</a><span>/</span><b>{study.brand}</b></div>
+        <p class="case-eyebrow"><i></i>{c.eyebrow}</p>
+        <h1>{c.title}</h1><p class="case-lead">{c.lead}</p>
+        <div class="case-actions"><a class="v2-button primary" href={study.externalUrl} target="_blank" rel="noopener">{c.liveLabel}<span>↗</span></a><span>{ui.reviewed}</span></div>
+      </div>
+      <figure class="case-visual"><img src={study.image} width="1600" height="1000" alt={`${study.brand} current public website capture`} loading="eager" fetchpriority="high" /><figcaption><span>LIVE / PUBLIC</span><b>{ui.observation}</b></figcaption></figure>
+    </section>
+
+    <section class="case-verification"><div><span>01</span><b>{c.status}</b><p>{c.statusText}</p></div><div><span>02</span><b>{c.role}</b><p>{c.roleText}</p></div></section>
+
+    <section class="case-section case-snapshot"><div class="case-section-label" data-reveal><span>01</span><i></i><b>{c.snapshot}</b></div><div class="case-snapshot-grid"><div data-reveal><h2>{c.snapshot}</h2><p>{c.snapshotText}</p></div><div data-reveal><h3>{c.observedTitle}</h3><ul>{c.observed.map((item)=><li><i>✓</i>{item}</li>)}</ul></div></div></section>
+
+    <section id="system" class="case-section case-system"><div class="case-section-label" data-reveal><span>02</span><i></i><b>SYSTEM</b></div><h2 data-reveal>{c.systemTitle}</h2><div class="case-system-grid">{c.system.map(([title,text],index)=><article data-reveal><span>0{index+1}</span><h3>{title}</h3><p>{text}</p><i>↘</i></article>)}</div></section>
+
+    <section class="case-section case-limits"><div class="case-section-label" data-reveal><span>03</span><i></i><b>{ui.boundary}</b></div><div class="case-limits-grid"><h2 data-reveal>{c.limitsTitle}</h2><ol>{c.limits.map((item,index)=><li data-reveal><span>0{index+1}</span><p>{item}</p></li>)}</ol></div></section>
+
+    <section id="evidence" class="case-section case-evidence"><div class="case-evidence-intro" data-reveal><div class="case-section-label"><span>04</span><i></i><b>{ui.evidence}</b></div><h2>{c.evidenceTitle}</h2><p>{c.evidenceIntro}</p></div><div class="case-source-list">{study.sources.map((source,index)=><a href={source.url} target="_blank" rel="noopener" data-reveal><span>0{index+1}</span><b>{source.label}</b><em>{ui.source}</em><i>↗</i></a>)}</div></section>
+
+    <section class="case-cta"><div><span>REGIONAL GROWTH DIAGNOSTIC</span><h2>{c.ctaTitle}</h2><p>{c.ctaText}</p></div><a class="v2-button primary" href={url('/regional-growth-diagnostic/')}>{ui.diagnostic}<span>→</span></a></section>
+  </div>
+
+  <footer slot="footer" class="v2-footer"><div class="footer-top"><a class="v2-brand" href={url('/')}><i></i>QCT <b>Studio</b></a><p>{ui.footer}</p><a href="#top">↑ TOP</a></div><div class="footer-grid"><div><b>{shell.footerMarkets}</b><a href={url('/markets/albania/')}>Albania</a><a href={url('/markets/north-macedonia/')}>North Macedonia</a><a href={url('/markets/kosovo/')}>Kosovo</a><a href={url('/markets/serbia/')}>Serbia</a></div><div><b>{shell.footerServices}</b><a href={url('/website-design/')}>Web</a><a href={url('/e-commerce/')}>Commerce</a><a href={url('/seo-performance/')}>SEO · GEO · AEO</a><a href={url('/ai-automation/')}>CRM · AI</a></div><div><b>{shell.footerCompany}</b><a href={url('/about/')}>QCT Studio</a><a href={url('/work/')}>{ui.work}</a><a href={url('/contact/')}>{shell.contact}</a></div><div><b>{ui.evidence}</b><a href={url('/work/ctseg/')}>CTSEG</a><a href={url('/work/phiaderm/')}>Phiaderm</a><a href={url('/work/misima/')}>Misima Group</a></div></div><div class="footer-bottom"><span>© {new Date().getFullYear()} QCT Studio</span><span>Evidence-led · Privacy-aware</span></div></footer>
+</BaseLayout>

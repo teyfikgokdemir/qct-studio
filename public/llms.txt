@@ -1,29 +1,47 @@
 # QCT Studio
 
-> QCT Studio builds websites, e-commerce stores, WhatsApp Commerce, SEO/GEO and AI automation for established businesses across Albania and North Macedonia.
+> QCT Studio builds evidence-led digital growth systems for established businesses across Albania, North Macedonia, Kosovo and Serbia.
 
-QCT Studio works with businesses that already have a reputation offline but whose website has not kept up. Services are designed to improve trust, speed and conversion, and can be combined into a single connected system for a business.
+QCT Studio combines market-specific websites, e-commerce, SEO/GEO/AEO, conversion journeys, CRM and practical AI automation. Work is organized around three connected layers: Acquire demand, Convert intent and Operate follow-up. Scope and delivery timing depend on the business, market and technical requirements; QCT Studio does not publish fixed-duration guarantees.
+
+## Primary market hubs
+
+- [Albania](https://qctstudio.com/markets/albania/): Digital growth priorities, evidence and recommended system architecture for businesses targeting Albania.
+- [North Macedonia](https://qctstudio.com/markets/north-macedonia/): Multilingual discovery, trust and operational priorities for the North Macedonian market.
+- [Kosovo](https://qctstudio.com/markets/kosovo/): Mobile, social-to-owned-channel and diaspora-aware growth priorities for Kosovo.
+- [Serbia](https://qctstudio.com/markets/serbia/): Search, commerce, trust and CRM priorities for the Serbian market.
+
+Each market hub is also available in Albanian (/sq/), Macedonian (/mk/) and Serbian (/sr/). English is the default language.
+
+## Diagnostic
+
+- [Regional Growth Diagnostic](https://qctstudio.com/regional-growth-diagnostic/): A structured intake covering target markets, current digital stage, commercial priorities and operational constraints. It is a qualification and planning tool, not an automated performance promise.
 
 ## Services
 
-- [Website Design](https://qctstudio.com/website-design/): Premium websites with conversion-focused structure, built around a specific business rather than a template.
-- [E-commerce](https://qctstudio.com/e-commerce/): Online stores with clear product pages, mobile-friendly checkout and manageable order flows.
-- [WhatsApp Commerce](https://qctstudio.com/whatsapp-commerce/): Selling and answering customer questions directly inside WhatsApp conversations.
-- [SEO & GEO Performance](https://qctstudio.com/seo-performance/): Technical SEO, Core Web Vitals and content structure for visibility in both traditional search and AI-powered search.
-- [Meta Ads Landing Pages](https://qctstudio.com/meta-ads-landing-pages/): Focused campaign landing pages matched to ad intent.
-- [AI Automation](https://qctstudio.com/ai-automation/): Automations that reduce repetitive operational work while keeping humans in control of decisions.
+- [Website Design](https://qctstudio.com/website-design/): Market-led websites built around a specific business, audience and conversion path.
+- [E-commerce](https://qctstudio.com/e-commerce/): Product discovery, mobile shopping, checkout and manageable order flows.
+- [WhatsApp Commerce](https://qctstudio.com/whatsapp-commerce/): Clearer sales and service journeys from web or campaign interest into WhatsApp.
+- [SEO & GEO Performance](https://qctstudio.com/seo-performance/): Technical SEO, entity clarity, structured content and answer-ready pages for traditional and AI search.
+- [Meta Ads Landing Pages](https://qctstudio.com/meta-ads-landing-pages/): Focused landing pages aligned with campaign intent.
+- [AI Automation](https://qctstudio.com/ai-automation/): Human-controlled automation for lead routing, repetitive operations and CRM workflows.
+
+## Evidence policy and selected work
+
+QCT Studio separates public observation, verified responsibility and measured outcome. Performance metrics, client attribution and delivery scope are published only when supportable.
+
+- [Selected Work](https://qctstudio.com/work/): The evidence-led work collection.
+- [CTSEG Evidence Review](https://qctstudio.com/work/ctseg/): A review of CTSEG’s live multilingual trade platform and its verified founder-level venture connection. The page does not claim an agency delivery scope or commercial results.
+- HEADWEAR is presented as a multilingual commerce case. Public-status reviews without verified attribution are intentionally excluded from search indexing.
 
 ## Company
 
-- [About](https://qctstudio.com/about/): Why QCT Studio exists and how it works with businesses.
-- [Services overview](https://qctstudio.com/services/): Full list of services.
-- [Careers](https://qctstudio.com/careers/): Open roles at QCT Studio.
+- [About QCT Studio](https://qctstudio.com/about/): Purpose, founder and operating approach.
+- Founder: Teyfik Gökdemir.
+- Location: Istanbul, Türkiye; serving Balkan markets.
+- [Services](https://qctstudio.com/services/): Full service overview.
 - [Contact](https://qctstudio.com/contact/): info@qctstudio.com
-
-## Markets served
-
-Albania, North Macedonia, and the wider Balkans.
 
 ## Languages
 
-This site is available in English (default), Albanian (/sq/), Macedonian (/mk/), and Serbian (/sr/).
+English (default), Albanian (/sq/), Macedonian (/mk/) and Serbian (/sr/). Canonical and reciprocal hreflang links are provided on indexable localized pages.

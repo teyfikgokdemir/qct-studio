@@ -26,15 +26,23 @@
   window.addEventListener('resize', requestScrollUpdate, { passive: true });
 
   if (menu && nav) {
-    menu.addEventListener('click', function () {
-      var open = menu.getAttribute('aria-expanded') !== 'true';
+    function setMenu(open, restoreFocus) {
       menu.setAttribute('aria-expanded', String(open));
       nav.classList.toggle('is-open', open);
+      if (!open && restoreFocus) menu.focus();
+    }
+    menu.addEventListener('click', function () {
+      var open = menu.getAttribute('aria-expanded') !== 'true';
+      setMenu(open, false);
     });
     nav.addEventListener('click', function (event) {
       if (event.target.closest('a')) {
-        menu.setAttribute('aria-expanded', 'false');
-        nav.classList.remove('is-open');
+        setMenu(false, false);
+      }
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') {
+        setMenu(false, true);
       }
     });
   }

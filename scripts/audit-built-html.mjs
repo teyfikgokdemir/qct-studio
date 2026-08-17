@@ -119,9 +119,16 @@ let indexable = 0;
 let noindex = 0;
 let internalLinks = 0;
 let jsonLdBlocks = 0;
+let redirects = 0;
+const indexableCanonicals = new Set();
 
 for (const file of htmlFiles) {
   const html = fs.readFileSync(file, 'utf8');
+  const isRedirect = /<meta\s+[^>]*http-equiv=["']refresh["'][^>]*>/i.test(html);
+  if (isRedirect) {
+    redirects += 1;
+    continue;
+  }
   const canonicalTags = tags(html, 'link').filter(
     (tag) => attribute(tag, 'rel')?.toLowerCase() === 'canonical',
   );
@@ -211,6 +218,7 @@ for (const file of htmlFiles) {
     }
   } else {
     indexable += 1;
+    indexableCanonicals.add(expectedCanonical);
     if (JSON.stringify(hreflangs) !== JSON.stringify([...expectedHreflangs].sort())) {
       errors.push(`${file}: expected hreflang set ${expectedHreflangs.join(', ')}, found ${hreflangs.join(', ')}.`);
     }
@@ -341,8 +349,26 @@ if (originalPortraitMatches.length) {
   errors.push(`dist: source founder PNG must not be published (${originalPortraitMatches.join(', ')}).`);
 }
 
-console.log(`HTML SEO audit: ${htmlFiles.length} files, ${indexable} indexable, ${noindex} noindex.`);
-console.log(`Rendered metadata audit: ${jsonLdBlocks} JSON-LD blocks, ${internalLinks} internal links checked.`);
+const sitemapFiles = fs.readdirSync(DIST)
+  .filter((file) => /^sitemap-\d+\.xml$/.test(file))
+  .map((file) => path.join(DIST, file));
+const sitemapXml = sitemapFiles.map((file) => fs.readFileSync(file, 'utf8')).join('\n');
+const sitemapLocations = new Set(
+  [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]),
+);
+for (const canonical of indexableCanonicals) {
+  if (!sitemapLocations.has(canonical)) {
+    errors.push(`sitemap: missing indexable canonical ${canonical}.`);
+  }
+}
+for (const location of sitemapLocations) {
+  if (/\/(?:sq\/|mk\/|sr\/)?work\/(?:artman|misima|phiaderm)\/$/.test(new URL(location).pathname)) {
+    errors.push(`sitemap: noindex or redirect URL must not be listed (${location}).`);
+  }
+}
+
+console.log(`HTML SEO audit: ${htmlFiles.length} files, ${indexable} indexable, ${noindex} noindex, ${redirects} redirects.`);
+console.log(`Rendered metadata audit: ${jsonLdBlocks} JSON-LD blocks, ${internalLinks} internal links checked, ${sitemapLocations.size} sitemap URLs.`);
 
 if (errors.length) {
   console.error(errors.join('\n'));

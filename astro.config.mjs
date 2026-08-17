@@ -7,6 +7,7 @@ export default defineConfig({
   site: 'https://qctstudio.com',
   integrations: [
     sitemap({
+      filter: (page) => !/\/(?:sq\/|mk\/|sr\/)?work\/(?:artman|misima|phiaderm)\/$/.test(new URL(page).pathname),
       i18n: {
         defaultLocale: 'en',
         locales: { en: 'en-US', sq: 'sq-AL', mk: 'mk-MK', sr: 'sr-RS' },

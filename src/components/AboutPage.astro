@@ -14,6 +14,13 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
 const seo = getPageSeo('about', lang);
+const trustCopy = {
+  en: { selectedText: 'Selected systems across multilingual commerce, international trade and regional growth diagnostics.', ctsegLabel: 'Venture trade platform', ctsegText: 'A live multilingual trade system with a verified founder-level connection.', diagnosticLabel: 'Regional growth system', diagnosticText: 'A structured market, conversion and operations intake for Balkan businesses.', open: 'View evidence' },
+  sq: { selectedText: 'Sisteme të përzgjedhura në commerce shumëgjuhësh, tregti ndërkombëtare dhe diagnostikim rajonal.', ctsegLabel: 'Platformë tregtie venture', ctsegText: 'Sistem aktiv shumëgjuhësh me lidhje të verifikuar në nivel themeluesi.', diagnosticLabel: 'Sistem rajonal i rritjes', diagnosticText: 'Intake i strukturuar për tregun, konvertimin dhe operimin e bizneseve të Ballkanit.', open: 'Shikoni dëshmitë' },
+  mk: { selectedText: 'Избрани системи за повеќејазична commerce, меѓународна трговија и регионална дијагностика.', ctsegLabel: 'Venture trade platform', ctsegText: 'Активен повеќејазичен trade систем со потврдена founder-level врска.', diagnosticLabel: 'Регионален систем за раст', diagnosticText: 'Структуриран intake за пазар, конверзија и операции на балканските бизниси.', open: 'Погледнете докази' },
+  sr: { selectedText: 'Izabrani sistemi za višejezični commerce, međunarodnu trgovinu i regionalnu dijagnostiku.', ctsegLabel: 'Venture trade platforma', ctsegText: 'Aktivan višejezični trade sistem sa potvrđenom vezom na nivou osnivača.', diagnosticLabel: 'Regionalni sistem rasta', diagnosticText: 'Strukturiran intake za tržište, konverziju i operacije balkanskih kompanija.', open: 'Pogledajte dokaze' },
+};
+const tc = trustCopy[lang as keyof typeof trustCopy] ?? trustCopy.en;
 ---
 <BaseLayout title={seo.title} lang={lang} description={seo.description} pageType="AboutPage" breadcrumbLabel={t('About')}>
   <Header slot="header" lang={lang} />
@@ -103,14 +110,14 @@ const seo = getPageSeo('about', lang);
       <div class="qct-trust__work" aria-labelledby="qct-work-title">
         <p class="qct-trust__eyebrow">{t('SELECTED WORK')}</p>
         <h2 id="qct-work-title"><a href={url('/work/')}>{t('Real businesses. Live digital work.')}</a></h2>
-        <p>{t('Selected projects across e-commerce, performance products and corporate supply.')}</p>
+        <p>{tc.selectedText}</p>
 
         <div class="qct-trust__grid">
           <article>
-            <span>{t('Beauty e-commerce')}</span>
-            <h3>Phiaderm</h3>
-            <p>{t('A storefront project for a beauty brand.')}</p>
-            <a href="https://www.phiaderm.com.tr/" target="_blank" rel="noopener">{t('Project website')}</a>
+            <span>{tc.ctsegLabel}</span>
+            <h3><a href={url('/work/ctseg/')}>CTSEG</a></h3>
+            <p>{tc.ctsegText}</p>
+            <a href={url('/work/ctseg/')}>{tc.open}</a>
           </article>
 
           <article>
@@ -121,10 +128,10 @@ const seo = getPageSeo('about', lang);
           </article>
 
           <article>
-            <span>{t('Corporate supply website')}</span>
-            <h3>Artman Group</h3>
-            <p>{t('A corporate website for an Istanbul-based supplier.')}</p>
-            <a href="https://artmangroup.com.tr/" target="_blank" rel="noopener">{t('Project website')}</a>
+            <span>{tc.diagnosticLabel}</span>
+            <h3><a href={url('/regional-growth-diagnostic/')}>Regional Diagnostic</a></h3>
+            <p>{tc.diagnosticText}</p>
+            <a href={url('/regional-growth-diagnostic/')}>{t('Start Your Project')}</a>
           </article>
         </div>
       </div>

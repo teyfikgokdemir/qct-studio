@@ -34,6 +34,8 @@ export interface Props {
 	v2Market?: boolean;
 	/** Enables the V2 editorial shell and multi-step form for the regional diagnostic. */
 	v2Diagnostic?: boolean;
+	/** Enables the V2 evidence-led case study shell. */
+	v2Case?: boolean;
 }
 
 const {
@@ -50,6 +52,7 @@ const {
 	v2Home = false,
 	v2Market = false,
 	v2Diagnostic = false,
+	v2Case = false,
 } = Astro.props;
 
 const t = useTranslations(lang);
@@ -280,11 +283,12 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	     .qct-service-card) — it was dead weight in the original WP enqueue too. -->
 	<link rel="stylesheet" href="/styles/base.css?v=20260718-3" />
 	<link rel="stylesheet" href="/styles/components.css?v=20260718-3" />
-		{v2Home || v2Market || v2Diagnostic ? (
+		{v2Home || v2Market || v2Diagnostic || v2Case ? (
 			<>
 				<link rel="stylesheet" href="/styles/v2-home.css?v=20260817-1" />
 				{v2Market && <link rel="stylesheet" href="/styles/market-hub.css?v=20260817-1" />}
 				{v2Diagnostic && <link rel="stylesheet" href="/styles/diagnostic.css?v=20260817-1" />}
+				{v2Case && <link rel="stylesheet" href="/styles/case-study-v2.css?v=20260817-1" />}
 			</>
 		) : routeGroup === 'home' ? (
 			<>
@@ -298,7 +302,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	) : null}
 	<link rel="stylesheet" href="/styles/utilities.css?v=20260718-3" />
 </head>
-	<body class:list={{ 'v2-body': v2Home || v2Market || v2Diagnostic }}>
+	<body class:list={{ 'v2-body': v2Home || v2Market || v2Diagnostic || v2Case }}>
 	<div id="page" class="site">
 		<a class="skip-link screen-reader-text" href="#primary">{t('Skip to content')}</a>
 
@@ -317,7 +321,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	<!-- Ported as-is from the WordPress theme's assets/js -->
 	<script src="/scripts/main.js?v=20260718-3" is:inline></script>
 		{isHome && !v2Home && <script src="/scripts/animations.js?v=20260718-3" is:inline></script>}
-		{(v2Home || v2Market || v2Diagnostic) && <script src="/scripts/v2-home.js?v=20260817-1" is:inline></script>}
+		{(v2Home || v2Market || v2Diagnostic || v2Case) && <script src="/scripts/v2-home.js?v=20260817-1" is:inline></script>}
 		{v2Diagnostic && <script src="/scripts/diagnostic.js?v=20260817-1" is:inline></script>}
 </body>
 </html>

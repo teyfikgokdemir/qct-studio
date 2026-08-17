@@ -71,23 +71,23 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
     },
     work: {
       title: 'Selected Digital Work & Case Studies — QCT Studio',
-      description: 'Explore live website and e-commerce work by QCT Studio for HEADWEAR, Misima Group, Artman Group and Phiaderm across different industries.',
+      description: 'Explore QCT Studio’s evidence-led work collection, including HEADWEAR, the CTSEG venture platform and transparent public-status reviews.',
     },
     'headwear-case-study': {
       title: 'HEADWEAR E-commerce Case Study — QCT Studio',
       description: 'See how QCT Studio structured a multilingual e-commerce experience for HEADWEAR performance and outdoor products across devices and markets.',
     },
     'misima-case-study': {
-      title: 'Misima Group Corporate Website Case Study — QCT Studio',
-      description: 'See how QCT Studio planned, designed and developed the 2025 Misima Group website for cosmetics services, brands and international B2B audiences.',
+      title: 'Misima Group Public Website Review — QCT Studio',
+      description: 'An observational review of Misima Group’s public website; QCT Studio authorship and project scope are not publicly verified.',
     },
     'artman-case-study': {
-      title: 'Artman Group Corporate Website Case Study — QCT Studio',
-      description: 'See how QCT Studio structured the Artman Group corporate website to clarify a broad supply portfolio and support B2B enquiries across Türkiye.',
+      title: 'Legacy Work Route — QCT Studio',
+      description: 'This legacy work route permanently redirects visitors and search engines to the current, evidence-led CTSEG platform review.',
     },
     'phiaderm-case-study': {
-      title: 'Phiaderm Beauty E-commerce Case Study — QCT Studio',
-      description: 'Follow QCT Studio’s pre-launch Phiaderm e-commerce work with affiliated agency Rexcode, focused on a refined storefront and secure Shopify foundations.',
+      title: 'Phiaderm Public Pre-launch Status Review — QCT Studio',
+      description: 'A transparent review of Phiaderm’s current public page; QCT Studio authorship and delivery scope are not publicly verified.',
     },
   },
 
@@ -138,23 +138,23 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
     },
     work: {
       title: 'Punë Digjitale dhe Projekte të Zgjedhura — QCT Studio',
-      description: 'Shikoni faqe dhe projekte e-commerce aktive nga QCT Studio për HEADWEAR, Misima Group, Artman Group dhe Phiaderm në industri të ndryshme.',
+      description: 'Shikoni koleksionin me dëshmi të QCT Studio, përfshirë HEADWEAR, platformën venture CTSEG dhe shqyrtimet transparente të statusit publik.',
     },
     'headwear-case-study': {
       title: 'HEADWEAR — Projekt E-commerce nga QCT Studio',
       description: 'Shikoni si QCT Studio strukturoi një përvojë shumëgjuhëshe e-commerce për produktet performance dhe outdoor të HEADWEAR.',
     },
     'misima-case-study': {
-      title: 'Misima Group — Studim Rasti për Faqen Korporative',
-      description: 'Shikoni si QCT Studio planifikoi, dizajnoi dhe zhvilloi në vitin 2025 faqen e Misima Group për shërbime kozmetike, marka dhe audienca B2B.',
+      title: 'Misima Group — Shqyrtim i Faqes Publike',
+      description: 'Shqyrtim vëzhgues i faqes publike të Misima Group; autorësia, viti dhe fusha e QCT Studio nuk janë verifikuar publikisht.',
     },
     'artman-case-study': {
-      title: 'Artman Group — Studim Rasti për Faqen Korporative',
-      description: 'Shikoni si QCT Studio strukturoi faqen korporative të Artman Group për të qartësuar një portofol të gjerë furnizimi dhe kërkesat B2B.',
+      title: 'Route i Vjetër i Punës — QCT Studio',
+      description: 'Ky route i vjetër i punës ridrejton përgjithmonë vizitorët dhe motorët e kërkimit te shqyrtimi aktual me dëshmi i CTSEG.',
     },
     'phiaderm-case-study': {
-      title: 'Phiaderm — Studim Rasti për E-commerce Bukurie',
-      description: 'Ndiqni punën para lansimit të QCT Studio për Phiaderm me agjencinë e lidhur Rexcode, me fokus te dyqani i rafinuar dhe baza e sigurt Shopify.',
+      title: 'Phiaderm — Shqyrtim Publik Para Lansimit',
+      description: 'Shqyrtim transparent i faqes aktuale publike të Phiaderm; autorësia dhe fusha e dorëzimit nga QCT Studio nuk janë verifikuar.',
     },
   },
 
@@ -205,23 +205,23 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
     },
     work: {
       title: 'Избрани дигитални проекти и студии — QCT Studio',
-      description: 'Разгледајте активни веб и e-commerce проекти од QCT Studio за HEADWEAR, Misima Group, Artman Group и Phiaderm во различни индустрии.',
+      description: 'Разгледајте ја evidence-led колекцијата на QCT Studio, вклучувајќи ги HEADWEAR, CTSEG venture платформата и транспарентни public-status прегледи.',
     },
     'headwear-case-study': {
       title: 'HEADWEAR — Студија за е-трговија | QCT Studio',
       description: 'Погледнете како QCT Studio обликува повеќејазично e-commerce искуство за performance и outdoor производите на HEADWEAR.',
     },
     'misima-case-study': {
-      title: 'Misima Group — Студија за корпоративна веб-страница',
-      description: 'Погледнете како QCT Studio ја планира, дизајнира и разви веб-страницата на Misima Group во 2025 за козметички услуги, брендови и B2B публика.',
+      title: 'Misima Group — Преглед на јавната веб-страница',
+      description: 'Опсервациски преглед на јавната страница на Misima Group; QCT Studio авторството, годината и опфатот не се јавно потврдени.',
     },
     'artman-case-study': {
-      title: 'Artman Group — Студија за корпоративна веб-страница',
-      description: 'Погледнете како QCT Studio ја структурира веб-страницата на Artman Group за јасно портфолио на снабдување и B2B барања низ Турција.',
+      title: 'Стара Work рута и redirect — QCT Studio',
+      description: 'Оваа стара work рута трајно ги пренасочува посетителите и пребарувачите кон тековниот evidence-led CTSEG преглед.',
     },
     'phiaderm-case-study': {
-      title: 'Phiaderm — Студија за Beauty E-commerce',
-      description: 'Следете ја работата на QCT Studio за Phiaderm пред лансирање со поврзаната агенција Rexcode, со префинета продавница и сигурна Shopify основа.',
+      title: 'Phiaderm — Јавен pre-launch преглед',
+      description: 'Транспарентен преглед на тековната јавна страница; QCT Studio авторство и delivery scope не се потврдени.',
     },
   },
 
@@ -272,23 +272,23 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
     },
     work: {
       title: 'Izabrani digitalni projekti i studije — QCT Studio',
-      description: 'Pogledajte aktivne web i e-commerce projekte QCT Studija za HEADWEAR, Misima Group, Artman Group i Phiaderm u različitim industrijama.',
+      description: 'Pogledajte evidence-led kolekciju QCT Studija, uključujući HEADWEAR, CTSEG venture platformu i transparentne preglede javnog statusa.',
     },
     'headwear-case-study': {
       title: 'HEADWEAR — E-commerce studija | QCT Studio',
       description: 'Pogledajte kako je QCT Studio oblikovao višejezično e-commerce iskustvo za HEADWEAR performance i outdoor proizvode.',
     },
     'misima-case-study': {
-      title: 'Misima Group — Studija korporativnog sajta',
-      description: 'Pogledajte kako je QCT Studio 2025. planirao, dizajnirao i razvio sajt Misima Group za kozmetičke usluge, brendove i međunarodnu B2B publiku.',
+      title: 'Misima Group — Pregled javnog sajta',
+      description: 'Posmatrački pregled javnog sajta Misima Group; autorstvo, godina i obim rada QCT Studija nisu javno potvrđeni.',
     },
     'artman-case-study': {
-      title: 'Artman Group — Studija korporativnog sajta',
-      description: 'Pogledajte kako je QCT Studio strukturirao korporativni sajt Artman Group za jasan portfolio snabdevanja i B2B upite širom Turske.',
+      title: 'Stara work ruta i redirect — QCT Studio',
+      description: 'Ova stara work ruta trajno preusmerava posetioce i pretraživače na trenutni, evidence-led pregled CTSEG platforme.',
     },
     'phiaderm-case-study': {
-      title: 'Phiaderm — Studija Beauty E-commerce Projekta',
-      description: 'Pratite rad QCT Studija na Phiaderm projektu pre lansiranja sa povezanom agencijom Rexcode, uz prefinjenu prodavnicu i sigurnu Shopify osnovu.',
+      title: 'Phiaderm — Javni pregled pre lansiranja',
+      description: 'Transparentan pregled trenutne javne stranice; autorstvo i delivery obim QCT Studija nisu potvrđeni.',
     },
   },
 
