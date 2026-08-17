@@ -10,6 +10,8 @@ const ROUTE_LANGS = INDEXED_LANGS;
 const AREA_SERVED = [
 	{ '@type': 'Country', name: 'Albania' },
 	{ '@type': 'Country', name: 'North Macedonia' },
+	{ '@type': 'Country', name: 'Kosovo' },
+	{ '@type': 'Country', name: 'Serbia' },
 ];
 
 export interface Props {
@@ -26,11 +28,13 @@ export interface Props {
 	breadcrumbLabel?: string;
 	/** If set, emits a Service node (for the 6 service-concept pages) linked as the page's mainEntity */
 	service?: { name: string; description: string };
+	/** Enables the market-led V2 homepage shell without affecting existing localized homepages. */
+	v2Home?: boolean;
 }
 
 const {
 	title,
-	description = 'QCT Studio — websites, e-commerce and AI automation for businesses across Albania and North Macedonia.',
+	description = 'QCT Studio — digital growth systems for businesses across Albania, North Macedonia, Kosovo and Serbia.',
 	lang = 'en',
 	image = '/og-default.png',
 	type = 'website',
@@ -39,11 +43,19 @@ const {
 	pageType = 'WebPage',
 	breadcrumbLabel,
 	service,
+	v2Home = false,
 } = Astro.props;
 
 const t = useTranslations(lang);
 const isIndexable = !noindex;
-const ogImageType = image.toLowerCase().endsWith('.png') ? 'image/png' : 'image/jpeg';
+const imageExtension = image.toLowerCase().split('?')[0].split('.').pop();
+const ogImageType = imageExtension === 'png'
+	? 'image/png'
+	: imageExtension === 'webp'
+		? 'image/webp'
+		: imageExtension === 'svg'
+			? 'image/svg+xml'
+			: 'image/jpeg';
 
 // Current path with the locale prefix stripped, e.g. /sq/about/ -> /about/
 const rawPath = Astro.url.pathname;
@@ -107,7 +119,7 @@ const organizationSchema = {
 		caption: 'QCT Studio',
 	},
 	image: { '@id': `${organizationId}/logo` },
-	description: 'QCT Studio builds websites, e-commerce stores, WhatsApp Commerce and AI automation for established businesses across Albania and North Macedonia.',
+	description: 'QCT Studio builds multilingual websites, commerce, search visibility, CRM and practical AI systems for established businesses across Albania, North Macedonia, Kosovo and Serbia.',
 	foundingDate: '2025',
 	foundingLocation: {
 		'@type': 'Place',
@@ -253,18 +265,19 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	<meta name="twitter:image" content={ogImageUrl} />
 
 	<!-- Structured data: Organization + WebSite + WebPage (+ Breadcrumb/Service where applicable), linked via @id -->
-	<script type="application/ld+json" set:html={JSON.stringify(graphSchema)} />
-	<slot name="schema" />
-
-	<!-- Ported as-is from the WordPress theme's assets/css — BEM classes kept identical.
+		<script type="application/ld+json" set:html={JSON.stringify(graphSchema)} />
+		<slot name="schema" />
+		<!-- Ported as-is from the WordPress theme's assets/css — BEM classes kept identical.
 	     Legal and error styles are limited to the routes where their selectors remain active.
 	     services.css is intentionally NOT loaded: its classes (.qct-premium-service-card,
 	     .qct-service-img) don't match any markup in this theme (real class is
 	     .qct-service-card) — it was dead weight in the original WP enqueue too. -->
 	<link rel="stylesheet" href="/styles/base.css?v=20260718-3" />
 	<link rel="stylesheet" href="/styles/components.css?v=20260718-3" />
-	{routeGroup === 'home' ? (
-		<>
+		{routeGroup === 'home' && v2Home ? (
+			<link rel="stylesheet" href="/styles/v2-home.css?v=20260817-1" />
+		) : routeGroup === 'home' ? (
+			<>
 			<link rel="stylesheet" href="/styles/home.css?v=20260718-3" />
 			<link rel="stylesheet" href="/styles/animations.css?v=20260718-3" />
 		</>
@@ -275,7 +288,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	) : null}
 	<link rel="stylesheet" href="/styles/utilities.css?v=20260718-3" />
 </head>
-<body>
+	<body class:list={{ 'v2-body': v2Home }}>
 	<div id="page" class="site">
 		<a class="skip-link screen-reader-text" href="#primary">{t('Skip to content')}</a>
 
@@ -293,6 +306,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 
 	<!-- Ported as-is from the WordPress theme's assets/js -->
 	<script src="/scripts/main.js?v=20260718-3" is:inline></script>
-	{isHome && <script src="/scripts/animations.js?v=20260718-3" is:inline></script>}
+		{isHome && !v2Home && <script src="/scripts/animations.js?v=20260718-3" is:inline></script>}
+		{v2Home && <script src="/scripts/v2-home.js?v=20260817-1" is:inline></script>}
 </body>
 </html>
