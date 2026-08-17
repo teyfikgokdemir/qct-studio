@@ -26,7 +26,13 @@ const currentPath = languagePath ?? getPathWithoutLocale(Astro.url.pathname);
 			<span class="site-menu-toggle__bar"></span>
 		</button>
 
-		<nav id="site-navigation" class="main-navigation" aria-label={t('Primary menu')}>
+		<nav id="site-navigation" class="main-navigation" aria-label={t('Primary menu')} aria-hidden="true">
+			<div class="mobile-nav-head">
+				<span class="mobile-nav-title">{t('Menu')}</span>
+				<button class="mobile-nav-close" type="button" aria-label={t('Close menu')} data-mobile-close>
+					<span aria-hidden="true">✕</span>
+				</button>
+			</div>
 			<ul class="primary-menu">
 				<li><a href={url('/')}>{t('Home')}</a></li>
 				<li><a href={url('/about/')}>{t('About')}</a></li>
