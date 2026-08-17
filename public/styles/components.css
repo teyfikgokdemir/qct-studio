@@ -367,37 +367,39 @@ main :where([id]) {
 	border-color: rgba(255, 255, 255, 0.4);
 }
 
-.main-navigation {
-	background: rgba(10, 10, 16, 0.995) !important;
-	border: none !important;
-	border-radius: 0 !important;
-	box-shadow: none !important;
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	inset: 0;
-	position: fixed;
-	width: 100%;
-	height: 100dvh;
-	max-height: 100dvh;
-	opacity: 0;
-	padding: calc(14px + env(safe-area-inset-top, 0px)) 18px calc(24px + env(safe-area-inset-bottom, 0px));
-	pointer-events: none;
-	transform: translateY(-10px);
-	transition: opacity 200ms ease, transform 200ms ease, visibility 200ms ease;
-	visibility: hidden;
-	z-index: 140;
-	overflow-y: auto;
-	overscroll-behavior: contain;
-	backdrop-filter: blur(22px);
-	-webkit-backdrop-filter: blur(22px);
-}
+@media (max-width: 999px) {
+	.main-navigation {
+		background: rgba(10, 10, 16, 0.995) !important;
+		border: none !important;
+		border-radius: 0 !important;
+		box-shadow: none !important;
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		inset: 0;
+		position: fixed;
+		width: 100%;
+		height: 100dvh;
+		max-height: 100dvh;
+		opacity: 0;
+		padding: calc(14px + env(safe-area-inset-top, 0px)) 18px calc(24px + env(safe-area-inset-bottom, 0px));
+		pointer-events: none;
+		transform: translateY(-10px);
+		transition: opacity 200ms ease, transform 200ms ease, visibility 200ms ease;
+		visibility: hidden;
+		z-index: 140;
+		overflow-y: auto;
+		overscroll-behavior: contain;
+		backdrop-filter: blur(22px);
+		-webkit-backdrop-filter: blur(22px);
+	}
 
-.main-navigation.is-open {
-	opacity: 1;
-	pointer-events: auto;
-	transform: translateY(0);
-	visibility: visible;
+	.main-navigation.is-open {
+		opacity: 1;
+		pointer-events: auto;
+		transform: translateY(0);
+		visibility: visible;
+	}
 }
 
 body.has-open-menu {
