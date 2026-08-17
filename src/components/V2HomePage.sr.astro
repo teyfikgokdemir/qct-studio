@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getLocalizedUrl, languages, languageNames } from '../i18n';
+
+export interface Props {
+  lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const url = (path: string) => getLocalizedUrl(lang, path);
+const title = 'QCT Studio — Sistemi digitalnog rasta za balkanske kompanije';
+const description = 'QCT Studio povezuje višejezične veb-sajtove, trgovinu, vidljivost u pretrazi, CRM i praktičnu primenu AI-ja za etablirane kompanije u Albaniji, Severnoj Makedoniji, Kosovu i Srbiji.';
+
+const markets = [
+  {
+    id: 'albania', slug: 'albania', local: 'Shqipëri', name: 'Albanija',
+    signal: 'Vidljivost na društvenim mrežama je visoka. Sopstvena infrastruktura za konverziju nije.',
+    metric: '83,1% koristi društvene mreže · 57,7% ima veb-sajt',
+    source: 'INSTAT anketa o IKT-u u preduzećima, 2024',
+    sourceUrl: 'https://www.instat.gov.al/en/themes/science-technology-and-innovation/information-and-communication-technologies-in-enterprises/',
+    need: 'Preusmerite potražnju sa Instagrama, Facebooka i WhatsAppa u dvojezični, merljiv prodajni sistem.',
+    playbook: ['Ugostiteljstvo i direktna potražnja', 'Maloprodaja i asistirana trgovina', 'B2B veb-sajtovi spremni za izvoz'],
+  },
+  {
+    id: 'macedonia', slug: 'north-macedonia', local: 'Северна Македонија', name: 'Severna Makedonija',
+    signal: 'Povezanost je zrela. Elektronska prodaja preduzeća i dalje zaostaje za EU.',
+    metric: '8,3% preduzeća ostvarilo je e-prodaju',
+    source: 'Western Balkan E-commerce Report, 2024 (podaci iz 2022)',
+    sourceUrl: 'https://ecommerce.mk/en/western-balkan-ecommerce-report-2024/',
+    need: 'Izgradite poverenje, višejezičnu konverziju i komercijalne operacije sa malim operativnim opterećenjem za etablirana mala i srednja preduzeća.',
+    playbook: ['Trgovina zasnovana na proverljivom poverenju', 'Višejezični sistemi za leadove', 'RFQ arhitektura za izvoznike'],
+  },
+  {
+    id: 'kosovo', slug: 'kosovo', local: 'Kosovë', name: 'Kosovo',
+    signal: 'Kompanije su povezane i oslanjaju se prvenstveno na društvene kanale, ali je onlajn prodaja i dalje ograničena.',
+    metric: '76,1% koristi društvene mreže · 4,8% prijavljuje onlajn prodaju',
+    source: 'OECD Digital Society / podaci o preduzećima, 2022',
+    sourceUrl: 'https://www.oecd.org/en/publications/western-balkans-competitiveness-outlook-2024-kosovo_ff74ae0e-en/full-report/component-15.html',
+    need: 'Zadržite praktičnost komunikacije porukama, uz dodavanje sopstvenog sadržaja, CRM prikupljanja podataka i praćenja leadova.',
+    playbook: ['Trgovina od društvenih ka sopstvenim kanalima', 'Prodajni levci za potražnju dijaspore', 'Prikupljanje leadova prilagođeno mobilnim uređajima'],
+  },
+  {
+    id: 'serbia', slug: 'serbia', local: 'Srbija', name: 'Srbija',
+    signal: 'Većina firmi već ima veb-sajt. Jaz je u transakcionoj zrelosti.',
+    metric: '85,0% ima veb-sajt · 28,4% prodavalo je onlajn',
+    source: 'Republički zavod za statistiku Srbije, 2024',
+    sourceUrl: 'https://publikacije.stat.gov.rs/G2024/PdfE/G202416019.pdf',
+    need: 'Pretvorite postojeće veb-prisustvo u merljivu prodaju, lokalna plaćanja, CRM i operativnu automatizaciju.',
+    playbook: ['Modernizacija trgovine', 'Redizajn vođen konverzijom', 'Praktični AI tokovi rada'],
+  },
+];
+
+const systems = [
+  { id: 'acquire', number: '01', label: 'Privucite', title: 'Budite pronađeni za problem koji zaista rešavate.', copy: 'Stranice usluga prilagođene tržištu, tehnički SEO, sadržaj koji prvo daje odgovor i landing stranice za plaćene kampanje izgrađene oko stvarne lokalne namere — ne oko prevedenih lista ključnih reči.', image: '/images/v2/hero-network.webp', items: ['Arhitektura namere na lokalnom jeziku', 'SEO + sadržaj za pretragu i AI odgovore', 'Landing sistemi za plaćene kampanje'] },
+  { id: 'convert', number: '02', label: 'Konvertujte', title: 'Pretvorite pažnju u merljivu komercijalnu akciju.', copy: 'Premium veb-sajtovi i prodajna putovanja koja spajaju poverenje, lokalne realnosti plaćanja, WhatsApp asistenciju, jasne politike i merenje na nivou događaja.', image: '/images/v2/commerce-system.webp', items: ['Veb-sajtovi vođeni konverzijom', 'E-commerce i asistirana kupovina', 'Formulari, rezervacije i WhatsApp rutiranje'] },
+  { id: 'operate', number: '03', label: 'Operišite', title: 'Učinite svaki lead vidljivim, sopstvenim i spremnim za akciju.', copy: 'Efikasni CRM pipeline-i, logika praćenja, izveštavanje i AI tokovi rada uz ljudsku proveru, koji smanjuju ručne propuste bez uvođenja kompleksnosti enterprise nivoa.', image: '/images/v2/growth-operations.webp', items: ['CRM i atribucija izvora', 'Rutiranje leadova i SLA za odgovor', 'Kontrolisane operacije uz AI asistenciju'] },
+];
+
+const sectors = [
+  ['Ugostiteljstvo i turizam', 'Direktne rezervacije, višejezično otkrivanje, reputacija i sezonska potražnja'],
+  ['Maloprodaja i trgovina', 'Katalozi, checkout, asistirana prodaja, dostava i životni ciklus kupca'],
+  ['B2B i izvoznici', 'Autoritet, tehnički dokazi, RFQ upiti, distributeri i međunarodni leadovi'],
+  ['Klinike i usluge', 'Poverenje, stručnost, zakazivanje, lokalno otkrivanje i prikupljanje podataka uz saglasnost'],
+  ['Nekretnine i građevinarstvo', 'Dokazi projekata, potražnja dijaspore, kvalifikacija i prodajni pipeline-i'],
+  ['IKT i profesionalne firme', 'Izvozno pozicioniranje, studije slučaja, stranice po ključnim nalozima i CRM praćenje'],
+];
+
+const faqs = [
+  ['Da li je ovo još jedan paket za dizajn veb-sajta?', 'Ne. Veb-sajt je jedan sloj komercijalnog sistema. Zajedno definišemo tržište, ponudu, dokaze poverenja, stranice za akviziciju, konverzione događaje, CRM predaju i merenje nakon lansiranja.'],
+  ['Možete li da garantujete pozicije na Googleu ili AI citiranja?', 'Ne može nijedan kredibilan partner. Gradimo tehničku, uredničku i dokaznu osnovu potrebnu za indeksiranje, pronalaženje i poverenje, a zatim merimo vidljivost i kvalifikovane ishode po tržištu.'],
+  ['Da li nam je od prvog dana potreban kompletan e-commerce?', 'Ne uvek. U zavisnosti od plaćanja, ispunjenja porudžbina, kataloga i zrelosti tima, pravo prvo izdanje može biti prodavnica, katalog sa asistiranom porudžbinom, RFQ tok ili sistem za rezervacije.'],
+  ['Kako pokrivate četiri tržišta i jezika?', 'Svaki jezik dobija sopstvenu mapu namere, nativnu proveru, stabilan URL, canonical i recipročni hreflang klaster. Ne generišemo tanke gradske stranice niti mehanički prevodimo isti prodajni narativ.'],
+  ['Gde se uklapa AI?', 'Nakon što je osnovni proces stabilan. Koristimo ograničene, proverljive tokove rada za klasifikaciju leadova, sažetke, podršku sadržaju ili interno znanje — ne autonomna obećanja niti black-box zamenu zaposlenih.'],
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: faqs.map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } })),
+};
+---
+<BaseLayout title={title} description={description} image="/images/v2/hero-network.webp" lang={lang} isHome={true} v2Home={true}>
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <header slot="header" class="v2-header" data-v2-header>
+    <a class="v2-brand" href="#top" aria-label="QCT Studio početna"><i></i>QCT <b>Studio</b></a>
+    <nav data-v2-nav aria-label="Glavna navigacija">
+      <a href="#system">Sistem</a><a href="#markets">Tržišta</a><a href="#sectors">Sektori</a><a href="#proof">Dokazi</a><a href="#method">Metod</a>
+    </nav>
+    <div class="v2-header-actions">
+      <div class="v2-languages" aria-label="Izbor jezika">
+        <span class="v2-languages-label">Jezik</span>
+        <div class="v2-languages-list">
+          {Object.entries(languages).map(([code, label]) => <a class:list={{ active: code === lang }} href={getLocalizedUrl(code, '/')} hreflang={code} lang={code} aria-current={code === lang ? 'page' : undefined} aria-label={languageNames[code as keyof typeof languageNames]}>{label}</a>)}
+        </div>
+      </div>
+      <a class="v2-header-cta" href={url('/contact/')}>Započnite projekat <span>→</span></a>
+      <button class="v2-menu-button" type="button" data-v2-menu aria-expanded="false" aria-controls="v2-navigation"><span></span><span></span><span class="screen-reader-text">Otvori meni</span></button>
+    </div>
+  </header>
+
+  <div id="top" class="v2-shell" data-v2-home>
+    <div class="v2-scroll-progress" data-v2-progress></div>
+    <section class="hero">
+      <div class="hero-media" aria-hidden="true"><img src="/images/v2/hero-network.webp" width="2200" height="943" fetchpriority="high" alt="" /><div class="hero-wash"></div></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="hero-kicker">● Sistemi digitalnog rasta za balkanske kompanije</div>
+        <h1>Pretvorite regionalnu potražnju u <em>sopstveni sistem rasta.</em></h1>
+        <div class="hero-bottom"><p>Povezujemo istraživanje tržišta, višejezične veb-sajtove, trgovinu, vidljivost u pretrazi, CRM i praktičnu primenu AI-ja — kako bi etablirane kompanije mogle jasno da privlače, konvertuju i operišu.</p><div class="hero-actions"><a class="v2-button primary" href={url('/regional-growth-diagnostic/')}>Mapirajte moj sistem rasta <span>→</span></a><a class="v2-button ghost" href="#markets">Istražite tržišnu potražnju <span>↘</span></a></div></div>
+        <div class="hero-status"><span><i></i>Radimo za Albaniju · Severnu Makedoniju · Kosovo · Srbiju</span><span>EN · SQ · MK · SR</span><span>Od strategije do operacije</span></div>
+      </div>
+    </section>
+
+    <section class="statement section-pad" data-reveal><div class="section-label"><i></i><b>Promena</b></div><div class="statement-grid"><h2>Vašem tržištu ne treba <em>još jedna atraktivna početna strana.</em></h2><div><p>Treba mu sistem koji razume kako lokalni kupci otkrivaju, proveravaju, šalju poruke, kupuju i vraćaju se u komunikaciju.</p><p class="muted">Naš rad počinje od komercijalnog trenja — ne od layouta. Identifikujemo gde potražnja curi, zatim gradimo najmanji kredibilan sistem koji to rešava.</p></div></div></section>
+
+    <section id="markets" class="markets section-pad">
+      <div data-reveal><div class="section-label"><i></i><b>Tržišna inteligencija</b></div><div class="section-heading"><h2>Jedan region.<br /><em>Četiri različita digitalna jaza.</em></h2><p>Lokalna potražnja menja arhitekturu. Izaberite tržište da vidite komercijalni jaz koji naš sistem zatvara.</p></div></div>
+      <div class="market-interface">
+        <div class="market-tabs" role="tablist" aria-label="Ciljna tržišta">{markets.map((market, index) => <button type="button" role="tab" aria-selected={index === 0 ? 'true' : 'false'} data-market-tab={market.id}><span>0{index + 1}</span><b>{market.local}</b><small>{market.name}</small><i>→</i></button>)}</div>
+        <div class="market-panels">{markets.map((market, index) => <article class:list={['market-panel', { 'is-active': index === 0 }]} data-market-panel={market.id} role="tabpanel"><div class="market-panel-top"><span>Proveren tržišni signal</span><b>PODACI</b></div><h3>{market.signal}</h3><div class="market-metric"><strong>{market.metric}</strong><a href={market.sourceUrl} target="_blank" rel="noopener noreferrer">{market.source} ↗</a></div><p>{market.need}</p><div class="market-playbook">{market.playbook.map((item) => <span>✓ {item}</span>)}</div><a class="text-link" href={url(`/markets/${market.slug}/`)}>Istražite sistem za tržište: {market.name} <span>→</span></a></article>)}</div>
+      </div>
+    </section>
+
+    <section id="system" class="system-section section-pad">
+      <div class="section-label"><i></i><b>QCT sistem rasta</b></div><div class="section-heading wide"><h2>Tri sloja.<br /><em>Jedan odgovoran sistem.</em></h2><p>Bez pozorišta kanala. Svaki sloj ima definisanu ulogu, vlasnika i merljivu predaju.</p></div>
+      <div class="system-tabs" role="tablist">{systems.map((item, index) => <button type="button" role="tab" aria-selected={index === 1 ? 'true' : 'false'} class:list={{ active: index === 1 }} data-system-tab={item.id}><span>{item.number}</span><b>{item.label}</b></button>)}</div>
+      <div class="system-panels">{systems.map((item, index) => <article class:list={['system-stage', { 'is-active': index === 1 }]} data-system-panel={item.id}><div class="system-copy"><div class="system-chip">Sloj {item.number}</div><h3>{item.title}</h3><p>{item.copy}</p><ul>{item.items.map((entry) => <li>✓ {entry}</li>)}</ul><a class="text-link" href={url('/contact/')}>Dizajnirajte ovaj sloj <span>→</span></a></div><div class="system-visual"><img src={item.image} width={item.id === 'acquire' ? 2200 : 1440} height={item.id === 'acquire' ? 943 : 1080} loading="lazy" decoding="async" alt="" /><div class="system-readout"><i></i><span>Status sistema</span><b>Povezano</b></div></div></article>)}</div>
+    </section>
+
+    <section id="sectors" class="sectors section-pad"><div class="section-label"><i></i><b>Playbookovi po sektorima</b></div><div class="section-heading"><h2>Izgrađeno oko <em>komercijalne realnosti.</em></h2><p>Fokusiramo se na sektore u kojima poverenje, višejezična potražnja, asistirana kupovina ili operativna složenost stvaraju realan osnov za povrat ulaganja.</p></div><div class="sector-list">{sectors.map(([name, value], index) => <article data-reveal><span>0{index + 1}</span><b>{name}</b><p>{value}</p><i>↘</i></article>)}</div></section>
+
+    <section id="proof" class="proof section-pad"><div class="section-label"><i></i><b>Arhitektura dokaza</b></div><div class="section-heading wide"><h2>Dokazi pre <em>agencijskih tvrdnji.</em></h2><p>Ne objavljujemo izmišljene rezultate. Svaki case mora da prikaže početni problem, tačan obim rada, stanje pri lansiranju i vremenski okvir ishoda koji se može pripisati radu.</p></div><div class="proof-grid"><a class="proof-feature" href="https://ctseg.com.tr/" target="_blank" rel="noopener noreferrer"><div class="proof-art art-one"><span>CTSEG</span><i></i></div><div class="proof-copy"><small>Međunarodna trgovina / B2B platforma</small><h3>Složeni zahtevi za nabavku pretvoreni u proverljiv komercijalni put.</h3><p>Višejezična arhitektura usluga, evaluacija dobavljača, otkrivanje proizvoda i tokovi kvalifikovane procene.</p></div></a><a class="proof-card" href={url('/work/phiaderm/')}><div class="proof-art art-two"><span>PHIADERM</span></div><div class="proof-copy"><small>Trgovina / Otkrivanje proizvoda</small><h3>Premium narativ proizvoda sa upotrebljivim prodajnim putem.</h3><p>Strukturisan katalog, edukacija, sigurnost i konverzija.</p></div></a><a class="proof-card" href={url('/work/misima/')}><div class="proof-art art-three"><span>MISIMA</span></div><div class="proof-copy"><small>Proizvodnja / Izvoz</small><h3>Kapaciteti prevedeni u dokaze spremne za distributere.</h3><p>Arhitektura usluga, proizvodni dokazi i RFQ tokovi.</p></div></a></div><p class="proof-note">✓ Komercijalni rezultati objavljuju se samo kada su dostupni izvorni podaci i odobrenje klijenta.</p></section>
+
+    <section class="visibility section-pad"><div class="section-label"><i></i><b>SEO · AEO · GEO · AI vidljivost</b></div><div class="visibility-grid"><div class="visibility-title"><h2>Nema tajnog markupa.<br /><em>Samo upravljan sistem znanja.</em></h2><p>Vidljivost u pretrazi i AI okruženjima dele istu osnovu: pristupačan sadržaj, jasne entitete, snažne interne linkove, istinite strukturirane podatke i korisne dokaze.</p></div><div class="visibility-map" aria-label="QCT graf entiteta"><div class="core-node"><b>QCT</b><span>Entitet</span></div>{['Usluge','Tržišta','Dokazi','Vodiči','Ljudi','Politike'].map((node, index) => <div class={`orbit-node node-${index + 1}`}>{node}</div>)}</div></div><div class="principles"><article><b>Prvo indeksabilno</b><p>Ključni odgovori nalaze se u server-renderovanom tekstu i stabilnim URL-ovima dostupnim za crawl.</p></article><article><b>Prava lokalizacija</b><p>Locale stranice sa self-canonical oznakama, recipročnim hreflangom i nativnom proverom.</p></article><article><b>Jasnoća za AI pronalaženje</b><p>Pasusi koji prvo daju odgovor, izvori, autorstvo, datumi i eksplicitne tvrdnje.</p></article><article><b>Merenje po tržištu</b><p>Vidljivost, kvalifikovane posete, leadovi i prihod — ne anegdotalni promptovi.</p></article></div></section>
+
+    <section id="method" class="method section-pad"><div class="section-label"><i></i><b>Kako gradimo</b></div><div class="section-heading"><h2>Od dokaza do <em>operativnog sistema.</em></h2><p>Fazna izgradnja koja štiti budžet, proverava pretpostavke i jasno definiše vlasništvo.</p></div><ol class="method-list">{[
+      ['Dijagnostika','Revizija tržišta, ponude, podataka i curenja potražnje','Utvrđujemo činjenice, ograničenja, početne događaje i komercijalne prioritete pre dizajna.'],
+      ['Arhitektura','Model informacija, konverzije i merenja','Definišemo URL-ove po jeziku i tržištu, uloge stranica, dokaze poverenja, konverzione akcije i CRM predaje.'],
+      ['Izgradnja','Brzo višejezično iskustvo i integracije','Isporučujemo kroz testirana izdanja uz kontrole pristupačnosti, performansi i strukturiranih podataka.'],
+      ['Operacije','Merite, učite i automatizujte ono što je stabilno','Pratimo ishode, unapređujemo prioritetna putovanja i dodajemo kontrolisanu automatizaciju samo tamo gde se isplati.'],
+    ].map(([label, heading, copy], index) => <li><span>0{index + 1}</span><b>{label}</b><h3>{heading}</h3><p>{copy}</p></li>)}</ol></section>
+
+    <section class="faq section-pad"><div class="section-label"><i></i><b>Soba za odluke</b></div><div class="faq-layout"><div><h2>Pitanja koja ozbiljni kupci <em>treba da postave.</em></h2><p>Jasni odgovori pre ponude. Bez crnih kutija, bez garantovanih pozicija i bez skrivenog zaključavanja za platformu.</p></div><div class="faq-list">{faqs.map(([question, answer], index) => <details open={index === 0}><summary><span>0{index + 1}</span><b>{question}</b><i>⌄</i></summary><p>{answer}</p></details>)}</div></div></section>
+
+    <section id="contact" class="contact section-pad"><div class="contact-grid"><div><div class="section-label"><i></i><b>Počnite od jaza</b></div><h2>Recite nam gde rast <em>trenutno puca.</em></h2></div><div class="contact-card"><p>Niste sigurni da li vam treba novi veb-sajt, obnova trgovine, SEO sistem ili CRM? Dobro. Počnite od poslovnog problema.</p><a class="v2-button light" href={url('/contact/')}>Zakažite mapiranje sistema <span>→</span></a><div><span>✓ Jasan obim</span><span>✓ Vlasništvo napismeno</span><span>✓ Bez garancija za ranking</span></div></div></div></section>
+  </div>
+
+  <footer slot="footer" class="v2-footer"><div class="footer-top"><a class="v2-brand" href="#top"><i></i>QCT <b>Studio</b></a><p>Sistemi digitalnog rasta za etablirane balkanske kompanije.</p><a href="#top">Nazad na vrh →</a></div><div class="footer-grid"><div><b>Tržišta</b><a href="#markets">Albanija</a><a href="#markets">Severna Makedonija</a><a href="#markets">Kosovo</a><a href="#markets">Srbija</a></div><div><b>Sistem</b><a href="#system">Privucite</a><a href="#system">Konvertujte</a><a href="#system">Operišite</a></div><div><b>Kompanija</b><a href={url('/work/')}>Radovi</a><a href={url('/about/')}>O nama</a><a href={url('/contact/')}>Kontakt</a></div><div><b>Pravno</b><a href={url('/privacy-policy/')}>Privatnost</a><a href={url('/cookie-policy/')}>Kolačići</a><a href={url('/terms-conditions/')}>Uslovi</a></div></div><div class="footer-bottom"><span>© 2026 QCT Studio</span><span>EN · SQ · MK · SR</span><span>Istanbul · Zapadni Balkan</span></div></footer>
+</BaseLayout>
