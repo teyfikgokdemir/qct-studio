@@ -91,17 +91,23 @@
 		var closeButton = document.querySelector('[data-mobile-close]');
 		var previousFocus = null;
 
-		var focusable = function () {
+			var focusable = function () {
 			return navigation ? Array.prototype.slice.call(navigation.querySelectorAll('a[href], button:not([disabled])')).filter(function (el) {
 				return !el.closest('[hidden]');
 			}) : [];
+		};
+
+		var syncNavigationAccessibility = function () {
+			var mobileMenuClosed = !desktopNavigation.matches && !navigation.classList.contains('is-open');
+			navigation.toggleAttribute('inert', mobileMenuClosed);
+			navigation.setAttribute('aria-hidden', mobileMenuClosed ? 'true' : 'false');
 		};
 
 		var closeMenu = function () {
 			if (!navigation.classList.contains('is-open')) return;
 			menuToggle.setAttribute('aria-expanded', 'false');
 			navigation.classList.remove('is-open');
-			navigation.setAttribute('aria-hidden', 'true');
+			syncNavigationAccessibility();
 			document.body.classList.remove('has-open-menu');
 			window.scrollTo(0, scrollPosition);
 			if (backdrop) backdrop.hidden = true;
@@ -119,11 +125,13 @@
 			previousFocus = document.activeElement;
 			menuToggle.setAttribute('aria-expanded', 'true');
 			navigation.classList.add('is-open');
-			navigation.setAttribute('aria-hidden', 'false');
+			syncNavigationAccessibility();
 			document.body.classList.add('has-open-menu');
 			if (backdrop) backdrop.hidden = false;
 			if (closeButton) closeButton.focus();
 		};
+
+		syncNavigationAccessibility();
 
 		menuToggle.addEventListener('click', function () {
 			if (menuToggle.getAttribute('aria-expanded') === 'true') {
