@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import fs from 'node:fs';
+import path from 'node:path';
 
 const languages = ['en','sq','mk','sr'] as const;
 const studies = ['ctseg','phiaderm','misima'] as const;
@@ -23,7 +24,7 @@ for (const lang of languages) {
 }
 
 test('legacy Artman routes have Cloudflare permanent redirects', async () => {
-  const rules = fs.readFileSync('/home/ubuntu/qct-studio-v2/public/_redirects', 'utf8');
+  const rules = fs.readFileSync(path.resolve(process.cwd(), 'public/_redirects'), 'utf8');
   for (const lang of languages) {
     const prefix = lang === 'en' ? '' : `/${lang}`;
     expect(rules).toContain(`${prefix}/work/artman/ ${prefix}/work/ctseg/ 301`);
@@ -31,7 +32,8 @@ test('legacy Artman routes have Cloudflare permanent redirects', async () => {
 });
 
 test('desktop and mobile evidence-case visual audit', async ({ browser }) => {
-  fs.mkdirSync('/home/ubuntu/qct-studio-v2/test-results/cases', { recursive: true });
+  const resultsDir = path.resolve(process.cwd(), 'test-results/cases');
+  fs.mkdirSync(resultsDir, { recursive: true });
   for (const config of [
     { path: '/work/ctseg/', name: 'ctseg-desktop.png', width: 1440, height: 1000 },
     { path: '/sq/work/phiaderm/', name: 'phiaderm-mobile.png', width: 390, height: 844 },
@@ -44,7 +46,7 @@ test('desktop and mobile evidence-case visual audit', async ({ browser }) => {
       await reveals.nth(index).scrollIntoViewIfNeeded();
       await page.waitForTimeout(30);
     }
-    await page.screenshot({ path: `/home/ubuntu/qct-studio-v2/test-results/cases/${config.name}`, fullPage: true });
+    await page.screenshot({ path: path.join(resultsDir, config.name), fullPage: true });
     await context.close();
   }
 });

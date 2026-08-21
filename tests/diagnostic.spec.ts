@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import fs from 'node:fs';
+import path from 'node:path';
 
 const routes = ['/regional-growth-diagnostic/', '/sq/regional-growth-diagnostic/', '/mk/regional-growth-diagnostic/', '/sr/regional-growth-diagnostic/'];
 
@@ -56,7 +57,8 @@ test('multi-step diagnostic validates and sends CRM-ready payload', async ({ pag
 });
 
 test('mobile visual audit and navigation', async ({ browser }) => {
-  fs.mkdirSync('/home/ubuntu/qct-studio-v2/test-results/diagnostic', { recursive: true });
+  const resultsDir = path.resolve(process.cwd(), 'test-results/diagnostic');
+  fs.mkdirSync(resultsDir, { recursive: true });
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
   await page.goto('http://127.0.0.1:4321/sq/regional-growth-diagnostic/', { waitUntil: 'networkidle' });
@@ -69,6 +71,6 @@ test('mobile visual audit and navigation', async ({ browser }) => {
     await reveals.nth(index).scrollIntoViewIfNeeded();
     await page.waitForTimeout(35);
   }
-  await page.screenshot({ path: '/home/ubuntu/qct-studio-v2/test-results/diagnostic/sq-mobile.png', fullPage: true });
+  await page.screenshot({ path: path.join(resultsDir, 'sq-mobile.png'), fullPage: true });
   await context.close();
 });

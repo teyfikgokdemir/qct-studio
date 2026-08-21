@@ -20,6 +20,9 @@ export interface Props {
 	type?: 'website' | 'article';
 	noindex?: boolean;
 	isHome?: boolean;
+	v2Market?: boolean;
+	v2Diagnostic?: boolean;
+	v2Case?: boolean;
 	/** schema.org @type for this page's WebPage node, e.g. 'AboutPage', 'ContactPage', 'CollectionPage' */
 	pageType?: string;
 	/** Second breadcrumb label (e.g. "About"). Omit on the home page — no breadcrumb is emitted. */
@@ -36,6 +39,9 @@ const {
 	type = 'website',
 	noindex = false,
 	isHome = false,
+	v2Market = false,
+	v2Diagnostic = false,
+	v2Case = false,
 	pageType = 'WebPage',
 	breadcrumbLabel,
 	service,
@@ -273,6 +279,9 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	) : routeGroup === 'error' ? (
 		<link rel="stylesheet" href="/styles/error.css?v=20260722-1" />
 	) : null}
+	{v2Market && <link rel="stylesheet" href="/styles/market-hub.css?v=20260722-1" />}
+	{v2Diagnostic && <link rel="stylesheet" href="/styles/diagnostic.css?v=20260722-1" />}
+	{v2Case && <link rel="stylesheet" href="/styles/case-study-v2.css?v=20260722-1" />}
 	<link rel="stylesheet" href="/styles/utilities.css?v=20260718-3" />
 </head>
 <body>

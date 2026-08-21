@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import fs from 'node:fs';
+import path from 'node:path';
 
 const languages = ['en', 'sq', 'mk', 'sr'] as const;
 const markets = ['albania', 'north-macedonia', 'kosovo', 'serbia'] as const;
@@ -45,19 +46,21 @@ for (const language of languages) {
 }
 
 test('desktop visual audit', async ({ browser }) => {
-  fs.mkdirSync('/home/ubuntu/qct-studio-v2/test-results/market-hubs', { recursive: true });
+  const resultsDir = path.resolve(process.cwd(), 'test-results/market-hubs');
+  fs.mkdirSync(resultsDir, { recursive: true });
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 });
   const page = await context.newPage();
   for (const market of ['albania', 'north-macedonia'] as const) {
     await page.goto(`http://127.0.0.1:4321/markets/${market}/`, { waitUntil: 'networkidle' });
     await revealWholePage(page);
-    await page.screenshot({ path: `/home/ubuntu/qct-studio-v2/test-results/market-hubs/${market}-desktop.png`, fullPage: true });
+    await page.screenshot({ path: path.join(resultsDir, `${market}-desktop.png`), fullPage: true });
   }
   await context.close();
 });
 
 test('mobile navigation, FAQ and visual audit', async ({ browser }) => {
-  fs.mkdirSync('/home/ubuntu/qct-studio-v2/test-results/market-hubs', { recursive: true });
+  const resultsDir = path.resolve(process.cwd(), 'test-results/market-hubs');
+  fs.mkdirSync(resultsDir, { recursive: true });
   const context = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 });
   const page = await context.newPage();
   for (const market of ['kosovo', 'serbia'] as const) {
@@ -74,7 +77,7 @@ test('mobile navigation, FAQ and visual audit', async ({ browser }) => {
     await expect(firstFaq).toHaveAttribute('open', '');
 
     await revealWholePage(page);
-    await page.screenshot({ path: `/home/ubuntu/qct-studio-v2/test-results/market-hubs/${market}-mobile.png`, fullPage: true });
+    await page.screenshot({ path: path.join(resultsDir, `${market}-mobile.png`), fullPage: true });
   }
   await context.close();
 });
