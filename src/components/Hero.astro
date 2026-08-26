@@ -15,21 +15,21 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 	<div class="qct-hero__orb qct-hero__orb--lime" aria-hidden="true"></div>
 
 	<div class="qct-hero__inner container">
-		<div class="qct-hero__content">
-			<p class="qct-hero__eyebrow">{t('Serving businesses across Albania and North Macedonia.')}</p>
+		<div class="qct-hero__content" data-qct-stagger>
+			<p class="qct-hero__eyebrow" data-qct-reveal>{t('Serving businesses across Albania and North Macedonia.')}</p>
 
-			<h1 id="qct-hero-title" class="qct-hero__title">
+			<h1 id="qct-hero-title" class="qct-hero__title" data-qct-reveal>
 				{t('Your business has changed.')}<br />
 				{t('Has your website?')}
 			</h1>
 
-			<p class="qct-hero__subtitle">
+			<p class="qct-hero__subtitle" data-qct-reveal>
 				{t('Businesses evolve. Teams grow. Services improve. Reputations are built over years.')}<br />
 				{t('But many websites are left behind.')}<br />
 				{t("When someone visits your website for the first time, they're not just looking at your business. They're deciding whether they trust it.")}
 			</p>
 
-			<div class="qct-hero__actions" aria-label={t('Hero actions')}>
+			<div class="qct-hero__actions" data-qct-reveal aria-label={t('Hero actions')}>
 				<a class="qct-button qct-button--primary" href="#contact" data-magnetic>
 					<span>{t('Talk to Our Team')}</span>
 				</a>
@@ -38,12 +38,12 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 				</a>
 			</div>
 
-			<p class="qct-hero__rotator-line">
+			<p class="qct-hero__rotator-line" data-qct-reveal>
 				{t('Websites for businesses that are ready to be taken seriously online.')}
 			</p>
 		</div>
 
-		<div class="qct-hero__visual" role="region" aria-label={t('Animated preview of a website for businesses across the Balkans')}>
+		<div class="qct-hero__visual" data-qct-reveal role="region" aria-label={t('Animated preview of a website for businesses across the Balkans')}>
 			<div class="qct-signal-route" aria-hidden="true"><span>{t('Albania')}</span><i></i><span>{t('North Macedonia')}</span></div>
 			<div class="qct-browser qct-signal-room" data-signal-room>
 				<div class="qct-browser__top" aria-hidden="true">

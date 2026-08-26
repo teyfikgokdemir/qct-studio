@@ -1,83 +1,118 @@
-@media (prefers-reduced-motion: no-preference) {
-	.qct-hero__eyebrow,
-	.qct-hero__title,
-	.qct-hero__rotator-line,
-	.qct-hero__subtitle,
-	.qct-hero__actions,
-	.qct-hero__visual {
-		animation: qct-hero-enter 1150ms cubic-bezier(0.16, 1, 0.3, 1) both;
-	}
+/* QCT Studio motion system: transform + opacity only, with a calm editorial rhythm. */
+:root {
+  --qct-motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --qct-motion-duration: 680ms;
+  --qct-motion-fast: 220ms;
+  --qct-motion-distance: 18px;
+}
 
-	.qct-hero__title {
-		animation-delay: 90ms;
-	}
+[data-qct-reveal] {
+  opacity: 0;
+  transform: translate3d(0, var(--qct-motion-distance), 0);
+  transition: opacity var(--qct-motion-duration) var(--qct-motion-ease),
+    transform var(--qct-motion-duration) var(--qct-motion-ease);
+  transition-delay: var(--qct-reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
 
-	.qct-hero__rotator-line {
-		animation-delay: 180ms;
-	}
+[data-qct-reveal].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
 
-	.qct-hero__subtitle {
-		animation-delay: 260ms;
-	}
+[data-qct-stagger] > [data-qct-reveal] {
+  --qct-reveal-delay: calc(var(--qct-stagger-index, 0) * 55ms);
+}
 
-	.qct-hero__actions {
-		animation-delay: 360ms;
-	}
+.qct-hero__eyebrow,
+.qct-hero__title,
+.qct-hero__rotator-line,
+.qct-hero__subtitle,
+.qct-hero__actions,
+.qct-hero__visual {
+  animation: qct-hero-enter 850ms var(--qct-motion-ease) both;
+}
 
-	.qct-hero__visual {
-		animation-delay: 240ms;
-	}
+.qct-hero__title { animation-delay: 70ms; }
+.qct-hero__rotator-line { animation-delay: 135ms; }
+.qct-hero__subtitle { animation-delay: 200ms; }
+.qct-hero__actions { animation-delay: 275ms; }
+.qct-hero__visual { animation-delay: 170ms; }
 
-	.qct-hero__orb--red {
-		animation: qct-orb-red 12s ease-in-out infinite alternate;
-	}
+.qct-hero__orb--red { animation: qct-orb-red 18s ease-in-out infinite alternate; }
+.qct-hero__orb--lime { animation: qct-orb-lime 20s ease-in-out infinite alternate; }
 
-	.qct-hero__orb--lime {
-		animation: qct-orb-lime 14s ease-in-out infinite alternate;
-	}
+.qct-service-card,
+.qct-work-card,
+.qct-process-card,
+.qct-button,
+.qct-final-cta__panel {
+  transition-timing-function: var(--qct-motion-ease);
+}
+
+.qct-service-card,
+.qct-work-card,
+.qct-process-card {
+  transition-property: transform, box-shadow, border-color;
+  transition-duration: var(--qct-motion-fast);
+}
+
+.qct-service-card:hover,
+.qct-work-card:hover,
+.qct-process-card:hover {
+  transform: translate3d(0, -4px, 0);
+}
+
+.qct-service-card a::after,
+.qct-work-card__link::after,
+.qct-button::after {
+  transition: transform var(--qct-motion-fast) var(--qct-motion-ease);
+}
+
+.qct-service-card:hover a::after,
+.qct-work-card:hover .qct-work-card__link::after,
+.qct-button:hover::after,
+.qct-button:focus-visible::after {
+  transform: translate3d(4px, 0, 0);
+}
+
+.qct-button:active {
+  transform: scale(.98);
 }
 
 @keyframes qct-hero-enter {
-	from {
-		opacity: 0;
-		filter: blur(14px);
-		transform: translateY(34px) scale(0.96);
-	}
-
-	to {
-		opacity: 1;
-		filter: blur(0);
-		transform: translateY(0) scale(1);
-	}
+  from { opacity: 0; filter: blur(8px); transform: translate3d(0, 22px, 0) scale(.985); }
+  to { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0) scale(1); }
 }
 
 @keyframes qct-orb-red {
-	from {
-		transform: translate3d(0, 0, 0) scale(1);
-	}
-
-	to {
-		transform: translate3d(-90px, 80px, 0) scale(1.15);
-	}
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-46px, 38px, 0) scale(1.08); }
 }
 
 @keyframes qct-orb-lime {
-	from {
-		transform: translate3d(0, 0, 0) scale(1);
-	}
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(58px, -26px, 0) scale(1.06); }
+}
 
-	to {
-		transform: translate3d(120px, -50px, 0) scale(1.1);
-	}
+@media (max-width: 767px) {
+  :root { --qct-motion-distance: 12px; }
+  .qct-service-card:hover,
+  .qct-work-card:hover,
+  .qct-process-card:hover { transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-	*,
-	*::before,
-	*::after {
-		animation-duration: 0.001ms !important;
-		animation-iteration-count: 1 !important;
-		scroll-behavior: auto !important;
-		transition-duration: 0.001ms !important;
-	}
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+  }
+  [data-qct-reveal] { opacity: 1; transform: none; will-change: auto; }
+  .qct-service-card:hover,
+  .qct-work-card:hover,
+  .qct-process-card:hover,
+  .qct-button:active { transform: none; }
 }

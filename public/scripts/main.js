@@ -433,9 +433,14 @@
 				threshold: 0.16
 			});
 
-			revealItems.forEach(function (item) {
-				revealObserver.observe(item);
-			});
+				revealItems.forEach(function (item) {
+					var parent = item.parentElement;
+					if (parent && parent.hasAttribute('data-qct-stagger')) {
+						var siblings = Array.prototype.slice.call(parent.querySelectorAll(':scope > [data-qct-reveal]'));
+						item.style.setProperty('--qct-stagger-index', String(Math.max(0, siblings.indexOf(item))));
+					}
+					revealObserver.observe(item);
+				});
 		}
 	}
 })();
