@@ -1,0 +1,10 @@
+---
+import InsightPost from '../../../components/InsightPost.astro';
+import { insights } from '../../../data/insights';
+
+export function getStaticPaths() {
+  return insights.map((article) => ({ params: { slug: article.slug }, props: { article } }));
+}
+const { article } = Astro.props;
+---
+<InsightPost lang="en" article={article} />

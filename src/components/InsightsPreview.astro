@@ -1,0 +1,30 @@
+---
+import { getLocalizedUrl } from '../i18n';
+import { insights, insightLabels, type InsightLocale } from '../data/insights';
+interface Props { lang: InsightLocale; }
+const { lang } = Astro.props;
+const labels = insightLabels[lang];
+const url = (path: string) => getLocalizedUrl(lang, path);
+---
+<section class="qct-section qct-insights-preview" aria-labelledby="qct-insights-title">
+  <div class="container">
+    <div class="qct-section__header qct-section__header--split">
+      <div><p class="qct-section__eyebrow">{labels.journal}</p><h2 id="qct-insights-title" class="qct-section__title">{labels.latest}</h2></div>
+      <a class="qct-button qct-button--secondary" href={url('/insights/')}>{labels.section} →</a>
+    </div>
+    <div class="qct-insights-preview__grid">
+      {insights.map((article) => <article><p>{article.category} · {article.publishedAt}</p><h3><a href={url(`/insights/${article.slug}/`)}>{article.title[lang]}</a></h3><span>{article.excerpt[lang]}</span></article>)}
+    </div>
+  </div>
+</section>
+<style>
+  .qct-insights-preview { border-top: 1px solid rgba(255,255,255,.12); }
+  .qct-insights-preview__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,.14); }
+  .qct-insights-preview article { min-height: 16rem; padding: clamp(1.2rem, 2.5vw, 2rem); background: #171418; }
+  .qct-insights-preview article > p { color: #e75757; font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+  .qct-insights-preview h3 { margin: 2rem 0 1rem; font-size: clamp(1.35rem, 2.2vw, 2.2rem); letter-spacing: -.04em; line-height: 1; }
+  .qct-insights-preview h3 a { color: inherit; text-decoration: none; }
+  .qct-insights-preview h3 a:hover, .qct-insights-preview h3 a:focus-visible { color: #e75757; }
+  .qct-insights-preview article > span { color: #aaa3a8; line-height: 1.6; }
+  @media (max-width: 760px) { .qct-insights-preview__grid { grid-template-columns: 1fr; } .qct-insights-preview article { min-height: auto; } }
+</style>

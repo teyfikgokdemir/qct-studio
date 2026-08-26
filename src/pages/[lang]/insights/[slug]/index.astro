@@ -1,0 +1,11 @@
+---
+import InsightPost from '../../../../components/InsightPost.astro';
+import { insights } from '../../../../data/insights';
+import { languages } from '../../../../i18n';
+
+export function getStaticPaths() {
+  return Object.keys(languages).filter((lang) => lang !== 'en').flatMap((lang) => insights.map((article) => ({ params: { lang, slug: article.slug }, props: { lang, article } })));
+}
+const { lang, article } = Astro.props;
+---
+<InsightPost lang={lang} article={article} />

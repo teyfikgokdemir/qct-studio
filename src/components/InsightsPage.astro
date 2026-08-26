@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { getLocalizedUrl, getPathWithoutLocale } from '../i18n';
+import { insights, insightLabels, type InsightLocale } from '../data/insights';
+
+interface Props { lang: InsightLocale; }
+const { lang } = Astro.props;
+const labels = insightLabels[lang];
+const url = (path: string) => getLocalizedUrl(lang, path);
+---
+<BaseLayout title={`${labels.journal} — QCT Studio`} description={labels.latest} lang={lang} pageType="CollectionPage">
+  <Header slot="header" lang={lang} languagePath="/insights/" />
+  <main class="insights-page">
+    <section class="insights-hero" aria-labelledby="insights-title">
+      <div class="container">
+        <p class="insights-kicker">{labels.journal}</p>
+        <h1 id="insights-title">{labels.section}</h1>
+        <p>{labels.latest}. Practical perspectives on websites, visibility and digital systems for businesses across the Balkans.</p>
+      </div>
+    </section>
+    <section class="insights-list container" aria-labelledby="insights-list-title">
+      <h2 id="insights-list-title" class="screen-reader-text">{labels.latest}</h2>
+      {insights.map((article) => (
+        <article class="insight-card">
+          <div class="insight-card__meta"><time datetime={article.publishedAt}>{article.publishedAt}</time><span>{article.category}</span><span>{article.readTime}</span></div>
+          <div class="insight-card__body"><h2><a href={url(`/insights/${article.slug}/`)}>{article.title[lang]}</a></h2><p>{article.excerpt[lang]}</p></div>
+          <a class="insight-card__arrow" href={url(`/insights/${article.slug}/`)} aria-label={`${article.title[lang]} →`}>→</a>
+        </article>
+      ))}
+    </section>
+  </main>
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+<style>
+  .insights-page { background: var(--qct-paper, #f4f1ec); color: #151316; }
+  .insights-hero { padding: clamp(8rem, 15vw, 13rem) 0 clamp(5rem, 9vw, 8rem); border-bottom: 1px solid rgba(21,19,22,.14); }
+  .insights-kicker, .insight-card__meta { color: #69477a; font-size: .72rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+  .insights-hero h1 { margin: 1rem 0 1.2rem; font-size: clamp(4rem, 10vw, 9rem); letter-spacing: -.07em; line-height: .86; }
+  .insights-hero p:last-child { max-width: 38rem; color: #625d61; font-size: clamp(1.05rem, 1.6vw, 1.3rem); line-height: 1.65; }
+  .insights-list { padding-block: 2rem 8rem; }
+  .insight-card { display: grid; grid-template-columns: minmax(9rem, .3fr) minmax(0, 1fr) 3rem; gap: 2rem; align-items: start; padding: 2.6rem 0; border-bottom: 1px solid rgba(21,19,22,.14); }
+  .insight-card__meta { display: flex; flex-direction: column; gap: .7rem; color: #777176; font-size: .62rem; letter-spacing: .1em; }
+  .insight-card__body h2 { max-width: 45rem; margin: 0 0 .8rem; font-size: clamp(1.8rem, 3vw, 3.4rem); letter-spacing: -.045em; line-height: .98; }
+  .insight-card__body h2 a { color: inherit; text-decoration: none; }
+  .insight-card__body h2 a:hover, .insight-card__body h2 a:focus-visible { color: #e75757; }
+  .insight-card__body p { max-width: 38rem; margin: 0; color: #625d61; line-height: 1.65; }
+  .insight-card__arrow { color: #e75757; font-size: 2rem; line-height: 1; text-decoration: none; }
+  @media (max-width: 700px) { .insight-card { grid-template-columns: 1fr 2rem; gap: 1rem; } .insight-card__meta { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; } .insight-card__body { grid-column: 1; } .insight-card__arrow { grid-column: 2; grid-row: 2; } }
+</style>

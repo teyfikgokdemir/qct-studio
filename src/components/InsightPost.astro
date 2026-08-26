@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { getLocalizedUrl } from '../i18n';
+import { insightLabels, type InsightArticle, type InsightLocale } from '../data/insights';
+
+interface Props { lang: InsightLocale; article: InsightArticle; }
+const { lang, article } = Astro.props;
+const labels = insightLabels[lang];
+const title = article.title[lang];
+const description = article.excerpt[lang];
+const url = (path: string) => getLocalizedUrl(lang, path);
+const canonical = new URL(url(`/insights/${article.slug}/`), 'https://qctstudio.com').toString();
+const schema = { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: title, description, datePublished: article.publishedAt, dateModified: article.publishedAt, author: { '@type': 'Organization', name: 'QCT Studio', url: 'https://qctstudio.com' }, publisher: { '@type': 'Organization', name: 'QCT Studio', url: 'https://qctstudio.com' }, mainEntityOfPage: { '@type': 'WebPage', '@id': canonical }, inLanguage: lang };
+---
+<BaseLayout title={`${title} — QCT Studio`} description={description} lang={lang} type="article" pageType="WebPage">
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <Header slot="header" lang={lang} languagePath={`/insights/${article.slug}/`} />
+  <main class="insight-post" aria-labelledby="insight-post-title">
+    <article class="container">
+      <a class="insight-post__back" href={url('/insights/')}>← {labels.back}</a>
+      <div class="insight-post__meta"><time datetime={article.publishedAt}>{article.publishedAt}</time><span>{article.category}</span><span>{article.readTime}</span></div>
+      <h1 id="insight-post-title">{title}</h1>
+      <p class="insight-post__excerpt">{description}</p>
+      <div class="insight-post__body">
+        {article.body[lang].map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      <p class="insight-post__byline">{labels.byline}</p>
+    </article>
+  </main>
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+<style>
+  .insight-post { background: var(--qct-paper, #f4f1ec); color: #151316; padding: clamp(8rem, 15vw, 13rem) 0 8rem; }
+  .insight-post__back { color: #69477a; font-size: .76rem; font-weight: 800; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
+  .insight-post__meta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 4rem; color: #777176; font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+  .insight-post h1 { max-width: 58rem; margin: 1.2rem 0 1.5rem; font-size: clamp(3rem, 7vw, 7rem); letter-spacing: -.07em; line-height: .9; }
+  .insight-post__excerpt { max-width: 40rem; color: #625d61; font-size: clamp(1.15rem, 1.8vw, 1.45rem); line-height: 1.6; }
+  .insight-post__body { max-width: 43rem; margin-top: 5rem; }
+  .insight-post__body p { color: #383438; font-size: 1.08rem; line-height: 1.85; }
+  .insight-post__byline { margin-top: 4rem; color: #69477a; font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+</style>

@@ -35,7 +35,8 @@ const currentPath = languagePath ?? getPathWithoutLocale(Astro.url.pathname);
 			</div>
 			<ul class="primary-menu">
 				<li><a href={url('/')}>{t('Home')}</a></li>
-				<li><a href={url('/about/')}>{t('About')}</a></li>
+					<li><a href={url('/about/')}>{t('About')}</a></li>
+					<li><a href={url('/insights/')}>{t('Insights')}</a></li>
 					<li class="menu-item-has-children">
 						<button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle>
 							<span>{t('Work')}</span>
