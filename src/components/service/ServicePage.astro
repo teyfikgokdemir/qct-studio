@@ -89,8 +89,8 @@ const workUrl = `${homeUrl}#work`;
     <h1 class="qct-svc-hero__title">{title}</h1>
     <p class="qct-svc-hero__lead">{lead}</p>
     <div class="qct-svc-hero__actions">
-      <a class="qct-btn qct-btn--primary" href={contactUrl}>{ctaPrimary}</a>
-      {ctaSecondary && <a class="qct-btn qct-btn--secondary" href={workUrl}>{ctaSecondary}</a>}
+      <a class="qct-btn qct-btn--primary" href={contactUrl} data-qct-cta="contact" data-cta-location="service_hero" data-service={eyebrow}>{ctaPrimary}</a>
+      {ctaSecondary && <a class="qct-btn qct-btn--secondary" href={workUrl} data-qct-cta="work" data-cta-location="service_hero" data-service={eyebrow}>{ctaSecondary}</a>}
     </div>
   </div>
 </section>
@@ -206,8 +206,8 @@ const workUrl = `${homeUrl}#work`;
     <h2 class="qct-section__title">{final.title}</h2>
     <p class="qct-section__lead">{final.text}</p>
     <div class="qct-svc-hero__actions">
-      <a class="qct-btn qct-btn--primary" href={contactUrl}>{final.cta}</a>
-      {final.ctaSecondary && <a class="qct-btn qct-btn--secondary" href={`mailto:info@qctstudio.com`}>{final.ctaSecondary}</a>}
+      <a class="qct-btn qct-btn--primary" href={contactUrl} data-qct-cta="contact" data-cta-location="service_final" data-service={eyebrow}>{final.cta}</a>
+      {final.ctaSecondary && <a class="qct-btn qct-btn--secondary" href={`mailto:info@qctstudio.com`} data-qct-cta="email" data-cta-location="service_final" data-service={eyebrow}>{final.ctaSecondary}</a>}
     </div>
   </div>
 </section>

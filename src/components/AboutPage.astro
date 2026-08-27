@@ -14,6 +14,7 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
 const seo = getPageSeo('about', lang);
+const englishInternational = lang === 'en';
 const trustCopy = {
   en: { selectedText: 'Selected systems across multilingual commerce, international trade and regional growth diagnostics.', ctsegLabel: 'Venture trade platform', ctsegText: 'A live multilingual trade system with a verified founder-level connection.', diagnosticLabel: 'Regional growth system', diagnosticText: 'A structured market, conversion and operations intake for Balkan businesses.', open: 'View evidence' },
   sq: { selectedText: 'Sisteme të përzgjedhura në commerce shumëgjuhësh, tregti ndërkombëtare dhe diagnostikim rajonal.', ctsegLabel: 'Platformë tregtie venture', ctsegText: 'Sistem aktiv shumëgjuhësh me lidhje të verifikuar në nivel themeluesi.', diagnosticLabel: 'Sistem rajonal i rritjes', diagnosticText: 'Intake i strukturuar për tregun, konvertimin dhe operimin e bizneseve të Ballkanit.', open: 'Shikoni dëshmitë' },
@@ -27,9 +28,9 @@ const tc = trustCopy[lang as keyof typeof trustCopy] ?? trustCopy.en;
   <ServicePage
     lang={lang}
     eyebrow={t('About')}
-    title={t('Good businesses improve. Their websites often do not.')}
-    lead={t('Across the Balkans, many established businesses keep improving. Their team gets better. Their services get better. Their reputation gets stronger. The website is often the part that stays behind, showing an older version of the company. QCT Studio exists to close that gap.')}
-    ctaPrimary={t('Start Your Project')}
+    title={englishInternational ? 'Good businesses improve. Their websites should keep up across every market they serve.' : t('Good businesses improve. Their websites often do not.')}
+    lead={englishInternational ? 'QCT Studio works with established businesses in the Balkans and selected international markets to turn a stronger offer into a clearer digital presence.' : t('Across the Balkans, many established businesses keep improving. Their team gets better. Their services get better. Their reputation gets stronger. The website is often the part that stays behind, showing an older version of the company. QCT Studio exists to close that gap.')}
+    ctaPrimary={englishInternational ? 'Discuss Your Project' : t('Start Your Project')}
     ctaSecondary={t('View Our Work')}
     problem={{
       eyebrow: t('WHY WE STARTED'),
@@ -43,8 +44,8 @@ const tc = trustCopy[lang as keyof typeof trustCopy] ?? trustCopy.en;
     }}
     benefits={{
       eyebrow: t('HOW WE WORK'),
-      title: t('We start with the business, then shape the website around it.'),
-      lead: t('We look at what the company sells, who buys it, how people decide and what should happen after someone visits the website. Only then do we design the page structure.'),
+      title: englishInternational ? 'We start with the business, then shape the digital path around it.' : t('We start with the business, then shape the website around it.'),
+      lead: englishInternational ? 'We look at the offer, buyer, target market and next action before deciding what the website, store or campaign page needs to do.' : t('We look at what the company sells, who buys it, how people decide and what should happen after someone visits the website. Only then do we design the page structure.'),
       items: [
         { title: t('Business understanding'), text: t('We begin by learning how the company sells, supports and presents itself online.') },
         { title: t('Practical structure'), text: t('Pages, content and actions are planned so people can move through the site without confusion.') },
@@ -53,8 +54,8 @@ const tc = trustCopy[lang as keyof typeof trustCopy] ?? trustCopy.en;
     }}
     included={{
       eyebrow: t('WHY THE BALKANS MATTER'),
-      title: t('We work where businesses are moving faster than their websites.'),
-      lead: t('Across the Balkans, companies are investing, modernising and reaching new customers. Family businesses are becoming more formal. Exports are growing. Tourism is growing. Local brands are getting stronger. The digital side often has not kept up.'),
+      title: englishInternational ? 'Balkan expertise, with room for the next market.' : t('We work where businesses are moving faster than their websites.'),
+      lead: englishInternational ? 'Our work starts with the Balkan businesses we know best and extends to selected international projects where a clear digital system can support a new audience, market or commercial route.' : t('Across the Balkans, companies are investing, modernising and reaching new customers. Family businesses are becoming more formal. Exports are growing. Tourism is growing. Local brands are getting stronger. The digital side often has not kept up.'),
       items: [
         { title: t('Regional businesses'), text: t('Many businesses are improving quickly, but their online presence still needs to catch up.') },
         { title: t('Cross-border teams'), text: t('Customers expect clear communication, fast pages and a straightforward path to contact.') },
@@ -84,9 +85,9 @@ const tc = trustCopy[lang as keyof typeof trustCopy] ?? trustCopy.en;
     }}
     final={{
       eyebrow: t('READY WHEN YOU ARE'),
-      title: t('Start with the part of your digital presence that matters most.'),
-      text: t('If your business is ready for a clearer and more serious online presence, we can help you decide what comes next.'),
-      cta: t('Start Your Project'),
+      title: englishInternational ? 'Start with the part of your digital presence that matters most.' : t('Start with the part of your digital presence that matters most.'),
+      text: englishInternational ? 'Share the business, audience and market you want to reach. We will help define the clearest next step.' : t('If your business is ready for a clearer and more serious online presence, we can help you decide what comes next.'),
+      cta: englishInternational ? 'Discuss Your Project' : t('Start Your Project'),
     }}
   />
 

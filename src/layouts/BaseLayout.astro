@@ -8,9 +8,13 @@ const LOCALES: Record<string, string> = { en: 'en_US', sq: 'sq_AL', mk: 'mk_MK',
 const INDEXED_LANGS = ['en', 'sq', 'mk', 'sr'];
 const ROUTE_LANGS = INDEXED_LANGS;
 const AREA_SERVED = [
-	{ '@type': 'Country', name: 'Albania' },
-	{ '@type': 'Country', name: 'North Macedonia' },
-];
+		{ '@type': 'Country', name: 'Albania' },
+		{ '@type': 'Country', name: 'North Macedonia' },
+		{ '@type': 'Country', name: 'United States' },
+		{ '@type': 'Country', name: 'Canada' },
+		{ '@type': 'Country', name: 'United Kingdom' },
+		{ '@type': 'Country', name: 'Germany' },
+	];
 
 export interface Props {
 	title: string;
@@ -33,7 +37,7 @@ export interface Props {
 
 const {
 	title,
-description = 'QCT Studio — websites, e-commerce and AI automation for businesses across Albania and North Macedonia.',
+description = 'QCT Studio — websites, e-commerce, conversion-focused landing pages and practical AI automation for Balkan and selected international businesses.',
 		lang = 'en',
 		image = '/og-image.png',
 		type = 'website',
@@ -113,7 +117,7 @@ const organizationSchema = {
 		caption: 'QCT Studio',
 	},
 	image: { '@id': `${organizationId}/logo` },
-	description: 'QCT Studio builds websites, e-commerce stores, WhatsApp Commerce and AI automation for established businesses across Albania and North Macedonia.',
+	description: 'QCT Studio builds websites, e-commerce stores, conversion-focused landing pages, WhatsApp Commerce and practical AI automation for established Balkan and selected international businesses.',
 	foundingDate: '2025',
 	foundingLocation: {
 		'@type': 'Place',
@@ -304,6 +308,30 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	<!-- Ported as-is from the WordPress theme's assets/js -->
 	<script src="/scripts/main.js?v=20260718-3" is:inline></script>
 	{isHome && <script src="/scripts/animations.js?v=20260718-3" is:inline></script>}
-  <script src="/cansu-source-beacon.js" data-site="qct-studio" is:inline></script>
+	  <script is:inline>
+	    (() => {
+	      const track = (eventName, parameters = {}) => {
+	        if (typeof window.gtag !== 'function') return;
+	        window.gtag('event', eventName, {
+	          page_path: window.location.pathname,
+	          page_language: document.documentElement.lang,
+	          ...parameters,
+	        });
+	      };
+	      document.querySelectorAll('[data-qct-cta]').forEach((link) => {
+	        link.addEventListener('click', () => {
+	          const ctaType = link.getAttribute('data-qct-cta') || 'unknown';
+	          const eventName = ctaType === 'contact' ? 'contact_click' : ctaType === 'email' ? 'email_click' : 'cta_click';
+	          track(eventName, {
+	            cta_type: ctaType,
+	            cta_location: link.getAttribute('data-cta-location') || 'unknown',
+	            service: link.getAttribute('data-service') || '',
+	          });
+	        });
+	      });
+	    })();
+	  </script>
+	  <script src="/cansu-source-beacon.js" data-site="qct-studio" is:inline></script>
+
 </body>
 </html>

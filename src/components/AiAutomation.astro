@@ -12,15 +12,19 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const seo = getPageSeo('ai-automation', lang);
+const englishInternational = lang === 'en';
+const serviceTitle = englishInternational ? 'Practical AI automation for Balkan and international business workflows.' : t('Practical AI automation for clearer, faster business workflows.');
+const serviceLead = englishInternational ? 'Connect lead intake, follow-up and internal handoffs across the tools your team already uses, with people retaining control of approvals and customer decisions.' : t('QCT Studio helps established businesses in Albania and North Macedonia reduce repetitive operational work through carefully planned automation, with people retaining control of important decisions.');
+const serviceSchemaDescription = englishInternational ? serviceLead : t('QCT Studio helps established businesses in Albania and North Macedonia reduce repetitive operational work through carefully planned automation, with people retaining control of important decisions.');
 ---
-<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('AI Automation')} service={{ name: t('AI Automation'), description: t('QCT Studio helps established businesses in Albania and North Macedonia reduce repetitive operational work through carefully planned automation, with people retaining control of important decisions.') }}>
+<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('AI Automation')} service={{ name: t('AI Automation'), description: serviceSchemaDescription }}>
   <Header slot="header" lang={lang} />
   <ServicePage
     lang={lang}
     eyebrow={t('AI Automation')}
-    title={t('Practical AI automation for clearer, faster business workflows.')}
-    lead={t('QCT Studio helps established businesses in Albania and North Macedonia reduce repetitive operational work through carefully planned automation, with people retaining control of important decisions.')}
-    ctaPrimary={t('Discuss Your Workflow')}
+    title={serviceTitle}
+    lead={serviceLead}
+    ctaPrimary={englishInternational ? 'Discuss Your Workflow' : t('Discuss Your Workflow')}
     benefits={{
       eyebrow: '',
       title: t('What does AI automation mean for a business?'),
@@ -59,9 +63,9 @@ const seo = getPageSeo('ai-automation', lang);
       ],
     }}
     final={{
-      title: t('Start with one useful workflow.'),
-      text: t('We can examine a repetitive process and define where structured automation would genuinely help your team.'),
-      cta: t('Discuss Your Workflow'),
+      title: englishInternational ? 'Start with one useful workflow.' : t('Start with one useful workflow.'),
+      text: englishInternational ? 'Bring one repetitive process, lead path or handoff. We will define what can be connected, what needs approval and how success should be measured.' : t('We can examine a repetitive process and define where structured automation would genuinely help your team.'),
+      cta: englishInternational ? 'Discuss Your Workflow' : t('Discuss Your Workflow'),
     }}
   />
   <Footer slot="footer" lang={lang} />

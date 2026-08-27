@@ -26,48 +26,48 @@ interface SeoEntry {
 const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
   en: {
     home: {
-      title: 'QCT Studio — Websites, E-commerce & AI for the Balkans',
-      description: 'QCT Studio builds websites, e-commerce stores and AI automation for businesses across Albania and North Macedonia.',
+      title: 'QCT Studio — Balkan + International Growth',
+      description: 'Websites, e-commerce, landing pages and practical AI automation for Balkan and selected international businesses.'
     },
     about: {
-      title: 'About QCT Studio — Digital Partner for Balkan Businesses',
-      description: 'Meet QCT Studio, founded in Istanbul by Teyfik Gökdemir to build trusted websites, e-commerce and digital systems for Balkan businesses.',
+      title: 'About QCT Studio — Balkan Growth Partner',
+      description: 'QCT Studio, founded in Istanbul, builds clear websites, e-commerce and digital systems for Balkan and selected international projects.'
     },
     services: {
-      title: 'Web, E-commerce, SEO & AI Services — QCT Studio',
-      description: 'Explore website design, e-commerce, WhatsApp Commerce, SEO, GEO, Meta Ads landing pages and AI automation for Balkan businesses.',
+      title: 'Balkan & International Digital Growth Services | QCT',
+      description: 'Explore website design, e-commerce, WhatsApp Commerce, SEO, GEO, Meta Ads landing pages and practical AI automation for Balkan and international business growth.'
     },
     'website-design': {
-      title: 'Website Design for Balkan Businesses — QCT Studio',
-      description: 'Premium website design for established businesses in Albania and North Macedonia that need stronger trust, clarity and mobile performance.',
+      title: 'Website Design for Balkan & International Businesses | QCT',
+      description: 'Conversion-focused website design for established Balkan and international businesses that need stronger trust, clarity and mobile performance.'
     },
     'e-commerce': {
-      title: 'E-commerce Website Development — QCT Studio',
-      description: 'Conversion-focused e-commerce stores with clear product pages, confident checkout and smooth mobile shopping for Balkan businesses.',
+      title: 'E-commerce for Balkan & International Businesses | QCT',
+      description: 'Conversion-focused e-commerce stores with clear product pages, confident checkout and smooth mobile shopping for Balkan and selected international markets.'
     },
     'ai-automation': {
-      title: 'AI Automation for Business Workflows — QCT Studio',
-      description: 'Practical AI automation that reduces repetitive work, improves lead routing and keeps your team in control of important decisions.',
+      title: 'AI Automation for Balkan & International Workflows | QCT',
+      description: 'Practical AI automation for Balkan and international businesses that reduces repetitive work, improves lead routing and keeps your team in control.'
     },
     'seo-performance': {
-      title: 'SEO & GEO for Google and AI Search — QCT Studio',
-      description: 'Technical SEO, content structure and GEO readiness that help Balkan businesses appear in Google and modern AI-powered search.',
+      title: 'SEO, GEO & AI Search Visibility | QCT Studio',
+      description: 'Technical SEO, content structure and GEO readiness that help Balkan businesses and selected international brands appear in Google and AI-powered search.'
     },
     'whatsapp-commerce': {
-      title: 'WhatsApp Commerce Solutions — QCT Studio',
-      description: 'Connect websites, ads and product interest with clearer WhatsApp sales journeys that make enquiries easier to manage and convert.',
+      title: 'WhatsApp Commerce for International Sales | QCT Studio',
+      description: 'Connect websites, ads and product interest with clearer WhatsApp sales journeys for Balkan and international businesses.'
     },
     'meta-ads': {
-      title: 'Meta Ads Landing Page Design — QCT Studio',
-      description: 'Focused landing pages aligned with Meta Ads campaigns to reduce distraction, strengthen message match and generate better enquiries.',
+      title: 'Meta Ads Landing Pages for International Campaigns | QCT',
+      description: 'Focused landing pages aligned with Meta Ads campaigns to strengthen message match and generate better enquiries in Balkan and international markets.'
     },
     careers: {
       title: 'Careers at QCT Studio — Join Our Digital Team',
       description: 'Explore opportunities at QCT Studio for responsible, clear communicators who want to build useful digital work for Balkan businesses.',
     },
     contact: {
-      title: 'Contact QCT Studio — Start Your Digital Project',
-      description: 'Contact QCT Studio about websites, e-commerce, SEO, GEO, landing pages and AI automation for your business in the Balkans.',
+      title: 'Contact QCT Studio — Discuss Your Balkan or International Project',
+      description: 'Contact QCT Studio about websites, e-commerce, SEO, GEO, landing pages and AI automation for a Balkan or selected international business project.'
     },
     work: {
       title: 'Selected Digital Work & Case Studies — QCT Studio',

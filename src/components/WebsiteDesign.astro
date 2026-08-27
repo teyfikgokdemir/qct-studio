@@ -12,15 +12,18 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const seo = getPageSeo('website-design', lang);
+const englishInternational = lang === 'en';
+const serviceTitle = englishInternational ? 'Website design for Balkan and international businesses that need to earn trust before the first conversation.' : t('Website design for businesses that need to earn trust before the first conversation.');
+const serviceLead = englishInternational ? 'Turn a first visit into a clearer commercial conversation with a fast, credible website built around your offer, audience and target market.' : t('Your website is often the first interaction someone has with your business.');
 ---
-<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('Website Design')} service={{ name: t('Website Design'), description: t('Your website is often the first interaction someone has with your business.') }}>
+<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('Website Design')} service={{ name: t('Website Design'), description: serviceLead }}>
   <Header slot="header" lang={lang} />
   <ServicePage
     lang={lang}
     eyebrow={t('Website Design')}
-    title={t('Website design for businesses that need to earn trust before the first conversation.')}
-    lead={t('Your website is often the first interaction someone has with your business.')}
-    ctaPrimary={t('Start Your Project')}
+    title={serviceTitle}
+    lead={serviceLead}
+    ctaPrimary={englishInternational ? 'Discuss Your Project' : t('Start Your Project')}
     ctaSecondary={t('View Our Work')}
     problem={{
       eyebrow: t('PROBLEM'),
@@ -38,8 +41,8 @@ const seo = getPageSeo('website-design', lang);
     }}
     benefits={{
       eyebrow: t('BENEFITS'),
-      title: t("Good design isn't about making a website look expensive."),
-      lead: t("It's about making people feel comfortable doing business with you."),
+      title: englishInternational ? 'Good design makes the next commercial step easier.' : t("Good design isn't about making a website look expensive."),
+      lead: englishInternational ? 'It gives buyers, partners and prospects enough clarity to decide whether to contact you.' : t("It's about making people feel comfortable doing business with you."),
       items: [
         { title: t('Every page should answer questions before visitors need to ask them.'), text: `${t('Clear navigation.')} ${t('Fast loading.')} ${t('Simple messaging.')}` },
         { title: t('Professional visuals.'), text: t('Mobile-first layouts.') },
@@ -48,8 +51,8 @@ const seo = getPageSeo('website-design', lang);
     }}
     included={{
       eyebrow: t('WHAT YOU GET'),
-      title: t("What's included"),
-      lead: t('Every QCT Studio website is planned around usability, performance and long-term growth.'),
+      title: englishInternational ? 'A website built for trust, search and enquiries.' : t("What's included"),
+      lead: englishInternational ? 'Every QCT Studio website is planned around usability, performance, search visibility and the next commercial action.' : t('Every QCT Studio website is planned around usability, performance and long-term growth.'),
       items: [
         { title: t('Professional Custom Design'), text: t('Designed specifically around your business instead of using generic templates.') },
         { title: t('Responsive on Every Device'), text: t('A consistent experience across desktop, tablet and mobile.') },
@@ -81,9 +84,9 @@ const seo = getPageSeo('website-design', lang);
       ],
     }}
     final={{
-      title: t('Ready for a website that reflects the quality of your business?'),
-      text: t("Whether you're replacing an outdated website or building something entirely new, we'll help you create a website that people trust from their very first visit."),
-      cta: t("Let's Talk"),
+      title: englishInternational ? 'Ready for a website that supports the next market you want to reach?' : t('Ready for a website that reflects the quality of your business?'),
+      text: englishInternational ? 'Share your current site, target market and the point where visitors or enquiries drop away. We will define the most useful first improvement.' : t("Whether you're replacing an outdated website or building something entirely new, we'll help you create a website that people trust from their very first visit."),
+      cta: englishInternational ? 'Discuss Your Project' : t("Let's Talk"),
     }}
   />
   <Footer slot="footer" lang={lang} />

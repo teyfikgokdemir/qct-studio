@@ -12,15 +12,18 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const seo = getPageSeo('meta-ads', lang);
+const englishInternational = lang === 'en';
+const serviceTitle = englishInternational ? 'Meta Ads landing pages for clearer conversion across Balkan and international campaigns.' : t('Meta Ads landing pages built around one clear campaign goal.');
+const serviceLead = englishInternational ? 'Give each campaign a destination that matches its offer, audience and next action—so paid traffic has a clearer route to a qualified enquiry.' : t('A successful advertising campaign needs more than clicks. We build focused landing pages that match your ads, reduce distractions and help visitors become enquiries instead of leaving after a few seconds.');
 ---
-<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('Meta Ads Landing Pages')} service={{ name: t('Meta Ads Landing Pages'), description: t('A successful advertising campaign needs more than clicks. We build focused landing pages that match your ads, reduce distractions and help visitors become enquiries instead of leaving after a few seconds.') }}>
+<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('Meta Ads Landing Pages')} service={{ name: t('Meta Ads Landing Pages'), description: serviceLead }}>
   <Header slot="header" lang={lang} />
   <ServicePage
     lang={lang}
     eyebrow={t('Meta Ads Landing Pages')}
-    title={t('Meta Ads landing pages built around one clear campaign goal.')}
-    lead={t('A successful advertising campaign needs more than clicks. We build focused landing pages that match your ads, reduce distractions and help visitors become enquiries instead of leaving after a few seconds.')}
-    ctaPrimary={t('Start Your Project')}
+    title={serviceTitle}
+    lead={serviceLead}
+    ctaPrimary={englishInternational ? 'Discuss Your Campaign' : t('Start Your Project')}
     ctaSecondary={t('View Our Work')}
     problem={{
       eyebrow: t('PROBLEM'),
@@ -34,8 +37,8 @@ const seo = getPageSeo('meta-ads', lang);
     }}
     benefits={{
       eyebrow: t('BENEFITS'),
-      title: t('Landing pages built around one clear objective.'),
-      lead: t('Every page is designed to support a specific campaign, audience and business goal.'),
+      title: englishInternational ? 'Landing pages built around one clear commercial objective.' : t('Landing pages built around one clear objective.'),
+      lead: englishInternational ? 'Every page is designed to keep the promise, audience and next action aligned from ad click to enquiry.' : t('Every page is designed to support a specific campaign, audience and business goal.'),
       items: [
         { title: t('Message consistency'), text: t('Visitors immediately recognise the same offer they clicked in the advertisement.') },
         { title: t('Clear next steps'), text: t('Simple page structure helps customers contact your business with less hesitation.') },
@@ -44,8 +47,8 @@ const seo = getPageSeo('meta-ads', lang);
     }}
     included={{
       eyebrow: t('WHAT YOU GET'),
-      title: t("What's included"),
-      lead: t('Every landing page is designed to support advertising performance without unnecessary complexity.'),
+      title: englishInternational ? 'A focused destination for measurable campaign traffic.' : t("What's included"),
+      lead: englishInternational ? 'Each page is prepared for message match, mobile speed, clear contact paths and practical campaign measurement.' : t('Every landing page is designed to support advertising performance without unnecessary complexity.'),
       items: [
         { title: t('Campaign-specific landing page'), text: t('One focused page for one clear advertising objective.') },
         { title: t('Conversion-focused structure'), text: t('Content organised to help visitors make decisions more easily.') },
@@ -78,9 +81,9 @@ const seo = getPageSeo('meta-ads', lang);
     }}
     final={{
       eyebrow: t('READY WHEN YOU ARE'),
-      title: t('Give every campaign a better destination.'),
-      text: t('The right landing page gives every advertising campaign a stronger chance to generate meaningful enquiries.'),
-      cta: t("Let's Talk"),
+      title: englishInternational ? 'Give every campaign a clearer path to an enquiry.' : t('Give every campaign a better destination.'),
+      text: englishInternational ? 'Share the campaign offer, audience and destination you use today. We will identify the simplest improvement to message match and conversion.' : t('The right landing page gives every advertising campaign a stronger chance to generate meaningful enquiries.'),
+      cta: englishInternational ? 'Discuss Your Campaign' : t("Let's Talk"),
     }}
   />
   <Footer slot="footer" lang={lang} />

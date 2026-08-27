@@ -6,9 +6,9 @@ const { lang } = Astro.props;
 
 const copy = {
   en: {
-    eyebrow: 'Digital growth review',
-    title: 'Start with the commercial constraint, not a predetermined tool.',
-    lead: 'Share the current website, target market and the point where discovery, enquiries or sales are breaking down. We will use that context to identify the most practical first step.',
+    eyebrow: 'Balkan + international digital growth review',
+    title: 'Discuss the commercial constraint before choosing the next digital step.',
+    lead: 'Share the current website, target market and the point where discovery, enquiries or sales are breaking down. We will use that context to define the most practical first improvement.',
     direct: 'Direct contact',
     guidance: 'What to include',
     items: [
@@ -17,7 +17,7 @@ const copy = {
       ['Main constraint', 'Where product discovery, lead follow-up, conversion or internal operations currently slow down.'],
       ['Useful evidence', 'The existing website, catalogue, campaign page or workflow that should be reviewed.'],
     ],
-    primary: 'Request a digital growth review',
+    primary: 'Discuss Your Project',
     secondary: 'Email QCT Studio',
     note: 'No technical specification is required. A concise commercial brief is enough to begin.',
   },
@@ -85,12 +85,12 @@ const reviewUrl = `mailto:info@qctstudio.com?subject=${reviewSubject}&body=${rev
         <p class="qct-section__lead">{c.lead}</p>
         <p class="qct-contact__note">{c.note}</p>
         <div class="qct-contact__actions">
-          <a class="qct-button qct-button--primary" href={reviewUrl}>{c.primary}</a>
-          <a class="qct-button qct-button--secondary" href="mailto:info@qctstudio.com">{c.secondary}</a>
+          <a class="qct-button qct-button--primary" href={reviewUrl} data-qct-cta="contact" data-cta-location="contact_primary">{c.primary}</a>
+          <a class="qct-button qct-button--secondary" href="mailto:info@qctstudio.com" data-qct-cta="email" data-cta-location="contact_secondary">{c.secondary}</a>
         </div>
         <div class="qct-contact__direct">
           <span>{c.direct}</span>
-          <a href="mailto:info@qctstudio.com">info@qctstudio.com</a>
+          <a href="mailto:info@qctstudio.com" data-qct-cta="email" data-cta-location="contact_direct">info@qctstudio.com</a>
         </div>
       </div>
 

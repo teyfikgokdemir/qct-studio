@@ -12,15 +12,18 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const seo = getPageSeo('e-commerce', lang);
+const englishInternational = lang === 'en';
+const serviceTitle = englishInternational ? 'E-commerce websites built for clear shopping across Balkan and international markets.' : t('E-commerce websites built for clear shopping and confident checkout.');
+const serviceLead = englishInternational ? 'Build product pages, mobile shopping and checkout around how customers compare, decide and order in each market you serve.' : t('We build e-commerce websites for established businesses that need clear product pages, smooth mobile shopping and a checkout people can complete with confidence. Your store should be easy for customers to use and easy for your team to manage.');
 ---
-<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('E-commerce')} service={{ name: t('E-commerce'), description: t('We build e-commerce websites for established businesses that need clear product pages, smooth mobile shopping and a checkout people can complete with confidence. Your store should be easy for customers to use and easy for your team to manage.') }}>
+<BaseLayout title={seo.title} lang={lang} description={seo.description} breadcrumbLabel={t('E-commerce')} service={{ name: t('E-commerce'), description: serviceLead }}>
   <Header slot="header" lang={lang} />
   <ServicePage
     lang={lang}
     eyebrow={t('E-commerce')}
-    title={t('E-commerce websites built for clear shopping and confident checkout.')}
-    lead={t('We build e-commerce websites for established businesses that need clear product pages, smooth mobile shopping and a checkout people can complete with confidence. Your store should be easy for customers to use and easy for your team to manage.')}
-    ctaPrimary={t('Start Your Project')}
+    title={serviceTitle}
+    lead={serviceLead}
+    ctaPrimary={englishInternational ? 'Discuss Your Project' : t('Start Your Project')}
     ctaSecondary={t('View Our Work')}
     problem={{
       eyebrow: t('PROBLEM'),
@@ -36,8 +39,8 @@ const seo = getPageSeo('e-commerce', lang);
     }}
     benefits={{
       eyebrow: t('BENEFITS'),
-      title: t('A better store helps customers move from interest to order.'),
-      lead: t('The goal is not to add noise. The goal is to make the buying path easier to understand, easier to trust and easier to complete.'),
+      title: englishInternational ? 'A better store makes the buying path easier to trust.' : t('A better store helps customers move from interest to order.'),
+      lead: englishInternational ? 'The goal is to make product information, market expectations and the next commercial step clear on every screen.' : t('The goal is not to add noise. The goal is to make the buying path easier to understand, easier to trust and easier to complete.'),
       items: [
         { title: t('Clear product structure'), text: t('Categories, filters and product pages are arranged so customers can compare options without getting lost, even when they start on a phone.') },
         { title: t('Mobile-first shopping'), text: t('The store is designed for people who browse, ask questions and place orders from their phones without losing the thread.') },
@@ -46,8 +49,8 @@ const seo = getPageSeo('e-commerce', lang);
     }}
     included={{
       eyebrow: t('WHAT YOU GET'),
-      title: t("What's included"),
-      lead: t('Every QCT Studio e-commerce site is planned around trust, usability and long-term manageability.'),
+      title: englishInternational ? 'A store built for search, trust and repeatable operations.' : t("What's included"),
+      lead: englishInternational ? 'Every QCT Studio e-commerce site is planned around product clarity, performance, search visibility and the team that will manage it after launch.' : t('Every QCT Studio e-commerce site is planned around trust, usability and long-term manageability.'),
       items: [
         { title: t('Store architecture'), text: t('Categories, collections and internal links built for browsing and search.') },
         { title: t('Product pages'), text: t('Layouts that give customers the details they need before they buy.') },
@@ -79,9 +82,9 @@ const seo = getPageSeo('e-commerce', lang);
       ],
     }}
     final={{
-      title: t('Ready for a store that feels easier to use and easier to trust?'),
-      text: t('Whether you need a better checkout, clearer product pages or a store that is simpler to manage, we can help you build it properly.'),
-      cta: t('Start Your Project'),
+      title: englishInternational ? 'Ready for a store that can support the next market you want to reach?' : t('Ready for a store that feels easier to use and easier to trust?'),
+      text: englishInternational ? 'Share your products, current store and target markets. We will identify the clearest improvement to product discovery, checkout or the operating workflow.' : t('Whether you need a better checkout, clearer product pages or a store that is simpler to manage, we can help you build it properly.'),
+      cta: englishInternational ? 'Discuss Your Project' : t('Start Your Project'),
       ctaSecondary: t('Contact Us'),
     }}
   />
