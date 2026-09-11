@@ -78,3 +78,15 @@ const currentPath = languagePath ?? getPathWithoutLocale(Astro.url.pathname);
 		</nav>
 	</div>
 </header>
+
+<style>
+	.mobile-nav-head {
+		display: none;
+	}
+
+	@media (max-width: 999px) {
+		.mobile-nav-head {
+			display: flex;
+		}
+	}
+</style>
