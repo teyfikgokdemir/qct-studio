@@ -19,8 +19,8 @@ const { lang } = Astro.props;
 
 const seo = lang === 'en'
   ? {
-      title: 'QCT Studio — Websites, E-commerce & AI Systems for the Balkans',
-      description: 'Websites, e-commerce and AI systems for ambitious businesses across the Balkans.',
+      title: 'Web Design, E-commerce & AI Automation | QCT Studio Balkans',
+      description: 'QCT Studio builds premium websites, e-commerce stores, SEO-ready digital experiences and practical AI automation for businesses across the Balkans.',
     }
   : lang === 'sr'
     ? {
@@ -29,7 +29,7 @@ const seo = lang === 'en'
       }
     : getPageSeo('home', lang);
 ---
-<BaseLayout title={seo.title} description={seo.description} image="/og-image.png" lang={lang} isHome={true}>
+<BaseLayout title={seo.title} description={seo.description} image="/og-default.png" lang={lang} isHome={true}>
 <Header slot="header" lang={lang} />
 <Hero lang={lang} />
 <Problem lang={lang} />
