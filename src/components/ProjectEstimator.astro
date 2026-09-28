@@ -1,0 +1,196 @@
+---
+import { getLocalizedUrl } from '../i18n';
+
+interface Props { lang: string; }
+const { lang } = Astro.props;
+
+const copy = {
+  en: {
+    eyebrow:'BALKAN LAUNCH OFFER',
+    title:'Estimate your project before we talk.',
+    lead:'Choose the project type and scope. The estimate updates instantly and shows the current limited launch offer.',
+    project:'Project type',
+    scope:'Scope',
+    standard:'Standard starting price',
+    campaign:'Limited launch offer',
+    saving:'Estimated saving',
+    note:'50% off QCT Studio service fees for a limited number of qualified projects',
+    qualifier:'The offer applies only to QCT Studio implementation fees for eligible projects. Third-party software, licences, advertising spend, taxes, complex integrations and custom software are excluded.',
+    cta:'Check project fit',
+    availability:'Limited availability',
+    services:[
+      ['Business Website',1490],
+      ['Growth Website',2490],
+      ['E-commerce',3490],
+      ['Campaign Landing Page',690],
+      ['SEO & GEO Foundation',790],
+      ['WhatsApp Commerce',890],
+      ['AI Automation Workflow',1290],
+    ],
+    scopes:[['Standard',1],['Extended',1.35],['Multi-market',1.65]],
+  },
+  sq: {
+    eyebrow:'OFERTA BALKAN LAUNCH',
+    title:'Vlerësoni projektin para se të flasim.',
+    lead:'Zgjidhni llojin dhe fushën e projektit. Vlerësimi përditësohet menjëherë dhe tregon ofertën aktuale të kufizuar.',
+    project:'Lloji i projektit',
+    scope:'Fusha',
+    standard:'Çmimi standard fillestar',
+    campaign:'Oferta e kufizuar',
+    saving:'Kursimi i vlerësuar',
+    note:'50% ulje në tarifën e shërbimit të QCT Studio për një numër të kufizuar projektesh të përshtatshme',
+    qualifier:'Oferta vlen vetëm për tarifën e implementimit të QCT Studio për projekte të përshtatshme. Software i palëve të treta, licencat, buxheti i reklamave, taksat, integrimet komplekse dhe software custom nuk përfshihen.',
+    cta:'Kontrollo përshtatshmërinë',
+    availability:'Disponueshmëri e kufizuar',
+    services:[
+      ['Faqe Biznesi',1490],
+      ['Faqe për Rritje',2490],
+      ['E-commerce',3490],
+      ['Landing Page Fushate',690],
+      ['Bazë SEO & GEO',790],
+      ['WhatsApp Commerce',890],
+      ['Automatizim me AI',1290],
+    ],
+    scopes:[['Standard',1],['I zgjeruar',1.35],['Shumë tregje',1.65]],
+  },
+  mk: {
+    eyebrow:'BALKAN LAUNCH ПОНУДА',
+    title:'Проценете го проектот пред да разговараме.',
+    lead:'Изберете тип и опсег. Проценката се ажурира веднаш и ја покажува тековната ограничена понуда.',
+    project:'Тип на проект',
+    scope:'Опсег',
+    standard:'Стандардна почетна цена',
+    campaign:'Ограничена понуда',
+    saving:'Проценета заштеда',
+    note:'50% попуст на QCT Studio услужната такса за ограничен број соодветни проекти',
+    qualifier:'Понудата важи само за QCT Studio implementation fee кај соодветни проекти. Third-party software, лиценци, рекламен буџет, даноци, комплексни интеграции и custom software не се вклучени.',
+    cta:'Проверете дали проектот одговара',
+    availability:'Ограничена достапност',
+    services:[
+      ['Бизнис веб-страница',1490],
+      ['Growth веб-страница',2490],
+      ['E-commerce',3490],
+      ['Campaign Landing Page',690],
+      ['SEO & GEO основа',790],
+      ['WhatsApp Commerce',890],
+      ['AI Automation Workflow',1290],
+    ],
+    scopes:[['Стандарден',1],['Проширен',1.35],['Повеќе пазари',1.65]],
+  },
+  sr: {
+    eyebrow:'BALKAN LAUNCH PONUDA',
+    title:'Procenite projekat pre razgovora.',
+    lead:'Izaberite tip projekta i obim. Procena se ažurira odmah i prikazuje aktuelnu ograničenu ponudu.',
+    project:'Tip projekta',
+    scope:'Obim',
+    standard:'Standardna početna cena',
+    campaign:'Ograničena ponuda',
+    saving:'Procenjena ušteda',
+    note:'50% popusta na QCT Studio uslugu za ograničen broj odgovarajućih projekata',
+    qualifier:'Ponuda važi samo za QCT Studio implementacionu uslugu kod odgovarajućih projekata. Third-party softver, licence, budžet za oglase, porezi, kompleksne integracije i custom softver nisu uključeni.',
+    cta:'Proverite uklapanje projekta',
+    availability:'Ograničena dostupnost',
+    services:[
+      ['Poslovni sajt',1490],
+      ['Growth sajt',2490],
+      ['E-commerce',3490],
+      ['Campaign Landing Page',690],
+      ['SEO & GEO osnova',790],
+      ['WhatsApp Commerce',890],
+      ['AI Automation Workflow',1290],
+    ],
+    scopes:[['Standardni',1],['Prošireni',1.35],['Više tržišta',1.65]],
+  },
+}[lang] ?? null;
+
+const contactUrl = getLocalizedUrl(lang, '/contact/');
+---
+{copy && (
+<section class="qct-estimator" id="project-estimator" aria-labelledby="project-estimator-title">
+  <div class="container qct-estimator__grid">
+    <div class="qct-estimator__intro">
+      <div class="qct-estimator__badge"><span></span>{copy.availability}</div>
+      <p class="qct-estimator__eyebrow">{copy.eyebrow}</p>
+      <h2 id="project-estimator-title">{copy.title}</h2>
+      <p>{copy.lead}</p>
+      <div class="qct-estimator__offer">
+        <strong>-50%</strong>
+        <span>{copy.note}</span>
+      </div>
+      <small>{copy.qualifier}</small>
+    </div>
+
+    <div class="qct-estimator__panel" data-project-estimator data-services={JSON.stringify(copy.services)} data-scopes={JSON.stringify(copy.scopes)}>
+      <label>
+        <span>{copy.project}</span>
+        <select data-estimator-service>
+          {copy.services.map(([name], index) => <option value={index}>{name}</option>)}
+        </select>
+      </label>
+      <label>
+        <span>{copy.scope}</span>
+        <select data-estimator-scope>
+          {copy.scopes.map(([name], index) => <option value={index}>{name}</option>)}
+        </select>
+      </label>
+
+      <div class="qct-estimator__result">
+        <div><span>{copy.standard}</span><strong data-standard-price>€1,490</strong></div>
+        <div class="qct-estimator__campaign"><span>{copy.campaign}</span><strong data-campaign-price>€745</strong></div>
+        <div><span>{copy.saving}</span><strong data-saving>€745</strong></div>
+      </div>
+
+      <a class="qct-estimator__cta" href={contactUrl} data-qct-cta="contact" data-cta-location="homepage-estimator">{copy.cta}</a>
+    </div>
+  </div>
+
+  <script is:inline>
+    document.querySelectorAll('[data-project-estimator]').forEach((root) => {
+      const services = JSON.parse(root.dataset.services || '[]');
+      const scopes = JSON.parse(root.dataset.scopes || '[]');
+      const service = root.querySelector('[data-estimator-service]');
+      const scope = root.querySelector('[data-estimator-scope]');
+      const standard = root.querySelector('[data-standard-price]');
+      const campaign = root.querySelector('[data-campaign-price]');
+      const saving = root.querySelector('[data-saving]');
+      const euro = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+      const update = () => {
+        const base = Number(services[Number(service.value)]?.[1] || 0);
+        const multiplier = Number(scopes[Number(scope.value)]?.[1] || 1);
+        const total = Math.round(base * multiplier / 10) * 10;
+        const offer = Math.round((total * 0.5) / 10) * 10;
+        standard.textContent = euro.format(total);
+        campaign.textContent = euro.format(offer);
+        saving.textContent = euro.format(total - offer);
+      };
+      service.addEventListener('change', update);
+      scope.addEventListener('change', update);
+      update();
+    });
+  </script>
+</section>
+)}
+
+<style>
+.qct-estimator{padding:clamp(4rem,7vw,7rem) 0;border-block:1px solid rgba(23,21,26,.08);background:linear-gradient(180deg,rgba(231,87,87,.035),rgba(255,255,255,0))}
+.qct-estimator__grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(420px,1.1fr);gap:clamp(2rem,6vw,6rem);align-items:center}
+.qct-estimator__badge{display:inline-flex;align-items:center;gap:.5rem;padding:.45rem .7rem;border:1px solid rgba(23,21,26,.1);border-radius:999px;font-size:.7rem;font-weight:750;margin-bottom:1.2rem}
+.qct-estimator__badge span{width:.45rem;height:.45rem;border-radius:50%;background:#e75757;box-shadow:0 0 0 4px rgba(231,87,87,.11)}
+.qct-estimator__eyebrow{font-size:.72rem;letter-spacing:.16em;font-weight:800;color:#e75757;margin:0 0 .8rem}
+.qct-estimator__intro h2{font-size:clamp(2.4rem,5vw,4.8rem);line-height:.98;letter-spacing:-.045em;max-width:11ch;margin:0}
+.qct-estimator__intro>p{max-width:620px;line-height:1.7;opacity:.72;margin:1.4rem 0}
+.qct-estimator__offer{display:flex;align-items:center;gap:1rem;padding:1rem 1.1rem;border-radius:16px;background:#17151a;color:#fff;max-width:580px}
+.qct-estimator__offer strong{font-size:1.7rem;color:#ff6262}
+.qct-estimator__offer span{font-size:.9rem;line-height:1.45}
+.qct-estimator__intro small{display:block;max-width:620px;line-height:1.5;opacity:.55;margin-top:.8rem}
+.qct-estimator__panel{padding:clamp(1.4rem,3vw,2.2rem);border:1px solid rgba(23,21,26,.09);border-radius:24px;background:rgba(255,255,255,.6);box-shadow:0 24px 80px rgba(28,16,34,.08)}
+.qct-estimator__panel label{display:grid;gap:.5rem;margin-bottom:1rem;font-size:.76rem;font-weight:800;letter-spacing:.03em}
+.qct-estimator__panel select{width:100%;min-height:52px;padding:0 1rem;border:1px solid rgba(23,21,26,.14);border-radius:12px;background:#fff;color:#17151a;font:inherit}
+.qct-estimator__result{display:grid;gap:.65rem;margin:1.3rem 0}
+.qct-estimator__result>div{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem;border-radius:13px;background:rgba(23,21,26,.035)}
+.qct-estimator__result span{font-size:.77rem;opacity:.65}.qct-estimator__result strong{font-size:1.1rem}
+.qct-estimator__campaign{background:#17151a!important;color:#fff}.qct-estimator__campaign strong{font-size:1.6rem;color:#ff6262}
+.qct-estimator__cta{display:flex;justify-content:center;align-items:center;min-height:50px;border-radius:999px;background:#ef5555;color:#fff;text-decoration:none;font-weight:800}
+@media(max-width:900px){.qct-estimator__grid{grid-template-columns:1fr}.qct-estimator__intro h2{max-width:15ch}}
+@media(max-width:560px){.qct-estimator{padding:3.2rem 0}.qct-estimator__panel{padding:1.15rem;border-radius:18px}.qct-estimator__offer{align-items:flex-start;flex-direction:column;gap:.35rem}.qct-estimator__result>div{align-items:flex-end}.qct-estimator__result span{max-width:56%}}
+</style>
