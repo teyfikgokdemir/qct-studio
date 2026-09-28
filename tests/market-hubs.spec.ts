@@ -23,7 +23,13 @@ for (const language of languages) {
       expect(response?.status()).toBe(200);
       await expect(page.locator('h1')).toBeVisible();
       await expect(page.locator('link[rel="canonical"]')).toHaveCount(1);
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://qctstudio.com${route(language, market)}`);
       await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(5);
+      const alternates = await page.locator('link[rel="alternate"][hreflang]').evaluateAll((links) =>
+        Object.fromEntries(links.map((link) => [link.getAttribute('hreflang'), link.getAttribute('href')]))
+      );
+      for (const expectedLang of ['en', 'sq', 'mk', 'sr', 'x-default']) expect(alternates[expectedLang]).toBeTruthy();
+      expect(alternates[language]).toBe(`https://qctstudio.com${route(language, market)}`);
       await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(3);
 
       const schemas = await page.locator('script[type="application/ld+json"]').allTextContents();
