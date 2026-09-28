@@ -115,6 +115,9 @@ function visibleText(html) {
 walk(DIST);
 
 const errors = [];
+for (const asset of ['styles/v2-foundation.css', 'scripts/v2-foundation.js']) {
+  if (!fs.existsSync(path.join(DIST, asset))) errors.push(`dist: ${asset} is missing; V2 pages would render broken.`);
+}
 let indexable = 0;
 let noindex = 0;
 let internalLinks = 0;
@@ -143,6 +146,13 @@ for (const file of htmlFiles) {
   const expectedCanonical = expectedUrl(file);
   const expectedLang = expectedLanguage(file);
   const relativeFile = path.relative(DIST, file).split(path.sep).join('/');
+
+  const isV2Page = html.includes('data-v2-home');
+  if (isV2Page) {
+    if (!/<body\b[^>]*class=["'][^"']*\bv2-body\b/i.test(html)) errors.push(`${file}: V2 page is missing v2-body foundation class.`);
+    if (!html.includes('/styles/v2-foundation.css?v=20260928-1')) errors.push(`${file}: V2 page is missing shared foundation stylesheet.`);
+    if (!html.includes('/scripts/v2-foundation.js?v=20260928-1')) errors.push(`${file}: V2 page is missing shared interaction script.`);
+  }
 
   const htmlLang = html.match(/<html\s+[^>]*lang=["']([^"']+)["']/i)?.[1] ?? null;
   if (htmlLang !== expectedLang) {
