@@ -83,5 +83,20 @@ const seo = getPageSeo('seo-performance', lang);
       cta: t("Let's Talk"),
     }}
   />
+  <section class="dynamic-seo-plans" aria-labelledby="dynamic-seo-title">
+    <div class="container">
+      <p class="dynamic-seo-eyebrow">{t('ONGOING SEARCH GROWTH')}</p>
+      <h2 id="dynamic-seo-title">{t('A continuous visibility system, not a one-off SEO task.')}</h2>
+      <p class="dynamic-seo-lead">{t('We use technical health, Search Console queries, content opportunities and AI-search signals to decide what should improve next.')}</p>
+      <div class="dynamic-seo-grid">
+        <article><h3>SEO Care</h3><strong>€290 / month</strong><p>{t('Technical monitoring, indexing checks, Search Console review and core metadata improvements.')}</p></article>
+        <article class="is-featured"><span>{t('RECOMMENDED')}</span><h3>Dynamic SEO</h3><strong>€490 / month</strong><p>{t('SEO Care plus query analysis, schema, internal linking, priority-page optimisation, GEO/AEO/AIO work and one original article each month.')}</p></article>
+        <article><h3>SEO Growth</h3><strong>€690 / month</strong><p>{t('Dynamic SEO plus two original articles each month, landing-page growth, competitor/query analysis and broader optimisation.')}</p></article>
+      </div>
+    </div>
+  </section>
   <Footer slot="footer" lang={lang} />
 </BaseLayout>
+<style>
+.dynamic-seo-plans{padding:clamp(4rem,7vw,6rem) 0;background:rgba(255,255,255,.025);border-top:1px solid rgba(255,255,255,.08)}.dynamic-seo-plans .container{text-align:center}.dynamic-seo-eyebrow{font-size:.72rem;font-weight:800;letter-spacing:.15em;color:var(--qct-color-accent,#e75757);margin:0 0 .75rem}.dynamic-seo-plans h2{max-width:980px;margin:0 auto;font-size:clamp(2rem,3.4vw,3.4rem);line-height:1.04;letter-spacing:-.04em;text-wrap:balance}.dynamic-seo-lead{max-width:760px;margin:1rem auto 2.2rem;opacity:.72;line-height:1.7}.dynamic-seo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;max-width:1120px;margin:auto}.dynamic-seo-grid article{position:relative;text-align:left;padding:clamp(1.5rem,2.5vw,2.1rem);border:1px solid rgba(255,255,255,.1);border-radius:22px;background:rgba(255,255,255,.025)}.dynamic-seo-grid article.is-featured{border-color:rgba(231,87,87,.48);transform:translateY(-6px)}.dynamic-seo-grid article>span{display:inline-block;margin-bottom:1rem;font-size:.66rem;font-weight:800;letter-spacing:.12em;color:var(--qct-color-accent,#e75757)}.dynamic-seo-grid h3{margin:0 0 .65rem;font-size:1.3rem}.dynamic-seo-grid strong{display:block;font-size:clamp(1.8rem,3vw,2.7rem);letter-spacing:-.04em;margin-bottom:1rem}.dynamic-seo-grid p{margin:0;opacity:.72;line-height:1.65}@media(max-width:820px){.dynamic-seo-grid{grid-template-columns:1fr}.dynamic-seo-grid article.is-featured{transform:none}}
+</style>
