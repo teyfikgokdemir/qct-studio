@@ -6,7 +6,8 @@ const checks = [
       body.includes('Potreba tržišta') &&
       body.includes('QCT sistem') &&
       !body.includes('>Market need<') &&
-      !body.includes('>QCT system<'),
+      !body.includes('>QCT system<') &&
+      !body.includes('u<em>merljiv'),
     label: 'Serbian market hub design/localization',
   },
   {
