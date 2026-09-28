@@ -6,7 +6,7 @@ interface Item {
   text: string;
 }
 interface Step {
-  number: string;
+  number?: string;
   title: string;
   text: string;
 }
@@ -164,7 +164,6 @@ const workUrl = `${homeUrl}#work`;
     <div class="qct-svc-timeline">
       {process.steps.map((step) => (
         <article class="qct-svc-step">
-          <span class="qct-svc-step__number">{step.number}</span>
           <h3>{step.title}</h3>
           <p>{step.text}</p>
         </article>
@@ -326,13 +325,6 @@ const workUrl = `${homeUrl}#work`;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.02);
-}
-.qct-svc-step__number {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--qct-color-accent, #e75757);
-  margin-bottom: 0.75rem;
 }
 .qct-svc-step h3 {
   font-size: 1.1rem;

@@ -1045,3 +1045,28 @@ body.has-open-menu {
 		color: #a63f47;
 		font-weight: 700;
 	}
+
+
+/* QCT typography discipline: keep editorial scale controlled across the site. */
+main :where(.qct-section__title) {
+	font-size: clamp(1.95rem, 3vw, 3rem);
+	line-height: 1.08;
+	letter-spacing: -0.035em;
+}
+main :where(.qct-svc-hero__title) {
+	font-size: clamp(2.35rem, 4vw, 4rem);
+	line-height: 1.02;
+	letter-spacing: -0.04em;
+}
+.qct-process-card__number,
+.qct-svc-step__number {
+	display: none !important;
+}
+@media (max-width: 620px) {
+	main :where(.qct-section__title) {
+		font-size: clamp(1.85rem, 9vw, 2.55rem);
+	}
+	main :where(.qct-svc-hero__title) {
+		font-size: clamp(2.2rem, 11vw, 3.25rem);
+	}
+}
