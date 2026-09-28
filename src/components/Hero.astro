@@ -1,114 +1,262 @@
 ---
-import { useTranslations, getLocalizedUrl } from '../i18n';
+import { getLocalizedUrl } from '../i18n';
 
-interface Props {
-  lang: string;
-}
+interface Props { lang: string; }
 const { lang } = Astro.props;
-const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
+
+const copy = {
+  en: {
+    eyebrow:'BALKAN DIGITAL GROWTH STUDIO',
+    titleA:'Build the digital system',
+    titleB:'your business now deserves.',
+    lead:'Premium websites, e-commerce, search visibility and practical AI automation — designed as one commercial system for Balkan businesses ready to grow.',
+    primary:'Estimate your project',
+    secondary:'View selected work',
+    proof1:'Web · Commerce · SEO/GEO · AI',
+    proof2:'English · Albanian · Macedonian · Serbian',
+    campaign:'LIMITED LAUNCH OFFER',
+    campaignMain:'50% service-fee advantage',
+    campaignSub:'for a limited number of qualified projects',
+    from:'Projects from',
+    fromPrice:'€690',
+    console:'QCT GROWTH SYSTEM',
+    signal:'Commercial signal',
+    live:'LIVE',
+    market:'Balkan markets',
+    acquire:'Acquire',
+    convert:'Convert',
+    operate:'Operate',
+    website:'Website',
+    commerce:'E-commerce',
+    search:'SEO / GEO',
+    automation:'AI automation',
+    metric1:'Clearer offer',
+    metric2:'Faster enquiry path',
+    metric3:'Measured handoff',
+  },
+  sq: {
+    eyebrow:'STUDIO DIGJITAL PËR RRITJE NË BALLKAN',
+    titleA:'Ndërtoni sistemin digjital',
+    titleB:'që biznesi juaj meriton tani.',
+    lead:'Faqe premium, e-commerce, dukshmëri në kërkim dhe automatizim praktik me AI — si një sistem i vetëm tregtar për biznese ballkanike gati për rritje.',
+    primary:'Vlerëso projektin',
+    secondary:'Shiko punët',
+    proof1:'Web · Commerce · SEO/GEO · AI',
+    proof2:'Anglisht · Shqip · Maqedonisht · Serbisht',
+    campaign:'OFERTË E KUFIZUAR LAUNCH',
+    campaignMain:'50% avantazh në tarifën e shërbimit',
+    campaignSub:'për një numër të kufizuar projektesh të përshtatshme',
+    from:'Projektet nga',
+    fromPrice:'€690',
+    console:'QCT GROWTH SYSTEM',
+    signal:'Sinjal tregtar',
+    live:'LIVE',
+    market:'Tregjet e Ballkanit',
+    acquire:'Tërhiq',
+    convert:'Konverto',
+    operate:'Opero',
+    website:'Faqe',
+    commerce:'E-commerce',
+    search:'SEO / GEO',
+    automation:'AI automation',
+    metric1:'Ofertë më e qartë',
+    metric2:'Rrugë më e shpejtë drejt kontaktit',
+    metric3:'Dorëzim i matur',
+  },
+  mk: {
+    eyebrow:'ДИГИТАЛНО GROWTH СТУДИО ЗА БАЛКАНОТ',
+    titleA:'Изградете го дигиталниот систем',
+    titleB:'што вашиот бизнис сега го заслужува.',
+    lead:'Premium веб-страници, e-commerce, search visibility и практична AI автоматизација — како еден комерцијален систем за балкански компании подготвени за раст.',
+    primary:'Проценете го проектот',
+    secondary:'Погледнете ги проектите',
+    proof1:'Web · Commerce · SEO/GEO · AI',
+    proof2:'English · Shqip · Македонски · Srpski',
+    campaign:'ОГРАНИЧЕНА LAUNCH ПОНУДА',
+    campaignMain:'50% предност на услужната такса',
+    campaignSub:'за ограничен број соодветни проекти',
+    from:'Проекти од',
+    fromPrice:'€690',
+    console:'QCT GROWTH SYSTEM',
+    signal:'Комерцијален сигнал',
+    live:'LIVE',
+    market:'Балкански пазари',
+    acquire:'Привлечи',
+    convert:'Конвертирај',
+    operate:'Оперирај',
+    website:'Website',
+    commerce:'E-commerce',
+    search:'SEO / GEO',
+    automation:'AI automation',
+    metric1:'Појасна понуда',
+    metric2:'Побрз пат до контакт',
+    metric3:'Мерлив handoff',
+  },
+  sr: {
+    eyebrow:'DIGITAL GROWTH STUDIO ZA BALKAN',
+    titleA:'Izgradite digitalni sistem',
+    titleB:'koji vaš biznis sada zaslužuje.',
+    lead:'Premium sajtovi, e-commerce, vidljivost u pretrazi i praktična AI automatizacija — kao jedan komercijalni sistem za balkanske firme spremne za rast.',
+    primary:'Procenite projekat',
+    secondary:'Pogledajte radove',
+    proof1:'Web · Commerce · SEO/GEO · AI',
+    proof2:'English · Shqip · Македонски · Srpski',
+    campaign:'OGRANIČENA LAUNCH PONUDA',
+    campaignMain:'50% pogodnosti na uslužnu naknadu',
+    campaignSub:'za ograničen broj odgovarajućih projekata',
+    from:'Projekti od',
+    fromPrice:'€690',
+    console:'QCT GROWTH SYSTEM',
+    signal:'Komercijalni signal',
+    live:'LIVE',
+    market:'Balkanska tržišta',
+    acquire:'Privuci',
+    convert:'Konvertuj',
+    operate:'Operiši',
+    website:'Website',
+    commerce:'E-commerce',
+    search:'SEO / GEO',
+    automation:'AI automation',
+    metric1:'Jasnija ponuda',
+    metric2:'Brži put do upita',
+    metric3:'Merljiv handoff',
+  },
+}[lang] ?? null;
 ---
-<section class="qct-hero" aria-labelledby="qct-hero-title" data-qct-hero>
-	<div class="qct-hero__noise" aria-hidden="true"></div>
-	<div class="qct-hero__grid" aria-hidden="true"></div>
-	<div class="qct-hero__orb qct-hero__orb--red" aria-hidden="true"></div>
-	<div class="qct-hero__orb qct-hero__orb--lime" aria-hidden="true"></div>
+{copy && (
+<section class="hero-v3" aria-labelledby="qct-hero-title">
+  <div class="container hero-v3__grid">
+    <div class="hero-v3__copy">
+      <div class="hero-v3__topline">
+        <span class="hero-v3__eyebrow">{copy.eyebrow}</span>
+        <span class="hero-v3__dot"></span>
+        <span class="hero-v3__market">{copy.proof2}</span>
+      </div>
 
-	<div class="qct-hero__inner container">
-		<div class="qct-hero__content" data-qct-stagger>
-			<p class="qct-hero__eyebrow" data-qct-reveal>{t('Serving businesses across Albania and North Macedonia.')}</p>
+      <h1 id="qct-hero-title">
+        <span>{copy.titleA}</span>
+        <em>{copy.titleB}</em>
+      </h1>
 
-			<h1 id="qct-hero-title" class="qct-hero__title" data-qct-reveal>
-				{t('Your business has changed.')}<br />
-				{t('Has your website?')}
-			</h1>
+      <p class="hero-v3__lead">{copy.lead}</p>
 
-			<p class="qct-hero__subtitle" data-qct-reveal>
-				{t('Businesses evolve. Teams grow. Services improve. Reputations are built over years.')}<br />
-				{t('But many websites are left behind.')}<br />
-				{t("When someone visits your website for the first time, they're not just looking at your business. They're deciding whether they trust it.")}
-			</p>
+      <div class="hero-v3__actions">
+        <a class="hero-v3__primary" href="#project-estimator" data-qct-cta="calculator" data-cta-location="hero">{copy.primary}<span>↘</span></a>
+        <a class="hero-v3__secondary" href={url('/work/')} data-qct-cta="work" data-cta-location="hero">{copy.secondary}<span>→</span></a>
+      </div>
 
-			<div class="qct-hero__actions" data-qct-reveal aria-label={t('Hero actions')}>
-				<a class="qct-button qct-button--primary" href="#contact" data-magnetic>
-					<span>{t('Talk to Our Team')}</span>
-				</a>
-				<a class="qct-button qct-button--secondary" href="#services" data-magnetic>
-					<span>{t('View Our Work')}</span>
-				</a>
-			</div>
+      <div class="hero-v3__proof">
+        <div>
+          <small>{copy.from}</small>
+          <strong>{copy.fromPrice}</strong>
+        </div>
+        <div class="hero-v3__proof-rule"></div>
+        <div>
+          <small>{copy.campaign}</small>
+          <strong>{copy.campaignMain}</strong>
+          <span>{copy.campaignSub}</span>
+        </div>
+      </div>
+    </div>
 
-			<p class="qct-hero__rotator-line" data-qct-reveal>
-				{t('Websites for businesses that are ready to be taken seriously online.')}
-			</p>
-		</div>
+    <div class="hero-v3__visual" aria-label={copy.console}>
+      <div class="hero-v3__halo"></div>
+      <div class="growth-console">
+        <div class="growth-console__top">
+          <div>
+            <span class="growth-console__label">{copy.console}</span>
+            <strong>{copy.market}</strong>
+          </div>
+          <span class="growth-console__live"><i></i>{copy.live}</span>
+        </div>
 
-		<div class="qct-hero__visual" data-qct-reveal role="region" aria-label={t('Animated preview of a website for businesses across the Balkans')}>
-			<div class="qct-signal-route" aria-hidden="true"><span>{t('Albania')}</span><i></i><span>{t('North Macedonia')}</span></div>
-			<div class="qct-browser qct-signal-room" data-signal-room>
-				<div class="qct-browser__top" aria-hidden="true">
-					<span></span><span></span><span></span>
-					<div class="qct-browser__url">{t('qctstudio.com/balkans')}</div>
-				</div>
+        <div class="growth-console__signal">
+          <span>{copy.signal}</span>
+          <div class="growth-console__signal-line"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
 
-				<div class="qct-browser__body">
-					<div class="qct-signal-room__header">
-						<div>
-							<span class="qct-signal-room__kicker">{t('Balkan markets')}</span>
-							<strong data-signal-label>{t('Website Design')}</strong>
-						</div>
-						<div class="qct-signal-room__status"><i aria-hidden="true"></i>{t('Available')}</div>
-					</div>
+        <div class="growth-console__flow">
+          <div>
+            <span>01</span>
+            <small>{copy.acquire}</small>
+            <strong>{copy.website}</strong>
+          </div>
+          <b>→</b>
+          <div>
+            <span>02</span>
+            <small>{copy.convert}</small>
+            <strong>{copy.commerce}</strong>
+          </div>
+          <b>→</b>
+          <div>
+            <span>03</span>
+            <small>{copy.operate}</small>
+            <strong>{copy.automation}</strong>
+          </div>
+        </div>
 
-					<div class="qct-signal-room__controls" role="group" aria-label={t('Services')}>
-						<button type="button" aria-pressed="true" data-signal-control="website">{t('Website Design')}</button>
-						<button type="button" aria-pressed="false" data-signal-control="commerce">{t('E-commerce')}</button>
-						<button type="button" aria-pressed="false" data-signal-control="automation">{t('AI Automation')}</button>
-					</div>
+        <div class="growth-console__cards">
+          <article class="growth-console__card growth-console__card--accent">
+            <span>{copy.search}</span>
+            <strong>{copy.metric1}</strong>
+            <div><i></i><i></i><i></i></div>
+          </article>
+          <article class="growth-console__card">
+            <span>Conversion</span>
+            <strong>{copy.metric2}</strong>
+            <div><i></i><i></i><i></i></div>
+          </article>
+          <article class="growth-console__card">
+            <span>Operations</span>
+            <strong>{copy.metric3}</strong>
+            <div><i></i><i></i><i></i></div>
+          </article>
+        </div>
 
-					<div class="qct-signal-room__stage">
-						<div class="qct-signal-panel is-active" data-signal-panel="website">
-							<div class="qct-signal-panel__copy">
-								<span>{t('Website Design')}</span>
-								<strong>{t('Premium websites')}</strong>
-								<p>{t('Clear positioning, sharp visuals and conversion-focused structure from the first screen.')}</p>
-							</div>
-							<div class="qct-signal-panel__interface" aria-hidden="true">
-								<i class="qct-signal-panel__feature"></i><i></i><i></i><i></i>
-							</div>
-						</div>
+        <div class="growth-console__footer">
+          <span>{copy.proof1}</span>
+          <span>QCT Studio · 2026</span>
+        </div>
+      </div>
 
-						<div class="qct-signal-panel" data-signal-panel="commerce" hidden>
-							<div class="qct-signal-panel__copy">
-								<span>{t('E-commerce')}</span>
-								<strong>{t('E-commerce stores')}</strong>
-								<p>{t('Product pages, mobile checkout and order flows built for serious online selling.')}</p>
-							</div>
-							<div class="qct-signal-panel__interface qct-signal-panel__interface--commerce" aria-hidden="true">
-								<i></i><i></i><i></i><i class="qct-signal-panel__feature"></i>
-							</div>
-						</div>
-
-						<div class="qct-signal-panel" data-signal-panel="automation" hidden>
-							<div class="qct-signal-panel__copy">
-								<span>{t('AI Automation')}</span>
-								<strong>{t('AI automation')}</strong>
-								<p>{t('Automations that save time, reduce repetitive work and improve everyday operations.')}</p>
-								<a href={url('/ai-automation/')}>{t('Explore AI Automation')}</a>
-							</div>
-							<div class="qct-signal-panel__interface qct-signal-panel__interface--automation" aria-hidden="true">
-								<i></i><i></i><i></i><i></i>
-							</div>
-						</div>
-					</div>
-
-					<div class="qct-signal-room__markets" aria-label={t('Balkan markets')}>
-						<span>{t('Albania')}</span>
-						<span>{t('North Macedonia')}</span>
-						<span>{t('Balkans')}</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+      <div class="hero-v3__float hero-v3__float--a"><span>SEO</span><strong>+</strong></div>
+      <div class="hero-v3__float hero-v3__float--b"><span>AI</span><strong>↗</strong></div>
+    </div>
+  </div>
 </section>
+)}
+
+<style>
+.hero-v3{position:relative;overflow:hidden;background:#f3f0ea;color:#17151a;padding:clamp(7rem,11vw,10rem) 0 clamp(5rem,8vw,7rem);border-bottom:1px solid rgba(23,21,26,.08)}
+.hero-v3::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 83% 22%,rgba(91,52,120,.12),transparent 31%),linear-gradient(rgba(23,21,26,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,26,.025) 1px,transparent 1px);background-size:auto,64px 64px,64px 64px;mask-image:linear-gradient(to bottom,#000 0%,transparent 88%);pointer-events:none}
+.hero-v3__grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.03fr) minmax(440px,.97fr);gap:clamp(3rem,7vw,7rem);align-items:center}
+.hero-v3__topline{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.hero-v3__eyebrow{font-size:.68rem;font-weight:850;letter-spacing:.17em;color:#b74850}
+.hero-v3__dot{width:5px;height:5px;border-radius:50%;background:#5b3478}
+.hero-v3__market{font-size:.68rem;font-weight:650;color:rgba(23,21,26,.46)}
+.hero-v3 h1{font-size:clamp(3.7rem,7.4vw,7.6rem);line-height:.88;letter-spacing:-.06em;margin:0;max-width:8.4ch;font-weight:850}
+.hero-v3 h1 span,.hero-v3 h1 em{display:block}
+.hero-v3 h1 em{font-style:normal;color:#5b3478}
+.hero-v3__lead{font-size:clamp(1.05rem,1.35vw,1.27rem);line-height:1.68;max-width:720px;margin:1.8rem 0 0;color:rgba(23,21,26,.68)}
+.hero-v3__actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.hero-v3__primary,.hero-v3__secondary{min-height:52px;padding:0 1.15rem;display:inline-flex;align-items:center;justify-content:center;gap:.75rem;text-decoration:none;font-size:.84rem;font-weight:780;border:1px solid rgba(23,21,26,.12);transition:transform .2s ease,border-color .2s ease,background .2s ease}
+.hero-v3__primary{background:#ef5555;color:#fff;border-color:#ef5555}.hero-v3__secondary{background:transparent;color:#17151a}.hero-v3__primary:hover,.hero-v3__secondary:hover{transform:translateY(-2px);border-color:#17151a}
+.hero-v3__proof{display:grid;grid-template-columns:auto 1px 1fr;gap:1rem;align-items:center;margin-top:2.4rem;max-width:730px;padding-top:1.15rem;border-top:1px solid rgba(23,21,26,.1)}
+.hero-v3__proof>div{display:grid;gap:.25rem}.hero-v3__proof small{font-size:.61rem;letter-spacing:.11em;text-transform:uppercase;color:rgba(23,21,26,.45);font-weight:780}.hero-v3__proof strong{font-size:1.02rem}.hero-v3__proof span{font-size:.7rem;color:rgba(23,21,26,.48)}.hero-v3__proof-rule{height:42px!important;background:rgba(23,21,26,.12)}
+.hero-v3__visual{position:relative;min-height:590px;display:grid;place-items:center}
+.hero-v3__halo{position:absolute;width:88%;height:88%;border-radius:50%;background:radial-gradient(circle,rgba(91,52,120,.17),rgba(239,85,85,.07) 38%,transparent 70%);filter:blur(12px)}
+.growth-console{position:relative;width:min(100%,610px);background:#17151a;color:#f6f2ec;border:1px solid rgba(255,255,255,.11);box-shadow:0 38px 90px rgba(47,27,59,.22);padding:1.25rem;z-index:2;transform:rotate(-1.5deg)}
+.growth-console::before{content:"";position:absolute;inset:8px;border:1px solid rgba(255,255,255,.045);pointer-events:none}
+.growth-console__top,.growth-console__signal,.growth-console__footer{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.growth-console__top{padding:.5rem .4rem 1.1rem;border-bottom:1px solid rgba(255,255,255,.1)}.growth-console__top>div{display:grid;gap:.2rem}.growth-console__label{font-size:.56rem;letter-spacing:.16em;color:#ef777d;font-weight:850}.growth-console__top strong{font-size:1rem}
+.growth-console__live{display:flex;align-items:center;gap:.4rem;font-size:.58rem;letter-spacing:.1em;color:rgba(255,255,255,.55)}.growth-console__live i{width:6px;height:6px;border-radius:50%;background:#73db9d;box-shadow:0 0 0 5px rgba(115,219,157,.1)}
+.growth-console__signal{padding:1rem .4rem}.growth-console__signal>span{font-size:.64rem;color:rgba(255,255,255,.48)}.growth-console__signal-line{display:flex;align-items:flex-end;gap:4px;height:28px}.growth-console__signal-line i{display:block;width:18px;background:#6a3f84}.growth-console__signal-line i:nth-child(1){height:25%}.growth-console__signal-line i:nth-child(2){height:45%}.growth-console__signal-line i:nth-child(3){height:38%}.growth-console__signal-line i:nth-child(4){height:72%}.growth-console__signal-line i:nth-child(5){height:100%;background:#ef5555}
+.growth-console__flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.55rem;align-items:center;padding:1rem 0}.growth-console__flow>div{min-height:112px;padding:1rem;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;justify-content:space-between}.growth-console__flow span{font-size:.6rem;color:#ef777d}.growth-console__flow small{font-size:.62rem;color:rgba(255,255,255,.4)}.growth-console__flow strong{font-size:.9rem}.growth-console__flow b{font-size:.8rem;color:rgba(255,255,255,.24)}
+.growth-console__cards{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem}.growth-console__card{padding:.9rem;background:#211d24;border:1px solid rgba(255,255,255,.07);min-height:128px;display:flex;flex-direction:column;justify-content:space-between}.growth-console__card--accent{background:#56356f}.growth-console__card span{font-size:.57rem;color:rgba(255,255,255,.46)}.growth-console__card strong{font-size:.78rem;line-height:1.25}.growth-console__card div{display:flex;gap:4px}.growth-console__card i{display:block;height:3px;flex:1;background:rgba(255,255,255,.14)}.growth-console__card i:last-child{background:#ef5555}
+.growth-console__footer{padding:.95rem .4rem .2rem;font-size:.55rem;color:rgba(255,255,255,.32)}
+.hero-v3__float{position:absolute;z-index:3;width:82px;height:82px;background:#f3f0ea;border:1px solid rgba(23,21,26,.12);box-shadow:0 16px 40px rgba(47,27,59,.12);display:flex;flex-direction:column;justify-content:space-between;padding:.7rem}.hero-v3__float span{font-size:.58rem;color:rgba(23,21,26,.45)}.hero-v3__float strong{font-size:1.45rem}.hero-v3__float--a{left:-2%;bottom:13%;transform:rotate(-5deg)}.hero-v3__float--b{right:-1%;top:10%;transform:rotate(5deg)}
+@media(max-width:1050px){.hero-v3__grid{grid-template-columns:1fr}.hero-v3 h1{max-width:11ch}.hero-v3__visual{min-height:520px}.growth-console{width:min(100%,720px)}}
+@media(max-width:680px){.hero-v3{padding-top:6.2rem}.hero-v3 h1{font-size:clamp(3rem,15vw,5rem);max-width:9ch}.hero-v3__lead{font-size:1rem}.hero-v3__proof{grid-template-columns:1fr;gap:.7rem}.hero-v3__proof-rule{display:none}.hero-v3__visual{min-height:440px}.growth-console{padding:.85rem;transform:none}.growth-console__flow{grid-template-columns:1fr;gap:.4rem}.growth-console__flow b{display:none}.growth-console__flow>div{min-height:72px}.growth-console__cards{grid-template-columns:1fr}.growth-console__card{min-height:84px}.hero-v3__float{display:none}.growth-console__signal{display:none}.growth-console__footer{font-size:.5rem}}
+@media(prefers-reduced-motion:reduce){.hero-v3 *{transition:none!important}}
+</style>
