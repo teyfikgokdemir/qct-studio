@@ -206,17 +206,20 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
 
   @media (max-width: 720px) {
     .qct-floating-action {
-      width: 46px !important;
-      height: 46px !important;
-      min-width: 46px !important;
-      min-height: 46px !important;
-      bottom: calc(14px + env(safe-area-inset-bottom)) !important;
+      width: 42px !important;
+      height: 42px !important;
+      min-width: 42px !important;
+      min-height: 42px !important;
+      bottom: calc(18px + env(safe-area-inset-bottom)) !important;
     }
     .qct-whatsapp {
-      left: max(14px, env(safe-area-inset-left)) !important;
+      left: max(12px, env(safe-area-inset-left)) !important;
     }
     .qct-back-to-top {
-      right: max(14px, env(safe-area-inset-right)) !important;
+      right: max(12px, env(safe-area-inset-right)) !important;
+    }
+    body.v2-body .qct-floating-action {
+      bottom: calc(72px + env(safe-area-inset-bottom)) !important;
     }
     body.is-menu-open .qct-floating-action,
     body.has-open-menu .qct-floating-action {
