@@ -18,12 +18,16 @@ const copy = {
     qualifier:'The offer applies only to QCT Studio implementation fees for eligible projects. Third-party software, licences, advertising spend, taxes, complex integrations and custom software are excluded.',
     cta:'Check project fit',
     availability:'Limited availability',
+    monthly:'Monthly service',
     services:[
       ['Business Website',1490],
       ['Growth Website',2490],
       ['E-commerce',3490],
       ['Campaign Landing Page',690],
       ['SEO & GEO Foundation',790],
+      ['SEO Care — monthly',290,'monthly'],
+      ['Dynamic SEO + GEO/AEO/AIO — monthly',490,'monthly'],
+      ['SEO Growth — monthly',690,'monthly'],
       ['WhatsApp Commerce',890],
       ['AI Automation Workflow',1290],
     ],
@@ -42,12 +46,16 @@ const copy = {
     qualifier:'Oferta vlen vetëm për tarifën e implementimit të QCT Studio për projekte të përshtatshme. Software i palëve të treta, licencat, buxheti i reklamave, taksat, integrimet komplekse dhe software custom nuk përfshihen.',
     cta:'Kontrollo përshtatshmërinë',
     availability:'Disponueshmëri e kufizuar',
+    monthly:'Shërbim mujor',
     services:[
       ['Faqe Biznesi',1490],
       ['Faqe për Rritje',2490],
       ['E-commerce',3490],
       ['Landing Page Fushate',690],
       ['Bazë SEO & GEO',790],
+      ['SEO Care — mujore',290,'monthly'],
+      ['SEO Dinamik + GEO/AEO/AIO — mujore',490,'monthly'],
+      ['SEO Growth — mujore',690,'monthly'],
       ['WhatsApp Commerce',890],
       ['Automatizim me AI',1290],
     ],
@@ -66,12 +74,16 @@ const copy = {
     qualifier:'Понудата важи само за QCT Studio implementation fee кај соодветни проекти. Third-party software, лиценци, рекламен буџет, даноци, комплексни интеграции и custom software не се вклучени.',
     cta:'Проверете дали проектот одговара',
     availability:'Ограничена достапност',
+    monthly:'Месечна услуга',
     services:[
       ['Бизнис веб-страница',1490],
       ['Growth веб-страница',2490],
       ['E-commerce',3490],
       ['Campaign Landing Page',690],
       ['SEO & GEO основа',790],
+      ['SEO Care — месечно',290,'monthly'],
+      ['Динамичко SEO + GEO/AEO/AIO — месечно',490,'monthly'],
+      ['SEO Growth — месечно',690,'monthly'],
       ['WhatsApp Commerce',890],
       ['AI Automation Workflow',1290],
     ],
@@ -90,12 +102,16 @@ const copy = {
     qualifier:'Ponuda važi samo za QCT Studio implementacionu uslugu kod odgovarajućih projekata. Third-party softver, licence, budžet za oglase, porezi, kompleksne integracije i custom softver nisu uključeni.',
     cta:'Proverite uklapanje projekta',
     availability:'Ograničena dostupnost',
+    monthly:'Mesečna usluga',
     services:[
       ['Poslovni sajt',1490],
       ['Growth sajt',2490],
       ['E-commerce',3490],
       ['Campaign Landing Page',690],
       ['SEO & GEO osnova',790],
+      ['SEO Care — mesečno',290,'monthly'],
+      ['Dinamički SEO + GEO/AEO/AIO — mesečno',490,'monthly'],
+      ['SEO Growth — mesečno',690,'monthly'],
       ['WhatsApp Commerce',890],
       ['AI Automation Workflow',1290],
     ],
@@ -120,7 +136,7 @@ const contactUrl = getLocalizedUrl(lang, '/contact/');
       <small>{copy.qualifier}</small>
     </div>
 
-    <div class="qct-estimator__panel" data-project-estimator data-services={JSON.stringify(copy.services)} data-scopes={JSON.stringify(copy.scopes)}>
+    <div class="qct-estimator__panel" data-project-estimator data-services={JSON.stringify(copy.services)} data-scopes={JSON.stringify(copy.scopes)} data-monthly-label={copy.monthly} data-campaign-default={copy.campaign}>
       <label>
         <span>{copy.project}</span>
         <select data-estimator-service>
@@ -136,7 +152,7 @@ const contactUrl = getLocalizedUrl(lang, '/contact/');
 
       <div class="qct-estimator__result">
         <div><span>{copy.standard}</span><strong data-standard-price>€1,490</strong></div>
-        <div class="qct-estimator__campaign"><span>{copy.campaign}</span><strong data-campaign-price>€745</strong></div>
+        <div class="qct-estimator__campaign"><span data-campaign-label>{copy.campaign}</span><strong data-campaign-price>€745</strong></div>
         <div><span>{copy.saving}</span><strong data-saving>€745</strong></div>
       </div>
 
@@ -153,15 +169,20 @@ const contactUrl = getLocalizedUrl(lang, '/contact/');
       const standard = root.querySelector('[data-standard-price]');
       const campaign = root.querySelector('[data-campaign-price]');
       const saving = root.querySelector('[data-saving]');
+      const campaignLabel = root.querySelector('[data-campaign-label]');
       const euro = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
       const update = () => {
         const base = Number(services[Number(service.value)]?.[1] || 0);
         const multiplier = Number(scopes[Number(scope.value)]?.[1] || 1);
         const total = Math.round(base * multiplier / 10) * 10;
-        const offer = Math.round((total * 0.5) / 10) * 10;
+        const mode = services[Number(service.value)]?.[2] || 'project';
+        const recurring = mode === 'monthly';
+        const offer = recurring ? total : Math.round((total * 0.5) / 10) * 10;
+        root.classList.toggle('is-recurring', recurring);
         standard.textContent = euro.format(total);
-        campaign.textContent = euro.format(offer);
-        saving.textContent = euro.format(total - offer);
+        campaign.textContent = recurring ? euro.format(total) + ' / mo' : euro.format(offer);
+        campaignLabel.textContent = recurring ? (root.dataset.monthlyLabel || 'Monthly service') : (root.dataset.campaignDefault || 'Limited launch offer');
+        saving.textContent = recurring ? '—' : euro.format(total - offer);
       };
       service.addEventListener('change', update);
       scope.addEventListener('change', update);
@@ -193,4 +214,10 @@ const contactUrl = getLocalizedUrl(lang, '/contact/');
 .qct-estimator__cta{display:flex;justify-content:center;align-items:center;min-height:50px;border-radius:999px;background:#ef5555;color:#fff;text-decoration:none;font-weight:800}
 @media(max-width:900px){.qct-estimator__grid{grid-template-columns:1fr}.qct-estimator__intro h2{max-width:15ch}}
 @media(max-width:560px){.qct-estimator{padding:3.2rem 0}.qct-estimator__panel{padding:1.15rem;border-radius:18px}.qct-estimator__offer{align-items:flex-start;flex-direction:column;gap:.35rem}.qct-estimator__result>div{align-items:flex-end}.qct-estimator__result span{max-width:56%}}
+</style>
+
+<style>
+.qct-estimator__panel.is-recurring .qct-estimator__result>div:first-child,
+.qct-estimator__panel.is-recurring .qct-estimator__result>div:last-child{display:none}
+.qct-estimator__panel.is-recurring .qct-estimator__campaign{margin-top:.35rem}
 </style>
