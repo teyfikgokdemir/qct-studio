@@ -1354,3 +1354,40 @@ main :where(.qct-svc-hero__title) {
 		font-size: .95rem !important;
 	}
 }
+
+
+/* Mobile menu alignment correction: left-aligned labels, arrows stay right. */
+@media (max-width: 999px) {
+	.main-navigation .primary-menu > li > a {
+		justify-content: flex-start !important;
+		text-align: left !important;
+	}
+	.main-navigation .primary-menu > li > .submenu-toggle {
+		justify-content: flex-start !important;
+		text-align: left !important;
+	}
+	.main-navigation .primary-menu > li > .submenu-toggle > span {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: space-between !important;
+		width: 100% !important;
+		text-align: left !important;
+	}
+	.main-navigation .primary-menu > li > a::before,
+	.main-navigation .primary-menu > li > .submenu-toggle::before {
+		display: none !important;
+		content: none !important;
+	}
+	.main-navigation .primary-menu > li > a:hover,
+	.main-navigation .primary-menu > li > a:focus-visible,
+	.main-navigation .primary-menu > li > .submenu-toggle:hover,
+	.main-navigation .primary-menu > li > .submenu-toggle:focus-visible,
+	.main-navigation .primary-menu > li > .submenu-toggle[aria-expanded="true"] {
+		color: #fff !important;
+		background: linear-gradient(90deg, rgba(239,85,85,.08), transparent 62%) !important;
+	}
+	.sub-menu a {
+		text-align: left !important;
+		justify-content: flex-start !important;
+	}
+}
