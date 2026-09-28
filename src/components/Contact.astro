@@ -122,7 +122,8 @@ const reviewUrl = `mailto:info@qctstudio.com?subject=${reviewSubject}&body=${rev
   .qct-contact-review h3 { color: var(--qct-color-text); font-size: 1.08rem; margin: 0; }
   .qct-contact-review p { color: var(--qct-color-muted); line-height: 1.65; margin: 0; }
   @media (max-width: 640px) {
-    .qct-contact__actions { align-items: stretch; flex-direction: column; }
-    .qct-contact__actions .qct-button { width: 100%; }
+    .qct-contact__grid{gap:1.5rem}.qct-contact__actions { align-items: stretch; flex-direction: column; margin-top:1.35rem; }
+    .qct-contact__actions .qct-button { width: 100%; min-height:46px; }
+    .qct-contact__note{font-size:.9rem;line-height:1.55;margin-top:1rem}.qct-contact__direct{margin-top:1.4rem;padding-top:1rem}.qct-contact-review{padding:1.1rem}.qct-contact-review article{padding:1rem 0}.qct-contact-review h3{font-size:1rem}.qct-contact-review p{font-size:.9rem;line-height:1.5}
   }
 </style>
