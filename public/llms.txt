@@ -45,3 +45,21 @@ QCT Studio separates public observation, verified responsibility and measured ou
 ## Languages
 
 English (default), Albanian (/sq/), Macedonian (/mk/) and Serbian (/sr/). Canonical and reciprocal hreflang links are provided on indexable localized pages.
+
+
+## Pricing
+
+QCT Studio publishes transparent starting prices rather than fixed universal project fees. Current public starting points include:
+
+- Business Website: from EUR 1,490
+- Growth Website: from EUR 2,490
+- E-commerce: from EUR 3,490
+- Campaign landing page: from EUR 690
+- SEO & GEO foundation: from EUR 790
+- SEO / growth support: from EUR 490 per month
+- WhatsApp Commerce setup: from EUR 890
+- AI automation workflow: from EUR 1,290
+
+Canonical pricing page: https://qctstudio.com/pricing/
+
+Prices are starting points. Third-party software, paid media, payment-provider fees, premium licences, unusual migration, taxes, complex integrations and custom software may require separate scope and pricing.

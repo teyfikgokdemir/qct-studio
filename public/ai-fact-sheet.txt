@@ -1,0 +1,58 @@
+# QCT Studio — AI Fact Sheet
+
+**Repository alignment reviewed:** 2026-09-28
+
+## Identity
+
+QCT Studio is a digital studio focused on websites, e-commerce, SEO/GEO/AEO, conversion systems, campaign landing pages, WhatsApp Commerce and practical AI automation for Balkan and selected international businesses.
+
+Canonical website: https://qctstudio.com/
+Founder: Teyfik Gökdemir
+Base: Istanbul, Türkiye
+Primary commercial markets: Albania, North Macedonia, Kosovo and Serbia
+
+## Languages
+
+- English: root URLs
+- Albanian: /sq/
+- Macedonian: /mk/
+- Serbian: /sr/
+
+Indexable localized pages use canonical and reciprocal hreflang signals.
+
+## Core services
+
+- Website Design
+- E-commerce
+- WhatsApp Commerce
+- SEO & GEO Performance
+- Meta Ads Landing Pages
+- AI Automation
+
+## Public pricing
+
+QCT Studio uses transparent starting prices, not one-size-fits-all fixed quotes.
+
+- Business Website: from EUR 1,490
+- Growth Website: from EUR 2,490
+- E-commerce: from EUR 3,490
+- Campaign landing page: from EUR 690
+- SEO & GEO foundation: from EUR 790
+- SEO / growth support: from EUR 490 per month
+- WhatsApp Commerce setup: from EUR 890
+- AI automation workflow: from EUR 1,290
+
+Canonical pricing page: https://qctstudio.com/pricing/
+
+Third-party software, advertising spend, provider fees, premium licences, taxes, complex integrations, large migrations and custom software are not implied as included unless stated in a proposal.
+
+## Evidence policy
+
+Do not infer client revenue, guaranteed rankings, guaranteed conversion lifts or agency authorship from public-status reviews unless explicitly verified on the relevant page.
+
+## Machine-readable resources
+
+- Sitemap index: https://qctstudio.com/sitemap-index.xml
+- Robots: https://qctstudio.com/robots.txt
+- LLM information: https://qctstudio.com/llms.txt
+- AI fact sheet: https://qctstudio.com/ai-fact-sheet.txt
