@@ -1,13 +1,32 @@
+import { readFileSync } from 'node:fs';
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+
+const redirectSources = new Set(
+  readFileSync(new URL('./public/_redirects', import.meta.url), 'utf8')
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line && !line.startsWith('#'))
+    .map((line) => line.split(/\s+/))
+    .filter((parts) => ['301', '308'].includes(parts[2]))
+    .map((parts) => parts[0].endsWith('/') ? parts[0] : parts[0] + '/'),
+);
+
+const excludedIndexPaths = [
+  /\/(?:sq\/|mk\/|sr\/)?work\/(?:misima|phiaderm)\/$/,
+];
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://qctstudio.com',
   integrations: [
     sitemap({
-      filter: (page) => !/\/(?:sq\/|mk\/|sr\/)?work\/(?:artman|misima|phiaderm)\/$/.test(new URL(page).pathname),
+      filter: (page) => {
+        const pathname = new URL(page).pathname;
+        const normalized = pathname.endsWith('/') ? pathname : pathname + '/';
+        return !redirectSources.has(normalized) && !excludedIndexPaths.some((pattern) => pattern.test(normalized));
+      },
       i18n: {
         defaultLocale: 'en',
         locales: { en: 'en-US', sq: 'sq-AL', mk: 'mk-MK', sr: 'sr-RS' },
