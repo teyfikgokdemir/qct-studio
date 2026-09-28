@@ -1,26 +1,60 @@
 ---
 import { useTranslations, getLocalizedUrl } from '../i18n';
 
-interface Props {
-	lang: string;
-}
+interface Props { lang: string; }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
 const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk: 'Цени', sr: 'Cene' };
 ---
-<footer id="colophon" class="site-footer">
+<footer id="colophon" class="site-footer site-footer--editorial">
 	<div class="site-footer__marquee" aria-hidden="true">
 		<div class="site-footer__marquee-track">
 			<span>QCT STUDIO</span><span>QCT STUDIO</span><span>QCT STUDIO</span><span>QCT STUDIO</span>
 		</div>
 	</div>
-	<div class="site-footer__inner container">
-		<div class="site-footer__columns">
-			<div class="site-footer__group site-footer__brand">
-				<h2>{t('QCT Studio')}</h2>
-				<p>{t('Websites, e-commerce and digital systems for businesses across the Balkans.')}</p>
 
+	<div class="container footer-editorial">
+		<div class="footer-editorial__lead">
+			<div>
+				<p class="footer-editorial__eyebrow">BALKAN DIGITAL GROWTH STUDIO</p>
+				<h2>{t('QCT Studio')}</h2>
+			</div>
+			<p>{t('Websites, e-commerce and digital systems for businesses across the Balkans.')}</p>
+		</div>
+
+		<div class="footer-editorial__rule"></div>
+
+		<div class="footer-editorial__grid">
+			<nav aria-label={t('Services')}>
+				<p class="footer-editorial__label">{t('Services')}</p>
+				<a href={url('/website-design/')}>{t('Website Design')}</a>
+				<a href={url('/e-commerce/')}>{t('E-commerce')}</a>
+				<a href={url('/whatsapp-commerce/')}>{t('WhatsApp Commerce')}</a>
+				<a href={url('/seo-performance/')}>{t('SEO')}</a>
+				<a href={url('/meta-ads-landing-pages/')}>{t('Meta Ads')}</a>
+				<a href={url('/ai-automation/')}>{t('AI Automation')}</a>
+			</nav>
+
+			<nav aria-label={t('Company')}>
+				<p class="footer-editorial__label">{t('Company')}</p>
+				<a href={url('/work/')}>{t('Work')}</a>
+				<a href={url('/pricing/')}>{pricingLabel[lang] ?? 'Pricing'}</a>
+				<a href={url('/insights/')}>{t('Insights')}</a>
+				<a href={url('/about/')}>{t('About')}</a>
+				<a href={url('/careers/')}>{t('Careers')}</a>
+				<a href={url('/contact/')}>{t('Contact')}</a>
+			</nav>
+
+			<div class="footer-editorial__contact">
+				<p class="footer-editorial__label">{t('Contact')}</p>
+				<a href="mailto:info@qctstudio.com">info@qctstudio.com</a>
+				<a href="mailto:support@qctstudio.com">support@qctstudio.com</a>
+				<a href="mailto:careers@qctstudio.com">careers@qctstudio.com</a>
+			</div>
+
+			<div class="footer-editorial__social-wrap">
+				<p class="footer-editorial__label">{t('Social')}</p>
 				<div class="site-footer__social" aria-label={t('Social links')}>
 					<p class="site-footer__group-title">{t('Social')}</p>
 					<a href="https://www.linkedin.com/company/qctstudio" target="_blank" rel="noopener noreferrer" aria-label={t('LinkedIn')}>
@@ -41,87 +75,46 @@ const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk:
 					</a>
 				</div>
 			</div>
+		</div>
 
-			<nav class="site-footer__group site-footer__nav" aria-label={t('Services')}>
-				<h2>{t('Services')}</h2>
-				<a href={url('/website-design/')}>{t('Website Design')}</a>
-				<a href={url('/e-commerce/')}>{t('E-commerce')}</a>
-				<a href={url('/whatsapp-commerce/')}>{t('WhatsApp Commerce')}</a>
-				<a href={url('/seo-performance/')}>{t('SEO')}</a>
-				<a href={url('/meta-ads-landing-pages/')}>{t('Meta Ads')}</a>
-				<a href={url('/ai-automation/')}>{t('AI Automation')}</a>
-			</nav>
-
-			<nav class="site-footer__group site-footer__company" aria-label={t('Company')}>
-				<h2>{t('Company')}</h2>
-				<a href={url('/about/')}>{t('About')}</a>
-				<a href={url('/pricing/')}>{pricingLabel[lang] ?? 'Pricing'}</a>
-					<a href={url('/work/')}>{t('Work')}</a>
-					<a href={url('/insights/')}>{t('Insights')}</a>
-				<a href={url('/careers/')}>{t('Careers')}</a>
-				<a href={url('/contact/')}>{t('Contact')}</a>
+		<div class="footer-editorial__bottom">
+			<p set:html={t('&copy; 2026 QCT Studio')} />
+			<div>
 				<a href={url('/privacy-policy/')}>{t('Privacy Policy')}</a>
 				<a href={url('/terms-conditions/')}>{t('Terms & Conditions')}</a>
 				<a href={url('/cookie-policy/')}>{t('Cookie Policy')}</a>
-			</nav>
-
-			<div class="site-footer__group site-footer__markets">
-				<h2>{t('Contact')}</h2>
-				<p><span aria-hidden="true"></span><a href="mailto:info@qctstudio.com">{t('info@qctstudio.com')}</a></p>
-				<p><span aria-hidden="true"></span><a href="mailto:support@qctstudio.com">support@qctstudio.com</a></p>
-				<p><span aria-hidden="true"></span><a href="mailto:careers@qctstudio.com">{t('careers@qctstudio.com')}</a></p>
-			</div>
-		</div>
-
-		<div class="site-footer__bottom">
-			<div class="site-footer__copyright">
-				<p set:html={t('&copy; 2026 QCT Studio')} />
 			</div>
 		</div>
 	</div>
 </footer>
 
 <style>
-	.site-footer { position: relative; overflow: hidden; isolation: isolate; }
-	.site-footer__inner { position: relative; z-index: 1; padding-top: clamp(5.5rem, 8vw, 7rem); }
-	.site-footer__marquee {
-		position: absolute;
-		inset: 0 0 auto;
-		height: clamp(5.5rem, 8vw, 7rem);
-		display: flex;
-		align-items: center;
-		z-index: 0;
-		overflow: hidden;
-		pointer-events: none;
-		user-select: none;
-		-webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-		mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-	}
-	.site-footer__marquee-track {
-		display: flex;
-		width: max-content;
-		gap: clamp(1.75rem, 3.5vw, 4rem);
-		animation: qctStudioMarquee 46s linear infinite;
-		will-change: transform;
-	}
-	.site-footer__marquee span {
-		color: transparent;
-		-webkit-text-stroke: 1px rgba(255, 255, 255, .105);
-		text-shadow: 0 0 20px rgba(120, 82, 150, .05);
-		font-size: clamp(2.8rem, 7vw, 6.5rem);
-		font-weight: 800;
-		line-height: .88;
-		letter-spacing: -.045em;
-		white-space: nowrap;
-	}
-	@keyframes qctStudioMarquee { to { transform: translateX(calc(-25% - .9rem)); } }
-	@media (max-width: 760px) {
-		.site-footer__inner { padding-top: clamp(4.5rem, 16vw, 6rem); }
-		.site-footer__marquee { height: clamp(4.5rem, 16vw, 6rem); }
-		.site-footer__marquee-track { animation: none; transform: translateX(-8%); }
-		.site-footer__marquee span { font-size: clamp(2.4rem, 12vw, 4.2rem); }
-	}
-	@media (prefers-reduced-motion: reduce) {
-		.site-footer__marquee-track { animation: none; transform: translateX(-8%); }
-	}
+.site-footer--editorial{position:relative;overflow:hidden;isolation:isolate;background:#07070b;color:#f7f3ee;border-top:1px solid rgba(255,255,255,.08)}
+.site-footer--editorial::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 16% 0,rgba(231,87,87,.08),transparent 28%),radial-gradient(circle at 84% 10%,rgba(91,52,120,.08),transparent 26%);pointer-events:none}
+.site-footer__marquee{height:clamp(4.2rem,6vw,5.6rem);display:flex;align-items:center;overflow:hidden;pointer-events:none;user-select:none;opacity:.8}
+.site-footer__marquee-track{display:flex;width:max-content;gap:clamp(1.5rem,3vw,3rem);animation:qctFooterMarquee 52s linear infinite}
+.site-footer__marquee span{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.08);font-size:clamp(2.7rem,6vw,5.8rem);font-weight:800;line-height:.9;letter-spacing:-.045em;white-space:nowrap}
+@keyframes qctFooterMarquee{to{transform:translateX(calc(-25% - .75rem))}}
+.footer-editorial{position:relative;z-index:1;padding-top:clamp(2.5rem,4vw,4rem);padding-bottom:1.5rem}
+.footer-editorial__lead{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:clamp(2rem,6vw,6rem);align-items:end}
+.footer-editorial__eyebrow,.footer-editorial__label{margin:0;color:#ef777d;font-size:.68rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+.footer-editorial__lead h2{margin:.45rem 0 0;color:#fff;font-size:clamp(2.7rem,5vw,5rem);line-height:.95;letter-spacing:-.05em;text-transform:none}
+.footer-editorial__lead>p{margin:0;color:rgba(247,243,238,.62);font-size:clamp(.95rem,1.2vw,1.08rem);line-height:1.65;max-width:470px}
+.footer-editorial__rule{height:1px;background:rgba(255,255,255,.12);margin:clamp(2rem,4vw,3.5rem) 0}
+.footer-editorial__grid{display:grid;grid-template-columns:1.15fr .9fr 1.1fr .85fr;gap:clamp(1.5rem,4vw,4rem)}
+.footer-editorial__grid nav,.footer-editorial__contact,.footer-editorial__social-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:.72rem}
+.footer-editorial__grid a{color:rgba(247,243,238,.62);font-size:.9rem;line-height:1.4;text-decoration:none}
+.footer-editorial__grid a:hover,.footer-editorial__grid a:focus-visible{color:#fff;transform:none}
+.footer-editorial__label{margin-bottom:.4rem;color:rgba(247,243,238,.42)}
+.footer-editorial__social-wrap .site-footer__social{display:flex;flex-direction:row;flex-wrap:wrap;gap:.5rem}
+.footer-editorial__social-wrap .site-footer__group-title{display:none}
+.footer-editorial__social-wrap .site-footer__social a{width:38px;height:38px;min-height:38px;border:1px solid rgba(255,255,255,.12);border-radius:50%;display:grid;place-items:center;padding:0}
+.footer-editorial__social-wrap .site-footer__social svg{width:16px;height:16px;fill:currentColor}
+.footer-editorial__bottom{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin-top:clamp(2.5rem,5vw,4rem);padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.1)}
+.footer-editorial__bottom p{margin:0;color:rgba(247,243,238,.5);font-size:.78rem}
+.footer-editorial__bottom>div{display:flex;gap:1.2rem;flex-wrap:wrap}
+.footer-editorial__bottom a{color:rgba(247,243,238,.45);font-size:.76rem;text-decoration:none}
+@media(max-width:900px){.footer-editorial__lead{grid-template-columns:1fr}.footer-editorial__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.site-footer__marquee-track{animation:none;transform:translateX(-8%)}.footer-editorial{padding-top:2rem}.footer-editorial__lead h2{font-size:clamp(2.4rem,12vw,3.6rem)}.footer-editorial__grid{grid-template-columns:1fr 1fr;gap:2rem 1.25rem}.footer-editorial__bottom{align-items:flex-start;flex-direction:column}.footer-editorial__bottom>div{gap:.8rem 1rem}}
+@media(prefers-reduced-motion:reduce){.site-footer__marquee-track{animation:none;transform:translateX(-8%)}}
 </style>

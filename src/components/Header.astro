@@ -36,17 +36,6 @@ const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk:
 			</div>
 			<ul class="primary-menu">
 				<li><a href={url('/')}>{t('Home')}</a></li>
-					<li><a href={url('/about/')}>{t('About')}</a></li>
-					<li><a href={url('/insights/')}>{t('Insights')}</a></li>
-					<li class="menu-item-has-children">
-						<button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle>
-							<span>{t('Work')}</span>
-						</button>
-						<ul class="sub-menu">
-							<li><a href={url('/work/')}>{t('View Our Work')}</a></li>
-							<li><a href={url('/contact/')}>{t('Talk to Our Team')}</a></li>
-						</ul>
-					</li>
 				<li class="menu-item-has-children">
 					<button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle>
 						<span>{t('Services')}</span>
@@ -61,12 +50,25 @@ const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk:
 						<li><a href={url('/ai-automation/')}>{t('AI Automation')}</a></li>
 					</ul>
 				</li>
+				<li class="menu-item-has-children">
+					<button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle>
+						<span>{t('Work')}</span>
+					</button>
+					<ul class="sub-menu">
+						<li><a href={url('/work/')}>{t('View Our Work')}</a></li>
+						<li><a href={url('/contact/')}>{t('Talk to Our Team')}</a></li>
+					</ul>
+				</li>
 				<li><a href={url('/pricing/')}>{pricingLabel[lang] ?? 'Pricing'}</a></li>
+				<li><a href={url('/insights/')}>{t('Insights')}</a></li>
+				<li><a href={url('/about/')}>{t('About')}</a></li>
 				<li><a href={url('/careers/')}>{t('Careers')}</a></li>
 				<li><a href={url('/contact/')}>{t('Contact')}</a></li>
 			</ul>
-
 			<div class="site-language-switcher">
+				<span class="site-language-switcher__icon" aria-hidden="true">
+					<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9S14.5 18.4 12 21M12 3C9.5 5.6 8.2 8.6 8.2 12s1.3 6.4 3.8 9"></path></svg>
+				</span>
 				{Object.entries(languages).map(([code, label]) => (
 					<a
 						href={getLocalizedUrl(code, currentPath)}
@@ -91,4 +93,5 @@ const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk:
 			display: flex;
 		}
 	}
+.site-language-switcher__icon{display:inline-grid;place-items:center;width:16px;height:16px;color:currentColor;opacity:.58;flex:0 0 16px}.site-language-switcher__icon svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 </style>
