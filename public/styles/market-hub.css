@@ -64,6 +64,19 @@
 @media(prefers-reduced-motion:reduce){.market-hub [data-reveal]{opacity:1;transform:none;transition:none}.mh-orbit-two{animation:none}.mh-facts article,.mh-sector-list article,.mh-system-flow li:before{transition:none}}
 
 
+/* Shared brand bridge: retain the dark campaign art direction while matching the core Studio type system. */
+.market-hub .mh-hero h1,
+.market-hub .mh-cta h2{
+  font-family:var(--qct-font-sans);
+  font-weight:850;
+  letter-spacing:-.05em;
+}
+.v2-body .v2-header-cta,
+.market-hub .v2-button{
+  font-family:var(--qct-font-sans);
+  font-weight:800;
+}
+
 /* QCT Studio site-standard refinement — 2026-09-28 */
 .market-hub{
   --mh-gutter:clamp(20px,4vw,48px);
