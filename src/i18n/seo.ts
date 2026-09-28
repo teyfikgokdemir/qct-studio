@@ -94,7 +94,7 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
   sq: {
     home: {
       title: 'QCT Studio — Faqe interneti, E-commerce dhe AI në Ballkan',
-      description: 'QCT Studio ndërton faqe interneti, dyqane online dhe automatizime me AI për biznese në Shqipëri dhe Maqedoninë e Veriut.',
+      description: 'QCT Studio ndërton faqe premium, e-commerce, SEO/GEO dhe automatizime praktike me AI për biznese në Shqipëri, Kosovë dhe në mbarë Ballkanin.',
     },
     about: {
       title: 'Rreth QCT Studio — Partner Digjital për Bizneset Ballkanike',
@@ -161,7 +161,7 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
   mk: {
     home: {
       title: 'QCT Studio — Веб-страници, е-трговија и AI за Балканот',
-      description: 'QCT Studio изработува веб-страници, онлајн продавници и AI автоматизации за компании во Албанија и Северна Македонија.',
+      description: 'QCT Studio создава премиум веб-страници, e-commerce, SEO/GEO и практична AI автоматизација за компании во Северна Македонија и низ Балканот.',
     },
     about: {
       title: 'За QCT Studio — Дигитален партнер за балкански компании',
