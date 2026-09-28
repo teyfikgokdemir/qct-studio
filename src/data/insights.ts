@@ -13,6 +13,58 @@ export interface InsightArticle {
 export const insights: InsightArticle[] = [
 
   {
+    slug: 'chatgpt-ads-2026-ai-native-advertising',
+    publishedAt: '2026-09-28', category: 'AI Advertising', readTime: '8 min',
+    title: {
+      en: 'ChatGPT Ads in 2026: what AI-native advertising changes for businesses',
+      sq: 'ChatGPT Ads në 2026: çfarë ndryshon reklamimi AI-native për bizneset',
+      mk: 'ChatGPT Ads во 2026: што менува AI-native рекламирањето за бизнисите',
+      sr: 'ChatGPT Ads u 2026: šta AI-native oglašavanje menja za biznise'
+    },
+    excerpt: {
+      en: 'A practical guide to ChatGPT Ads, conversational intent, CPC buying, Sponsored Agents and how landing pages should adapt to AI-native discovery.',
+      sq: 'Udhëzues praktik për ChatGPT Ads, conversational intent, CPC, Sponsored Agents dhe si duhet të përshtaten landing pages.',
+      mk: 'Практичен водич за ChatGPT Ads, conversational intent, CPC, Sponsored Agents и адаптација на landing pages.',
+      sr: 'Praktičan vodič za ChatGPT Ads, conversational intent, CPC, Sponsored Agents i prilagođavanje landing stranica.'
+    },
+    body: {
+      en: [
+        'ChatGPT Ads introduces a different advertising context from classic keyword search. People often arrive with a problem, comparison or decision already in progress, so relevance depends on conversational intent and useful commercial context rather than a single keyword.',
+        'OpenAI expanded advertiser access in 2026 with self-serve Ads Manager, CPC bidding and broader measurement. It also introduced Sponsored Agents, allowing a user to continue into a business-sponsored conversational experience after engaging with an ad.',
+        'For advertisers, this changes creative strategy. A generic slogan is less useful than a precise proposition that explains who the offer is for, the practical benefit and when it is relevant. More distinct creative variants give the system more ways to match real intent.',
+        'Landing pages also need to change. The page should continue the conversation with clear proof, specific scope, pricing or qualification logic, fast mobile UX and a direct next step. This is where SEO, GEO, AEO and AIO work can support paid acquisition because the same clarity and entity consistency improve both organic and paid discovery.',
+        'ChatGPT Ads should be measured as a commercial channel, not only a click source. Qualified enquiries, assisted conversions, landing-page behaviour and downstream sales quality matter more than raw traffic.',
+        'Availability and ad formats continue to evolve by market. Businesses should verify current Ads Manager eligibility and policy requirements before planning spend.'
+      ],
+      sq: [
+        'ChatGPT Ads sjell një kontekst tjetër nga search klasik me keyword. Përdoruesi shpesh hyn me problem, krahasim ose vendim në proces, prandaj relevanca varet nga conversational intent dhe konteksti tregtar.',
+        'OpenAI zgjeroi aksesin e reklamuesve në 2026 me Ads Manager self-service, CPC dhe matje më të gjera. U prezantuan edhe Sponsored Agents për vazhdimin e bisedës me një agjent të sponsorizuar nga biznesi.',
+        'Kreativa duhet të jetë specifike: për kë është oferta, cili është përfitimi praktik dhe kur është relevante. Variante të ndryshme i japin sistemit më shumë mundësi për përputhje.',
+        'Landing page duhet të vazhdojë bisedën me prova, scope të qartë, çmim ose qualification logic, UX mobile të shpejtë dhe hap të qartë të radhës. Këtu SEO, GEO, AEO dhe AIO mbështesin edhe paid acquisition.',
+        'Matja duhet të fokusohet te kërkesat e kualifikuara, assisted conversions dhe cilësia e shitjes, jo vetëm te klikimet.',
+        'Disponueshmëria dhe formatet ndryshojnë sipas tregut, ndaj eligibility dhe politikat duhen verifikuar para buxhetimit.'
+      ],
+      mk: [
+        'ChatGPT Ads создава поинаков контекст од класично keyword рекламирање. Корисникот често веќе има проблем, споредба или одлука во тек, па релевантноста зависи од conversational intent и корисен деловен контекст.',
+        'OpenAI во 2026 го прошири пристапот со self-service Ads Manager, CPC bidding и пошироко мерење. Воведени се и Sponsored Agents за продолжување на разговорот со бизнис-спонзориран агент.',
+        'Креативата треба да биде прецизна: за кого е понудата, која е практичната корист и кога е релевантна. Повеќе различни варијанти создаваат повеќе match можности.',
+        'Landing page треба да го продолжи разговорот со докази, јасен scope, цена или qualification logic, брз mobile UX и директен следен чекор. SEO, GEO, AEO и AIO тука го поддржуваат и paid acquisition.',
+        'Мерењето треба да се фокусира на квалификувани упити, assisted conversions и продажен квалитет, не само на кликови.',
+        'Достапноста и форматите се менуваат по пазари, па eligibility и политиките треба да се проверат пред планирање буџет.'
+      ],
+      sr: [
+        'ChatGPT Ads uvodi drugačiji kontekst od klasičnog keyword oglašavanja. Korisnik često već ima problem, poređenje ili odluku u toku, pa relevantnost zavisi od conversational intent-a i korisnog poslovnog konteksta.',
+        'OpenAI je tokom 2026. proširio pristup kroz self-service Ads Manager, CPC bidding i šire merenje. Uvedeni su i Sponsored Agents za nastavak razgovora sa agentom koji sponzoriše biznis.',
+        'Kreativa treba da bude precizna: kome je ponuda namenjena, koja je praktična korist i kada je relevantna. Više različitih varijanti daje sistemu više mogućnosti za match.',
+        'Landing stranica treba da nastavi razgovor dokazima, jasnim scope-om, cenom ili qualification logikom, brzim mobile UX-om i direktnim sledećim korakom. SEO, GEO, AEO i AIO ovde podržavaju i paid acquisition.',
+        'Merenje treba da prati kvalifikovane upite, assisted conversions i kvalitet prodaje, a ne samo klikove.',
+        'Dostupnost i formati se menjaju po tržištima, pa eligibility i pravila treba proveriti pre planiranja budžeta.'
+      ]
+    },
+  },
+
+
+  {
     slug: 'dynamic-seo-geo-aeo-aio-2026',
     publishedAt: '2026-09-28', category: 'Visibility', readTime: '8 min',
     title: {
