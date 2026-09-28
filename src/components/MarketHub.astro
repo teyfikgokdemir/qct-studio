@@ -22,6 +22,13 @@ const ui = marketUi[lang] as {
   footerNote: string;
 };
 const url = (path: string) => getLocalizedUrl(lang, path);
+const marketCardLabels: Record<MarketLang, { need: string; system: string; source: string }> = {
+  en: { need: 'Market need', system: 'QCT system', source: 'Source' },
+  sq: { need: 'Nevoja e tregut', system: 'Sistemi QCT', source: 'Burimi' },
+  mk: { need: 'Пазарна потреба', system: 'QCT систем', source: 'Извор' },
+  sr: { need: 'Potreba tržišta', system: 'QCT sistem', source: 'Izvor' },
+};
+const cardLabels = marketCardLabels[lang];
 const marketPath = `/markets/${market.slug}/`;
 const countryName = market.slug === 'north-macedonia'
   ? 'North Macedonia'
@@ -138,7 +145,7 @@ const serviceSchema = {
     </section>
 
     <section id="market-gap" class="mh-section mh-gap">
-      <div class="mh-section-index" data-reveal><span>01</span><i></i><b>{copy.gapTitle}</b></div>
+      <div class="mh-section-index" data-reveal><i></i><b>{copy.gapTitle}</b></div>
       <div class="mh-section-heading" data-reveal>
         <h2>{copy.gapTitle}</h2>
         <p>{copy.gapIntro}</p>
@@ -146,7 +153,6 @@ const serviceSchema = {
       <div class="mh-facts">
         {copy.facts.map((fact, index) => (
           <article data-reveal>
-            <span>0{index + 1}</span>
             <strong>{fact.value}</strong>
             <h3>{fact.label}</h3>
             <p>{fact.context}</p>
@@ -162,7 +168,7 @@ const serviceSchema = {
     </section>
 
     <section id="playbooks" class="mh-section mh-playbooks">
-      <div class="mh-section-index" data-reveal><span>02</span><i></i><b>{copy.playbookTitle}</b></div>
+      <div class="mh-section-index" data-reveal><i></i><b>{copy.playbookTitle}</b></div>
       <div class="mh-section-heading" data-reveal>
         <h2>{copy.playbookTitle}</h2>
         <p>{copy.playbookIntro}</p>
@@ -170,10 +176,9 @@ const serviceSchema = {
       <div class="mh-sector-list">
         {copy.sectors.map((sector, index) => (
           <article data-reveal>
-            <div class="mh-sector-number">0{index + 1}</div>
             <h3>{sector.name}</h3>
-            <div><span>Market need</span><p>{sector.need}</p></div>
-            <div><span>QCT system</span><p>{sector.system}</p></div>
+            <div><span>{cardLabels.need}</span><p>{sector.need}</p></div>
+            <div><span>{cardLabels.system}</span><p>{sector.system}</p></div>
             <i>↘</i>
           </article>
         ))}
@@ -181,20 +186,17 @@ const serviceSchema = {
     </section>
 
     <section id="system" class="mh-section mh-system">
-      <div class="mh-section-index" data-reveal><span>03</span><i></i><b>{copy.systemTitle}</b></div>
+      <div class="mh-section-index" data-reveal><i></i><b>{copy.systemTitle}</b></div>
       <div class="mh-section-heading" data-reveal>
         <h2>{copy.systemTitle}</h2>
         <p>{copy.systemIntro}</p>
       </div>
       <ol class="mh-system-flow">
-        <li data-reveal>
-          <span>01</span><b>{ui.systemLabels[0]}</b><h3>{copy.acquire}</h3><p>{copy.acquireCopy}</p><i>→</i>
+        <li data-reveal><b>{ui.systemLabels[0]}</b><h3>{copy.acquire}</h3><p>{copy.acquireCopy}</p><i>→</i>
         </li>
-        <li data-reveal>
-          <span>02</span><b>{ui.systemLabels[1]}</b><h3>{copy.convert}</h3><p>{copy.convertCopy}</p><i>→</i>
+        <li data-reveal><b>{ui.systemLabels[1]}</b><h3>{copy.convert}</h3><p>{copy.convertCopy}</p><i>→</i>
         </li>
-        <li data-reveal>
-          <span>03</span><b>{ui.systemLabels[2]}</b><h3>{copy.operate}</h3><p>{copy.operateCopy}</p><i>✓</i>
+        <li data-reveal><b>{ui.systemLabels[2]}</b><h3>{copy.operate}</h3><p>{copy.operateCopy}</p><i>✓</i>
         </li>
       </ol>
     </section>
@@ -202,7 +204,7 @@ const serviceSchema = {
     <section id="evidence" class="mh-section mh-evidence">
       <div class="mh-evidence-grid" data-reveal>
         <div>
-          <div class="mh-section-index"><span>04</span><i></i><b>{copy.evidenceTitle}</b></div>
+          <div class="mh-section-index"><i></i><b>{copy.evidenceTitle}</b></div>
           <h2>{copy.evidenceTitle}</h2>
           <p>{copy.evidenceCopy}</p>
           <small>✓ {copy.evidenceNote}</small>
@@ -219,14 +221,14 @@ const serviceSchema = {
 
     <section class="mh-section mh-faq">
       <div class="mh-faq-intro" data-reveal>
-        <div class="mh-section-index"><span>05</span><i></i><b>FAQ</b></div>
+        <div class="mh-section-index"><i></i><b>FAQ</b></div>
         <h2>{copy.faqTitle}</h2>
         <p>{copy.faqIntro}</p>
       </div>
       <div class="mh-faq-list">
         {copy.faqs.map(([question, answer], index) => (
           <details data-reveal>
-            <summary><span>0{index + 1}</span><b>{question}</b><i>+</i></summary>
+            <summary><b>{question}</b><i>+</i></summary>
             <p>{answer}</p>
           </details>
         ))}
