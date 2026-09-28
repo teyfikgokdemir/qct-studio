@@ -30,7 +30,7 @@ export const insights: InsightArticle[] = [
     body: {
       en: [
         'ChatGPT Ads introduces a different advertising context from classic keyword search. People often arrive with a problem, comparison or decision already in progress, so relevance depends on conversational intent and useful commercial context rather than a single keyword.',
-        'OpenAI expanded advertiser access in 2026 with self-serve Ads Manager, CPC bidding and broader measurement. It also introduced Sponsored Agents, allowing a user to continue into a business-sponsored conversational experience after engaging with an ad.',
+        'OpenAI expanded advertiser access in 2026 with self-serve Ads Manager supporting CPM, CPC and eligible oCPC objectives plus broader measurement. Sponsored Agents are currently in limited alpha with selected advertisers and can extend an ad interaction into a business-sponsored conversation.',
         'For advertisers, this changes creative strategy. A generic slogan is less useful than a precise proposition that explains who the offer is for, the practical benefit and when it is relevant. More distinct creative variants give the system more ways to match real intent.',
         'Landing pages also need to change. The page should continue the conversation with clear proof, specific scope, pricing or qualification logic, fast mobile UX and a direct next step. This is where SEO, GEO, AEO and AIO work can support paid acquisition because the same clarity and entity consistency improve both organic and paid discovery.',
         'ChatGPT Ads should be measured as a commercial channel, not only a click source. Qualified enquiries, assisted conversions, landing-page behaviour and downstream sales quality matter more than raw traffic.',
@@ -38,7 +38,7 @@ export const insights: InsightArticle[] = [
       ],
       sq: [
         'ChatGPT Ads sjell një kontekst tjetër nga search klasik me keyword. Përdoruesi shpesh hyn me problem, krahasim ose vendim në proces, prandaj relevanca varet nga conversational intent dhe konteksti tregtar.',
-        'OpenAI zgjeroi aksesin e reklamuesve në 2026 me Ads Manager self-service, CPC dhe matje më të gjera. U prezantuan edhe Sponsored Agents për vazhdimin e bisedës me një agjent të sponsorizuar nga biznesi.',
+        'OpenAI zgjeroi aksesin në 2026 me Ads Manager self-service që mbështet CPM, CPC dhe, për llogaritë e pranueshme, oCPC. Sponsored Agents janë aktualisht në alpha të kufizuar me reklamues të përzgjedhur.',
         'Kreativa duhet të jetë specifike: për kë është oferta, cili është përfitimi praktik dhe kur është relevante. Variante të ndryshme i japin sistemit më shumë mundësi për përputhje.',
         'Landing page duhet të vazhdojë bisedën me prova, scope të qartë, çmim ose qualification logic, UX mobile të shpejtë dhe hap të qartë të radhës. Këtu SEO, GEO, AEO dhe AIO mbështesin edhe paid acquisition.',
         'Matja duhet të fokusohet te kërkesat e kualifikuara, assisted conversions dhe cilësia e shitjes, jo vetëm te klikimet.',
@@ -46,7 +46,7 @@ export const insights: InsightArticle[] = [
       ],
       mk: [
         'ChatGPT Ads создава поинаков контекст од класично keyword рекламирање. Корисникот често веќе има проблем, споредба или одлука во тек, па релевантноста зависи од conversational intent и корисен деловен контекст.',
-        'OpenAI во 2026 го прошири пристапот со self-service Ads Manager, CPC bidding и пошироко мерење. Воведени се и Sponsored Agents за продолжување на разговорот со бизнис-спонзориран агент.',
+        'OpenAI во 2026 го прошири пристапот со self-service Ads Manager што поддржува CPM, CPC и кај соодветни сметки oCPC. Sponsored Agents моментално се во ограничен alpha тест со избрани рекламодавачи.',
         'Креативата треба да биде прецизна: за кого е понудата, која е практичната корист и кога е релевантна. Повеќе различни варијанти создаваат повеќе match можности.',
         'Landing page треба да го продолжи разговорот со докази, јасен scope, цена или qualification logic, брз mobile UX и директен следен чекор. SEO, GEO, AEO и AIO тука го поддржуваат и paid acquisition.',
         'Мерењето треба да се фокусира на квалификувани упити, assisted conversions и продажен квалитет, не само на кликови.',
@@ -54,7 +54,7 @@ export const insights: InsightArticle[] = [
       ],
       sr: [
         'ChatGPT Ads uvodi drugačiji kontekst od klasičnog keyword oglašavanja. Korisnik često već ima problem, poređenje ili odluku u toku, pa relevantnost zavisi od conversational intent-a i korisnog poslovnog konteksta.',
-        'OpenAI je tokom 2026. proširio pristup kroz self-service Ads Manager, CPC bidding i šire merenje. Uvedeni su i Sponsored Agents za nastavak razgovora sa agentom koji sponzoriše biznis.',
+        'OpenAI je tokom 2026. proširio pristup kroz self-service Ads Manager koji podržava CPM, CPC i za odgovarajuće naloge oCPC. Sponsored Agents su trenutno u ograničenom alpha testu sa izabranim oglašivačima.',
         'Kreativa treba da bude precizna: kome je ponuda namenjena, koja je praktična korist i kada je relevantna. Više različitih varijanti daje sistemu više mogućnosti za match.',
         'Landing stranica treba da nastavi razgovor dokazima, jasnim scope-om, cenom ili qualification logikom, brzim mobile UX-om i direktnim sledećim korakom. SEO, GEO, AEO i AIO ovde podržavaju i paid acquisition.',
         'Merenje treba da prati kvalifikovane upite, assisted conversions i kvalitet prodaje, a ne samo klikove.',
