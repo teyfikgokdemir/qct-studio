@@ -136,7 +136,7 @@ const contactUrl = getLocalizedUrl(lang, '/contact/');
       <small>{copy.qualifier}</small>
     </div>
 
-    <div class="qct-estimator__panel" data-project-estimator data-services={JSON.stringify(copy.services)} data-scopes={JSON.stringify(copy.scopes)} data-monthly-label={copy.monthly}>
+    <div class="qct-estimator__panel" data-project-estimator data-services={JSON.stringify(copy.services)} data-scopes={JSON.stringify(copy.scopes)} data-monthly-label={copy.monthly} data-campaign-default={copy.campaign}>
       <label>
         <span>{copy.project}</span>
         <select data-estimator-service>
@@ -181,7 +181,7 @@ const contactUrl = getLocalizedUrl(lang, '/contact/');
         root.classList.toggle('is-recurring', recurring);
         standard.textContent = euro.format(total);
         campaign.textContent = recurring ? euro.format(total) + ' / mo' : euro.format(offer);
-        campaignLabel.textContent = recurring ? (root.dataset.monthlyLabel || 'Monthly service') : `${copy.campaign}`;
+        campaignLabel.textContent = recurring ? (root.dataset.monthlyLabel || 'Monthly service') : (root.dataset.campaignDefault || 'Limited launch offer');
         saving.textContent = recurring ? '—' : euro.format(total - offer);
       };
       service.addEventListener('change', update);
