@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { getLocalizedUrl } from '../i18n';
+
+interface Props { lang: 'en' | 'sq' | 'mk' | 'sr'; }
+const { lang } = Astro.props;
+
+const copy = {
+  en: {
+    title: 'Pricing — QCT Studio',
+    description: 'Transparent starting prices for QCT Studio websites, e-commerce, SEO, landing pages, WhatsApp Commerce and AI automation across the Balkans.',
+    eyebrow: 'PRICING',
+    h1: 'Clear starting prices. Scope before surprises.',
+    lead: 'These prices are designed for established Balkan businesses that want professional execution without enterprise-agency overhead. Every project is scoped before work begins.',
+    from: 'From',
+    cta: 'Discuss your project',
+    packages: [
+      ['Business Website', '€1,490', 'For established service businesses that need a credible, fast and conversion-focused website.', ['Strategy and information architecture', 'Responsive design and development', 'Core technical SEO', 'Analytics and conversion tracking', 'Launch and handover']],
+      ['Growth Website', '€2,490', 'For businesses that need stronger positioning, search structure and multiple conversion paths.', ['Everything in Business Website', 'Deeper content and service architecture', 'SEO/GEO-ready structure', 'Landing-page or lead-flow planning', 'Post-launch optimisation review']],
+      ['E-commerce', '€3,490', 'For product businesses that need a dependable mobile-first store and clearer commercial operations.', ['Store architecture and product structure', 'Responsive storefront', 'Checkout and conversion flow', 'Technical SEO foundations', 'Analytics and commerce tracking']],
+    ],
+    extrasTitle: 'Specialist services',
+    extrasLead: 'Use these as standalone projects or add them to a broader website or commerce system.',
+    extras: [
+      ['Campaign landing page', '€690'],
+      ['SEO & GEO foundation', '€790'],
+      ['SEO / growth support', '€490 / month'],
+      ['WhatsApp Commerce setup', '€890'],
+      ['AI automation workflow', '€1,290'],
+      ['Additional market / language rollout', '€390'],
+    ],
+    noteTitle: 'What the price does not hide',
+    note: 'Third-party software, paid media spend, payment-provider fees, premium licenses, unusual data migration and taxes are not included unless they are explicitly written into the proposal. Complex integrations, large catalogues and custom software are quoted separately.',
+    close: 'Need a custom scope?',
+    closeText: 'Send the current website, target market and the commercial problem. We will confirm the most practical scope before quoting.',
+  },
+  sq: {
+    title: 'Çmimet — QCT Studio',
+    description: 'Çmime fillestare transparente për faqe interneti, e-commerce, SEO, landing pages, WhatsApp Commerce dhe automatizim me AI në Ballkan.',
+    eyebrow: 'ÇMIMET',
+    h1: 'Çmime fillestare të qarta. Fusha përcaktohet para surprizave.',
+    lead: 'Këto çmime janë për biznese serioze në Ballkan që kërkojnë ekzekutim profesional pa koston e një agjencie enterprise. Çdo projekt përcaktohet para fillimit.',
+    from: 'Nga',
+    cta: 'Diskuto projektin',
+    packages: [
+      ['Faqe Biznesi', '€1,490', 'Për biznese shërbimesh që kanë nevojë për një faqe të besueshme, të shpejtë dhe të orientuar te konvertimi.', ['Strategji dhe arkitekturë informacioni', 'Dizajn dhe zhvillim responsive', 'SEO teknik bazë', 'Analitikë dhe matje konvertimi', 'Publikim dhe dorëzim']],
+      ['Faqe për Rritje', '€2,490', 'Për biznese që kanë nevojë për pozicionim më të fortë, strukturë kërkimi dhe disa rrugë konvertimi.', ['Gjithçka te Faqja e Biznesit', 'Arkitekturë më e thellë e përmbajtjes', 'Strukturë gati për SEO/GEO', 'Planifikim landing page ose lead flow', 'Rishikim pas publikimit']],
+      ['E-commerce', '€3,490', 'Për biznese produktesh që duan dyqan të besueshëm mobile-first dhe operacione më të qarta.', ['Arkitekturë dyqani dhe produktesh', 'Storefront responsive', 'Checkout dhe rrjedhë konvertimi', 'Bazat teknike të SEO', 'Analitikë dhe commerce tracking']],
+    ],
+    extrasTitle: 'Shërbime të specializuara',
+    extrasLead: 'Mund të përdoren si projekte më vete ose si shtesë në një sistem më të gjerë.',
+    extras: [['Landing page për fushatë','€690'],['Bazë SEO & GEO','€790'],['Mbështetje SEO / growth','€490 / muaj'],['WhatsApp Commerce','€890'],['Workflow automatizimi me AI','€1,290'],['Treg / gjuhë shtesë','€390']],
+    noteTitle: 'Çfarë nuk fshihet në çmim',
+    note: 'Software i palëve të treta, buxheti i reklamave, tarifat e pagesave, licencat premium, migrimet e pazakonta dhe taksat nuk përfshihen nëse nuk shkruhen qartë në ofertë. Integrimet komplekse dhe software custom kuotohen veçmas.',
+    close: 'Keni nevojë për një fushë të personalizuar?',
+    closeText: 'Dërgoni faqen aktuale, tregun e synuar dhe problemin tregtar. Ne konfirmojmë fushën më praktike para ofertës.',
+  },
+  mk: {
+    title: 'Цени — QCT Studio',
+    description: 'Транспарентни почетни цени за веб-страници, e-commerce, SEO, landing pages, WhatsApp Commerce и AI автоматизација на Балканот.',
+    eyebrow: 'ЦЕНИ',
+    h1: 'Јасни почетни цени. Опсегот се дефинира пред изненадувањата.',
+    lead: 'Цените се наменети за сериозни балкански компании што бараат професионална изведба без enterprise-агенциски трошок. Секој проект се дефинира пред почеток.',
+    from: 'Од',
+    cta: 'Разговарајте за проектот',
+    packages: [
+      ['Бизнис веб-страница', '€1,490', 'За услужни компании на кои им треба кредибилна, брза и конверзиски ориентирана веб-страница.', ['Стратегија и информациска архитектура', 'Responsive дизајн и развој', 'Основно техничко SEO', 'Аналитика и мерење конверзии', 'Лансирање и предавање']],
+      ['Growth веб-страница', '€2,490', 'За компании на кои им треба посилно позиционирање, структура за пребарување и повеќе конверзиски патеки.', ['Сè од Business Website', 'Подлабока содржинска архитектура', 'SEO/GEO подготвена структура', 'Landing page или lead-flow планирање', 'Пост-лансирачки review']],
+      ['E-commerce', '€3,490', 'За продуктни компании на кои им треба сигурна mobile-first продавница и појасни операции.', ['Архитектура на продавница и производи', 'Responsive storefront', 'Checkout и conversion flow', 'Технички SEO основи', 'Analytics и commerce tracking']],
+    ],
+    extrasTitle: 'Специјализирани услуги',
+    extrasLead: 'Како самостојни проекти или додатоци на поширок веб/e-commerce систем.',
+    extras: [['Campaign landing page','€690'],['SEO & GEO основа','€790'],['SEO / growth поддршка','€490 / месец'],['WhatsApp Commerce','€890'],['AI automation workflow','€1,290'],['Дополнителен пазар / јазик','€390']],
+    noteTitle: 'Што не е скриено во цената',
+    note: 'Third-party software, рекламниот буџет, payment-provider трошоци, premium лиценци, нестандардни миграции и даноци не се вклучени освен ако не се наведени во понудата. Комплексни интеграции и custom software се пресметуваат одделно.',
+    close: 'Потребен е custom опсег?',
+    closeText: 'Испратете ја тековната веб-страница, целниот пазар и комерцијалниот проблем. Ќе го потврдиме најпрактичниот опсег пред понуда.',
+  },
+  sr: {
+    title: 'Cene — QCT Studio',
+    description: 'Transparentne početne cene za sajtove, e-commerce, SEO, landing stranice, WhatsApp Commerce i AI automatizaciju na Balkanu.',
+    eyebrow: 'CENE',
+    h1: 'Jasne početne cene. Obim se definiše pre iznenađenja.',
+    lead: 'Cene su namenjene ozbiljnim balkanskim firmama koje žele profesionalnu realizaciju bez troška velike enterprise agencije. Svaki projekat se definiše pre početka rada.',
+    from: 'Od',
+    cta: 'Razgovarajte o projektu',
+    packages: [
+      ['Poslovni sajt', '€1,490', 'Za uslužne firme kojima je potreban kredibilan, brz i konverzijski orijentisan sajt.', ['Strategija i informaciona arhitektura', 'Responsive dizajn i razvoj', 'Osnovni tehnički SEO', 'Analitika i praćenje konverzija', 'Lansiranje i primopredaja']],
+      ['Growth sajt', '€2,490', 'Za firme kojima trebaju jače pozicioniranje, bolja search struktura i više konverzijskih puteva.', ['Sve iz Poslovnog sajta', 'Dublja arhitektura sadržaja', 'SEO/GEO-ready struktura', 'Planiranje landing stranice ili lead flow-a', 'Post-launch optimizacioni pregled']],
+      ['E-commerce', '€3,490', 'Za produktne firme kojima je potrebna pouzdana mobile-first prodavnica i jasnije komercijalne operacije.', ['Arhitektura prodavnice i proizvoda', 'Responsive storefront', 'Checkout i conversion flow', 'Tehničke SEO osnove', 'Analytics i commerce tracking']],
+    ],
+    extrasTitle: 'Specijalističke usluge',
+    extrasLead: 'Kao samostalni projekti ili dodatak širem web/e-commerce sistemu.',
+    extras: [['Campaign landing page','€690'],['SEO & GEO osnova','€790'],['SEO / growth podrška','€490 / mesec'],['WhatsApp Commerce','€890'],['AI automation workflow','€1,290'],['Dodatno tržište / jezik','€390']],
+    noteTitle: 'Šta cena ne skriva',
+    note: 'Third-party softver, budžet za oglase, naknade payment providera, premium licence, nestandardne migracije i porezi nisu uključeni osim ako su izričito navedeni u ponudi. Kompleksne integracije i custom softver se procenjuju zasebno.',
+    close: 'Potreban vam je custom obim?',
+    closeText: 'Pošaljite trenutni sajt, ciljno tržište i komercijalni problem. Potvrdićemo najpraktičniji obim pre ponude.',
+  },
+}[lang];
+
+const offers = copy.packages.map(([name, price]) => ({
+  '@type': 'Offer',
+  priceCurrency: 'EUR',
+  price: String(price).replace(/[^0-9]/g, ''),
+  name,
+  url: new URL(getLocalizedUrl(lang, '/pricing/'), 'https://qctstudio.com').toString(),
+}));
+const offerCatalog = {
+  '@context': 'https://schema.org',
+  '@type': 'OfferCatalog',
+  name: copy.title,
+  itemListElement: offers,
+};
+---
+<BaseLayout title={copy.title} description={copy.description} lang={lang} pageType="CollectionPage" breadcrumbLabel={copy.eyebrow}>
+  <Header slot="header" lang={lang} languagePath="/pricing/" />
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(offerCatalog)} />
+  <section class="pricing-hero container">
+    <p class="pricing-eyebrow">{copy.eyebrow}</p>
+    <h1>{copy.h1}</h1>
+    <p class="pricing-lead">{copy.lead}</p>
+  </section>
+
+  <section class="pricing-section container">
+    <div class="pricing-grid">
+      {copy.packages.map(([name, price, text, items]) => (
+        <article class="pricing-card">
+          <div>
+            <p class="pricing-from">{copy.from}</p>
+            <h2>{name}</h2>
+            <p class="pricing-price">{price}</p>
+            <p class="pricing-copy">{text}</p>
+          </div>
+          <ul>{items.map((item) => <li>{item}</li>)}</ul>
+          <a class="pricing-cta" href={getLocalizedUrl(lang, '/contact/')} data-qct-cta="contact" data-cta-location="pricing">{copy.cta}</a>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="pricing-section pricing-section--soft">
+    <div class="container">
+      <div class="pricing-heading">
+        <h2>{copy.extrasTitle}</h2>
+        <p>{copy.extrasLead}</p>
+      </div>
+      <div class="extras-grid">
+        {copy.extras.map(([name, price]) => <div class="extra-row"><span>{name}</span><strong>{copy.from} {price}</strong></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-section container pricing-note">
+    <h2>{copy.noteTitle}</h2>
+    <p>{copy.note}</p>
+  </section>
+
+  <section class="pricing-section container pricing-close">
+    <p class="pricing-eyebrow">{copy.close}</p>
+    <h2>{copy.closeText}</h2>
+    <a class="pricing-cta" href={getLocalizedUrl(lang, '/contact/')} data-qct-cta="contact" data-cta-location="pricing-final">{copy.cta}</a>
+  </section>
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+
+<style>
+.pricing-hero{padding-block:clamp(6rem,10vw,9rem) 4rem;max-width:1000px}.pricing-eyebrow{font-size:.75rem;letter-spacing:.16em;font-weight:800;color:var(--qct-color-accent,#e75757);margin:0 0 1rem}.pricing-hero h1,.pricing-close h2{font-size:clamp(2.7rem,6vw,5.7rem);line-height:.98;letter-spacing:-.045em;max-width:14ch;margin:0}.pricing-lead{max-width:760px;font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.7;opacity:.75;margin-top:1.5rem}.pricing-section{padding-block:clamp(3rem,6vw,6rem)}.pricing-section--soft{background:rgba(255,255,255,.025);border-block:1px solid rgba(255,255,255,.08)}.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}.pricing-card{display:flex;flex-direction:column;justify-content:space-between;gap:2rem;padding:clamp(1.5rem,3vw,2.3rem);border:1px solid rgba(255,255,255,.1);border-radius:22px;background:rgba(255,255,255,.025);min-height:540px}.pricing-card h2{font-size:1.3rem;margin:.35rem 0}.pricing-from{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;opacity:.55;margin:0}.pricing-price{font-size:clamp(2.2rem,4vw,3.8rem);font-weight:800;letter-spacing:-.04em;margin:.25rem 0 1rem}.pricing-copy{line-height:1.65;opacity:.78}.pricing-card ul{padding-left:1.2rem;margin:0;display:grid;gap:.7rem;line-height:1.5}.pricing-cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.85rem 1.1rem;border-radius:999px;background:var(--qct-color-accent,#e75757);color:#fff;text-decoration:none;font-weight:750}.pricing-heading{max-width:760px;margin-bottom:2rem}.pricing-heading h2,.pricing-note h2{font-size:clamp(2rem,4vw,3.5rem);margin:0 0 .8rem}.pricing-heading p,.pricing-note p{line-height:1.7;opacity:.75}.extras-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.extra-row{display:flex;justify-content:space-between;gap:1rem;padding:1.1rem 1.2rem;border:1px solid rgba(255,255,255,.09);border-radius:14px}.pricing-note{max-width:900px}.pricing-close{padding-bottom:clamp(5rem,9vw,8rem)}.pricing-close .pricing-cta{margin-top:2rem;width:max-content}
+@media(max-width:900px){.pricing-grid{grid-template-columns:1fr}.pricing-card{min-height:0}.extras-grid{grid-template-columns:1fr}}
+</style>
