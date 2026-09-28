@@ -8,9 +8,15 @@ import { insights, insightLabels, type InsightLocale } from '../data/insights';
 interface Props { lang: InsightLocale; }
 const { lang } = Astro.props;
 const labels = insightLabels[lang];
+const descriptions: Record<InsightLocale, string> = {
+  en: 'Practical QCT Studio insights on websites, e-commerce, SEO, GEO, AI search visibility and digital growth across Balkan markets.',
+  sq: 'Analiza praktike nga QCT Studio për faqe web, e-commerce, SEO, GEO, kërkim me AI dhe rritje digjitale në tregjet e Ballkanit.',
+  mk: 'Практични анализи од QCT Studio за веб-страници, е-трговија, SEO, GEO, AI пребарување и дигитален раст на балканските пазари.',
+  sr: 'Praktični QCT Studio uvidi o sajtovima, e-commerceu, SEO-u, GEO-u, AI pretrazi i digitalnom rastu na balkanskim tržištima.',
+};
 const url = (path: string) => getLocalizedUrl(lang, path);
 ---
-<BaseLayout title={`${labels.journal} — QCT Studio`} description={labels.latest} lang={lang} pageType="CollectionPage">
+<BaseLayout title={`${labels.journal} — QCT Studio`} description={descriptions[lang]} lang={lang} pageType="CollectionPage">
   <Header slot="header" lang={lang} languagePath="/insights/" />
   <main class="insights-page">
     <section class="insights-hero" aria-labelledby="insights-title">
