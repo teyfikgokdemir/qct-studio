@@ -1,0 +1,66 @@
+---
+interface Props { lang: string; }
+const { lang } = Astro.props;
+
+const items = {
+  en: ['STRATEGY','DIGITAL SYSTEMS','E-COMMERCE','SEARCH VISIBILITY','CONVERSION','AUTOMATION','MULTI-MARKET'],
+  sq: ['STRATEGJI','SISTEME DIGJITALE','E-COMMERCE','DUKSHMËRI NË KËRKIM','KONVERTIM','AUTOMATIZIM','SHUMË TREGJE'],
+  mk: ['СТРАТЕГИЈА','ДИГИТАЛНИ СИСТЕМИ','E-COMMERCE','ВИДЛИВОСТ ВО ПРЕБАРУВАЊЕ','КОНВЕРЗИЈА','АВТОМАТИЗАЦИЈА','ПОВЕЌЕ ПАЗАРИ'],
+  sr: ['STRATEGIJA','DIGITALNI SISTEMI','E-COMMERCE','VIDLJIVOST U PRETRAZI','KONVERZIJA','AUTOMATIZACIJA','VIŠE TRŽIŠTA'],
+}[lang] ?? ['STRATEGY','DIGITAL SYSTEMS','E-COMMERCE','SEARCH VISIBILITY','CONVERSION','AUTOMATION','MULTI-MARKET'];
+---
+<section class="cap-marquee" aria-label="QCT Studio capabilities">
+  <div class="cap-marquee__track">
+    <div class="cap-marquee__group">
+      {items.map((item) => <><span>{item}</span><i>·</i></>)}
+    </div>
+    <div class="cap-marquee__group" aria-hidden="true">
+      {items.map((item) => <><span>{item}</span><i>·</i></>)}
+    </div>
+  </div>
+</section>
+
+<style>
+.cap-marquee{
+  overflow:hidden;
+  border-block:1px solid rgba(23,21,26,.09);
+  background:rgba(23,21,26,.018);
+  padding:1.05rem 0;
+}
+.cap-marquee__track{
+  display:flex;
+  width:max-content;
+  animation:cap-marquee-scroll 30s linear infinite;
+  will-change:transform;
+}
+.cap-marquee__group{
+  display:flex;
+  align-items:center;
+  gap:1.15rem;
+  padding-right:1.15rem;
+  white-space:nowrap;
+}
+.cap-marquee__group span{
+  font-size:.73rem;
+  font-weight:800;
+  letter-spacing:.145em;
+  color:rgba(23,21,26,.7);
+}
+.cap-marquee__group i{
+  font-style:normal;
+  color:#5b3478;
+  font-weight:900;
+}
+@keyframes cap-marquee-scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+@media(max-width:640px){
+  .cap-marquee{padding:.9rem 0}
+  .cap-marquee__group{gap:.85rem;padding-right:.85rem}
+  .cap-marquee__group span{font-size:.68rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .cap-marquee__track{animation:none}
+}
+</style>
