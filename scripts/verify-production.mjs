@@ -43,7 +43,7 @@ const checks = [
       body.includes('Potreba tržišta') &&
       body.includes('QCT sistem') &&
       body.includes('/styles/market-hub.css?v=20260929-1') &&
-      body.includes('body.v2-body .qct-floating-action') &&
+      body.includes('class="qct-floating-action qct-whatsapp"') &&
       !body.includes('>Market need<') &&
       !body.includes('>QCT system<') &&
       !body.includes('u<em>merljiv'),
