@@ -118,6 +118,10 @@ const errors = [];
 for (const asset of ['styles/v2-foundation.css', 'scripts/v2-foundation.js']) {
   if (!fs.existsSync(path.join(DIST, asset))) errors.push(`dist: ${asset} is missing; V2 pages would render broken.`);
 }
+const v2FoundationCssPath = path.join(DIST, 'styles/v2-foundation.css');
+if (fs.existsSync(v2FoundationCssPath) && /scroll-snap-type\s*:/i.test(fs.readFileSync(v2FoundationCssPath, 'utf8'))) {
+  errors.push('dist: V2 foundation must not force scroll snapping; it breaks natural scrolling and full-page visual QA.');
+}
 let indexable = 0;
 let noindex = 0;
 let internalLinks = 0;
