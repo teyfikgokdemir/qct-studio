@@ -10,7 +10,7 @@
 	var revealItems = document.querySelectorAll('[data-qct-reveal]');
 	var backdrop = document.querySelector('[data-mobile-backdrop]');
 	var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-	var desktopNavigation = window.matchMedia('(min-width: 1040px)');
+	var desktopNavigation = window.matchMedia('(min-width: 1000px)');
 	var submenuCloseDelay = 225;
 	var submenuTimers = new WeakMap();
 	var scrollPosition = 0;
@@ -132,6 +132,22 @@
 		};
 
 		syncNavigationAccessibility();
+
+		var handleNavigationBreakpoint = function () {
+			if (desktopNavigation.matches) {
+				navigation.classList.remove('is-open');
+				menuToggle.setAttribute('aria-expanded', 'false');
+				document.body.classList.remove('has-open-menu');
+				if (backdrop) backdrop.hidden = true;
+			}
+			syncNavigationAccessibility();
+		};
+
+		if (typeof desktopNavigation.addEventListener === 'function') {
+			desktopNavigation.addEventListener('change', handleNavigationBreakpoint);
+		} else if (typeof desktopNavigation.addListener === 'function') {
+			desktopNavigation.addListener(handleNavigationBreakpoint);
+		}
 
 		menuToggle.addEventListener('click', function () {
 			if (menuToggle.getAttribute('aria-expanded') === 'true') {
