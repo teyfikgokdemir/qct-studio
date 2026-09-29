@@ -1,0 +1,1 @@
+export const analyticsConfig = { hostname: 'qctstudio.com', site: 'qct-studio', ga: 'G-GPHPRQG328', advanced: true, clarityCookieless: true, gtm: import.meta.env.PUBLIC_GTM_ID ?? 'GTM-P86WRT89', clarity: import.meta.env.PUBLIC_CLARITY_ID ?? 'yoafld5027' };
