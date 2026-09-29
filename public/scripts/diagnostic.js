@@ -94,6 +94,7 @@
     form.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   });
 
+  form.addEventListener('input', function () { window.qctTrackEvent?.('form_start', { form_name: 'diagnostic' }); }, { once: true });
   form.addEventListener('submit', async function (event) {
     event.preventDefault();
     if (!validateCurrent()) return;
@@ -110,6 +111,8 @@
       });
       var result = await response.json().catch(function () { return {}; });
       if (!response.ok || !result.ok) throw new Error(result.error || 'request_failed');
+      window.qctTrackEvent?.('form_submit', { form_name: 'diagnostic' });
+      window.qctTrackEvent?.('generate_lead', { form_name: 'diagnostic' });
       panels.forEach(function (panel) { panel.hidden = true; });
       form.querySelector('.dg-step-tabs').hidden = true;
       form.querySelector('.dg-form-actions').hidden = true;
