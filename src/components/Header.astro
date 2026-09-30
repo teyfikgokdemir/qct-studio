@@ -13,6 +13,8 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 // Used so the language switcher links to the translated version of THIS page, not just home.
 const currentPath = languagePath ?? getPathWithoutLocale(Astro.url.pathname);
 const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk: 'Цени', sr: 'Cene', ro: 'Prețuri', bg: 'Цени' };
+const restrictedLocalePath = /^\/(?:insights|work|regional-growth-diagnostic)(?:\/|$)/.test(currentPath);
+const switchLanguages = Object.entries(languages).filter(([code]) => !restrictedLocalePath || ['en','sq','mk','sr'].includes(code));
 ---
 <header id="masthead" class="site-header" data-site-header>
 	<div class="mobile-menu-backdrop" data-mobile-backdrop hidden></div>
@@ -70,7 +72,7 @@ const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk:
 				<span class="site-language-switcher__icon" aria-hidden="true">
 					<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9S14.5 18.4 12 21M12 3C9.5 5.6 8.2 8.6 8.2 12s1.3 6.4 3.8 9"></path></svg>
 				</span>
-				{Object.entries(languages).map(([code, label]) => (
+				{switchLanguages.map(([code, label]) => (
 					<a
 						href={getLocalizedUrl(code, currentPath)}
 						aria-current={code === lang ? 'true' : undefined}
