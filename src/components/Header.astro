@@ -15,6 +15,7 @@ const currentPath = languagePath ?? getPathWithoutLocale(Astro.url.pathname);
 const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk: 'Цени', sr: 'Cene', ro: 'Prețuri', bg: 'Цени' };
 const restrictedLocalePath = /^\/(?:insights|work|regional-growth-diagnostic)(?:\/|$)/.test(currentPath);
 const switchLanguages = Object.entries(languages).filter(([code]) => !restrictedLocalePath || ['en','sq','mk','sr'].includes(code));
+const hasRegionalEditorial = ['en','sq','mk','sr'].includes(lang);
 ---
 <header id="masthead" class="site-header" data-site-header>
 	<div class="mobile-menu-backdrop" data-mobile-backdrop hidden></div>
@@ -53,7 +54,7 @@ const switchLanguages = Object.entries(languages).filter(([code]) => !restricted
 						<li><a href={url('/ai-automation/')}>{t('AI Automation')}</a></li>
 					</ul>
 				</li>
-				<li class="menu-item-has-children">
+{hasRegionalEditorial && (				<li class="menu-item-has-children">
 					<button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle>
 						<span>{t('Work')}</span>
 					</button>
@@ -61,9 +62,9 @@ const switchLanguages = Object.entries(languages).filter(([code]) => !restricted
 						<li><a href={url('/work/')}>{t('View Our Work')}</a></li>
 						<li><a href={url('/contact/')}>{t('Talk to Our Team')}</a></li>
 					</ul>
-				</li>
+				</li>)}
 				<li><a href={url('/pricing/')}>{pricingLabel[lang] ?? 'Pricing'}</a></li>
-				<li><a href={url('/insights/')}>{t('Insights')}</a></li>
+{hasRegionalEditorial && <li><a href={url('/insights/')}>{t('Insights')}</a></li>}
 				<li><a href={url('/about/')}>{t('About')}</a></li>
 				<li><a href={url('/careers/')}>{t('Careers')}</a></li>
 				<li><a href={url('/contact/')}>{t('Contact')}</a></li>
