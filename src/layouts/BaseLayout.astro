@@ -4,8 +4,8 @@ import CookieConsent from '../components/CookieConsent.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 
 const SITE_URL = 'https://qctstudio.com';
-const LOCALES: Record<string, string> = { en: 'en_US', sq: 'sq_AL', mk: 'mk_MK', sr: 'sr_RS' };
-const INDEXED_LANGS = ['en', 'sq', 'mk', 'sr'];
+const LOCALES: Record<string, string> = { en: 'en_US', sq: 'sq_AL', mk: 'mk_MK', sr: 'sr_RS', ro: 'ro_RO', bg: 'bg_BG' };
+const INDEXED_LANGS = ['en', 'sq', 'mk', 'sr', 'ro', 'bg'];
 const ROUTE_LANGS = INDEXED_LANGS;
 const AREA_SERVED = [
 		{ '@type': 'Country', name: 'Albania' },
@@ -72,6 +72,7 @@ type RouteGroup = 'home' | 'services' | 'work' | 'company' | 'legal' | 'error' |
 
 const routeSegments = pathNoLocale.split('/').filter(Boolean);
 const routeSlug = routeSegments[0] ?? '';
+const PAGE_LANGS = ['insights', 'markets', 'work', 'regional-growth-diagnostic'].includes(routeSlug) ? ['en', 'sq', 'mk', 'sr'] : INDEXED_LANGS;
 const serviceRoutes = new Set([
 	'services',
 	'website-design',
@@ -80,6 +81,7 @@ const serviceRoutes = new Set([
 	'seo-performance',
 	'meta-ads-landing-pages',
 	'ai-automation',
+	'dynamic-seo',
 ]);
 const companyRoutes = new Set(['about', 'careers', 'contact']);
 const legalRoutes = new Set(['privacy-policy', 'terms-conditions', 'cookie-policy']);
@@ -135,7 +137,7 @@ const organizationSchema = {
 	areaServed: AREA_SERVED,
 	email: 'info@qctstudio.com',
 	contactPoint: [
-		{ '@type': 'ContactPoint', contactType: 'general inquiries', email: 'info@qctstudio.com', areaServed: AREA_SERVED.map((a) => a.name), availableLanguage: ['English', 'Albanian', 'Macedonian', 'Serbian'] },
+		{ '@type': 'ContactPoint', contactType: 'general inquiries', email: 'info@qctstudio.com', areaServed: AREA_SERVED.map((a) => a.name), availableLanguage: ['English', 'Albanian', 'Macedonian', 'Serbian', 'Romanian', 'Bulgarian'] },
 		{ '@type': 'ContactPoint', contactType: 'customer support', email: 'support@qctstudio.com', areaServed: AREA_SERVED.map((a) => a.name) },
 		{ '@type': 'ContactPoint', contactType: 'careers', email: 'careers@qctstudio.com', areaServed: AREA_SERVED.map((a) => a.name) },
 	],
@@ -241,7 +243,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 
 	<!-- Canonical + hreflang: every language version points at every other, plus x-default -->
 	<link rel="canonical" href={canonicalUrl} />
-	{isIndexable && INDEXED_LANGS.map((l) => (
+	{isIndexable && PAGE_LANGS.map((l) => (
 		<link rel="alternate" hreflang={l} href={new URL(localizedPath(l), SITE_URL).toString()} />
 	))}
 	{isIndexable && <link rel="alternate" hreflang="x-default" href={new URL(localizedPath('en'), SITE_URL).toString()} />}
@@ -257,7 +259,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta property="og:locale" content={LOCALES[lang] ?? 'en_US'} />
-	{INDEXED_LANGS.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={LOCALES[l]} />)}
+	{PAGE_LANGS.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={LOCALES[l]} />)}
 
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image" />

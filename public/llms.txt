@@ -1,6 +1,6 @@
 # QCT Studio
 
-> QCT Studio builds evidence-led digital growth systems for established businesses across Albania, North Macedonia, Kosovo and Serbia.
+> QCT Studio builds evidence-led digital growth systems for established businesses across Albania, North Macedonia, Kosovo, Serbia, Romania and Bulgaria.
 
 QCT Studio combines market-specific websites, e-commerce, SEO/GEO/AEO, conversion journeys, CRM and practical AI automation. Work is organized around three connected layers: Acquire demand, Convert intent and Operate follow-up. Scope and delivery timing depend on the business, market and technical requirements; QCT Studio does not publish fixed-duration guarantees.
 
@@ -23,6 +23,7 @@ Each market hub is also available in Albanian (/sq/), Macedonian (/mk/) and Serb
 - [E-commerce](https://qctstudio.com/e-commerce/): Product discovery, mobile shopping, checkout and manageable order flows.
 - [WhatsApp Commerce](https://qctstudio.com/whatsapp-commerce/): Clearer sales and service journeys from web or campaign interest into WhatsApp.
 - [SEO & GEO Performance](https://qctstudio.com/seo-performance/): Technical SEO, entity clarity, structured content and answer-ready pages for traditional and AI search.
+- [Dynamic SEO](https://qctstudio.com/dynamic-seo/): Ongoing SEO, GEO, AEO and AIO built around technical health, real search queries, content gaps, internal links, structured data and AI-search visibility.
 - [Meta Ads Landing Pages](https://qctstudio.com/meta-ads-landing-pages/): Focused landing pages aligned with campaign intent.
 - [AI Automation](https://qctstudio.com/ai-automation/): Human-controlled automation for lead routing, repetitive operations and CRM workflows.
 
@@ -38,13 +39,13 @@ QCT Studio separates public observation, verified responsibility and measured ou
 
 - [About QCT Studio](https://qctstudio.com/about/): Purpose, founder and operating approach.
 - Founder: Teyfik Gökdemir.
-- Location: Istanbul, Türkiye; serving Balkan markets.
+- Location: Istanbul, Türkiye; serving Balkan markets including Romania and Bulgaria.
 - [Services](https://qctstudio.com/services/): Full service overview.
 - [Contact](https://qctstudio.com/contact/): info@qctstudio.com
 
 ## Languages
 
-English (default), Albanian (/sq/), Macedonian (/mk/) and Serbian (/sr/). Canonical and reciprocal hreflang links are provided on indexable localized pages.
+English (default), Albanian (/sq/), Macedonian (/mk/), Serbian (/sr/), Romanian (/ro/) and Bulgarian (/bg/) are available across the core commercial site. Evidence-heavy market hubs, work reviews, insights and the regional diagnostic remain EN/SQ/MK/SR until equivalent localized content is available. Canonical and reciprocal hreflang links are emitted only for language versions that actually exist.
 
 
 ## Pricing
@@ -56,7 +57,9 @@ QCT Studio publishes transparent starting prices rather than fixed universal pro
 - E-commerce: from EUR 3,490
 - Campaign landing page: from EUR 690
 - SEO & GEO foundation: from EUR 790
-- SEO / growth support: from EUR 490 per month
+- SEO Care: from EUR 290 per month
+- Dynamic SEO + GEO/AEO/AIO: from EUR 490 per month
+- SEO Growth: from EUR 690 per month
 - WhatsApp Commerce setup: from EUR 890
 - AI automation workflow: from EUR 1,290
 

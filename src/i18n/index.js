@@ -2,14 +2,18 @@ import en from "./en.json";
 import sq from "./sq.json";
 import mk from "./mk.json";
 import sr from "./sr.json";
+import ro from "./ro.json";
+import bg from "./bg.json";
 
-const dictionaries = { en, sq, mk, sr };
+const dictionaries = { en, sq, mk, sr, ro, bg };
 
 export const languages = {
   en: "EN",
   sq: "SQ",
   mk: "MK",
   sr: "SR",
+  ro: "RO",
+  bg: "BG",
 };
 
 export const languageNames = {
@@ -17,6 +21,8 @@ export const languageNames = {
   sq: "Shqip",
   mk: "Македонски",
   sr: "Srpski",
+  ro: "Română",
+  bg: "Български",
 };
 
 export const defaultLang = "en";

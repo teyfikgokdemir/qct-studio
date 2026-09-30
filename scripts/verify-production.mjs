@@ -63,7 +63,82 @@ const checks = [
       response.ok &&
       body.includes('Priority market playbooks'),
     label: 'English Serbia market hub',
+  },,
+  {
+    url: 'https://qctstudio.com/dynamic-seo/',
+    verify: async (response, body) =>
+      response.ok &&
+      body.includes('Visibility that keeps improving after launch.') &&
+      body.includes('Dynamic SEO') &&
+      body.includes('GEO') &&
+      body.includes('AEO') &&
+      body.includes('AIO') &&
+      body.includes('/ro/dynamic-seo/') &&
+      body.includes('/bg/dynamic-seo/'),
+    label: 'Dynamic SEO service and six-language alternates',
   },
+  {
+    url: 'https://qctstudio.com/ro/',
+    verify: async (response, body) =>
+      response.ok &&
+      body.includes('Sisteme digitale pentru companii pregătite să fie luate în serios online.') &&
+      body.includes('STUDIO DE CREȘTERE DIGITALĂ PENTRU BALCANI') &&
+      body.includes('/ro/dynamic-seo/') &&
+      !body.includes('Websites for businesses that are ready to be taken seriously online.'),
+    label: 'Romanian core homepage localization',
+  },
+  {
+    url: 'https://qctstudio.com/bg/',
+    verify: async (response, body) =>
+      response.ok &&
+      body.includes('Дигитални системи за компании, готови да бъдат възприемани сериозно онлайн.') &&
+      body.includes('СТУДИО ЗА ДИГИТАЛЕН РАСТ НА БАЛКАНИТЕ') &&
+      body.includes('/bg/dynamic-seo/') &&
+      !body.includes('Websites for businesses that are ready to be taken seriously online.'),
+    label: 'Bulgarian core homepage localization',
+  },
+  {
+    url: 'https://qctstudio.com/ro/pricing/',
+    verify: async (response, body) =>
+      response.ok &&
+      body.includes('Prețuri clare. Fără surprize.') &&
+      body.includes('SEO Dinamic + GEO/AEO/AIO') &&
+      body.includes('CREȘTERE DIGITALĂ ÎN BALCANI'),
+    label: 'Romanian pricing localization',
+  },
+  {
+    url: 'https://qctstudio.com/bg/pricing/',
+    verify: async (response, body) =>
+      response.ok &&
+      body.includes('Ясни цени. Без изненади.') &&
+      body.includes('Динамично SEO + GEO/AEO/AIO') &&
+      body.includes('ДИГИТАЛЕН РАСТ НА БАЛКАНИТЕ'),
+    label: 'Bulgarian pricing localization',
+  },
+  {
+    url: 'https://qctstudio.com/ro/dynamic-seo/',
+    verify: async (response, body) =>
+      response.ok &&
+      body.includes('Vizibilitate care continuă să se îmbunătățească după lansare.') &&
+      body.includes('SEO Dinamic') &&
+      body.includes('DE CE ACUM'),
+    label: 'Romanian Dynamic SEO localization',
+  },
+  {
+    url: 'https://qctstudio.com/bg/dynamic-seo/',
+    verify: async (response, body) =>
+      response.ok &&
+      body.includes('Видимост, която продължава да се подобрява след старта.') &&
+      body.includes('Динамично SEO') &&
+      body.includes('ЗАЩО СЕГА'),
+    label: 'Bulgarian Dynamic SEO localization',
+  },
+  {
+    url: 'https://qctstudio.com/robots.txt',
+    verify: async (response, body) =>
+      response.ok && body.includes('Sitemap: https://qctstudio.com/sitemap-index.xml'),
+    label: 'Robots sitemap discovery',
+  }
 ];
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));

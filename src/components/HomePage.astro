@@ -40,7 +40,7 @@ const seo = lang === 'en'
 <Services lang={lang} />
 <Process lang={lang} />
 <Work lang={lang} />
-<InsightsPreview lang={lang} />
+{['en','sq','mk','sr'].includes(lang) && <InsightsPreview lang={lang as 'en' | 'sq' | 'mk' | 'sr'} />}
 <FinalCta lang={lang} />
 <Contact lang={lang} />
 <Footer slot="footer" lang={lang} />

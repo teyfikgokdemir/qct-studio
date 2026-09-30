@@ -4,7 +4,7 @@ import Header from './Header.astro';
 import Footer from './Footer.astro';
 import { getLocalizedUrl } from '../i18n';
 
-interface Props { lang: 'en' | 'sq' | 'mk' | 'sr'; }
+interface Props { lang: 'en' | 'sq' | 'mk' | 'sr' | 'ro' | 'bg'; }
 const { lang } = Astro.props;
 
 const copy = {
@@ -101,6 +101,57 @@ const copy = {
     close: 'Potreban vam je custom obim?',
     closeText: 'Pošaljite trenutni sajt, ciljno tržište i komercijalni problem. Potvrdićemo najpraktičniji obim pre ponude.',
   },
+  ro: {
+    title: 'Prețuri — QCT Studio',
+    description: 'Prețuri de pornire transparente pentru site-uri, e-commerce, SEO, landing pages, WhatsApp Commerce și automatizare AI în Balcani.',
+    eyebrow: 'PREȚURI',
+    h1: 'Prețuri clare. Fără surprize.',
+    lead: 'Prețurile sunt concepute pentru companii serioase din Balcani care vor execuție profesionistă fără costurile unei agenții enterprise. Fiecare proiect este definit înainte de începerea lucrului.',
+    from: 'De la',
+    cta: 'Discutați proiectul',
+    packages: [
+      ['Site de business', '€1,490', 'Pentru companii de servicii care au nevoie de un site credibil, rapid și orientat spre conversie.', ['Strategie și arhitectură informațională', 'Design și dezvoltare responsive', 'SEO tehnic de bază', 'Analytics și măsurarea conversiilor', 'Lansare și predare']],
+      ['Growth Website', '€2,490', 'Pentru companii care au nevoie de poziționare mai puternică, structură de căutare și mai multe trasee de conversie.', ['Tot din Business Website', 'Arhitectură de conținut extinsă', 'Structură pregătită pentru SEO/GEO', 'Planificare landing page sau lead flow', 'Revizie de optimizare după lansare']],
+      ['E-commerce', '€3,490', 'Pentru companii de produse care au nevoie de un magazin mobile-first fiabil și operațiuni comerciale mai clare.', ['Arhitectură magazin și produse', 'Storefront responsive', 'Checkout și conversion flow', 'Fundații SEO tehnice', 'Analytics și commerce tracking']],
+    ],
+    extrasTitle: 'Servicii specializate',
+    extrasLead: 'Ca proiecte independente sau ca extensii ale unui sistem web/e-commerce mai amplu.',
+    extras: [['Landing page de campanie','€690'],['Fundație SEO & GEO','€790'],['SEO Care','€290 / lună'],['SEO Dinamic + GEO/AEO/AIO','€490 / lună'],['SEO Growth','€690 / lună'],['WhatsApp Commerce','€890'],['Workflow de automatizare AI','€1,290'],['Piață / limbă suplimentară','€390']],
+    noteTitle: 'Ce nu ascunde prețul',
+    note: 'Software-ul terț, bugetele media, taxele procesatorilor de plăți, licențele premium, migrările neobișnuite și taxele nu sunt incluse decât dacă sunt menționate explicit. Integrările complexe și software-ul custom se estimează separat.',
+    close: 'Aveți nevoie de un scope personalizat?',
+    closeText: 'Trimiteți site-ul actual, piața țintă și problema comercială. Confirmăm scope-ul cel mai practic înainte de ofertă.',
+  },
+  bg: {
+    title: 'Цени — QCT Studio',
+    description: 'Прозрачни начални цени за уебсайтове, e-commerce, SEO, landing pages, WhatsApp Commerce и AI автоматизация на Балканите.',
+    eyebrow: 'ЦЕНИ',
+    h1: 'Ясни цени. Без изненади.',
+    lead: 'Цените са за сериозни балкански компании, които търсят професионално изпълнение без разходите на голяма enterprise агенция. Всеки проект се дефинира преди началото.',
+    from: 'От',
+    cta: 'Обсъдете проекта',
+    packages: [
+      ['Бизнес уебсайт', '€1,490', 'За компании за услуги, които имат нужда от надежден, бърз и ориентиран към конверсии сайт.', ['Стратегия и информационна архитектура', 'Responsive дизайн и разработка', 'Основно техническо SEO', 'Analytics и проследяване на конверсии', 'Стартиране и предаване']],
+      ['Growth уебсайт', '€2,490', 'За компании, които се нуждаят от по-силно позициониране, search структура и повече конверсионни пътеки.', ['Всичко от Business Website', 'По-дълбока архитектура на съдържанието', 'SEO/GEO-ready структура', 'Планиране на landing page или lead flow', 'Оптимизационен преглед след старта']],
+      ['E-commerce', '€3,490', 'За продуктови компании, които се нуждаят от надежден mobile-first магазин и по-ясни търговски операции.', ['Архитектура на магазина и продуктите', 'Responsive storefront', 'Checkout и conversion flow', 'Технически SEO основи', 'Analytics и commerce tracking']],
+    ],
+    extrasTitle: 'Специализирани услуги',
+    extrasLead: 'Като самостоятелни проекти или допълнение към по-широка web/e-commerce система.',
+    extras: [['Campaign landing page','€690'],['SEO & GEO основа','€790'],['SEO Care','€290 / месец'],['Динамично SEO + GEO/AEO/AIO','€490 / месец'],['SEO Growth','€690 / месец'],['WhatsApp Commerce','€890'],['AI automation workflow','€1,290'],['Допълнителен пазар / език','€390']],
+    noteTitle: 'Какво не се крие в цената',
+    note: 'Third-party софтуер, рекламни бюджети, такси на payment providers, premium лицензи, необичайни миграции и данъци не са включени, освен ако не са изрично посочени. Сложните интеграции и custom software се оценяват отделно.',
+    close: 'Нужен е персонализиран обхват?',
+    closeText: 'Изпратете текущия сайт, целевия пазар и търговския проблем. Ще потвърдим най-практичния обхват преди оферта.',
+  },
+}[lang];
+
+const marquee: Record<string,string[]> = {
+  en: ['BALKAN DIGITAL GROWTH','LIMITED LAUNCH OFFER','50% SERVICE FEE ADVANTAGE','WEB','COMMERCE','SEARCH','AUTOMATION','SELECTED PROJECTS ONLY'],
+  sq: ['RRITJE DIGJITALE NË BALLKAN','OFERTË E KUFIZUAR PËR HYRJEN','50% AVANTAZH NË TARIFËN E SHËRBIMIT','WEB','COMMERCE','SEARCH','AUTOMATION','VETËM PROJEKTE TË PËRZGJEDHURA'],
+  mk: ['ДИГИТАЛЕН РАСТ НА БАЛКАНОТ','ОГРАНИЧЕНА ПОНУДА ЗА ЛАНСИРАЊЕ','50% ПОВОЛНОСТ НА УСЛУЖНАТА ТАКСА','WEB','COMMERCE','SEARCH','AUTOMATION','САМО ИЗБРАНИ ПРОЕКТИ'],
+  sr: ['DIGITALNI RAST NA BALKANU','OGRANIČENA LAUNCH PONUDA','50% POGODNOST NA USLUŽNU NAKNADU','WEB','COMMERCE','SEARCH','AUTOMATION','SAMO ODABRANI PROJEKTI'],
+  ro: ['CREȘTERE DIGITALĂ ÎN BALCANI','OFERTĂ LIMITATĂ DE LANSARE','50% AVANTAJ LA TARIFUL DE SERVICIU','WEB','COMMERCE','SEARCH','AUTOMATION','DOAR PROIECTE SELECTATE'],
+  bg: ['ДИГИТАЛЕН РАСТ НА БАЛКАНИТЕ','ОГРАНИЧЕНА ОФЕРТА ЗА СТАРТ','50% ПРЕДИМСТВО В ТАКСАТА ЗА УСЛУГА','WEB','COMMERCE','SEARCH','AUTOMATION','САМО ИЗБРАНИ ПРОЕКТИ'],
 }[lang];
 
 const offers = copy.packages.map(([name, price]) => ({
@@ -129,24 +180,10 @@ const offerCatalog = {
   <section class="pricing-marquee" aria-label="QCT Studio launch offer">
     <div class="pricing-marquee__track">
       <div class="pricing-marquee__group">
-        <span>BALKAN DIGITAL GROWTH</span><i>·</i>
-        <span>LIMITED LAUNCH OFFER</span><i>·</i>
-        <span>50% SERVICE FEE ADVANTAGE</span><i>·</i>
-        <span>WEB</span><i>·</i>
-        <span>COMMERCE</span><i>·</i>
-        <span>SEARCH</span><i>·</i>
-        <span>AUTOMATION</span><i>·</i>
-        <span>SELECTED PROJECTS ONLY</span><i>·</i>
+        {marquee.map((item) => <><span>{item}</span><i>·</i></>)}
       </div>
       <div class="pricing-marquee__group" aria-hidden="true">
-        <span>BALKAN DIGITAL GROWTH</span><i>·</i>
-        <span>LIMITED LAUNCH OFFER</span><i>·</i>
-        <span>50% SERVICE FEE ADVANTAGE</span><i>·</i>
-        <span>WEB</span><i>·</i>
-        <span>COMMERCE</span><i>·</i>
-        <span>SEARCH</span><i>·</i>
-        <span>AUTOMATION</span><i>·</i>
-        <span>SELECTED PROJECTS ONLY</span><i>·</i>
+        {marquee.map((item) => <><span>{item}</span><i>·</i></>)}
       </div>
     </div>
   </section>

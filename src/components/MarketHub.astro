@@ -95,7 +95,7 @@ const serviceSchema = {
     </nav>
     <div class="v2-header-actions">
       <div class="v2-languages" aria-label="Language selector">
-        {Object.entries(languages).map(([code, label]) => (
+        {Object.entries(languages).filter(([code]) => ['en','sq','mk','sr'].includes(code)).map(([code, label]) => (
           <a
             class:list={{ 'is-current': code === lang }}
             href={getLocalizedUrl(code, marketPath)}
