@@ -208,6 +208,14 @@ const copy = {
   },
 }[lang];
 
+const labels: Record<string,{why:string;monthly:string;plans:string;faq:string}> = {
+  en:{why:'WHY NOW',monthly:'MONTHLY SYSTEM',plans:'PLANS',faq:'FAQ'},
+  sq:{why:'PSE TANI',monthly:'SISTEM MUJOR',plans:'PLANET',faq:'PYETJE'},
+  mk:{why:'ЗОШТО СЕГА',monthly:'МЕСЕЧЕН СИСТЕМ',plans:'ПЛАНОВИ',faq:'ПРАШАЊА'},
+  sr:{why:'ZAŠTO SADA',monthly:'MESEČNI SISTEM',plans:'PAKETI',faq:'PITANJA'},
+  ro:{why:'DE CE ACUM',monthly:'SISTEM LUNAR',plans:'PLANURI',faq:'ÎNTREBĂRI'},
+  bg:{why:'ЗАЩО СЕГА',monthly:'МЕСЕЧНА СИСТЕМА',plans:'ПЛАНОВЕ',faq:'ВЪПРОСИ'},
+}[lang];
 const url=(path:string)=>getLocalizedUrl(lang,path);
 const schema={
   '@context':'https://schema.org','@type':'Service',
@@ -228,7 +236,7 @@ const schema={
   </section>
 
   <section class="dseo-section container">
-    <div class="dseo-copy"><p class="dseo-eyebrow">WHY NOW</p><h2>{copy.problemTitle}</h2><p>{copy.problem}</p></div>
+    <div class="dseo-copy"><p class="dseo-eyebrow">{labels.why}</p><h2>{copy.problemTitle}</h2><p>{copy.problem}</p></div>
   </section>
 
   <section class="dseo-section dseo-soft">
@@ -239,19 +247,19 @@ const schema={
   </section>
 
   <section class="dseo-section container">
-    <div class="dseo-heading"><p class="dseo-eyebrow">MONTHLY SYSTEM</p><h2>{copy.rhythmTitle}</h2></div>
+    <div class="dseo-heading"><p class="dseo-eyebrow">{labels.monthly}</p><h2>{copy.rhythmTitle}</h2></div>
     <div class="dseo-rhythm">{copy.rhythm.map((item)=><span>{item}</span>)}</div>
   </section>
 
   <section class="dseo-section dseo-soft">
     <div class="container">
-      <div class="dseo-heading"><p class="dseo-eyebrow">PLANS</p><h2>{copy.plansTitle}</h2></div>
+      <div class="dseo-heading"><p class="dseo-eyebrow">{labels.plans}</p><h2>{copy.plansTitle}</h2></div>
       <div class="dseo-plans">{copy.plans.map(([name,price,text],i)=><article class:list={{featured:i===1}}><h3>{name}</h3><strong>{price}</strong><p>{text}</p><a href={url('/contact/')}>{copy.cta} →</a></article>)}</div>
     </div>
   </section>
 
   <section class="dseo-section container">
-    <div class="dseo-heading"><p class="dseo-eyebrow">FAQ</p><h2>{copy.faqTitle}</h2></div>
+    <div class="dseo-heading"><p class="dseo-eyebrow">{labels.faq}</p><h2>{copy.faqTitle}</h2></div>
     <div class="dseo-faq">{copy.faqs.map(([q,a])=><details><summary>{q}</summary><p>{a}</p></details>)}</div>
   </section>
 
