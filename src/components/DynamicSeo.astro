@@ -1,0 +1,264 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { getLocalizedUrl } from '../i18n';
+
+interface Props { lang: 'en' | 'sq' | 'mk' | 'sr' | 'ro' | 'bg'; }
+const { lang } = Astro.props;
+
+const copy = {
+  en: {
+    title: 'Dynamic SEO, GEO, AEO & AIO — QCT Studio',
+    description: 'Ongoing SEO, GEO, AEO and AIO for Balkan businesses, driven by technical health, real search queries, content gaps and AI-search visibility.',
+    eyebrow: 'DYNAMIC SEO',
+    h1: 'Visibility that keeps improving after launch.',
+    lead: 'Dynamic SEO turns search visibility into an operating system. We review technical health, real queries, content gaps, internal links, structured data and AI-search signals every month, then improve the pages that matter most.',
+    problemTitle: 'One-off SEO becomes outdated quickly.',
+    problem: 'Markets change, search behaviour changes and your website keeps evolving. A launch checklist cannot keep pace with new queries, competitor movement, content gaps or AI-assisted discovery.',
+    systemTitle: 'SEO, GEO, AEO and AIO work as one system.',
+    system: [
+      ['SEO', 'Crawlability, indexation, technical quality, internal linking and search relevance.'],
+      ['GEO', 'Clear, evidence-led content that generative search systems can interpret and cite more reliably.'],
+      ['AEO', 'Direct answers, useful question structures and content built for answer engines.'],
+      ['AIO', 'Consistent entity, service, evidence and machine-readable signals across the site.'],
+    ],
+    rhythmTitle: 'A monthly operating rhythm.',
+    rhythm: ['Technical and indexation review', 'Search Console and query analysis', 'Priority-page optimisation', 'Schema and internal-link improvements', 'Content-gap planning', 'Original evidence-led content', 'AI-search visibility checks', 'Conversion and enquiry-quality review'],
+    plansTitle: 'Choose the right level of ongoing search work.',
+    plans: [
+      ['SEO Care', '€290 / month', 'Technical monitoring, indexation checks, Search Console review and core metadata improvements.'],
+      ['Dynamic SEO', '€490 / month', 'SEO Care plus query analysis, schema, internal linking, priority-page optimisation, GEO/AEO/AIO work and one original article each month.'],
+      ['SEO Growth', '€690 / month', 'Dynamic SEO plus two original articles each month, landing-page growth, competitor/query analysis and broader optimisation.'],
+    ],
+    faqTitle: 'Questions before you start.',
+    faqs: [
+      ['Is this a ranking guarantee?', 'No. Search rankings depend on external factors. The service improves the technical, editorial and entity foundations that support durable visibility.'],
+      ['Can this work on an existing website?', 'Yes. We can work with an existing site if the technical foundation allows reliable improvements.'],
+      ['Is this only for Google?', 'No. The system is designed for classic search, AI-assisted discovery and answer-engine visibility.'],
+      ['Do multilingual sites need separate optimisation?', 'Yes. Search language, commercial questions and trust signals differ by market. Translation alone is not local SEO.'],
+    ],
+    ctaTitle: 'Build visibility as a system, not a one-time task.',
+    cta: 'Discuss Dynamic SEO',
+  },
+  sq: {
+    title: 'SEO Dinamik, GEO, AEO & AIO — QCT Studio',
+    description: 'SEO, GEO, AEO dhe AIO i vazhdueshëm për bizneset në Ballkan, i drejtuar nga gjendja teknike, kërkimet reale, boshllëqet e përmbajtjes dhe dukshmëria në AI.',
+    eyebrow: 'SEO DINAMIK',
+    h1: 'Dukshmëri që vazhdon të përmirësohet pas lançimit.',
+    lead: 'SEO Dinamik e kthen dukshmërinë në një sistem operativ. Çdo muaj analizojmë gjendjen teknike, kërkimet reale, boshllëqet e përmbajtjes, lidhjet e brendshme, schema dhe sinjalet e kërkimit me AI.',
+    problemTitle: 'SEO njëherësh vjetrohet shpejt.',
+    problem: 'Tregjet, sjellja e kërkimit dhe vetë faqja ndryshojnë. Një kontroll në lançim nuk mjafton për kërkime të reja, konkurrencë, boshllëqe përmbajtjeje dhe zbulim me AI.',
+    systemTitle: 'SEO, GEO, AEO dhe AIO funksionojnë si një sistem.',
+    system: [
+      ['SEO', 'Crawlability, indeksim, cilësi teknike, lidhje të brendshme dhe relevancë.'],
+      ['GEO', 'Përmbajtje e qartë dhe e mbështetur me prova që sistemet gjenerative mund ta interpretojnë më mirë.'],
+      ['AEO', 'Përgjigje direkte dhe strukturë për pyetjet që përdorin answer engines.'],
+      ['AIO', 'Sinjale të qëndrueshme për entitetin, shërbimet, provat dhe të dhënat machine-readable.'],
+    ],
+    rhythmTitle: 'Një ritëm operativ mujor.',
+    rhythm: ['Kontroll teknik dhe indeksimi', 'Analizë e Search Console dhe kërkimeve', 'Optimizim i faqeve prioritare', 'Schema dhe lidhje të brendshme', 'Planifikim i boshllëqeve të përmbajtjes', 'Përmbajtje origjinale me prova', 'Kontroll i dukshmërisë në AI', 'Matje e konvertimit dhe cilësisë së kërkesave'],
+    plansTitle: 'Zgjidhni nivelin e duhur të punës së vazhdueshme.',
+    plans: [
+      ['SEO Care', '€290 / muaj', 'Monitorim teknik, indeksim, Search Console dhe përmirësime bazë të metadata.'],
+      ['SEO Dinamik', '€490 / muaj', 'SEO Care plus analizë kërkimesh, schema, lidhje të brendshme, optimizim faqesh prioritare, GEO/AEO/AIO dhe një artikull origjinal çdo muaj.'],
+      ['SEO Growth', '€690 / muaj', 'SEO Dinamik plus dy artikuj origjinalë, rritje landing pages, analizë konkurrence dhe optimizim më të gjerë.'],
+    ],
+    faqTitle: 'Pyetje para fillimit.',
+    faqs: [
+      ['A garantohen renditjet?', 'Jo. Renditjet varen nga shumë faktorë të jashtëm. Ne përmirësojmë bazat teknike, editoriale dhe të entitetit.'],
+      ['Mund të zbatohet në një faqe ekzistuese?', 'Po, nëse baza teknike lejon përmirësime të qëndrueshme.'],
+      ['Është vetëm për Google?', 'Jo. Sistemi mbulon kërkimin klasik, zbulimin me AI dhe answer engines.'],
+      ['Faqet shumëgjuhëshe kërkojnë optimizim të veçantë?', 'Po. Gjuha e kërkimit, pyetjet tregtare dhe sinjalet e besimit ndryshojnë sipas tregut.'],
+    ],
+    ctaTitle: 'Ndërtoni dukshmërinë si sistem, jo si detyrë njëherësh.',
+    cta: 'Diskutoni SEO Dinamik',
+  },
+  mk: {
+    title: 'Динамичко SEO, GEO, AEO & AIO — QCT Studio',
+    description: 'Континуирано SEO, GEO, AEO и AIO за балкански компании, водено од техничка состојба, реални пребарувања, содржински празнини и AI видливост.',
+    eyebrow: 'ДИНАМИЧКО SEO',
+    h1: 'Видливост што продолжува да се подобрува и по лансирањето.',
+    lead: 'Динамичкото SEO ја претвора видливоста во оперативен систем. Секој месец ги проверуваме техничката состојба, реалните пребарувања, содржинските празнини, внатрешните линкови, schema и AI-search сигналите.',
+    problemTitle: 'Еднократното SEO брзо застарува.',
+    problem: 'Пазарите, однесувањето при пребарување и самата веб-страница се менуваат. Една launch проверка не може да следи нови пребарувања, конкуренција, содржински празнини и AI откривање.',
+    systemTitle: 'SEO, GEO, AEO и AIO работат како еден систем.',
+    system: [
+      ['SEO', 'Crawlability, индексирање, технички квалитет, внатрешни линкови и релевантност.'],
+      ['GEO', 'Јасна содржина со докази што генеративните системи можат подобро да ја разберат и цитираат.'],
+      ['AEO', 'Директни одговори и структури за прашања наменети за answer engines.'],
+      ['AIO', 'Конзистентни entity, service, evidence и machine-readable сигнали низ целата страница.'],
+    ],
+    rhythmTitle: 'Месечен оперативен ритам.',
+    rhythm: ['Техничка и индексна проверка', 'Search Console и анализа на пребарувања', 'Оптимизација на приоритетни страници', 'Schema и внатрешни линкови', 'Планирање содржински празнини', 'Оригинална содржина со докази', 'AI-search проверки', 'Мерење конверзии и квалитет на барања'],
+    plansTitle: 'Изберете го вистинското ниво на континуирана работа.',
+    plans: [
+      ['SEO Care', '€290 / месец', 'Техничко следење, индексирање, Search Console и основни metadata подобрувања.'],
+      ['Динамичко SEO', '€490 / месец', 'SEO Care плус анализа на пребарувања, schema, внатрешни линкови, оптимизација на приоритетни страници, GEO/AEO/AIO и една оригинална статија месечно.'],
+      ['SEO Growth', '€690 / месец', 'Динамичко SEO плус две оригинални статии, landing-page раст, конкурентска анализа и поширока оптимизација.'],
+    ],
+    faqTitle: 'Прашања пред почеток.',
+    faqs: [
+      ['Дали гарантирате рангирање?', 'Не. Рангирањето зависи од надворешни фактори. Ги подобруваме техничките, редакциските и entity основите.'],
+      ['Може ли да се работи на постоечка веб-страница?', 'Да, ако техничката основа овозможува сигурни подобрувања.'],
+      ['Дали е само за Google?', 'Не. Системот е за класично пребарување, AI откривање и answer engines.'],
+      ['Дали повеќејазичните страници бараат посебна оптимизација?', 'Да. Јазикот, комерцијалните прашања и сигналите на доверба се разликуваат по пазар.'],
+    ],
+    ctaTitle: 'Градете видливост како систем, не како еднократна задача.',
+    cta: 'Разговарајте за Динамичко SEO',
+  },
+  sr: {
+    title: 'Dinamički SEO, GEO, AEO & AIO — QCT Studio',
+    description: 'Kontinuirani SEO, GEO, AEO i AIO za balkanske kompanije, vođen tehničkim stanjem, realnim upitima, sadržajnim prazninama i AI vidljivošću.',
+    eyebrow: 'DINAMIČKI SEO',
+    h1: 'Vidljivost koja nastavlja da se poboljšava posle lansiranja.',
+    lead: 'Dinamički SEO pretvara vidljivost u operativni sistem. Svakog meseca proveravamo tehničko stanje, realne upite, sadržajne praznine, interne linkove, schema i AI-search signale.',
+    problemTitle: 'Jednokratni SEO brzo zastareva.',
+    problem: 'Tržišta, ponašanje korisnika i sam sajt se menjaju. Jedna launch provera ne može da prati nove upite, konkurenciju, sadržajne praznine i AI otkrivanje.',
+    systemTitle: 'SEO, GEO, AEO i AIO rade kao jedan sistem.',
+    system: [
+      ['SEO', 'Crawlability, indeksiranje, tehnički kvalitet, interni linkovi i relevantnost.'],
+      ['GEO', 'Jasan sadržaj zasnovan na dokazima koji generativni sistemi mogu bolje da razumeju i citiraju.'],
+      ['AEO', 'Direktni odgovori i struktura pitanja za answer engines.'],
+      ['AIO', 'Dosledni entity, service, evidence i machine-readable signali kroz ceo sajt.'],
+    ],
+    rhythmTitle: 'Mesečni operativni ritam.',
+    rhythm: ['Tehnička i indeksna provera', 'Search Console i analiza upita', 'Optimizacija prioritetnih stranica', 'Schema i interni linkovi', 'Planiranje sadržajnih praznina', 'Originalni sadržaj zasnovan na dokazima', 'AI-search provere', 'Merenje konverzija i kvaliteta upita'],
+    plansTitle: 'Izaberite pravi nivo kontinuiranog search rada.',
+    plans: [
+      ['SEO Care', '€290 / mesec', 'Tehnički monitoring, indeksiranje, Search Console i osnovna metadata poboljšanja.'],
+      ['Dinamički SEO', '€490 / mesec', 'SEO Care plus analiza upita, schema, interni linkovi, optimizacija prioritetnih stranica, GEO/AEO/AIO i jedan originalni članak mesečno.'],
+      ['SEO Growth', '€690 / mesec', 'Dinamički SEO plus dva originalna članka, landing-page rast, konkurentska analiza i šira optimizacija.'],
+    ],
+    faqTitle: 'Pitanja pre početka.',
+    faqs: [
+      ['Da li garantujete pozicije?', 'Ne. Rangiranje zavisi od spoljašnjih faktora. Mi unapređujemo tehničke, uredničke i entity osnove.'],
+      ['Može li na postojećem sajtu?', 'Da, ako tehnička osnova omogućava pouzdana poboljšanja.'],
+      ['Da li je samo za Google?', 'Ne. Sistem pokriva klasičnu pretragu, AI otkrivanje i answer engines.'],
+      ['Da li višejezični sajtovi traže posebno optimizovanje?', 'Da. Jezik pretrage, komercijalna pitanja i signali poverenja razlikuju se po tržištu.'],
+    ],
+    ctaTitle: 'Gradite vidljivost kao sistem, ne kao jednokratni zadatak.',
+    cta: 'Razgovarajte o Dinamičkom SEO-u',
+  },
+  ro: {
+    title: 'SEO Dinamic, GEO, AEO & AIO — QCT Studio',
+    description: 'SEO, GEO, AEO și AIO continuu pentru companii din Balcani, bazat pe sănătatea tehnică, căutări reale, goluri de conținut și vizibilitate în căutarea AI.',
+    eyebrow: 'SEO DINAMIC',
+    h1: 'Vizibilitate care continuă să se îmbunătățească după lansare.',
+    lead: 'SEO Dinamic transformă vizibilitatea într-un sistem operațional. Lunar analizăm sănătatea tehnică, interogările reale, golurile de conținut, legăturile interne, datele structurate și semnalele din căutarea asistată de AI.',
+    problemTitle: 'SEO făcut o singură dată se învechește repede.',
+    problem: 'Piețele, comportamentul de căutare și site-ul se schimbă constant. O verificare la lansare nu poate ține pasul cu interogări noi, concurență, goluri de conținut și descoperirea prin AI.',
+    systemTitle: 'SEO, GEO, AEO și AIO funcționează ca un singur sistem.',
+    system: [
+      ['SEO', 'Accesare, indexare, calitate tehnică, legături interne și relevanță în căutare.'],
+      ['GEO', 'Conținut clar, bazat pe dovezi, pe care sistemele generative îl pot interpreta și cita mai corect.'],
+      ['AEO', 'Răspunsuri directe și structuri de întrebări concepute pentru motoarele de răspuns.'],
+      ['AIO', 'Semnale consecvente despre entitate, servicii, dovezi și date machine-readable în întregul site.'],
+    ],
+    rhythmTitle: 'Un ritm operațional lunar.',
+    rhythm: ['Revizie tehnică și de indexare', 'Analiză Search Console și interogări', 'Optimizarea paginilor prioritare', 'Schema și legături interne', 'Planificarea golurilor de conținut', 'Conținut original bazat pe dovezi', 'Verificări de vizibilitate AI', 'Analiza conversiilor și calității solicitărilor'],
+    plansTitle: 'Alegeți nivelul potrivit de lucru continuu.',
+    plans: [
+      ['SEO Care', '€290 / lună', 'Monitorizare tehnică, verificări de indexare, Search Console și îmbunătățiri de bază ale metadatelor.'],
+      ['SEO Dinamic', '€490 / lună', 'SEO Care plus analiză de interogări, schema, legături interne, optimizarea paginilor prioritare, GEO/AEO/AIO și un articol original pe lună.'],
+      ['SEO Growth', '€690 / lună', 'SEO Dinamic plus două articole originale lunar, extinderea landing pages, analiză competitivă și optimizare mai amplă.'],
+    ],
+    faqTitle: 'Întrebări înainte de a începe.',
+    faqs: [
+      ['Garantează poziții în Google?', 'Nu. Poziționarea depinde de factori externi. Noi îmbunătățim fundația tehnică, editorială și semnalele de entitate.'],
+      ['Poate fi aplicat unui site existent?', 'Da, dacă fundația tehnică permite îmbunătățiri stabile și măsurabile.'],
+      ['Este doar pentru Google?', 'Nu. Sistemul este construit pentru căutarea clasică, descoperirea asistată de AI și motoarele de răspuns.'],
+      ['Site-urile multilingve necesită optimizare separată?', 'Da. Limbajul de căutare, întrebările comerciale și semnalele de încredere diferă de la o piață la alta.'],
+    ],
+    ctaTitle: 'Construiți vizibilitatea ca sistem, nu ca proiect unic.',
+    cta: 'Discutați despre SEO Dinamic',
+  },
+  bg: {
+    title: 'Динамично SEO, GEO, AEO & AIO — QCT Studio',
+    description: 'Непрекъснато SEO, GEO, AEO и AIO за балкански компании, базирано на техническо състояние, реални търсения, съдържателни пропуски и AI видимост.',
+    eyebrow: 'ДИНАМИЧНО SEO',
+    h1: 'Видимост, която продължава да се подобрява след старта.',
+    lead: 'Динамичното SEO превръща видимостта в оперативна система. Всеки месец анализираме техническото състояние, реалните заявки, съдържателните пропуски, вътрешните връзки, структурираните данни и сигналите от AI търсенето.',
+    problemTitle: 'Еднократното SEO остарява бързо.',
+    problem: 'Пазарите, поведението при търсене и самият сайт се променят постоянно. Една проверка при старта не може да следва новите заявки, конкуренцията, съдържателните пропуски и AI откриването.',
+    systemTitle: 'SEO, GEO, AEO и AIO работят като една система.',
+    system: [
+      ['SEO', 'Обхождане, индексиране, техническо качество, вътрешни връзки и релевантност.'],
+      ['GEO', 'Ясно съдържание, подкрепено с доказателства, което генеративните системи могат по-надеждно да разбират и цитират.'],
+      ['AEO', 'Директни отговори и структура на въпросите за answer engines.'],
+      ['AIO', 'Последователни сигнали за бранда, услугите, доказателствата и machine-readable данните в целия сайт.'],
+    ],
+    rhythmTitle: 'Месечен оперативен ритъм.',
+    rhythm: ['Технически и индексен преглед', 'Search Console и анализ на заявки', 'Оптимизация на приоритетни страници', 'Schema и вътрешни връзки', 'Планиране на съдържателни пропуски', 'Оригинално съдържание с доказателства', 'Проверки на AI видимостта', 'Анализ на конверсиите и качеството на запитванията'],
+    plansTitle: 'Изберете правилното ниво на постоянна работа.',
+    plans: [
+      ['SEO Care', '€290 / месец', 'Техническо наблюдение, проверка на индексирането, Search Console и основни подобрения на метаданните.'],
+      ['Динамично SEO', '€490 / месец', 'SEO Care плюс анализ на заявки, schema, вътрешни връзки, оптимизация на приоритетни страници, GEO/AEO/AIO и една оригинална статия месечно.'],
+      ['SEO Growth', '€690 / месец', 'Динамично SEO плюс две оригинални статии месечно, развитие на landing pages, конкурентен анализ и по-широка оптимизация.'],
+    ],
+    faqTitle: 'Въпроси преди старта.',
+    faqs: [
+      ['Гарантирате ли позиции?', 'Не. Класирането зависи от външни фактори. Подобряваме техническата, редакционната и entity основата на сайта.'],
+      ['Може ли да се работи върху съществуващ сайт?', 'Да, ако техническата основа позволява устойчиви подобрения.'],
+      ['Само за Google ли е?', 'Не. Системата е за класическо търсене, AI откриване и answer engines.'],
+      ['Многоезичните сайтове нуждаят ли се от отделна оптимизация?', 'Да. Езикът на търсене, търговските въпроси и сигналите за доверие се различават по пазари.'],
+    ],
+    ctaTitle: 'Изграждайте видимостта като система, а не като еднократна задача.',
+    cta: 'Обсъдете Динамично SEO',
+  },
+}[lang];
+
+const url=(path:string)=>getLocalizedUrl(lang,path);
+const schema={
+  '@context':'https://schema.org','@type':'Service',
+  name: copy.eyebrow, description: copy.description,
+  provider:{'@id':'https://qctstudio.com/#organization'},
+  areaServed:['Albania','North Macedonia','Kosovo','Serbia','Romania','Bulgaria'],
+  url:new URL(url('/dynamic-seo/'),'https://qctstudio.com').toString(),
+};
+---
+<BaseLayout title={copy.title} description={copy.description} lang={lang} pageType="WebPage" breadcrumbLabel={copy.eyebrow} service={{name:copy.eyebrow,description:copy.description}}>
+  <script slot="schema" type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <Header slot="header" lang={lang} languagePath="/dynamic-seo/" />
+  <section class="dseo-hero container">
+    <p class="dseo-eyebrow">{copy.eyebrow}</p>
+    <h1>{copy.h1}</h1>
+    <p class="dseo-lead">{copy.lead}</p>
+    <a class="dseo-cta" href={url('/contact/')}>{copy.cta}</a>
+  </section>
+
+  <section class="dseo-section container">
+    <div class="dseo-copy"><p class="dseo-eyebrow">WHY NOW</p><h2>{copy.problemTitle}</h2><p>{copy.problem}</p></div>
+  </section>
+
+  <section class="dseo-section dseo-soft">
+    <div class="container">
+      <div class="dseo-heading"><p class="dseo-eyebrow">SEO · GEO · AEO · AIO</p><h2>{copy.systemTitle}</h2></div>
+      <div class="dseo-grid">{copy.system.map(([name,text])=><article><h3>{name}</h3><p>{text}</p></article>)}</div>
+    </div>
+  </section>
+
+  <section class="dseo-section container">
+    <div class="dseo-heading"><p class="dseo-eyebrow">MONTHLY SYSTEM</p><h2>{copy.rhythmTitle}</h2></div>
+    <div class="dseo-rhythm">{copy.rhythm.map((item)=><span>{item}</span>)}</div>
+  </section>
+
+  <section class="dseo-section dseo-soft">
+    <div class="container">
+      <div class="dseo-heading"><p class="dseo-eyebrow">PLANS</p><h2>{copy.plansTitle}</h2></div>
+      <div class="dseo-plans">{copy.plans.map(([name,price,text],i)=><article class:list={{featured:i===1}}><h3>{name}</h3><strong>{price}</strong><p>{text}</p><a href={url('/contact/')}>{copy.cta} →</a></article>)}</div>
+    </div>
+  </section>
+
+  <section class="dseo-section container">
+    <div class="dseo-heading"><p class="dseo-eyebrow">FAQ</p><h2>{copy.faqTitle}</h2></div>
+    <div class="dseo-faq">{copy.faqs.map(([q,a])=><details><summary>{q}</summary><p>{a}</p></details>)}</div>
+  </section>
+
+  <section class="dseo-final container"><p class="dseo-eyebrow">{copy.eyebrow}</p><h2>{copy.ctaTitle}</h2><a class="dseo-cta" href={url('/contact/')}>{copy.cta}</a></section>
+  <Footer slot="footer" lang={lang} />
+</BaseLayout>
+
+<style>
+.dseo-hero{padding:clamp(5rem,9vw,8rem) 0 4rem;text-align:center}.dseo-eyebrow{font-size:.72rem;font-weight:800;letter-spacing:.16em;color:var(--qct-color-accent,#e75757);margin:0 0 .9rem}.dseo-hero h1,.dseo-heading h2,.dseo-copy h2,.dseo-final h2{font-size:clamp(2.2rem,4.6vw,4.8rem);line-height:.98;letter-spacing:-.05em;max-width:1100px;margin:.3rem auto;text-wrap:balance}.dseo-lead,.dseo-copy>p:last-child{max-width:820px;margin:1.25rem auto 2rem;line-height:1.75;opacity:.76}.dseo-cta{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:.9rem 1.35rem;border-radius:999px;background:var(--qct-color-accent,#e75757);color:#fff;text-decoration:none;font-weight:760}.dseo-section{padding:clamp(4rem,7vw,6.5rem) 0}.dseo-soft{background:rgba(255,255,255,.025);border-block:1px solid rgba(255,255,255,.08)}.dseo-heading{text-align:center;margin-bottom:2.2rem}.dseo-heading h2{font-size:clamp(2rem,3.7vw,3.7rem)}.dseo-copy{text-align:center;max-width:980px;margin:auto}.dseo-copy h2{font-size:clamp(2rem,3.7vw,3.7rem)}.dseo-grid,.dseo-plans{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}.dseo-grid article,.dseo-plans article{padding:1.6rem;border:1px solid rgba(255,255,255,.1);border-radius:20px;background:rgba(255,255,255,.02)}.dseo-grid h3,.dseo-plans h3{margin:0 0 .8rem;font-size:1.3rem}.dseo-grid p,.dseo-plans p{line-height:1.65;opacity:.74}.dseo-rhythm{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem}.dseo-rhythm span{padding:1rem 1.1rem;border:1px solid rgba(255,255,255,.1);border-radius:14px}.dseo-plans{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1100px;margin:auto}.dseo-plans article.featured{border-color:rgba(231,87,87,.55);transform:translateY(-6px)}.dseo-plans strong{display:block;font-size:2rem;margin:.4rem 0 1rem}.dseo-plans a{color:var(--qct-color-accent,#e75757);font-weight:700;text-decoration:none}.dseo-faq{max-width:900px;margin:auto}.dseo-faq details{border-bottom:1px solid rgba(255,255,255,.1);padding:1.1rem 0}.dseo-faq summary{cursor:pointer;font-weight:720}.dseo-faq p{line-height:1.7;opacity:.75}.dseo-final{padding:clamp(4rem,7vw,7rem) 0;text-align:center}.dseo-final h2{font-size:clamp(2rem,4vw,4rem);margin-bottom:1.6rem}@media(max-width:900px){.dseo-grid,.dseo-rhythm{grid-template-columns:repeat(2,minmax(0,1fr))}.dseo-plans{grid-template-columns:1fr}.dseo-plans article.featured{transform:none}}@media(max-width:560px){.dseo-grid,.dseo-rhythm{grid-template-columns:1fr}.dseo-hero{padding-top:3.5rem}.dseo-hero h1{font-size:clamp(2.05rem,10vw,2.8rem)}}
+</style>
