@@ -3,7 +3,8 @@ import path from 'node:path';
 
 const DIST = 'dist';
 const SITE = 'https://qctstudio.com';
-const expectedHreflangs = ['en', 'sq', 'mk', 'sr', 'x-default'];
+const coreHreflangs = ['en', 'sq', 'mk', 'sr', 'ro', 'bg', 'x-default'];
+const regionalHreflangs = ['en', 'sq', 'mk', 'sr', 'x-default'];
 const founderId = `${SITE}/about/#teyfik-gokdemir`;
 const organizationId = `${SITE}/#organization`;
 const founderImage = `${SITE}/images/teyfik-gokdemir-qct-studio.webp`;
@@ -77,7 +78,7 @@ function expectedUrl(file) {
 
 function expectedLanguage(file) {
   const relative = path.relative(DIST, file).split(path.sep).join('/');
-  return relative.match(/^(sq|mk|sr)\//)?.[1] ?? 'en';
+  return relative.match(/^(sq|mk|sr|ro|bg)\//)?.[1] ?? 'en';
 }
 
 function localPageExists(pathname) {
@@ -185,7 +186,7 @@ for (const file of htmlFiles) {
     if (canonical !== expectedCanonical) {
       errors.push(`${file}: canonical ${canonical} does not match ${expectedCanonical}.`);
     }
-    if (/\/(sq|mk|sr)\/\1(?:\/|$)/.test(canonical ?? '')) {
+    if (/\/(sq|mk|sr|ro|bg)\/\1(?:\/|$)/.test(canonical ?? '')) {
       errors.push(`${file}: canonical contains a repeated locale segment: ${canonical}.`);
     }
   }
@@ -233,13 +234,16 @@ for (const file of htmlFiles) {
   } else {
     indexable += 1;
     indexableCanonicals.add(expectedCanonical);
+    const routeWithoutLocale = relativeFile.replace(/^(?:sq|mk|sr|ro|bg)\//, '');
+    const regionalOnly = /^(?:insights|markets|work|regional-growth-diagnostic)(?:\/|$)/.test(routeWithoutLocale);
+    const expectedHreflangs = regionalOnly ? regionalHreflangs : coreHreflangs;
     if (JSON.stringify(hreflangs) !== JSON.stringify([...expectedHreflangs].sort())) {
       errors.push(`${file}: expected hreflang set ${expectedHreflangs.join(', ')}, found ${hreflangs.join(', ')}.`);
     }
 
     for (const tag of alternateTags) {
       const href = attribute(tag, 'href') ?? '';
-      if (/\/(sq|mk|sr)\/\1(?:\/|$)/.test(href)) {
+      if (/\/(sq|mk|sr|ro|bg)\/\1(?:\/|$)/.test(href)) {
         errors.push(`${file}: hreflang contains a repeated locale segment: ${href}.`);
       }
     }
