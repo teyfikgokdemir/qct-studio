@@ -6,6 +6,8 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
 const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk: 'Цени', sr: 'Cene', ro: 'Prețuri', bg: 'Цени' };
+const hasRegionalEditorial = ['en','sq','mk','sr'].includes(lang);
+const footerEyebrow: Record<string,string> = { ro: 'STUDIO DE CREȘTERE DIGITALĂ PENTRU BALCANI', bg: 'СТУДИО ЗА ДИГИТАЛЕН РАСТ НА БАЛКАНИТЕ' };
 ---
 <footer id="colophon" class="site-footer site-footer--editorial">
 	<div class="site-footer__marquee" aria-hidden="true">
@@ -17,7 +19,7 @@ const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk:
 	<div class="container footer-editorial">
 		<div class="footer-editorial__lead">
 			<div>
-				<p class="footer-editorial__eyebrow">BALKAN DIGITAL GROWTH STUDIO</p>
+				<p class="footer-editorial__eyebrow">{footerEyebrow[lang] ?? "BALKAN DIGITAL GROWTH STUDIO"}</p>
 				<h2>{t('QCT Studio')}</h2>
 			</div>
 			<p>{t('Websites, e-commerce and digital systems for businesses across the Balkans.')}</p>
@@ -39,9 +41,9 @@ const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk:
 
 			<nav aria-label={t('Company')}>
 				<p class="footer-editorial__label">{t('Company')}</p>
-				<a href={url('/work/')}>{t('Work')}</a>
+{hasRegionalEditorial && <a href={url('/work/')}>{t('Work')}</a>}
 				<a href={url('/pricing/')}>{pricingLabel[lang] ?? 'Pricing'}</a>
-				<a href={url('/insights/')}>{t('Insights')}</a>
+{hasRegionalEditorial && <a href={url('/insights/')}>{t('Insights')}</a>}
 				<a href={url('/about/')}>{t('About')}</a>
 				<a href={url('/careers/')}>{t('Careers')}</a>
 				<a href={url('/contact/')}>{t('Contact')}</a>
