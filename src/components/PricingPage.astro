@@ -145,6 +145,15 @@ const copy = {
   },
 }[lang];
 
+const marquee: Record<string,string[]> = {
+  en: ['BALKAN DIGITAL GROWTH','LIMITED LAUNCH OFFER','50% SERVICE FEE ADVANTAGE','WEB','COMMERCE','SEARCH','AUTOMATION','SELECTED PROJECTS ONLY'],
+  sq: ['RRITJE DIGJITALE NË BALLKAN','OFERTË E KUFIZUAR PËR HYRJEN','50% AVANTAZH NË TARIFËN E SHËRBIMIT','WEB','COMMERCE','SEARCH','AUTOMATION','VETËM PROJEKTE TË PËRZGJEDHURA'],
+  mk: ['ДИГИТАЛЕН РАСТ НА БАЛКАНОТ','ОГРАНИЧЕНА ПОНУДА ЗА ЛАНСИРАЊЕ','50% ПОВОЛНОСТ НА УСЛУЖНАТА ТАКСА','WEB','COMMERCE','SEARCH','AUTOMATION','САМО ИЗБРАНИ ПРОЕКТИ'],
+  sr: ['DIGITALNI RAST NA BALKANU','OGRANIČENA LAUNCH PONUDA','50% POGODNOST NA USLUŽNU NAKNADU','WEB','COMMERCE','SEARCH','AUTOMATION','SAMO ODABRANI PROJEKTI'],
+  ro: ['CREȘTERE DIGITALĂ ÎN BALCANI','OFERTĂ LIMITATĂ DE LANSARE','50% AVANTAJ LA TARIFUL DE SERVICIU','WEB','COMMERCE','SEARCH','AUTOMATION','DOAR PROIECTE SELECTATE'],
+  bg: ['ДИГИТАЛЕН РАСТ НА БАЛКАНИТЕ','ОГРАНИЧЕНА ОФЕРТА ЗА СТАРТ','50% ПРЕДИМСТВО В ТАКСАТА ЗА УСЛУГА','WEB','COMMERCE','SEARCH','AUTOMATION','САМО ИЗБРАНИ ПРОЕКТИ'],
+}[lang];
+
 const offers = copy.packages.map(([name, price]) => ({
   '@type': 'Offer',
   priceCurrency: 'EUR',
@@ -171,24 +180,10 @@ const offerCatalog = {
   <section class="pricing-marquee" aria-label="QCT Studio launch offer">
     <div class="pricing-marquee__track">
       <div class="pricing-marquee__group">
-        <span>BALKAN DIGITAL GROWTH</span><i>·</i>
-        <span>LIMITED LAUNCH OFFER</span><i>·</i>
-        <span>50% SERVICE FEE ADVANTAGE</span><i>·</i>
-        <span>WEB</span><i>·</i>
-        <span>COMMERCE</span><i>·</i>
-        <span>SEARCH</span><i>·</i>
-        <span>AUTOMATION</span><i>·</i>
-        <span>SELECTED PROJECTS ONLY</span><i>·</i>
+        {marquee.map((item) => <><span>{item}</span><i>·</i></>)}
       </div>
       <div class="pricing-marquee__group" aria-hidden="true">
-        <span>BALKAN DIGITAL GROWTH</span><i>·</i>
-        <span>LIMITED LAUNCH OFFER</span><i>·</i>
-        <span>50% SERVICE FEE ADVANTAGE</span><i>·</i>
-        <span>WEB</span><i>·</i>
-        <span>COMMERCE</span><i>·</i>
-        <span>SEARCH</span><i>·</i>
-        <span>AUTOMATION</span><i>·</i>
-        <span>SELECTED PROJECTS ONLY</span><i>·</i>
+        {marquee.map((item) => <><span>{item}</span><i>·</i></>)}
       </div>
     </div>
   </section>
