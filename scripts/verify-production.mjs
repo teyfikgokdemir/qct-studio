@@ -63,7 +63,7 @@ const checks = [
       response.ok &&
       body.includes('Priority market playbooks'),
     label: 'English Serbia market hub',
-  },,
+  },
   {
     url: 'https://qctstudio.com/dynamic-seo/',
     verify: async (response, body) =>
