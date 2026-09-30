@@ -5,7 +5,7 @@ interface Props { lang: string; }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
-const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk: 'Цени', sr: 'Cene' };
+const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk: 'Цени', sr: 'Cene', ro: 'Prețuri', bg: 'Цени' };
 ---
 <footer id="colophon" class="site-footer site-footer--editorial">
 	<div class="site-footer__marquee" aria-hidden="true">
@@ -32,6 +32,7 @@ const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk:
 				<a href={url('/e-commerce/')}>{t('E-commerce')}</a>
 				<a href={url('/whatsapp-commerce/')}>{t('WhatsApp Commerce')}</a>
 				<a href={url('/seo-performance/')}>{t('SEO')}</a>
+				<a href={url('/dynamic-seo/')}>{t('Dynamic SEO')}</a>
 				<a href={url('/meta-ads-landing-pages/')}>{t('Meta Ads')}</a>
 				<a href={url('/ai-automation/')}>{t('AI Automation')}</a>
 			</nav>
