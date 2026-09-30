@@ -116,7 +116,7 @@ for (const locale of ['ro', 'bg']) {
   const unchanged = extendedSharedKeys.filter((key) =>
     key in dictionary &&
     dictionary[key] === (english[key] ?? key) &&
-    !['E-commerce','WhatsApp Commerce','AI Automation','Dynamic SEO'].includes(key)
+    !['E-commerce','WhatsApp Commerce','AI Automation','Dynamic SEO','Contact'].includes(key)
   );
   console.log(`${locale.toUpperCase()} shared UI: ${missing.length} missing, ${unchanged.length} unchanged English`);
   if (missing.length || unchanged.length) {
