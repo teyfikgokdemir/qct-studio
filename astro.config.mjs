@@ -14,7 +14,7 @@ const redirectSources = new Set(
 );
 
 const excludedIndexPaths = [
-  /\/(?:sq\/|mk\/|sr\/)?work\/(?:misima|phiaderm)\/$/,
+  /\/(?:sq\/|mk\/|sr\/|ro\/|bg\/)?work\/(?:misima|phiaderm)\/$/,
 ];
 
 // https://astro.build/config
@@ -29,13 +29,13 @@ export default defineConfig({
       },
       i18n: {
         defaultLocale: 'en',
-        locales: { en: 'en-US', sq: 'sq-AL', mk: 'mk-MK', sr: 'sr-RS' },
+        locales: { en: 'en-US', sq: 'sq-AL', mk: 'mk-MK', sr: 'sr-RS', ro: 'ro-RO', bg: 'bg-BG' },
       },
     }),
   ],
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'sq', 'mk', 'sr'],
+    locales: ['en', 'sq', 'mk', 'sr', 'ro', 'bg'],
     routing: {
       prefixDefaultLocale: false,
     },
