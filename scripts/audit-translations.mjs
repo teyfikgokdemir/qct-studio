@@ -101,6 +101,31 @@ for (const locale of locales) {
   }
 }
 
+
+const extendedSharedKeys = [
+  'Home','Services','Services overview','Website Design','E-commerce','WhatsApp Commerce',
+  'SEO & Performance','Dynamic SEO','Meta Ads Landing Pages','AI Automation','About','Careers',
+  'Contact','Menu','Open menu','Close menu','Primary menu','Company','Privacy Policy',
+  'Cookie Policy','Terms & Conditions','Skip to content','Social links',
+  'Websites, e-commerce and digital systems for businesses across the Balkans.'
+];
+
+for (const locale of ['ro', 'bg']) {
+  const dictionary = JSON.parse(fs.readFileSync(`src/i18n/${locale}.json`, 'utf8'));
+  const missing = extendedSharedKeys.filter((key) => !(key in dictionary));
+  const unchanged = extendedSharedKeys.filter((key) =>
+    key in dictionary &&
+    dictionary[key] === (english[key] ?? key) &&
+    !['E-commerce','WhatsApp Commerce','AI Automation','Dynamic SEO'].includes(key)
+  );
+  console.log(`${locale.toUpperCase()} shared UI: ${missing.length} missing, ${unchanged.length} unchanged English`);
+  if (missing.length || unchanged.length) {
+    failed = true;
+    if (missing.length) console.error(`[${locale}] Missing shared keys:\n${missing.join('\n')}`);
+    if (unchanged.length) console.error(`[${locale}] Unchanged shared UI:\n${unchanged.join('\n')}`);
+  }
+}
+
 if (failed) {
   process.exitCode = 1;
 } else {
