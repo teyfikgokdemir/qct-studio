@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { getLocalizedUrl } from '../i18n';
+interface Props { lang:'ro'|'bg'; }
+const {lang}=Astro.props;
+const c={
+ ro:{
+  title:'QCT Studio — Creștere digitală pentru companii din Balcani',
+  description:'Site-uri premium, e-commerce, SEO, GEO, AEO, AIO, landing pages și automatizare AI pentru companii din România, Bulgaria și regiunea Balcanilor.',
+  eyebrow:'STUDIO DE CREȘTERE DIGITALĂ PENTRU BALCANI',
+  h1:'Sisteme digitale pentru companii pregătite să fie luate în serios online.',
+  lead:'QCT Studio construiește site-uri, e-commerce și sisteme de vizibilitate care conectează încrederea, conversia și operațiunile într-o experiență clară.',
+  cta:'Discutați proiectul',secondary:'Vezi serviciile',
+  services:'Servicii construite în jurul creșterii reale.',
+  serviceLead:'Nu tratăm web-ul, căutarea și automatizarea ca piese separate. Le conectăm în jurul parcursului real al clientului.',
+  cards:[
+   ['Website Design','Site-uri premium, rapide și clare, construite pentru încredere și conversie.','/website-design/'],
+   ['E-commerce','Magazine mobile-first cu structură de produs, checkout și măsurare mai clare.','/e-commerce/'],
+   ['Dynamic SEO','SEO + GEO + AEO + AIO continuu, bazat pe interogări reale și oportunități de conținut.','/dynamic-seo/'],
+   ['WhatsApp Commerce','Trasee mai clare de la site și reclame către conversații și solicitări.','/whatsapp-commerce/'],
+   ['Meta Ads Landing Pages','Pagini focalizate care continuă promisiunea reclamei și reduc fricțiunea.','/meta-ads-landing-pages/'],
+   ['AI Automation','Automatizări practice pentru lead routing, follow-up și operațiuni repetitive.','/ai-automation/']
+  ],
+  why:'De ce QCT Studio',whyTitle:'Mai puțin zgomot. Mai multă claritate comercială.',
+  whyText:'Începem cu oferta, piața, clientul și următorul pas comercial. Designul și tehnologia vin după ce înțelegem ce trebuie să funcționeze.',
+  points:['Arhitectură multilingvă pregătită pentru piețe regionale','Analytics și măsurare integrate din start','Structură SEO/GEO pregătită pentru Google și AI search','Experiență mobilă tratată ca prioritate comercială'],
+  final:'Construiți o prezență digitală care poate crește odată cu afacerea.'
+ },
+ bg:{
+  title:'QCT Studio — Дигитален раст за компании на Балканите',
+  description:'Премиум уебсайтове, e-commerce, SEO, GEO, AEO, AIO, landing pages и AI автоматизация за компании в България, Румъния и Балканите.',
+  eyebrow:'СТУДИО ЗА ДИГИТАЛЕН РАСТ НА БАЛКАНИТЕ',
+  h1:'Дигитални системи за компании, готови да бъдат възприемани сериозно онлайн.',
+  lead:'QCT Studio изгражда уебсайтове, e-commerce и системи за видимост, които свързват доверие, конверсия и операции в едно ясно изживяване.',
+  cta:'Обсъдете проекта',secondary:'Вижте услугите',
+  services:'Услуги, изградени около реалния растеж.',
+  serviceLead:'Не разглеждаме сайта, търсенето и автоматизацията като отделни части. Свързваме ги около реалния клиентски път.',
+  cards:[
+   ['Website Design','Премиум, бързи и ясни сайтове, изградени за доверие и конверсии.','/website-design/'],
+   ['E-commerce','Mobile-first магазини с по-ясни продукти, checkout и измерване.','/e-commerce/'],
+   ['Dynamic SEO','Постоянно SEO + GEO + AEO + AIO, базирано на реални заявки и съдържателни възможности.','/dynamic-seo/'],
+   ['WhatsApp Commerce','По-ясни пътеки от сайта и рекламите към разговори и запитвания.','/whatsapp-commerce/'],
+   ['Meta Ads Landing Pages','Фокусирани страници, които продължават рекламното послание и намаляват триенето.','/meta-ads-landing-pages/'],
+   ['AI Automation','Практична автоматизация за lead routing, follow-up и повтарящи се операции.','/ai-automation/']
+  ],
+  why:'Защо QCT Studio',whyTitle:'По-малко шум. Повече търговска яснота.',
+  whyText:'Започваме с офертата, пазара, клиента и следващата търговска стъпка. Дизайнът и технологията идват след като е ясно какво трябва да работи.',
+  points:['Многоезична архитектура за регионални пазари','Analytics и измерване още от началото','SEO/GEO структура за Google и AI search','Мобилно изживяване като търговски приоритет'],
+  final:'Изградете дигитално присъствие, което може да расте заедно с бизнеса.'
+ }
+}[lang];
+const url=(p:string)=>getLocalizedUrl(lang,p);
+---
+<BaseLayout title={c.title} description={c.description} lang={lang} isHome={true}>
+ <Header slot="header" lang={lang}/>
+ <section class="lh hero container"><p class="eyebrow">{c.eyebrow}</p><h1>{c.h1}</h1><p class="lead">{c.lead}</p><div class="actions"><a class="primary" href={url('/contact/')}>{c.cta}</a><a href="#services">{c.secondary}</a></div></section>
+ <section id="services" class="lh section soft"><div class="container"><div class="head"><h2>{c.services}</h2><p>{c.serviceLead}</p></div><div class="grid">{c.cards.map(([n,t,h])=><a href={url(h)}><h3>{n}</h3><p>{t}</p><span>→</span></a>)}</div></div></section>
+ <section class="lh section container why"><p class="eyebrow">{c.why}</p><h2>{c.whyTitle}</h2><p class="whytext">{c.whyText}</p><div class="points">{c.points.map(x=><span>✓ {x}</span>)}</div></section>
+ <section class="lh final container"><h2>{c.final}</h2><a class="primary" href={url('/contact/')}>{c.cta}</a></section>
+ <Footer slot="footer" lang={lang}/>
+</BaseLayout>
+<style>
+.lh{text-align:center}.hero{padding:clamp(5rem,10vw,8.5rem) 0 5rem}.eyebrow{font-size:.72rem;font-weight:800;letter-spacing:.16em;color:var(--qct-color-accent,#e75757)}.hero h1,.head h2,.why h2,.final h2{font-size:clamp(2.3rem,5vw,5.2rem);line-height:.97;letter-spacing:-.055em;max-width:1150px;margin:.8rem auto;text-wrap:balance}.lead,.head p,.whytext{max-width:820px;margin:1.2rem auto 0;line-height:1.75;opacity:.74}.actions{display:flex;justify-content:center;gap:.8rem;margin-top:2rem;flex-wrap:wrap}.actions a,.primary{min-height:50px;display:inline-flex;align-items:center;justify-content:center;padding:.9rem 1.3rem;border-radius:999px;text-decoration:none;font-weight:750;border:1px solid rgba(255,255,255,.15);color:inherit}.primary{background:var(--qct-color-accent,#e75757)!important;color:#fff!important;border-color:transparent!important}.section{padding:clamp(4rem,7vw,6.5rem) 0}.soft{background:rgba(255,255,255,.025);border-block:1px solid rgba(255,255,255,.08)}.head{max-width:900px;margin:0 auto 2.4rem}.head h2,.why h2{font-size:clamp(2rem,4vw,4rem)}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.grid a{text-align:left;padding:1.6rem;border:1px solid rgba(255,255,255,.1);border-radius:20px;text-decoration:none;color:inherit;background:rgba(255,255,255,.02)}.grid h3{font-size:1.25rem;margin:0 0 .7rem}.grid p{line-height:1.65;opacity:.72}.grid span{color:var(--qct-color-accent,#e75757);font-weight:800}.why{padding:clamp(4rem,7vw,6.5rem) 0}.points{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;max-width:900px;margin:2rem auto 0;text-align:left}.points span{padding:1rem;border:1px solid rgba(255,255,255,.1);border-radius:14px}.final{padding:clamp(4rem,8vw,7rem) 0}.final h2{font-size:clamp(2rem,4vw,4rem);margin-bottom:1.8rem}@media(max-width:800px){.grid{grid-template-columns:1fr}.points{grid-template-columns:1fr}.hero h1{font-size:clamp(2.2rem,10vw,3rem)}}
+</style>
