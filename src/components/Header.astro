@@ -13,9 +13,16 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 // Used so the language switcher links to the translated version of THIS page, not just home.
 const currentPath = languagePath ?? getPathWithoutLocale(Astro.url.pathname);
 const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk: 'Цени', sr: 'Cene', ro: 'Prețuri', bg: 'Цени' };
-const restrictedLocalePath = /^\/(?:insights|work|regional-growth-diagnostic)(?:\/|$)/.test(currentPath);
-const switchLanguages = Object.entries(languages).filter(([code]) => !restrictedLocalePath || ['en','sq','mk','sr','ro','bg'].includes(code));
-const hasRegionalEditorial = ['en','sq','mk','sr','ro','bg'].includes(lang);
+const isInsightsPath = /^\/insights(?:\/|$)/.test(currentPath);
+const isWorkPath = /^\/work(?:\/|$)/.test(currentPath);
+const isDiagnosticPath = /^\/regional-growth-diagnostic(?:\/|$)/.test(currentPath);
+const switchLanguages = Object.entries(languages).filter(([code]) => {
+  if (isInsightsPath || isDiagnosticPath) return ['en','sq','mk','sr'].includes(code);
+  if (isWorkPath) return ['en','sq','mk','sr','ro','bg'].includes(code);
+  return true;
+});
+const hasRegionalWork = ['en','sq','mk','sr','ro','bg'].includes(lang);
+const hasRegionalInsights = ['en','sq','mk','sr'].includes(lang);
 ---
 <header id="masthead" class="site-header" data-site-header>
 	<div class="mobile-menu-backdrop" data-mobile-backdrop hidden></div>
@@ -54,7 +61,7 @@ const hasRegionalEditorial = ['en','sq','mk','sr','ro','bg'].includes(lang);
 						<li><a href={url('/ai-automation/')}>{t('AI Automation')}</a></li>
 					</ul>
 				</li>
-{hasRegionalEditorial && (				<li class="menu-item-has-children">
+{hasRegionalWork && (				<li class="menu-item-has-children">
 					<button class="submenu-toggle" type="button" aria-expanded="false" data-submenu-toggle>
 						<span>{t('Work')}</span>
 					</button>
@@ -64,7 +71,7 @@ const hasRegionalEditorial = ['en','sq','mk','sr','ro','bg'].includes(lang);
 					</ul>
 				</li>)}
 				<li><a href={url('/pricing/')}>{pricingLabel[lang] ?? 'Pricing'}</a></li>
-{hasRegionalEditorial && <li><a href={url('/insights/')}>{t('Insights')}</a></li>}
+{hasRegionalInsights && <li><a href={url('/insights/')}>{t('Insights')}</a></li>}
 				<li><a href={url('/about/')}>{t('About')}</a></li>
 				<li><a href={url('/careers/')}>{t('Careers')}</a></li>
 				<li><a href={url('/contact/')}>{t('Contact')}</a></li>
