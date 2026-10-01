@@ -37,7 +37,7 @@ const project = slug ? data.projects[slug] : null;
 const title = project ? `${project.name} — ${project.label} | QCT Studio` : `${data.work} | QCT Studio`;
 const description = project ? project.desc : data.lead;
 ---
-<BaseLayout title={title} description={description} lang={lang} pageType={project?'Article':'CollectionPage'} breadcrumbLabel={project?project.name:data.work}>
+<BaseLayout title={title} description={description} lang={lang} pageType={project?'WebPage':'CollectionPage'} noindex={Boolean(slug && ['misima','phiaderm'].includes(slug))} breadcrumbLabel={project?project.name:data.work}>
  <Header slot="header" lang={lang}/>
  {project ? (
   <main class="lw">
