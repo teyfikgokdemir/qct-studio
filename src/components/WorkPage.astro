@@ -103,7 +103,6 @@ const projects = [
       <div class="container qct-work__grid">
         {projects.map((project, index) => (
           <article class:list={['qct-work__card', { 'qct-work__card--featured': project.featured }]}>
-            <div class="qct-work__number">0{index + 1}</div>
             <p class="qct-work__label">{project.label}</p>
             <h2><a href={project.href}>{project.name}</a></h2>
             <p class="qct-work__description">{project.description}</p>
@@ -143,7 +142,6 @@ const projects = [
   .qct-work__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; padding: 1px; background: rgba(248, 245, 239, .16); }
   .qct-work__card { min-height: 320px; padding: clamp(1.5rem, 2.4vw, 2.25rem); color: #f8f5ef; background: #1d1a20; }
   .qct-work__card--featured { background: #251b29; }
-  .qct-work__number { margin-bottom: 2.5rem; color: rgba(248, 245, 239, .38); font-weight: 800; }
   .qct-work__card h2 { margin: .75rem 0 1rem; font-size: clamp(1.75rem, 2.5vw, 2.5rem); line-height: 1; letter-spacing: -.035em; }
   .qct-work__card h2 a { color: inherit; text-decoration: none; }
   .qct-work__description { max-width: 520px; color: rgba(248, 245, 239, .68); line-height: 1.65; }
@@ -158,7 +156,6 @@ const projects = [
     .qct-work h1 { font-size: clamp(2.35rem, 11vw, 3.15rem); }
     .qct-work__proof-grid, .qct-work__grid { grid-template-columns: 1fr; }
     .qct-work__card { min-height: auto; padding: 1.5rem; }
-    .qct-work__number { margin-bottom: 2rem; }
     .qct-work__cta-inner { align-items: stretch; flex-direction: column; }
   }
 </style>
