@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { getLocalizedUrl } from '../i18n';
+const { lang, slug } = Astro.props as { lang:'ro'|'bg'; slug?:'headwear'|'ctseg'|'misima'|'phiaderm' };
+const url=(p:string)=>getLocalizedUrl(lang,p);
+const data={
+ ro:{
+  work:'Proiecte selectate',home:'Acasă',visit:'Vezi site-ul live',back:'Înapoi la proiecte',cta:'Discutați un proiect similar',
+  title:'Sisteme digitale reale, prezentate fără rezultate inventate.',
+  lead:'Portofoliul arată sisteme live și observații publice. Rolul QCT Studio este afirmat numai acolo unde poate fi susținut; în rest, separăm clar ceea ce este vizibil de ceea ce nu este verificat.',
+  proof:'Dovezi înaintea promisiunilor.',
+  proofText:'Nu publicăm cifre de trafic, venit, conversie sau clasare fără sursă verificabilă. Fiecare pagină de proiect arată exact limita afirmațiilor.',
+  projects:{
+   headwear:{name:'HEADWEAR',label:'E-commerce multilingv',desc:'Magazin pentru produse performance și outdoor, structurat pentru descoperirea clară a produselor și cumpărare pe mobil.',live:'https://www.head-wear.com/',visible:['Experiență publică de e-commerce accesibilă.','Structură de produse și navigare orientată spre cumpărare.','Experiență multilingvă și mobile-first.'],boundary:'Această pagină nu publică rezultate comerciale, trafic sau conversii care nu pot fi verificate public.',system:'Un exemplu de sistem în care catalogul, navigarea și experiența mobilă lucrează împreună.'},
+   ctseg:{name:'CTSEG',label:'Platformă comercială multilingvă',desc:'Platformă live pentru sourcing, verificarea furnizorilor și coordonare comercială, în cadrul aceluiași ecosistem de fondator.',live:'https://ctseg.com.tr/en/',visible:['Site multilingv live și accesibil.','Fluxuri distincte pentru cumpărători, producători și solicitări comerciale.','Relația la nivel de fondator cu QCT Studio este publică.'],boundary:'Nu atribuim QCT Studio un scope de design, dezvoltare, SEO sau lansare dacă acesta nu este verificat public.',system:'Arată cum o ofertă B2B complexă poate fi structurată în trasee comerciale clare.'},
+   misima:{name:'Misima Group',label:'Observație a unui site corporate live',desc:'Experiență corporate și B2B observabilă public; autoratul și scope-ul QCT Studio nu sunt prezentate ca fiind verificate.',live:'https://www.misima.com.tr/',visible:['Pagini corporate, servicii, branduri și contact sunt live.','Sunt vizibile trasee B2B și de solicitare.','Structura publică poate fi analizată fără a revendica autoratul.'],boundary:'Nu afirmăm că QCT Studio a proiectat sau dezvoltat site-ul și nu publicăm rezultate comerciale neverificate.',system:'Un exemplu util pentru evaluarea arhitecturii informaționale și a traseelor B2B vizibile.'},
+   phiaderm:{name:'Phiaderm',label:'Status public pre-lansare',desc:'Revizuire transparentă a experienței publice coming-soon; pagina live creditează RexCode, iar scope-ul QCT Studio rămâne neverificat.',live:'https://www.phiaderm.com.tr/',visible:['Experiența publică este în stare coming-soon / renovare.','Există un traseu de early access.','Creditul public actual aparține RexCode.'],boundary:'Nu revendicăm design, dezvoltare, Shopify, SEO, CRO sau rezultate comerciale pentru QCT Studio.',system:'O pagină de status poate seta așteptări și captura interes fără a pretinde că magazinul este deja lansat.'}
+  }
+ },
+ bg:{
+  work:'Избрани проекти',home:'Начало',visit:'Вижте активния сайт',back:'Назад към проектите',cta:'Обсъдете подобен проект',
+  title:'Реални дигитални системи, представени без измислени резултати.',
+  lead:'Портфолиото показва активни системи и публично наблюдаеми резултати. Ролята на QCT Studio се посочва само когато може да бъде подкрепена; иначе ясно отделяме видимото от непотвърденото.',
+  proof:'Доказателства преди обещания.',
+  proofText:'Не публикуваме данни за трафик, приходи, конверсии или класиране без проверим източник. Всяка проектна страница показва границата на твърденията.',
+  projects:{
+   headwear:{name:'HEADWEAR',label:'Многоезичен e-commerce',desc:'Магазин за performance и outdoor продукти, структуриран за ясно откриване на продукти и мобилно пазаруване.',live:'https://www.head-wear.com/',visible:['Активно публично e-commerce изживяване.','Продуктова структура и навигация, ориентирани към покупка.','Многоезично и mobile-first изживяване.'],boundary:'Тази страница не публикува търговски резултати, трафик или конверсии, които не могат да бъдат публично проверени.',system:'Пример за система, в която каталогът, навигацията и мобилното изживяване работят заедно.'},
+   ctseg:{name:'CTSEG',label:'Многоезична B2B търговска платформа',desc:'Активна платформа за sourcing, проверка на доставчици и търговска координация в същата founder екосистема.',live:'https://ctseg.com.tr/en/',visible:['Активен многоезичен сайт.','Отделни пътеки за купувачи, производители и търговски запитвания.','Founder-level връзката с QCT Studio е публична.'],boundary:'Не приписваме на QCT Studio дизайн, разработка, SEO или launch scope, когато това не е публично потвърдено.',system:'Показва как сложна B2B оферта може да бъде подредена в ясни търговски пътеки.'},
+   misima:{name:'Misima Group',label:'Наблюдение на активен корпоративен сайт',desc:'Публично наблюдаемо corporate и B2B изживяване; авторството и scope-ът на QCT Studio не се представят като потвърдени.',live:'https://www.misima.com.tr/',visible:['Активни corporate, service, brand и contact маршрути.','Видими B2B и inquiry пътеки.','Публичната структура може да бъде анализирана без претенция за авторство.'],boundary:'Не твърдим, че QCT Studio е проектирало или разработило сайта и не публикуваме непроверени търговски резултати.',system:'Полезен пример за оценка на информационна архитектура и видими B2B пътеки.'},
+   phiaderm:{name:'Phiaderm',label:'Публичен pre-launch статус',desc:'Прозрачен преглед на публичното coming-soon изживяване; активната страница кредитира RexCode, а QCT Studio scope остава непотвърден.',live:'https://www.phiaderm.com.tr/',visible:['Публичното изживяване е в coming-soon / renewal статус.','Видим е early-access маршрут.','Настоящият публичен credit е към RexCode.'],boundary:'Не претендираме QCT Studio авторство за дизайн, разработка, Shopify, SEO, CRO или търговски резултати.',system:'Статус страница може да управлява очаквания и интерес, без да твърди, че магазинът вече е стартиран.'}
+  }
+ }
+}[lang];
+const project = slug ? data.projects[slug] : null;
+const title = project ? `${project.name} — ${project.label} | QCT Studio` : `${data.work} | QCT Studio`;
+const description = project ? project.desc : data.lead;
+---
+<BaseLayout title={title} description={description} lang={lang} pageType={project?'Article':'CollectionPage'} breadcrumbLabel={project?project.name:data.work}>
+ <Header slot="header" lang={lang}/>
+ {project ? (
+  <main class="lw">
+   <section class="lw-hero container"><p class="eyebrow"><a href={url('/work/')}>{data.work}</a> / {project.name}</p><h1>{project.name}</h1><p class="lead">{project.desc}</p><div class="actions"><a class="primary" href={project.live} target="_blank" rel="noopener">{data.visit} ↗</a><a href={url('/work/')}>{data.back}</a></div></section>
+   <section class="lw-section soft"><div class="container"><div class="lw-grid"><div><p class="eyebrow">{data.proof}</p><h2>{lang==='ro'?'Ce este vizibil public':'Какво е публично видимо'}</h2></div><ul>{project.visible.map(x=><li>{x}</li>)}</ul></div></div></section>
+   <section class="lw-section container"><div class="case-grid"><article><h2>{lang==='ro'?'Limita afirmațiilor':'Граница на твърденията'}</h2><p>{project.boundary}</p></article><article><h2>{lang==='ro'?'Valoarea sistemului':'Стойност на системата'}</h2><p>{project.system}</p></article></div></section>
+   <section class="lw-final container"><h2>{data.cta}</h2><a class="primary" href={url('/contact/')}>{data.cta}</a></section>
+  </main>
+ ) : (
+  <main class="lw">
+   <section class="lw-hero container"><p class="eyebrow">{data.work}</p><h1>{data.title}</h1><p class="lead">{data.lead}</p></section>
+   <section class="lw-section soft"><div class="container proof"><p class="eyebrow">{data.proof}</p><h2>{data.proof}</h2><p>{data.proofText}</p></div></section>
+   <section class="lw-section"><div class="container cards">{Object.entries(data.projects).map(([key,p])=><article><p class="eyebrow">{p.label}</p><h2>{p.name}</h2><p>{p.desc}</p><div class="links"><a href={url('/work/'+key+'/')}>{lang==='ro'?'Vezi studiul':'Вижте прегледа'} →</a><a href={p.live} target="_blank" rel="noopener">{data.visit} ↗</a></div></article>)}</div></section>
+   <section class="lw-final container"><h2>{data.cta}</h2><a class="primary" href={url('/contact/')}>{data.cta}</a></section>
+  </main>
+ )}
+ <Footer slot="footer" lang={lang}/>
+</BaseLayout>
+<style>
+.lw{background:#f4f0e8;color:#17151a}.lw-hero{padding:clamp(4rem,8vw,7rem) 0}.eyebrow{font-size:.74rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#b63d3d}.eyebrow a{color:inherit}.lw h1{max-width:980px;margin:.8rem 0 1.2rem;font-size:clamp(2.6rem,5.5vw,5.4rem);line-height:.96;letter-spacing:-.05em}.lead{max-width:820px;color:#676167;font-size:clamp(1rem,1.4vw,1.2rem);line-height:1.7}.lw-section{padding:clamp(3.5rem,6vw,5.5rem) 0}.soft{background:#1b181d;color:#f7f2eb}.proof{max-width:900px}.proof h2,.lw-grid h2,.case-grid h2,.lw-final h2{font-size:clamp(2rem,4vw,3.7rem);line-height:1;letter-spacing:-.04em}.proof p,.lw-grid li,.case-grid p{line-height:1.7}.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#d7d0c6;padding:1px}.cards article{background:#f4f0e8;padding:clamp(1.5rem,3vw,2.4rem);min-height:270px}.cards h2{font-size:clamp(1.8rem,3vw,2.6rem);margin:.8rem 0}.cards p{color:#6d676d;line-height:1.65}.links,.actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.6rem}.links a,.actions a{font-weight:800;color:inherit}.primary{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.8rem 1.2rem;border-radius:999px;background:#9f3030;color:#fff!important;text-decoration:none}.lw-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:3rem}.lw-grid ul{margin:0;padding-left:1.2rem}.lw-grid li+li{margin-top:.8rem}.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.case-grid article{padding:1.5rem;border:1px solid #d8d1c7;border-radius:18px}.lw-final{padding:clamp(4rem,7vw,6rem) 0}.lw-final h2{max-width:760px}@media(max-width:760px){.cards,.lw-grid,.case-grid{grid-template-columns:1fr}.lw h1{font-size:clamp(2.35rem,11vw,3.4rem)}}
+</style>

@@ -14,8 +14,8 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 const currentPath = languagePath ?? getPathWithoutLocale(Astro.url.pathname);
 const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk: 'Цени', sr: 'Cene', ro: 'Prețuri', bg: 'Цени' };
 const restrictedLocalePath = /^\/(?:insights|work|regional-growth-diagnostic)(?:\/|$)/.test(currentPath);
-const switchLanguages = Object.entries(languages).filter(([code]) => !restrictedLocalePath || ['en','sq','mk','sr'].includes(code));
-const hasRegionalEditorial = ['en','sq','mk','sr'].includes(lang);
+const switchLanguages = Object.entries(languages).filter(([code]) => !restrictedLocalePath || ['en','sq','mk','sr','ro','bg'].includes(code));
+const hasRegionalEditorial = ['en','sq','mk','sr','ro','bg'].includes(lang);
 ---
 <header id="masthead" class="site-header" data-site-header>
 	<div class="mobile-menu-backdrop" data-mobile-backdrop hidden></div>
