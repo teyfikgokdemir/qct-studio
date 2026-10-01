@@ -233,6 +233,22 @@ const policyUrl = lang === 'en' ? '/cookie-policy/' : `/${lang}/cookie-policy/`;
 
   @media (max-width: 760px) {
     .qct-cookie-consent {
+      right: .65rem;
+      bottom: .65rem;
+      left: .65rem;
+      width: auto;
+      gap: .65rem;
+      padding: .8rem;
+      border-radius: .85rem;
+    }
+    .qct-cookie-consent strong { margin-bottom: .18rem; font-size: .86rem; }
+    .qct-cookie-consent p { font-size: .74rem; line-height: 1.4; }
+    .qct-cookie-consent__actions { gap: .4rem; }
+    .qct-cookie-consent button { min-height: 38px; padding: .5rem .72rem; font-size: .76rem; }
+  }
+
+  @media (max-width: 760px) {
+    .qct-cookie-consent {
       right: 0.75rem;
       bottom: 0.75rem;
       left: 0.75rem;
