@@ -4,7 +4,7 @@ import { insights } from '../../../../data/insights';
 
 
 export function getStaticPaths() {
-  return ['sq', 'mk', 'sr'].flatMap((lang) => insights.map((article) => ({ params: { lang, slug: article.slug }, props: { lang, article } })));
+  return ['sq', 'mk', 'sr', 'ro', 'bg'].flatMap((lang) => insights.map((article) => ({ params: { lang, slug: article.slug }, props: { lang, article } })));
 }
 const { lang, article } = Astro.props;
 ---
