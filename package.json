@@ -7,14 +7,15 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run audit:i18n && npm run audit:metadata && astro build && npm run audit:html",
+    "build": "npm run audit:i18n && npm run audit:locale-parity && npm run audit:metadata && astro build && npm run audit:html",
     "preview": "astro preview",
     "astro": "astro",
     "audit:i18n": "node scripts/audit-translations.mjs",
     "audit:metadata": "node scripts/audit-metadata.mjs",
     "audit:html": "node scripts/audit-built-html.mjs",
     "indexnow:submit": "node scripts/indexnow-submit.mjs",
-    "check:analytics": "node scripts/check-analytics.mjs"
+    "check:analytics": "node scripts/check-analytics.mjs",
+    "audit:locale-parity": "node scripts/audit-locale-parity.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
