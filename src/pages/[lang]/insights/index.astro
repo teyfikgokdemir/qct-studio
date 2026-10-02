@@ -3,7 +3,7 @@ import InsightsPage from '../../../components/InsightsPage.astro';
 
 
 export function getStaticPaths() {
-  return ['sq', 'mk', 'sr'].map((lang) => ({ params: { lang }, props: { lang } }));
+  return ['sq', 'mk', 'sr', 'ro', 'bg'].map((lang) => ({ params: { lang }, props: { lang } }));
 }
 const { lang } = Astro.props;
 ---
