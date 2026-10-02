@@ -2,14 +2,14 @@ import { test, expect } from '@playwright/test';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const routes = ['/regional-growth-diagnostic/', '/sq/regional-growth-diagnostic/', '/mk/regional-growth-diagnostic/', '/sr/regional-growth-diagnostic/'];
+const routes = ['/regional-growth-diagnostic/', '/sq/regional-growth-diagnostic/', '/mk/regional-growth-diagnostic/', '/sr/regional-growth-diagnostic/', '/ro/regional-growth-diagnostic/', '/bg/regional-growth-diagnostic/'];
 
 for (const route of routes) {
   test(`${route}: metadata and layout`, async ({ page }) => {
     const response = await page.goto(`http://127.0.0.1:4321${route}`, { waitUntil: 'networkidle' });
     expect(response?.status()).toBe(200);
     await expect(page.locator('h1')).toBeVisible();
-    await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(5);
+    await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(7);
     await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(3);
     const overflow = await page.evaluate(() => ({ width: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth }));
     expect(overflow.scroll).toBeLessThanOrEqual(overflow.width + 1);
