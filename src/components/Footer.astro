@@ -6,7 +6,7 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
 const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk: 'Цени', sr: 'Cene', ro: 'Prețuri', bg: 'Цени' };
-const hasRegionalEditorial = ['en','sq','mk','sr'].includes(lang);
+const hasRegionalEditorial = ['en','sq','mk','sr','ro','bg'].includes(lang);
 const footerEyebrow: Record<string,string> = { ro: 'STUDIO DE CREȘTERE DIGITALĂ PENTRU BALCANI', bg: 'СТУДИО ЗА ДИГИТАЛЕН РАСТ НА БАЛКАНИТЕ' };
 ---
 <footer id="colophon" class="site-footer site-footer--editorial">
