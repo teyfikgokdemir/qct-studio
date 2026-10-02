@@ -13,6 +13,16 @@ const descriptions: Record<InsightLocale, string> = {
   sq: 'Analiza praktike nga QCT Studio për faqe web, e-commerce, SEO, GEO, kërkim me AI dhe rritje digjitale në tregjet e Ballkanit.',
   mk: 'Практични анализи од QCT Studio за веб-страници, е-трговија, SEO, GEO, AI пребарување и дигитален раст на балканските пазари.',
   sr: 'Praktični QCT Studio uvidi o sajtovima, e-commerceu, SEO-u, GEO-u, AI pretrazi i digitalnom rastu na balkanskim tržištima.',
+  ro: 'Analize practice QCT Studio despre website-uri, e-commerce, SEO, GEO, vizibilitate în căutarea AI și creștere digitală pe piețele din Balcani.',
+  bg: 'Практични анализи от QCT Studio за сайтове, e-commerce, SEO, GEO, AI search visibility и дигитален растеж на балканските пазари.',
+};
+const intro: Record<InsightLocale, string> = {
+  en: 'Practical perspectives on websites, visibility and digital systems for businesses across the Balkans.',
+  sq: 'Perspektiva praktike për faqe interneti, dukshmëri dhe sisteme digjitale për bizneset në Ballkan.',
+  mk: 'Практични перспективи за веб-страници, видливост и дигитални системи за бизнисите на Балканот.',
+  sr: 'Praktične perspektive o sajtovima, vidljivosti i digitalnim sistemima za kompanije na Balkanu.',
+  ro: 'Perspective practice despre website-uri, vizibilitate și sisteme digitale pentru afaceri din Balcani.',
+  bg: 'Практични гледни точки за сайтове, видимост и дигитални системи за бизнеси на Балканите.',
 };
 const url = (path: string) => getLocalizedUrl(lang, path);
 ---
@@ -23,7 +33,7 @@ const url = (path: string) => getLocalizedUrl(lang, path);
       <div class="container">
         <p class="insights-kicker">{labels.journal}</p>
         <h1 id="insights-title">{labels.section}</h1>
-        <p>{labels.latest}. Practical perspectives on websites, visibility and digital systems for businesses across the Balkans.</p>
+        <p>{labels.latest}. {intro[lang]}</p>
       </div>
     </section>
     <section class="insights-list container" aria-labelledby="insights-list-title">
