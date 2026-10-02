@@ -16,7 +16,7 @@ export type SeoPage =
   | 'artman-case-study'
   | 'phiaderm-case-study';
 
-type IndexedLang = 'en' | 'sq' | 'mk' | 'sr';
+type IndexedLang = 'en' | 'sq' | 'mk' | 'sr' | 'ro' | 'bg';
 
 interface SeoEntry {
   title: string;
@@ -293,9 +293,47 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
   },
 
 
+  ro: {
+    home: { title: 'QCT Studio — Creștere digitală pentru companii din Balcani', description: 'QCT Studio construiește site-uri premium, e-commerce, SEO/GEO și automatizare AI practică pentru companii din România și din Balcani.' },
+    about: { title: 'Despre QCT Studio — Partener digital pentru Balcani', description: 'Descoperă QCT Studio, fondat în Istanbul pentru a construi website-uri, e-commerce și sisteme digitale clare pentru companii din Balcani.' },
+    services: { title: 'Website, E-commerce, SEO și AI — QCT Studio', description: 'Servicii de website design, e-commerce, WhatsApp Commerce, SEO, GEO, landing pages pentru Meta Ads și automatizare AI pentru companii din Balcani.' },
+    'website-design': { title: 'Website Design pentru companii din Balcani — QCT Studio', description: 'Website design premium pentru companii care au nevoie de mai multă claritate, încredere, performanță mobilă și un traseu comercial mai bun.' },
+    'e-commerce': { title: 'E-commerce pentru companii din Balcani — QCT Studio', description: 'Magazine online cu structură clară de produse, checkout sigur și experiență mobilă fluidă pentru companii din România și din Balcani.' },
+    'ai-automation': { title: 'Automatizare AI pentru business — QCT Studio', description: 'Automatizare AI practică pentru procese repetitive, lead routing, follow-up și operațiuni comerciale mai clare pentru companii din Balcani.' },
+    'seo-performance': { title: 'SEO, GEO și vizibilitate în AI Search — QCT Studio', description: 'SEO tehnic, structură de conținut și GEO pentru a ajuta companiile din Balcani să fie mai ușor de găsit în Google și în căutarea AI.' },
+    'whatsapp-commerce': { title: 'WhatsApp Commerce pentru vânzări — QCT Studio', description: 'Conectează website-ul, reclamele și interesul pentru produse cu trasee WhatsApp mai clare pentru vânzări și solicitări.' },
+    'meta-ads': { title: 'Landing Pages pentru Meta Ads — QCT Studio', description: 'Landing pages focalizate, aliniate campaniilor Meta Ads, pentru mesaje mai clare, mai puțină fricțiune și solicitări mai bune.' },
+    careers: { title: 'Cariere la QCT Studio — Alătură-te echipei', description: 'Oportunități pentru oameni responsabili, clari și orientați spre calitate, care vor să construiască produse digitale utile pentru companii din Balcani.' },
+    contact: { title: 'Contact QCT Studio — Discută proiectul tău', description: 'Contactează QCT Studio pentru website-uri, e-commerce, SEO, GEO, landing pages și automatizare AI pentru proiecte din România și Balcani.' },
+    work: { title: 'Proiecte digitale selectate — QCT Studio', description: 'Explorează proiectele și revizuirile publice QCT Studio, prezentate cu limite clare ale afirmațiilor și fără rezultate inventate.' },
+    'headwear-case-study': { title: 'HEADWEAR — Studiu E-commerce | QCT Studio', description: 'O privire asupra experienței e-commerce multilingve HEADWEAR și a modului în care catalogul, navigarea și mobilul lucrează împreună.' },
+    'misima-case-study': { title: 'Misima Group — Revizuire site public | QCT Studio', description: 'Revizuire observațională a website-ului public Misima Group; autoratul și scope-ul QCT Studio nu sunt prezentate ca fiind verificate.' },
+    'artman-case-study': { title: 'Rută veche de proiect — QCT Studio', description: 'Această rută veche redirecționează permanent vizitatorii și motoarele de căutare către revizuirea curentă a platformei CTSEG.' },
+    'phiaderm-case-study': { title: 'Phiaderm — Revizuire publică pre-lansare', description: 'Revizuire transparentă a paginii publice actuale Phiaderm; autoratul și scope-ul de livrare QCT Studio nu sunt verificate public.' },
+  },
+
+  bg: {
+    home: { title: 'QCT Studio — Дигитален раст за компании на Балканите', description: 'QCT Studio изгражда премиум сайтове, e-commerce, SEO/GEO и практична AI автоматизация за компании в България и на Балканите.' },
+    about: { title: 'За QCT Studio — Дигитален партньор за Балканите', description: 'Научете повече за QCT Studio, основано в Истанбул за изграждане на сайтове, e-commerce и ясни дигитални системи за балкански компании.' },
+    services: { title: 'Уеб, e-commerce, SEO и AI услуги — QCT Studio', description: 'Website design, e-commerce, WhatsApp Commerce, SEO, GEO, Meta Ads landing pages и AI автоматизация за компании в България и на Балканите.' },
+    'website-design': { title: 'Website Design за балкански компании — QCT Studio', description: 'Премиум website design за компании, които се нуждаят от повече яснота, доверие, мобилна производителност и по-добър търговски път.' },
+    'e-commerce': { title: 'E-commerce за компании на Балканите — QCT Studio', description: 'Онлайн магазини с ясна продуктова структура, сигурен checkout и плавно mobile изживяване за компании в България и на Балканите.' },
+    'ai-automation': { title: 'AI автоматизация за бизнес — QCT Studio', description: 'Практична AI автоматизация за повтарящи се процеси, lead routing, follow-up и по-ясни търговски операции.' },
+    'seo-performance': { title: 'SEO, GEO и AI Search видимост — QCT Studio', description: 'Техническо SEO, content structure и GEO, които помагат на балканските компании да бъдат по-видими в Google и AI search.' },
+    'whatsapp-commerce': { title: 'WhatsApp Commerce за продажби — QCT Studio', description: 'Свържете сайта, рекламите и продуктовия интерес с по-ясни WhatsApp пътеки за продажби и запитвания.' },
+    'meta-ads': { title: 'Landing Pages за Meta Ads — QCT Studio', description: 'Фокусирани landing pages, съгласувани с Meta Ads кампании, за по-ясно послание, по-малко friction и по-качествени запитвания.' },
+    careers: { title: 'Кариери в QCT Studio — Присъединете се към екипа', description: 'Възможности за отговорни хора с ясна комуникация, които искат да създават полезни дигитални продукти за компании на Балканите.' },
+    contact: { title: 'Контакт с QCT Studio — Обсъдете проекта си', description: 'Свържете се с QCT Studio за сайтове, e-commerce, SEO, GEO, landing pages и AI автоматизация за проекти в България и на Балканите.' },
+    work: { title: 'Избрани дигитални проекти — QCT Studio', description: 'Разгледайте избрани QCT Studio проекти и публични прегледи с ясни граници на твърденията и без измислени резултати.' },
+    'headwear-case-study': { title: 'HEADWEAR — E-commerce казус | QCT Studio', description: 'Преглед на многоезичното HEADWEAR e-commerce изживяване и начина, по който каталогът, навигацията и mobile UX работят заедно.' },
+    'misima-case-study': { title: 'Misima Group — Преглед на публичен сайт', description: 'Наблюдателен преглед на публичния сайт на Misima Group; авторството и scope-ът на QCT Studio не се представят като потвърдени.' },
+    'artman-case-study': { title: 'Стар проектен маршрут — QCT Studio', description: 'Този стар маршрут пренасочва трайно посетителите и търсачките към текущия преглед на CTSEG платформата.' },
+    'phiaderm-case-study': { title: 'Phiaderm — Публичен pre-launch преглед', description: 'Прозрачен преглед на текущата публична страница на Phiaderm; авторството и delivery scope-ът на QCT Studio не са публично потвърдени.' },
+  },
+
 };
 
 export function getPageSeo(page: SeoPage, lang: string): SeoEntry {
-  const indexedLang: IndexedLang = lang === 'sq' || lang === 'mk' || lang === 'sr' ? lang : 'en';
+  const indexedLang: IndexedLang = ['sq','mk','sr','ro','bg'].includes(lang) ? lang as IndexedLang : 'en';
   return seo[indexedLang][page];
 }
