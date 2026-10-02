@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const languages = ['en','sq','mk','sr'] as const;
+const languages = ['en','sq','mk','sr','ro','bg'] as const;
 const studies = ['ctseg','phiaderm','misima'] as const;
 const route = (lang: typeof languages[number], study: typeof studies[number]) => `${lang === 'en' ? '' : `/${lang}`}/work/${study}/`;
 
@@ -12,7 +12,7 @@ for (const lang of languages) {
       const response = await page.goto(`http://127.0.0.1:4321${route(lang, study)}`, { waitUntil: 'networkidle' });
       expect(response?.status()).toBe(200);
       await expect(page.locator('h1')).toBeVisible();
-      await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(study === 'ctseg' ? 5 : 0);
+      await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(study === 'ctseg' ? 7 : 0);
       await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(2);
       const robots = page.locator('meta[name="robots"]');
       if (study === 'ctseg') await expect(robots).toHaveAttribute('content', /^index, follow/);
