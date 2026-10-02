@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const languages = ['en', 'sq', 'mk', 'sr'] as const;
+const languages = ['en', 'sq', 'mk', 'sr', 'ro', 'bg'] as const;
 const markets = ['albania', 'north-macedonia', 'kosovo', 'serbia'] as const;
 const route = (lang: typeof languages[number], market: typeof markets[number]) =>
   `${lang === 'en' ? '' : `/${lang}`}/markets/${market}/`;
@@ -24,11 +24,11 @@ for (const language of languages) {
       await expect(page.locator('h1')).toBeVisible();
       await expect(page.locator('link[rel="canonical"]')).toHaveCount(1);
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://qctstudio.com${route(language, market)}`);
-      await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(5);
+      await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(7);
       const alternates = await page.locator('link[rel="alternate"][hreflang]').evaluateAll((links) =>
         Object.fromEntries(links.map((link) => [link.getAttribute('hreflang'), link.getAttribute('href')]))
       );
-      for (const expectedLang of ['en', 'sq', 'mk', 'sr', 'x-default']) expect(alternates[expectedLang]).toBeTruthy();
+      for (const expectedLang of ['en', 'sq', 'mk', 'sr', 'ro', 'bg', 'x-default']) expect(alternates[expectedLang]).toBeTruthy();
       expect(alternates[language]).toBe(`https://qctstudio.com${route(language, market)}`);
       await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(3);
 
