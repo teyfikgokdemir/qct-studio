@@ -1,4 +1,5 @@
-export type MarketLang = 'en' | 'sq' | 'mk' | 'sr';
+export type MarketLang = 'en' | 'sq' | 'mk' | 'sr' | 'ro' | 'bg';
+type CoreMarketLang = Exclude<MarketLang, 'ro' | 'bg'>;
 export type MarketSlug = 'albania' | 'north-macedonia' | 'kosovo' | 'serbia';
 
 type Fact = {
@@ -106,6 +107,29 @@ const shared = {
     footerCompany: 'Kompanija',
     footerServices: 'Sistemi',
     footerNote: 'Od istraživanja tržišta do sopstvenih operacija rasta.',
+  },
+
+  ro: {
+    nav: ['Diferența de piață', 'Playbook-uri', 'Sistem', 'Dovezi'],
+    contact: 'Începe un proiect',
+    home: 'Acasă',
+    region: 'Sistem de piață pentru Balcani',
+    systemLabels: ['Atrage', 'Convertește', 'Operează'],
+    footerMarkets: 'Piețe',
+    footerCompany: 'Companie',
+    footerServices: 'Sisteme',
+    footerNote: 'De la cercetarea pieței la operațiuni de creștere pe care le deții.',
+  },
+  bg: {
+    nav: ['Пазарен пропуск', 'Playbook-и', 'Система', 'Доказателства'],
+    contact: 'Започнете проект',
+    home: 'Начало',
+    region: 'Балканска пазарна система',
+    systemLabels: ['Привличане', 'Конверсия', 'Операции'],
+    footerMarkets: 'Пазари',
+    footerCompany: 'Компания',
+    footerServices: 'Системи',
+    footerNote: 'От пазарно проучване до собствени операции за растеж.',
   },
 } satisfies Record<MarketLang, Record<string, string | string[]>>;
 
@@ -234,7 +258,7 @@ const serbiaFacts = {
 const normalizeFacts = (facts: readonly (readonly [string, string, string, string, string])[]): Fact[] =>
   facts.map(([value, label, context, source, sourceUrl]) => ({ value, label, context, source, sourceUrl }));
 
-const sectorSets: Record<MarketSlug, Record<MarketLang, Sector[]>> = {
+const sectorSets: Record<MarketSlug, Record<CoreMarketLang, Sector[]>> = {
   albania: {
     en: [
       { name: 'Hospitality & tourism', need: 'Direct demand, multilingual discovery and off-season visibility.', system: 'Bilingual destination architecture, direct enquiry/booking, maps, reviews and CRM follow-up.' },
@@ -341,7 +365,7 @@ const sectorSets: Record<MarketSlug, Record<MarketLang, Sector[]>> = {
   },
 };
 
-const commonCopy: Record<MarketLang, Omit<MarketCopy, 'title' | 'description' | 'eyebrow' | 'headline' | 'headlineAccent' | 'intro' | 'signal' | 'facts' | 'sectors' | 'faqs'>> = {
+const commonCopy: Record<CoreMarketLang, Omit<MarketCopy, 'title' | 'description' | 'eyebrow' | 'headline' | 'headlineAccent' | 'intro' | 'signal' | 'facts' | 'sectors' | 'faqs'>> = {
   en: {
     primaryCta: 'Run the regional diagnostic', secondaryCta: 'See the market evidence', signalLabel: 'Verified market signal', gapTitle: 'The market gap, in numbers.', gapIntro: 'We use dated, named sources and preserve the scope of every figure. No invented search volume, no unsupported market-size theatre.', opportunityTitle: 'The commercial opportunity', opportunityCopy: 'Build the smallest owned system that closes the real demand leak: discovery, trust, conversion, lead capture, follow-up or transaction operations.', playbookTitle: 'Priority market playbooks', playbookIntro: 'We do not translate one generic service list. Each playbook starts from the sector’s buying behaviour, operational constraints and evidence burden.', systemTitle: 'Acquire. Convert. Operate.', systemIntro: 'Every project is designed as accountable handoffs—not a collection of disconnected channels.', acquire: 'Be found for the problem you solve.', acquireCopy: 'Local-language intent architecture, technical SEO, answer-first content and paid landing pages tied to measurable demand.', convert: 'Turn attention into a commercial action.', convertCopy: 'Trust proof, clear offers, mobile UX, local payment or assisted-buying paths, and event-level measurement.', operate: 'Keep the lead and the learning.', operateCopy: 'Lean CRM, source attribution, response ownership, dashboards and controlled automation after the process is stable.', evidenceTitle: 'Evidence before agency claims.', evidenceCopy: 'Every statistic links to its source. Search demand is validated after launch with Search Console, campaign data and sales conversations—not presented as fact before measurement.', evidenceNote: 'Project results are published only when source data and client permission are available.', faqTitle: 'Questions serious buyers ask', faqIntro: 'Direct answers, explicit dependencies and no fixed-duration promises.', ctaTitle: 'Map the right first system.', ctaCopy: 'We will identify the market, sector, commercial leak, operating constraints and evidence needed before defining scope.', sourceLabel: 'Open source',
   },
@@ -356,7 +380,7 @@ const commonCopy: Record<MarketLang, Omit<MarketCopy, 'title' | 'description' | 
   },
 };
 
-const marketSpecific: Record<MarketSlug, Record<MarketLang, Pick<MarketCopy, 'title' | 'description' | 'eyebrow' | 'headline' | 'headlineAccent' | 'intro' | 'signal' | 'faqs'>>> = {
+const marketSpecific: Record<MarketSlug, Record<CoreMarketLang, Pick<MarketCopy, 'title' | 'description' | 'eyebrow' | 'headline' | 'headlineAccent' | 'intro' | 'signal' | 'faqs'>>> = {
   albania: {
     en: { title: 'Digital Growth Systems for Albanian Businesses — QCT Studio', description: 'Bilingual websites, commerce, SEO, CRM and practical AI systems designed around how established Albanian businesses acquire, convert and operate.', eyebrow: 'Albania market system', headline: 'Turn social demand into an', headlineAccent: 'owned Albanian growth system.', intro: 'For established businesses in Albania, the opportunity is not another social profile. It is a bilingual, measurable commercial system that connects discovery, trust, WhatsApp, payment or enquiry and CRM follow-up.', signal: 'Social adoption is high. Owned websites and online selling remain materially lower.', faqs: [['Do we need a new website if Instagram already brings customers?', 'Not automatically. We first diagnose what demand is lost between social discovery, trust, enquiry, order and follow-up. The right first system may be a focused bilingual site, catalogue, booking flow or full store.'], ['Should an Albanian store support cash on delivery?', 'Where the merchant and category require it, yes. We scope card or virtual-POS options with approved providers and preserve assisted or cash-on-delivery paths when commercially necessary.'], ['Can you guarantee Google rankings or AI citations?', 'No. We implement the technical, content and evidence foundation, then measure indexed visibility, qualified actions and revenue-linked signals.'], ['Which languages should we launch?', 'Albanian should serve local trust and search. English is usually essential for tourism, diaspora, exporters and international professional services.'], ['How long will the project take?', 'Timing depends on content, integrations, approvals, languages and operational readiness. We define milestones after diagnostic work rather than publishing a fixed-duration promise.']] },
     sq: { title: 'Sisteme të Rritjes Digjitale për Bizneset Shqiptare — QCT Studio', description: 'Faqe dygjuhëshe, commerce, SEO, CRM dhe AI praktike sipas mënyrës si bizneset shqiptare tërheqin, konvertojnë dhe operojnë.', eyebrow: 'Sistemi i tregut shqiptar', headline: 'Kthejeni kërkesën sociale në një', headlineAccent: 'sistem shqiptar rritjeje që zotëroni.', intro: 'Për bizneset e konsoliduara në Shqipëri, mundësia nuk është një profil tjetër social. Është një sistem dygjuhësh dhe i matshëm që lidh zbulimin, besimin, WhatsApp, pagesën ose kërkesën dhe ndjekjen në CRM.', signal: 'Përdorimi social është i lartë. Faqet e zotëruara dhe shitja online mbeten dukshëm më poshtë.', faqs: [['A na duhet faqe e re nëse Instagram sjell klientë?', 'Jo automatikisht. Fillimisht diagnostikojmë ku humbet kërkesa mes zbulimit, besimit, kontaktit, porosisë dhe ndjekjes.'], ['A duhet dyqani shqiptar të mbështesë pagesën në dorëzim?', 'Kur kategoria dhe operacioni e kërkojnë, po. Integrojmë opsione karte/POS me ofrues të miratuar dhe ruajmë rrugë të asistuara.'], ['A garantoni renditje në Google ose citime AI?', 'Jo. Ndërtojmë bazën teknike, editoriale dhe të provave, pastaj masim dukshmërinë dhe veprimet e kualifikuara.'], ['Me cilat gjuhë duhet të nisim?', 'Shqip për besimin dhe kërkimin lokal; anglisht për turizmin, diasporën, eksportuesit dhe shërbimet ndërkombëtare.'], ['Sa zgjat projekti?', 'Varet nga përmbajtja, integrimet, miratimet, gjuhët dhe gatishmëria operative. Afatet përcaktohen pas diagnostikimit.']] },
@@ -383,11 +407,178 @@ const marketSpecific: Record<MarketSlug, Record<MarketLang, Pick<MarketCopy, 'ti
   },
 };
 
+
+const localizedCommonCopy: Record<'ro' | 'bg', Omit<MarketCopy, 'title' | 'description' | 'eyebrow' | 'headline' | 'headlineAccent' | 'intro' | 'signal' | 'facts' | 'sectors' | 'faqs'>> = {
+  ro: {
+    primaryCta: 'Rulează diagnosticul regional', secondaryCta: 'Vezi dovezile pieței', signalLabel: 'Semnal de piață verificat',
+    gapTitle: 'Diferența de piață, în cifre.', gapIntro: 'Folosim surse nominale și datate și păstrăm contextul fiecărei cifre. Fără volume de căutare inventate și fără estimări de piață nesusținute.',
+    opportunityTitle: 'Oportunitatea comercială', opportunityCopy: 'Construiește cel mai mic sistem propriu care închide pierderea reală de cerere: descoperire, încredere, conversie, captarea lead-urilor, follow-up sau operațiuni de tranzacție.',
+    playbookTitle: 'Playbook-uri prioritare pentru piață', playbookIntro: 'Nu traducem o listă generică de servicii. Fiecare playbook pornește de la comportamentul de cumpărare al sectorului, constrângerile operaționale și nivelul de dovezi necesar.',
+    systemTitle: 'Atrage. Convertește. Operează.', systemIntro: 'Fiecare proiect este proiectat ca un lanț de handoff-uri responsabile, nu ca o colecție de canale separate.',
+    acquire: 'Fii găsit pentru problema pe care o rezolvi.', acquireCopy: 'Arhitectură de intenție în limba locală, SEO tehnic, conținut answer-first și landing pages plătite conectate la cerere măsurabilă.',
+    convert: 'Transformă atenția într-o acțiune comercială.', convertCopy: 'Dovezi de încredere, oferte clare, UX mobil, plăți locale sau trasee de cumpărare asistată și măsurare la nivel de eveniment.',
+    operate: 'Păstrează lead-ul și învățarea.', operateCopy: 'CRM simplu, atribuirea sursei, responsabilitate pentru răspuns, dashboard-uri și automatizare controlată după stabilizarea procesului.',
+    evidenceTitle: 'Dovezi înainte de afirmații de agenție.', evidenceCopy: 'Fiecare statistică are legătură către sursa sa. Cererea din căutare este validată după lansare prin Search Console, date de campanie și conversații de vânzări, nu prezentată ca fapt înainte de măsurare.',
+    evidenceNote: 'Rezultatele proiectelor sunt publicate doar când există date sursă și permisiunea clientului.', faqTitle: 'Întrebări puse de cumpărătorii serioși', faqIntro: 'Răspunsuri directe, dependențe explicite și fără promisiuni de durată fixă.',
+    ctaTitle: 'Mapează primul sistem potrivit.', ctaCopy: 'Identificăm piața, sectorul, pierderea comercială, constrângerile operaționale și dovezile necesare înainte de definirea scope-ului.', sourceLabel: 'Deschide sursa',
+  },
+  bg: {
+    primaryCta: 'Стартирайте регионалната диагностика', secondaryCta: 'Вижте пазарните доказателства', signalLabel: 'Потвърден пазарен сигнал',
+    gapTitle: 'Пазарният пропуск, в числа.', gapIntro: 'Използваме именувани и датирани източници и запазваме контекста на всяка стойност. Без измислен search volume и без неподкрепени твърдения за размера на пазара.',
+    opportunityTitle: 'Търговската възможност', opportunityCopy: 'Изградете най-малката собствена система, която затваря реалния пропуск в търсенето: discovery, trust, conversion, lead capture, follow-up или transaction operations.',
+    playbookTitle: 'Приоритетни пазарни playbook-и', playbookIntro: 'Не превеждаме една обща листа с услуги. Всеки playbook започва от поведението на купувачите, оперативните ограничения и нужните доказателства.',
+    systemTitle: 'Привличане. Конверсия. Операции.', systemIntro: 'Всеки проект е проектиран като отговорни handoff-и, а не като колекция от несвързани канали.',
+    acquire: 'Бъдете откривани за проблема, който решавате.', acquireCopy: 'Архитектура на local-language intent, technical SEO, answer-first content и платени landing pages, свързани с измеримо търсене.',
+    convert: 'Превърнете вниманието в търговско действие.', convertCopy: 'Доказателства за доверие, ясни оферти, mobile UX, локални плащания или assisted-buying пътеки и event-level measurement.',
+    operate: 'Запазете lead-а и наученото.', operateCopy: 'Lean CRM, source attribution, ownership на отговора, dashboard-и и контролирана automation след стабилизиране на процеса.',
+    evidenceTitle: 'Доказателства преди agency claims.', evidenceCopy: 'Всяка статистика води към източника си. Search demand се валидира след launch чрез Search Console, campaign data и sales conversations, а не се представя като факт преди измерване.',
+    evidenceNote: 'Project results се публикуват само когато има source data и разрешение от клиента.', faqTitle: 'Въпроси, които задават сериозните купувачи', faqIntro: 'Директни отговори, ясни зависимости и без обещания за фиксиран срок.',
+    ctaTitle: 'Картографирайте правилната първа система.', ctaCopy: 'Определяме пазара, сектора, търговския пропуск, оперативните ограничения и нужните доказателства преди дефиниране на scope.', sourceLabel: 'Отвори източника',
+  },
+};
+
+const localizedMarketSpecific: Record<MarketSlug, Record<'ro' | 'bg', Pick<MarketCopy, 'title' | 'description' | 'eyebrow' | 'headline' | 'headlineAccent' | 'intro' | 'signal' | 'faqs'>>> = {
+  albania: {
+    ro: { title: 'Sisteme de Creștere Digitală pentru companii albaneze — QCT Studio', description: 'Website-uri bilingve, commerce, SEO, CRM și sisteme AI practice pentru modul în care companiile albaneze atrag, convertesc și operează.', eyebrow: 'Sistem de piață: Albania', headline: 'Transformă cererea socială într-un', headlineAccent: 'sistem albanez de creștere pe care îl deții.', intro: 'Pentru companiile consolidate din Albania, oportunitatea nu este încă un profil social. Este un sistem bilingv și măsurabil care conectează discovery, încrederea, WhatsApp, plata sau solicitarea și follow-up-ul în CRM.', signal: 'Adopția socială este ridicată. Website-urile proprii și vânzarea online rămân semnificativ mai jos.', faqs: [['Avem nevoie de un website nou dacă Instagram aduce deja clienți?', 'Nu automat. Mai întâi diagnosticăm unde se pierde cererea între discovery, încredere, solicitare, comandă și follow-up.'], ['Un magazin albanez ar trebui să accepte plata la livrare?', 'Da, atunci când categoria și operațiunile comerciantului o cer. Opțiunile card/POS sunt evaluate cu furnizori aprobați, păstrând trasee asistate când este necesar.'], ['Puteți garanta poziții Google sau citări AI?', 'Nu. Construim baza tehnică, de conținut și dovezi, apoi măsurăm vizibilitatea indexată și acțiunile calificate.'], ['Cu ce limbi ar trebui să lansăm?', 'Albaneza servește încrederea și căutarea locală; engleza este importantă pentru turism, diaspora, exportatori și servicii internaționale.'], ['Cât durează proiectul?', 'Durata depinde de conținut, integrări, aprobări, limbi și pregătirea operațională. Etapele se definesc după diagnostic.']] },
+    bg: { title: 'Дигитални системи за растеж за албански компании — QCT Studio', description: 'Двуезични сайтове, commerce, SEO, CRM и практични AI системи за начина, по който албанските компании привличат и конвертират търсене.', eyebrow: 'Пазарна система: Албания', headline: 'Превърнете social demand в', headlineAccent: 'собствена албанска система за растеж.', intro: 'За утвърдените компании в Албания възможността не е още един social profile. Тя е двуезична, измерима търговска система, която свързва discovery, trust, WhatsApp, payment или enquiry и CRM follow-up.', signal: 'Social adoption е висока. Собствените сайтове и online selling остават значително по-ниски.', faqs: [['Нужен ли ни е нов сайт, ако Instagram вече носи клиенти?', 'Не автоматично. Първо диагностицираме къде се губи търсенето между discovery, trust, enquiry, order и follow-up.'], ['Трябва ли албанският магазин да поддържа наложен платеж?', 'Когато категорията и операциите го изискват — да. Card/POS опциите се планират с одобрени доставчици и се запазват assisted paths, когато са нужни.'], ['Можете ли да гарантирате Google rankings или AI citations?', 'Не. Изграждаме техническата, content и evidence основа и след това измерваме видимостта и квалифицираните действия.'], ['С кои езици да стартираме?', 'Албанският обслужва local trust и search; английският е важен за tourism, diaspora, exporters и international services.'], ['Колко време отнема проектът?', 'Зависи от съдържанието, интеграциите, одобренията, езиците и operational readiness. Milestones се определят след диагностиката.']] },
+  },
+  'north-macedonia': {
+    ro: { title: 'Sisteme de Creștere Digitală pentru companii din Macedonia de Nord — QCT Studio', description: 'Website-uri multilingve, e-commerce, SEO, CRM și automatizare practică pentru companii consolidate din Macedonia de Nord.', eyebrow: 'Sistem de piață: Macedonia de Nord', headline: 'Transformă conectivitatea într-un', headlineAccent: 'sistem de vânzări multilingv și credibil.', intro: 'Macedonia de Nord este bine conectată, dar e-sales la nivel de companii rămân în urmă. QCT construiește sisteme în macedoneană, albaneză și engleză care reduc fricțiunea de încredere, simplifică operațiunile și fac fiecare solicitare măsurabilă.', signal: 'Conectivitatea este matură. E-sales și capacitatea digitală internă rămân diferențele mai importante.', faqs: [['Avem nevoie de macedoneană, albaneză și engleză?', 'Pentru multe companii locale, din turism și export, da. Prioritizăm limbile după public și intenția comercială și evităm traducerile superficiale.'], ['Puteți afișa badge-ul Verified E-Seller?', 'Doar după aprobarea comerciantului eligibil de către organizația responsabilă. Putem construi module de încredere pregătite pentru conformitate, fără a sugera autorizare.'], ['Un magazin online poate vinde imediat în străinătate?', 'Nu doar prin design. Shipping-ul, vama, acquiring-ul, schimbul valutar, retururile și costul final trebuie validate piață cu piață.'], ['Puteți garanta ranking sau vânzări?', 'Nu. Garantăm doar munca, controalele de calitate și implementarea măsurării convenite, nu rezultatele controlate de piețe sau platforme.'], ['Cât durează implementarea?', 'Depinde de limbi, catalog, integrări de plată și livrare, conținut și aprobări. Milestones urmează după diagnostic.']] },
+    bg: { title: 'Дигитални системи за растеж за компании в Северна Македония — QCT Studio', description: 'Многоезични сайтове, e-commerce, SEO, CRM и практична automation за утвърдени компании в Северна Македония.', eyebrow: 'Пазарна система: Северна Македония', headline: 'Превърнете connectivity в', headlineAccent: 'надеждна многоезична sales система.', intro: 'Северна Македония е свързана, но enterprise e-sales изостават. QCT изгражда системи на македонски, албански и английски, които намаляват trust friction, опростяват operations и правят всяко enquiry измеримо.', signal: 'Connectivity е зряла. Enterprise e-sales и вътрешният digital capacity остават по-големите пропуски.', faqs: [['Нужни ли са македонски, албански и английски?', 'За много местни, tourism и export компании — да. Приоритизираме езиците според audience и commercial intent и не публикуваме thin translations.'], ['Можете ли да показвате Verified E-Seller badge?', 'Само след одобрение на допустимия merchant от отговорната асоциация. Можем да изградим compliance-ready trust modules, без да внушаваме authorization.'], ['Може ли online store да продава веднага в чужбина?', 'Не само чрез design. Shipping, customs, acquiring, exchange, returns и landed costs трябва да се валидират за всеки пазар.'], ['Можете ли да гарантирате rankings или sales?', 'Не. Гарантираме само договорената работа, quality controls и measurement implementation, не резултати, контролирани от пазари или платформи.'], ['Колко време отнема implementation?', 'Зависи от езиците, каталога, payment и delivery integrations, съдържанието и одобренията. Milestones следват диагностиката.']] },
+  },
+  kosovo: {
+    ro: { title: 'Sisteme de Creștere Digitală pentru companii din Kosovo — QCT Studio', description: 'Website-uri multilingve, commerce, SEO, CRM și sisteme AI practice care transformă cererea socială în canale proprii măsurabile.', eyebrow: 'Sistem de piață: Kosovo', headline: 'Transformă atenția socială într-un', headlineAccent: 'sistem comercial propriu și măsurabil.', intro: 'Kosovo este foarte conectat și puternic orientat spre social. Oportunitatea este să muți o parte din cerere în canale proprii: catalog, website, e-commerce, booking, WhatsApp și CRM cu măsurare reală.', signal: 'Accesul la internet și utilizarea socială sunt ridicate, dar website-urile proprii și online sales rămân mult mai jos.', faqs: [['Dacă vânzăm prin Instagram și WhatsApp, mai avem nevoie de website?', 'Nu automat de un website mare. Dar un canal propriu poate organiza produsele, dovezile, comenzile, tracking-ul și datele de client într-un mod pe care platformele sociale nu îl oferă.'], ['Ar trebui să pornim direct cu e-commerce complet?', 'Doar dacă plățile, livrarea, retururile și operațiunile sunt pregătite. Uneori catalogul și assisted ordering sunt primul pas mai bun.'], ['Ce limbi sunt prioritare?', 'Albaneza este esențială pentru piața locală. Engleza este importantă pentru diaspora, tourism, ICT/BPO și export.'], ['Puteți automatiza vânzările cu AI?', 'Doar procese bine definite și cu limite clare. Începem cu un workflow controlat, review uman și criteriu de succes.'], ['Puteți estima cererea înainte de lansare?', 'Putem folosi surse publice și date de campanie, dar nu prezentăm search volume sau market size nevalidate ca adevăr.']] },
+    bg: { title: 'Дигитални системи за растеж за компании в Косово — QCT Studio', description: 'Многоезични сайтове, commerce, SEO, CRM и практични AI системи, които превръщат social demand в измерими собствени канали.', eyebrow: 'Пазарна система: Косово', headline: 'Превърнете social attention в', headlineAccent: 'собствена измерима търговска система.', intro: 'Косово е силно свързано и social-first. Възможността е част от търсенето да се премести в owned channels: каталог, website, e-commerce, booking, WhatsApp и CRM с реално measurement.', signal: 'Internet access и social usage са високи, но собствените сайтове и online sales остават много по-ниски.', faqs: [['Ако продаваме през Instagram и WhatsApp, нужен ли е сайт?', 'Не автоматично голям сайт. Но owned channel може да организира products, proof, orders, tracking и customer data по начин, който social платформите не дават.'], ['Трябва ли да започнем директно с full e-commerce?', 'Само ако payments, delivery, returns и operations са готови. Понякога каталог и assisted ordering са по-добрият първи ход.'], ['Кои езици са приоритетни?', 'Албанският е ключов за local market. Английският е важен за diaspora, tourism, ICT/BPO и export.'], ['Можете ли да автоматизирате продажбите с AI?', 'Само добре дефинирани процеси с ясни граници. Започваме с контролирана workflow, human review и критерий за успех.'], ['Можете ли да оцените demand преди launch?', 'Можем да използваме public sources и campaign data, но не представяме невалидирани search volumes или market size като факт.']] },
+  },
+  serbia: {
+    ro: { title: 'Sisteme de Creștere Digitală pentru companii din Serbia — QCT Studio', description: 'Conversie, commerce, SEO, CRM și AI practic pentru a transforma website-urile existente din Serbia în infrastructură de creștere măsurabilă.', eyebrow: 'Sistem de piață: Serbia', headline: 'Transformă website-ul existent într-un', headlineAccent: 'sistem comercial măsurabil.', intro: 'Serbia nu are nevoie de încă un mesaj generic de tip „intră online”. Majoritatea companiilor au deja website. Oportunitatea este conversia, plățile locale, încrederea în limba sârbă, operațiunile CRM și automatizarea controlată.', signal: 'Prezența pe web este răspândită. Web sales și adoptarea practică a AI rămân semnificativ mai jos.', faqs: [['Avem deja website. De ce să îl reconstruim?', 'Doar când website-ul actual pierde cerere măsurabilă prin poziționare, viteză, conversie, search architecture, plată, tracking sau operațiuni de lead.'], ['Ce metode locale de plată ar trebui să suportăm?', 'Depinde de banca acquiring, categorie, settlement în RSD, disponibilitatea IPS, fluxurile fiscale/contabile și retururi. Validăm dependențele înainte de arhitectură.'], ['Sârbă latină sau chirilică?', 'Sârba latină este un default comercial practic în multe sectoare, cu diacritice corecte. Monitorizăm și variantele chirilice în funcție de public și brand.'], ['Poate AI automatiza echipa de vânzări?', 'Nu responsabil ca promisiune generală. Începem cu un workflow limitat, review uman, logs, limite de date și criteriu de succes sau oprire.'], ['Puteți promite o durată fixă de lansare?', 'Nu fără a cunoaște catalogul, integrările, conținutul, limbile și aprobările. Definim milestones după diagnostic.']] },
+    bg: { title: 'Дигитални системи за растеж за компании в Сърбия — QCT Studio', description: 'Conversion, commerce, SEO, CRM и practical AI, които превръщат съществуващите сръбски сайтове в измерима growth infrastructure.', eyebrow: 'Пазарна система: Сърбия', headline: 'Превърнете съществуващия сайт в', headlineAccent: 'измерима търговска система.', intro: 'Сърбия не се нуждае от базово „go online“ послание. Повечето компании вече имат сайт. Възможността е в conversion, local payments, trust на сръбски, CRM operations и bounded automation.', signal: 'Website adoption е широко разпространена. Web sales и practical AI adoption остават значително по-ниски.', faqs: [['Вече имаме сайт. Защо да го rebuild-ваме?', 'Само когато текущият сайт губи измеримо търсене чрез positioning, speed, conversion, search architecture, payment, tracking или lead operations.'], ['Кои local payment methods да поддържаме?', 'Зависи от acquiring bank, категорията, RSD settlement, IPS availability, fiscal/accounting flows и refunds. Валидираме зависимостите преди архитектурата.'], ['Сръбска латиница или кирилица?', 'Латиницата е практичен commercial default за много сектори с правилни диакритични знаци. Следим и Cyrillic search variants според audience и brand.'], ['Може ли AI да автоматизира sales team?', 'Не като общо обещание. Започваме с bounded workflow, human review, logs, data boundaries и success/stop criterion.'], ['Можете ли да обещаете фиксиран launch срок?', 'Не без да знаем catalogue, integrations, content, languages и approvals. Дефинираме accountable milestones след диагностиката.']] },
+  },
+};
+
+const localizedFacts: Record<MarketSlug, Record<'ro' | 'bg', Fact[]>> = {
+  albania: {
+    ro: [
+      { value:'99,3% / 57,7%', label:'acces la internet / website de companie', context:'Companii cu 10+ angajați, 2024. Conectivitatea nu este problema principală; prezența comercială proprie este.', source:'INSTAT, sondaj ICT pentru companii, 2024', sourceUrl:sourceUrls.albaniaIct },
+      { value:'83,1% / 24,5%', label:'social media / vânzare online', context:'Vizibilitatea socială depășește semnificativ maturitatea tranzacțională.', source:'INSTAT, sondaj ICT pentru companii, 2024', sourceUrl:sourceUrls.albaniaIct },
+      { value:'21,6%', label:'ponderea turismului în PIB', context:'Turismul este un motor major al cererii multilingve, dar dependența de platforme și sezonalitatea rămân.', source:'OECD, politica de turism Albania, 2024', sourceUrl:sourceUrls.albaniaTourism },
+      { value:'+27,61%', label:'creșterea anuală a terminalelor POS', context:'Plățile digitale se extind, în timp ce numerarul rămâne relevant comercial.', source:'Banca Albaniei, Raport anual 2024', sourceUrl:sourceUrls.albaniaPayments },
+    ],
+    bg: [
+      { value:'99,3% / 57,7%', label:'internet access / фирмен сайт', context:'Компании с 10+ служители, 2024. Connectivity не е основният пропуск; собственото търговско присъствие е.', source:'INSTAT enterprise ICT survey, 2024', sourceUrl:sourceUrls.albaniaIct },
+      { value:'83,1% / 24,5%', label:'social media / online selling', context:'Social visibility значително изпреварва transactional maturity.', source:'INSTAT enterprise ICT survey, 2024', sourceUrl:sourceUrls.albaniaIct },
+      { value:'21,6%', label:'дял на туризма в БВП', context:'Tourism е голям двигател на многоезично търсене, но platform dependency и seasonality остават.', source:'OECD Albania tourism policy, 2024', sourceUrl:sourceUrls.albaniaTourism },
+      { value:'+27,61%', label:'годишен ръст на POS терминалите', context:'Digital payments се разширяват, докато cash остава търговски релевантен.', source:'Bank of Albania Annual Report 2024', sourceUrl:sourceUrls.albaniaPayments },
+    ],
+  },
+  'north-macedonia': {
+    ro: [
+      { value:'90,8%', label:'gospodării cu acces la internet', context:'Accesul este matur; execuția comercială și competențele sunt straturile limitative.', source:'Comisia Europeană, Raport Macedonia de Nord 2025', sourceUrl:sourceUrls.macedoniaReport },
+      { value:'8,3%', label:'companii care fac e-sales', context:'Ultimul baseline comparabil este 2022; UE-27 a fost 22,8%.', source:'Western Balkan E-commerce Report 2024', sourceUrl:sourceUrls.macedoniaEcommerce },
+      { value:'72.181', label:'companii active', context:'Aproximativ 90% erau micro sau fără un număr stabilit de angajați; calificarea este esențială.', source:'Oficiul de Statistică, anuar 2025', sourceUrl:sourceUrls.macedoniaStats },
+      { value:'76,9%', label:'exporturi de bunuri către UE', context:'Companiile orientate spre export au nevoie de dovezi tehnice în engleză și trasee RFQ structurate.', source:'Comisia Europeană, Raport 2025', sourceUrl:sourceUrls.macedoniaReport },
+    ],
+    bg: [
+      { value:'90,8%', label:'домакинства с internet access', context:'Access е зрял; commercial execution и skills са ограничаващите слоеве.', source:'European Commission North Macedonia Report 2025', sourceUrl:sourceUrls.macedoniaReport },
+      { value:'8,3%', label:'компании с e-sales', context:'Последният сравним baseline е 2022; EU-27 е 22,8%.', source:'Western Balkan E-commerce Report 2024', sourceUrl:sourceUrls.macedoniaEcommerce },
+      { value:'72 181', label:'активни предприятия', context:'Около 90% са micro или без установен брой служители; qualification е ключова.', source:'State Statistical Office yearbook 2025', sourceUrl:sourceUrls.macedoniaStats },
+      { value:'76,9%', label:'износ на стоки към ЕС', context:'Export-facing компаниите се нуждаят от English technical proof и structured RFQ journeys.', source:'European Commission North Macedonia Report 2025', sourceUrl:sourceUrls.macedoniaReport },
+    ],
+  },
+  kosovo: {
+    ro: [
+      { value:'98,6%', label:'gospodării cu acces la internet', context:'Kosovo este conectat; diferența comercială apare după acces.', source:'OECD Kosovo digital society, 2024', sourceUrl:sourceUrls.kosovoDigital },
+      { value:'40%', label:'companii cu website', context:'Utilizarea internetului de către companii era 97,1%, ceea ce face maturitatea canalului propriu diferența mai clară.', source:'OECD Kosovo digital society, 2024', sourceUrl:sourceUrls.kosovoDigital },
+      { value:'76,1% / 4,8%', label:'social media / online sales', context:'Atenția este socială; tranzacțiile și măsurarea rămân limitate.', source:'OECD Kosovo digital society, 2024', sourceUrl:sourceUrls.kosovoDigital },
+      { value:'94,8%', label:'utilizatori care accesează prin smartphone', context:'Fiecare traseu trebuie să fie rapid, concis și pregătit pentru mesagerie pe mobil.', source:'OECD Kosovo digital society, 2024', sourceUrl:sourceUrls.kosovoDigital },
+    ],
+    bg: [
+      { value:'98,6%', label:'домакинства с internet access', context:'Косово е свързано; commercial gap идва след access.', source:'OECD Kosovo digital society, 2024', sourceUrl:sourceUrls.kosovoDigital },
+      { value:'40%', label:'компании със сайт', context:'Enterprise internet use е 97,1%, което прави owned-channel maturity по-ясния пропуск.', source:'OECD Kosovo digital society, 2024', sourceUrl:sourceUrls.kosovoDigital },
+      { value:'76,1% / 4,8%', label:'social media / online sales', context:'Attention е social; transactions и measurement остават ограничени.', source:'OECD Kosovo digital society, 2024', sourceUrl:sourceUrls.kosovoDigital },
+      { value:'94,8%', label:'потребители през smartphone', context:'Всеки journey трябва да бъде бърз, ясен и message-ready на mobile.', source:'OECD Kosovo digital society, 2024', sourceUrl:sourceUrls.kosovoDigital },
+    ],
+  },
+  serbia: {
+    ro: [
+      { value:'85,0% / 28,4%', label:'website de companie / web sales', context:'Diferența Serbiei nu este prezența. Este performanța comercială a website-urilor existente.', source:'SORS Usage of ICT 2024', sourceUrl:sourceUrls.serbiaIct },
+      { value:'53,6%', label:'persoane care cumpără online', context:'Ponderea celor care au cumpărat în ultimele trei luni din 2025; cumpărăturile online sunt mainstream.', source:'SORS e-commerce time series, 2025', sourceUrl:sourceUrls.serbiaEcommerce },
+      { value:'110,6 mil.', label:'tranzacții de cumpărare online', context:'Tranzacții online cu card și e-money în 2025, +34,3% față de anul anterior.', source:'Banca Națională a Serbiei, plăți 2025', sourceUrl:sourceUrls.serbiaPayments },
+      { value:'7,0%', label:'companii care folosesc AI', context:'Automatizarea practică și controlată este un punct de intrare mai solid decât teatrul transformării.', source:'SORS Usage of ICT 2024', sourceUrl:sourceUrls.serbiaIct },
+    ],
+    bg: [
+      { value:'85,0% / 28,4%', label:'фирмен сайт / web sales', context:'Пропускът в Сърбия не е presence. Той е commercial performance на съществуващите сайтове.', source:'SORS Usage of ICT 2024', sourceUrl:sourceUrls.serbiaIct },
+      { value:'53,6%', label:'хора, които купуват online', context:'Дял на купувалите през предходните три месеца през 2025; online buying е mainstream.', source:'SORS e-commerce time series, 2025', sourceUrl:sourceUrls.serbiaEcommerce },
+      { value:'110,6 млн.', label:'online purchase transactions', context:'Card и e-money online transactions през 2025, +34,3% годишно.', source:'National Bank of Serbia, 2025 payments', sourceUrl:sourceUrls.serbiaPayments },
+      { value:'7,0%', label:'предприятия, използващи AI', context:'Practical bounded automation е по-силна entry point от transformation theatre.', source:'SORS Usage of ICT 2024', sourceUrl:sourceUrls.serbiaIct },
+    ],
+  },
+};
+
+const localizedSectors: Record<MarketSlug, Record<'ro' | 'bg', Sector[]>> = {
+  albania: {
+    ro: [
+      { name:'Hospitality și turism', need:'Cerere directă, discovery multilingv și vizibilitate în afara sezonului.', system:'Arhitectură bilingvă de destinație, solicitare/rezervare directă, hărți, review-uri și follow-up CRM.' },
+      { name:'Retail și commerce specializat', need:'Traficul social există, dar încrederea, plata și livrarea încă pierd cerere.', system:'Catalog/magazin mobil, opțiuni card sau asistate, claritate pentru livrare/retur și lifecycle de client.' },
+      { name:'Imobiliare și construcții', need:'Dovezile de proiect și solicitările diasporei sunt adesea fragmentate între canale.', system:'Portofoliu, pagini de proiect, trasee pentru cumpărători în engleză, calificare WhatsApp și pipeline routing.' },
+      { name:'Exportatori și servicii profesionale', need:'Cumpărătorii internaționali cer dovezi credibile în engleză și pași următori clari.', system:'Conținut de autoritate, capabilități, case evidence, fluxuri RFQ și CRM cu sursa urmărită.' },
+    ],
+    bg: [
+      { name:'Hospitality и tourism', need:'Direct demand, многоезично discovery и off-season visibility.', system:'Двуезична destination architecture, direct enquiry/booking, maps, reviews и CRM follow-up.' },
+      { name:'Retail и specialty commerce', need:'Social traffic съществува, но trust, payment и delivery все още губят demand.', system:'Mobile catalogue/store, card или assisted options, ясни delivery/returns правила и customer lifecycle.' },
+      { name:'Имоти и строителство', need:'Project proof и diaspora enquiries често са фрагментирани между канали.', system:'Portfolio, project pages, English buyer paths, WhatsApp qualification и pipeline routing.' },
+      { name:'Exporters и professional firms', need:'International buyers изискват credible English proof и ясни next steps.', system:'Authority content, capabilities, case evidence, RFQ flows и source-tracked CRM.' },
+    ],
+  },
+  'north-macedonia': {
+    ro: [
+      { name:'Retail și branduri omnichannel', need:'E-sales rămân în urmă, iar încrederea, plata la livrare și fulfilment-ul modelează conversia.', system:'Module de încredere verificate, discovery pentru plăți locale, logică de livrare, WhatsApp și CRM.' },
+      { name:'Hospitality și turism', need:'Cererea locală și a vizitatorilor are nevoie de trasee multilingve cu fricțiune redusă.', system:'Discovery în macedoneană, albaneză și engleză, booking/enquiry, local SEO și follow-up.' },
+      { name:'Producători și exportatori', need:'Companiile orientate spre UE au nevoie de dovezi tehnice structurate și lead-uri de distribuitor.', system:'Capabilități English-first, catalog tehnic, RFQ routing și distributor CRM.' },
+      { name:'Sănătate și servicii profesionale', need:'Solicitările high-intent cer încredere, potrivire de limbă și răspuns fiabil.', system:'Pagini de expertiză, local discovery, captare de programări/consultații și response SLA.' },
+    ],
+    bg: [
+      { name:'Retail и omnichannel brands', need:'E-sales изостават, докато trust, cash-on-delivery и fulfilment оформят conversion.', system:'Verified-trust modules, local payment discovery, delivery logic, WhatsApp и CRM.' },
+      { name:'Hospitality и tourism', need:'Многоезичното local и visitor demand се нуждае от booking paths с ниско friction.', system:'Macedonian, Albanian и English discovery, booking/enquiry, local SEO и follow-up.' },
+      { name:'Manufacturing и exporters', need:'EU-facing компаниите се нуждаят от structured technical evidence и distributor leads.', system:'English-first capabilities, technical catalogue, RFQ routing и distributor CRM.' },
+      { name:'Health и professional services', need:'High-intent enquiries изискват trust, language fit и reliable response.', system:'Expertise pages, local discovery, appointment/consultation capture и response SLA.' },
+    ],
+  },
+  kosovo: {
+    ro: [
+      { name:'Retail și social sellers', need:'Atenția socială este puternică; datele proprii despre produse, comenzi și clienți sunt slabe.', system:'Catalog/magazin mobil, assisted ordering, livrare/retur, tracking și segmente CRM.' },
+      { name:'Turism și hospitality', need:'Diaspora și vizitatorii au nevoie de trasee directe multilingve și dovezi locale.', system:'Discovery albaneză/engleză, hărți, review-uri, booking/enquiry și WhatsApp concierge.' },
+      { name:'Imobiliare și construcții', need:'Investițiile diasporei și interesul pentru proiecte cer calificare structurată.', system:'Dovezi de proiect, pagini de proprietăți, trasee de vizionare/consultație și lead routing.' },
+      { name:'ICT, BPO și exportatori', need:'Companiile internaționale depind prea mult de recomandări și au nevoie de buyer-grade proof.', system:'Poziționare în engleză, case studies, account pages, RFQ/consultație și pipeline CRM.' },
+    ],
+    bg: [
+      { name:'Retail и social sellers', need:'Social attention е силно; owned product, order и customer data са слаби.', system:'Mobile catalogue/store, assisted ordering, delivery/returns, tracking и CRM segments.' },
+      { name:'Tourism и hospitality', need:'Diaspora и visitor demand се нуждаят от многоезични direct paths и local proof.', system:'Albanian/English discovery, maps, reviews, booking/enquiry и WhatsApp concierge.' },
+      { name:'Имоти и строителство', need:'Diaspora investment и project interest изискват structured qualification.', system:'Project evidence, property pages, viewing/consultation flows и lead routing.' },
+      { name:'ICT, BPO и exporters', need:'International firms разчитат прекалено на referrals и се нуждаят от buyer-grade proof.', system:'English positioning, case studies, account pages, RFQ/consultation и pipeline CRM.' },
+    ],
+  },
+  serbia: {
+    ro: [
+      { name:'Retail și distribuție', need:'Website-urile existente au nevoie de conversie mai bună, plăți locale și operațiuni de catalog.', system:'Commerce rebuild, discovery pentru RSD/plăți, product feeds, lifecycle CRM și analytics.' },
+      { name:'Turism și hospitality', need:'Cererea internațională mare necesită trasee directe sârbă-engleză.', system:'Arhitectură booking/enquiry, local discovery, reputation proof și guest follow-up.' },
+      { name:'Clinici și servicii cu programare', need:'Cererea locală high-value are nevoie de expertiză, încredere și răspuns responsabil.', system:'SEO pentru servicii/locații, practitioner proof, captare consent-aware și lead attribution.' },
+      { name:'Producători și exportatori B2B', need:'Penetrarea mare a website-urilor ascunde buyer enablement și operațiuni de lead slabe.', system:'Dovezi tehnice sârbă-engleză, specificații, fluxuri distributor/RFQ și sales CRM.' },
+    ],
+    bg: [
+      { name:'Retail и distribution', need:'Съществуващите сайтове се нуждаят от по-добра conversion, local payments и catalogue operations.', system:'Commerce rebuild, RSD/payment discovery, product feeds, lifecycle CRM и analytics.' },
+      { name:'Tourism и hospitality', need:'Голямото international demand изисква Serbian-English direct journeys.', system:'Booking/enquiry architecture, local discovery, reputation proof и guest follow-up.' },
+      { name:'Clinics и appointment services', need:'High-value local demand изисква expertise, trust и accountable response.', system:'Service/location SEO, practitioner proof, consent-aware capture и lead attribution.' },
+      { name:'Manufacturers и B2B exporters', need:'Високото website penetration прикрива слаб buyer enablement и lead operations.', system:'Serbian-English technical proof, specifications, distributor/RFQ flows и sales CRM.' },
+    ],
+  },
+};
+
 const factSets: Record<MarketSlug, Record<MarketLang, Fact[]>> = {
-  albania: Object.fromEntries(Object.entries(albaniaFacts).map(([lang, facts]) => [lang, normalizeFacts(facts)])) as Record<MarketLang, Fact[]>,
-  'north-macedonia': Object.fromEntries(Object.entries(macedoniaFacts).map(([lang, facts]) => [lang, normalizeFacts(facts)])) as Record<MarketLang, Fact[]>,
-  kosovo: Object.fromEntries(Object.entries(kosovoFacts).map(([lang, facts]) => [lang, normalizeFacts(facts)])) as Record<MarketLang, Fact[]>,
-  serbia: Object.fromEntries(Object.entries(serbiaFacts).map(([lang, facts]) => [lang, normalizeFacts(facts)])) as Record<MarketLang, Fact[]>,
+  albania: { ...Object.fromEntries(Object.entries(albaniaFacts).map(([lang, facts]) => [lang, normalizeFacts(facts)])), ...localizedFacts.albania } as Record<MarketLang, Fact[]>,
+  'north-macedonia': { ...Object.fromEntries(Object.entries(macedoniaFacts).map(([lang, facts]) => [lang, normalizeFacts(facts)])), ...localizedFacts['north-macedonia'] } as Record<MarketLang, Fact[]>,
+  kosovo: { ...Object.fromEntries(Object.entries(kosovoFacts).map(([lang, facts]) => [lang, normalizeFacts(facts)])), ...localizedFacts.kosovo } as Record<MarketLang, Fact[]>,
+  serbia: { ...Object.fromEntries(Object.entries(serbiaFacts).map(([lang, facts]) => [lang, normalizeFacts(facts)])), ...localizedFacts.serbia } as Record<MarketLang, Fact[]>,
 };
 
 const definitions = [
@@ -399,16 +590,19 @@ const definitions = [
 
 export const marketHubs: MarketDefinition[] = definitions.map((definition) => ({
   ...definition,
-  copy: Object.fromEntries((Object.keys(shared) as MarketLang[]).map((lang) => [lang, {
-    ...commonCopy[lang],
-    ...marketSpecific[definition.slug][lang],
-    facts: factSets[definition.slug][lang],
-    sectors: sectorSets[definition.slug][lang],
-  }])) as Record<MarketLang, MarketCopy>,
+  copy: Object.fromEntries((Object.keys(shared) as MarketLang[]).map((lang) => {
+    const localized = lang === 'ro' || lang === 'bg';
+    return [lang, {
+      ...(localized ? localizedCommonCopy[lang] : commonCopy[lang as CoreMarketLang]),
+      ...(localized ? localizedMarketSpecific[definition.slug][lang] : marketSpecific[definition.slug][lang as CoreMarketLang]),
+      facts: factSets[definition.slug][lang],
+      sectors: localized ? localizedSectors[definition.slug][lang] : sectorSets[definition.slug][lang as CoreMarketLang],
+    }];
+  })) as Record<MarketLang, MarketCopy>,
 }));
 
 export const marketSlugs = definitions.map(({ slug }) => slug);
-export const marketLanguages: MarketLang[] = ['en', 'sq', 'mk', 'sr'];
+export const marketLanguages: MarketLang[] = ['en', 'sq', 'mk', 'sr', 'ro', 'bg'];
 export { shared as marketUi };
 
 export function getMarketHub(slug: string, lang: string): MarketDefinition | undefined {
