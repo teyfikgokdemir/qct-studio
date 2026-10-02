@@ -68,9 +68,9 @@ const policyUrl = lang === 'en' ? '/cookie-policy/' : `/${lang}/cookie-policy/`;
   aria-label={c.label}
   hidden
 >
-  <div>
+  <div class="qct-cookie-consent__copy">
     <strong>{c.label}</strong>
-    <p>{analyticsDisclosure[lang] || analyticsDisclosure.en} <a href={policyUrl}>{c.policy}</a></p>
+    <p>{c.text} <a href={policyUrl}>{c.policy}</a></p>
   </div>
 
   <div class="qct-cookie-consent__actions">
@@ -118,141 +118,43 @@ const policyUrl = lang === 'en' ? '/cookie-policy/' : `/${lang}/cookie-policy/`;
 
 <style>
   .qct-cookie-consent {
-    position: fixed;
-    right: 1.25rem;
-    bottom: 1.25rem;
-    z-index: 9999;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 1.25rem;
-    width: min(680px, calc(100vw - 2.5rem));
-    padding: 1rem 1rem 1rem 1.15rem;
-    color: #f8f5ef;
-    background:
-      linear-gradient(135deg, rgba(77, 46, 98, 0.3), transparent 48%),
-      #1c181f;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-top: 2px solid #e75757;
-    border-radius: 1rem;
-    box-shadow:
-      0 24px 70px rgba(23, 21, 26, 0.3),
-      0 4px 14px rgba(23, 21, 26, 0.16);
-    backdrop-filter: blur(16px);
+    position:fixed;
+    z-index:9999;
+    right:0;
+    bottom:0;
+    left:0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    width:100%;
+    margin:0;
+    padding:.48rem clamp(1rem,3vw,2rem);
+    color:#f8f5ef;
+    background:rgba(28,24,31,.98);
+    border:0;
+    border-top:1px solid rgba(255,255,255,.14);
+    border-radius:0;
+    box-shadow:0 -10px 30px rgba(23,21,26,.24);
+    backdrop-filter:blur(14px);
   }
-
-  .qct-cookie-consent[hidden],
-  .qct-cookie-settings[hidden] {
-    display: none;
-  }
-
-  .qct-cookie-consent strong {
-    display: block;
-    margin-bottom: 0.3rem;
-    color: #fff;
-    font-size: 0.95rem;
-    line-height: 1.3;
-  }
-
-  .qct-cookie-consent p {
-    max-width: 440px;
-    margin: 0;
-    color: rgba(248, 245, 239, 0.72);
-    font-size: 0.82rem;
-    line-height: 1.55;
-  }
-
-  .qct-cookie-consent a {
-    color: rgba(248, 245, 239, 0.92);
-    text-decoration-color: rgba(231, 87, 87, 0.8);
-    text-underline-offset: 3px;
-  }
-
-  .qct-cookie-consent__actions {
-    display: flex;
-    align-items: center;
-    gap: 0.45rem;
-  }
-
-  .qct-cookie-consent button,
-  .qct-cookie-settings {
-    min-height: 42px;
-    padding: 0.65rem 0.9rem;
-    font: inherit;
-    font-size: 0.82rem;
-    font-weight: 700;
-    cursor: pointer;
-    color: rgba(248, 245, 239, 0.82);
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 999px;
-    transition:
-      color 180ms ease,
-      background 180ms ease,
-      border-color 180ms ease,
-      transform 180ms ease;
-  }
-
-  .qct-cookie-consent button:hover {
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.42);
-    transform: translateY(-1px);
-  }
-
-  .qct-cookie-consent button.is-primary {
-    color: #17151a;
-    background: #e75757;
-    border-color: #e75757;
-    box-shadow: 0 8px 24px rgba(231, 87, 87, 0.22);
-  }
-
-  .qct-cookie-consent button.is-primary:hover {
-    background: #ef6666;
-    border-color: #ef6666;
-  }
-
-  .qct-cookie-settings {
-    position: fixed;
-    bottom: 0.75rem;
-    left: 0.75rem;
-    z-index: 9998;
-    min-height: 34px;
-    padding: 0.4rem 0.65rem;
-    color: #f8f5ef;
-    background: rgba(23, 21, 26, 0.92);
-    border-color: rgba(255, 255, 255, 0.14);
-    font-size: 0.7rem;
-    backdrop-filter: blur(10px);
-  }
-
-  .qct-cookie-consent button:focus-visible,
-  .qct-cookie-settings:focus-visible,
-  .qct-cookie-consent a:focus-visible {
-    outline: 3px solid rgba(231, 87, 87, 0.45);
-    outline-offset: 3px;
-  }
-
-  @media (max-width: 760px) {
-    .qct-cookie-consent {
-      right: .65rem;
-      bottom: .65rem;
-      left: .65rem;
-      grid-template-columns: 1fr;
-      width: auto;
-      gap: .6rem;
-      padding: .78rem;
-      border-radius: .85rem;
-    }
-    .qct-cookie-consent strong { margin-bottom: .18rem; font-size: .86rem; }
-    .qct-cookie-consent p { max-width:none; font-size: .74rem; line-height: 1.38; }
-    .qct-cookie-consent__actions { display:grid; grid-template-columns:.8fr 1.2fr; gap:.4rem; }
-    .qct-cookie-consent button { width:100%; min-height:38px; padding:.5rem .72rem; font-size:.76rem; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .qct-cookie-consent button,
-    .qct-cookie-settings {
-      transition: none;
-    }
+  .qct-cookie-consent[hidden],.qct-cookie-settings[hidden]{display:none}
+  .qct-cookie-consent__copy{min-width:0;display:flex;align-items:baseline;gap:.85rem;white-space:nowrap}
+  .qct-cookie-consent strong{flex:0 0 auto;color:#fff;font-size:.76rem;line-height:1.2;font-weight:800}
+  .qct-cookie-consent p{min-width:0;margin:0;color:rgba(248,245,239,.72);font-size:.75rem;line-height:1.25;overflow:hidden;text-overflow:ellipsis}
+  .qct-cookie-consent a{color:#ff8b78;text-decoration:underline;text-underline-offset:3px}
+  .qct-cookie-consent__actions{display:flex;flex:0 0 auto;align-items:center;gap:.5rem}
+  .qct-cookie-consent button,.qct-cookie-settings{min-height:32px;padding:.38rem .78rem;font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;color:#f8f5ef;background:transparent;border:1px solid rgba(255,255,255,.18);border-radius:999px}
+  .qct-cookie-consent button.is-primary{color:#17151a;background:#e75757;border-color:#e75757;box-shadow:none}
+  .qct-cookie-consent button:hover{border-color:#ff8b78}
+  .qct-cookie-settings{position:fixed;bottom:.7rem;left:.7rem;z-index:9998;min-height:30px;padding:.34rem .62rem;background:rgba(28,24,31,.94);font-size:.7rem;backdrop-filter:blur(10px)}
+  .qct-cookie-consent button:focus-visible,.qct-cookie-settings:focus-visible,.qct-cookie-consent a:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  @media(max-width:720px){
+    .qct-cookie-consent{align-items:stretch;flex-direction:column;gap:.55rem;padding:.58rem .7rem}
+    .qct-cookie-consent__copy{display:block;white-space:normal}
+    .qct-cookie-consent strong{display:block;margin-bottom:.18rem;font-size:.86rem}
+    .qct-cookie-consent p{overflow:visible;text-overflow:clip;font-size:.76rem;line-height:1.35}
+    .qct-cookie-consent__actions{width:100%;gap:.45rem}
+    .qct-cookie-consent button{flex:1;min-height:34px;padding:.42rem .65rem;font-size:.8rem}
   }
 </style>
