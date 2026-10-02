@@ -24,7 +24,7 @@ const serviceSchema = {
   serviceType: 'Digital growth system diagnostic',
   provider: { '@id': 'https://qctstudio.com/#organization' },
   areaServed: ['Albania', 'North Macedonia', 'Kosovo', 'Serbia'].map((name) => ({ '@type': 'Country', name })),
-  availableLanguage: ['English', 'Albanian', 'Macedonian', 'Serbian'],
+  availableLanguage: ['English', 'Albanian', 'Macedonian', 'Serbian', 'Romanian', 'Bulgarian'],
 };
 ---
 <BaseLayout title={copy.title} description={copy.description} lang={lang} pageType="WebPage" breadcrumbLabel={copy.eyebrow} v2Diagnostic={true}>
@@ -35,7 +35,7 @@ const serviceSchema = {
     <a class="v2-brand" href={url('/')} aria-label="QCT Studio"><i></i>QCT <b>Studio</b></a>
     <nav id="v2-navigation" data-v2-nav aria-label="Primary navigation"><a href="#method">{copy.nav[0]}</a><a href="#outputs">{copy.nav[1]}</a><a href="#fit">{copy.nav[2]}</a></nav>
     <div class="v2-header-actions">
-      <div class="v2-languages" aria-label="Language selector">{Object.entries(languages).filter(([code]) => ['en','sq','mk','sr'].includes(code)).map(([code, label]) => <a class:list={{ 'is-current': code === lang }} href={getLocalizedUrl(code, path)} aria-current={code === lang ? 'page' : undefined} hreflang={code} lang={code} aria-label={languageNames[code as keyof typeof languageNames]}>{label}</a>)}</div>
+      <div class="v2-languages" aria-label="Language selector">{Object.entries(languages).filter(([code]) => ['en','sq','mk','sr','ro','bg'].includes(code)).map(([code, label]) => <a class:list={{ 'is-current': code === lang }} href={getLocalizedUrl(code, path)} aria-current={code === lang ? 'page' : undefined} hreflang={code} lang={code} aria-label={languageNames[code as keyof typeof languageNames]}>{label}</a>)}</div>
       <a class="v2-header-cta" href="#diagnostic-form">{copy.start} <span>→</span></a>
       <button class="v2-menu-button" type="button" data-v2-menu aria-expanded="false" aria-controls="v2-navigation"><span></span><span></span><span class="screen-reader-text">Open menu</span></button>
     </div>
