@@ -27,6 +27,8 @@ const marketCardLabels: Record<MarketLang, { need: string; system: string; sourc
   sq: { need: 'Nevoja e tregut', system: 'Sistemi QCT', source: 'Burimi' },
   mk: { need: 'Пазарна потреба', system: 'QCT систем', source: 'Извор' },
   sr: { need: 'Potreba tržišta', system: 'QCT sistem', source: 'Izvor' },
+  ro: { need: 'Nevoia pieței', system: 'Sistemul QCT', source: 'Sursa' },
+  bg: { need: 'Пазарна нужда', system: 'QCT система', source: 'Източник' },
 };
 const cardLabels = marketCardLabels[lang];
 const marketPath = `/markets/${market.slug}/`;
@@ -55,7 +57,7 @@ const serviceSchema = {
   serviceType: 'Digital growth system strategy and implementation',
   provider: { '@id': 'https://qctstudio.com/#organization' },
   areaServed: { '@type': 'Country', name: countryName, identifier: market.countryCode },
-  availableLanguage: ['English', 'Albanian', 'Macedonian', 'Serbian'],
+  availableLanguage: ['English', 'Albanian', 'Macedonian', 'Serbian', 'Romanian', 'Bulgarian'],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: copy.playbookTitle,
@@ -95,7 +97,7 @@ const serviceSchema = {
     </nav>
     <div class="v2-header-actions">
       <div class="v2-languages" aria-label="Language selector">
-        {Object.entries(languages).filter(([code]) => ['en','sq','mk','sr'].includes(code)).map(([code, label]) => (
+        {Object.entries(languages).filter(([code]) => ['en','sq','mk','sr','ro','bg'].includes(code)).map(([code, label]) => (
           <a
             class:list={{ 'is-current': code === lang }}
             href={getLocalizedUrl(code, marketPath)}
