@@ -2,7 +2,7 @@
 
 > QCT Studio builds evidence-led digital growth systems for established businesses across Albania, North Macedonia, Kosovo, Serbia, Romania and Bulgaria.
 
-QCT Studio combines market-specific websites, e-commerce, SEO/GEO/AEO, conversion journeys, CRM and practical AI automation. Work is organized around three connected layers: Acquire demand, Convert intent and Operate follow-up. Scope and delivery timing depend on the business, market and technical requirements; QCT Studio does not publish fixed-duration guarantees.
+QCT Studio combines market-specific websites, e-commerce, SEO/GEO/AEO/AIO, conversion journeys, CRM and practical AI automation. Work is organized around three connected layers: Acquire demand, Convert intent and Operate follow-up. Scope and delivery timing depend on the business, market and technical requirements; QCT Studio does not publish fixed-duration guarantees.
 
 ## Primary market hubs
 
@@ -11,7 +11,7 @@ QCT Studio combines market-specific websites, e-commerce, SEO/GEO/AEO, conversio
 - [Kosovo](https://qctstudio.com/markets/kosovo/): Mobile, social-to-owned-channel and diaspora-aware growth priorities for Kosovo.
 - [Serbia](https://qctstudio.com/markets/serbia/): Search, commerce, trust and CRM priorities for the Serbian market.
 
-Each market hub is also available in Albanian (/sq/), Macedonian (/mk/) and Serbian (/sr/). English is the default language.
+Each market hub is available in English (default), Albanian (/sq/), Macedonian (/mk/), Serbian (/sr/), Romanian (/ro/) and Bulgarian (/bg/).
 
 ## Diagnostic
 
@@ -45,7 +45,7 @@ QCT Studio separates public observation, verified responsibility and measured ou
 
 ## Languages
 
-English (default), Albanian (/sq/), Macedonian (/mk/), Serbian (/sr/), Romanian (/ro/) and Bulgarian (/bg/) are available across the core commercial site. Evidence-heavy market hubs, work reviews, insights and the regional diagnostic remain EN/SQ/MK/SR until equivalent localized content is available. Canonical and reciprocal hreflang links are emitted only for language versions that actually exist.
+English (default), Albanian (/sq/), Macedonian (/mk/), Serbian (/sr/), Romanian (/ro/) and Bulgarian (/bg/) are available across the core commercial site, market hubs, selected work, insights and the regional growth diagnostic. Canonical and reciprocal hreflang links are emitted across all six indexed language versions where the route exists.
 
 
 ## Pricing
