@@ -4,7 +4,7 @@ import path from 'node:path';
 const DIST = 'dist';
 const SITE = 'https://qctstudio.com';
 const coreHreflangs = ['en', 'sq', 'mk', 'sr', 'ro', 'bg', 'x-default'];
-const regionalHreflangs = ['en', 'sq', 'mk', 'sr', 'x-default'];
+const regionalHreflangs = ['en', 'sq', 'mk', 'sr', 'ro', 'bg', 'x-default'];
 const founderId = `${SITE}/about/#teyfik-gokdemir`;
 const organizationId = `${SITE}/#organization`;
 const founderImage = `${SITE}/images/teyfik-gokdemir-qct-studio.webp`;
