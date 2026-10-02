@@ -72,7 +72,7 @@ type RouteGroup = 'home' | 'services' | 'work' | 'company' | 'legal' | 'error' |
 
 const routeSegments = pathNoLocale.split('/').filter(Boolean);
 const routeSlug = routeSegments[0] ?? '';
-const PAGE_LANGS = ['insights', 'markets', 'work', 'regional-growth-diagnostic'].includes(routeSlug) ? ['en', 'sq', 'mk', 'sr'] : INDEXED_LANGS;
+const PAGE_LANGS = ['insights', 'markets', 'work', 'regional-growth-diagnostic'].includes(routeSlug) ? INDEXED_LANGS : INDEXED_LANGS;
 const serviceRoutes = new Set([
 	'services',
 	'website-design',
