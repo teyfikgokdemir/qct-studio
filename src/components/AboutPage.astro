@@ -14,7 +14,7 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
 const seo = getPageSeo('about', lang);
-const diagnosticUrl = ['en','sq','mk','sr'].includes(lang) ? diagnosticUrl : url('/contact/');
+const diagnosticUrl = ['en','sq','mk','sr'].includes(lang) ? url('/regional-growth-diagnostic/') : url('/contact/');
 const englishInternational = lang === 'en';
 const trustCopy = {
   en: { selectedText: 'Selected systems across multilingual commerce, international trade and regional growth diagnostics.', ctsegLabel: 'Venture trade platform', ctsegText: 'A live multilingual trade system with a verified founder-level connection.', diagnosticLabel: 'Regional growth system', diagnosticText: 'A structured market, conversion and operations intake for Balkan businesses.', open: 'View evidence' },
