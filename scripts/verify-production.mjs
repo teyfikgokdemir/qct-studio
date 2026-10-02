@@ -81,9 +81,12 @@ const checks = [
     url: 'https://qctstudio.com/ro/',
     verify: async (response, body) =>
       response.ok &&
-      body.includes('Sisteme digitale pentru companii pregătite să fie luate în serios online.') &&
+      body.includes('<html lang="ro">') &&
+      body.includes('QCT Studio — Creștere digitală pentru companii din Balcani') &&
       body.includes('STUDIO DE CREȘTERE DIGITALĂ PENTRU BALCANI') &&
+      body.includes('Construiește sistemul digital') &&
       body.includes('/ro/dynamic-seo/') &&
+      body.includes('/ro/insights/') &&
       !body.includes('Websites for businesses that are ready to be taken seriously online.'),
     label: 'Romanian core homepage localization',
   },
@@ -91,9 +94,12 @@ const checks = [
     url: 'https://qctstudio.com/bg/',
     verify: async (response, body) =>
       response.ok &&
-      body.includes('Дигитални системи за компании, готови да бъдат възприемани сериозно онлайн.') &&
+      body.includes('<html lang="bg">') &&
+      body.includes('QCT Studio — Дигитален раст за компании на Балканите') &&
       body.includes('СТУДИО ЗА ДИГИТАЛЕН РАСТ НА БАЛКАНИТЕ') &&
+      body.includes('Изградете дигиталната система') &&
       body.includes('/bg/dynamic-seo/') &&
+      body.includes('/bg/insights/') &&
       !body.includes('Websites for businesses that are ready to be taken seriously online.'),
     label: 'Bulgarian core homepage localization',
   },
