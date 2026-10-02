@@ -1,0 +1,26 @@
+name: Responsive QA
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: qct-studio-responsive-qa
+  cancel-in-progress: true
+
+jobs:
+  responsive-qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run responsive QA
+        run: npx playwright test tests/responsive-six-locales.spec.ts tests/v2-home.spec.ts tests/market-hubs.spec.ts tests/diagnostic.spec.ts tests/case-studies.spec.ts
