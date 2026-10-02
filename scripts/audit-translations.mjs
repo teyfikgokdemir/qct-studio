@@ -102,6 +102,20 @@ for (const locale of locales) {
 }
 
 
+for (const locale of ['ro', 'bg']) {
+  const dictionary = JSON.parse(
+    fs.readFileSync(`src/i18n/${locale}.json`, 'utf8'),
+  );
+  const missing = [...usedKeys].sort().filter((key) => !(key in dictionary));
+  console.log(`${locale.toUpperCase()} content coverage: ${usedKeys.size} used, ${missing.length} missing`);
+  if (missing.length) {
+    failed = true;
+    console.error(`\n[${locale}] Missing used translation keys:`);
+    console.error(missing.join('\n'));
+  }
+}
+
+
 const extendedSharedKeys = [
   'Home','Services','Services overview','Website Design','E-commerce','WhatsApp Commerce',
   'SEO & Performance','Dynamic SEO','Meta Ads Landing Pages','AI Automation','About','Careers',
