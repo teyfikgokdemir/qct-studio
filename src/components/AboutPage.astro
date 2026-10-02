@@ -14,6 +14,7 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
 const seo = getPageSeo('about', lang);
+const diagnosticUrl = ['en','sq','mk','sr'].includes(lang) ? diagnosticUrl : url('/contact/');
 const englishInternational = lang === 'en';
 const trustCopy = {
   en: { selectedText: 'Selected systems across multilingual commerce, international trade and regional growth diagnostics.', ctsegLabel: 'Venture trade platform', ctsegText: 'A live multilingual trade system with a verified founder-level connection.', diagnosticLabel: 'Regional growth system', diagnosticText: 'A structured market, conversion and operations intake for Balkan businesses.', open: 'View evidence' },
@@ -130,9 +131,9 @@ const tc = trustCopy[lang as keyof typeof trustCopy] ?? trustCopy.en;
 
           <article>
             <span>{tc.diagnosticLabel}</span>
-            <h3><a href={url('/regional-growth-diagnostic/')}>Regional Diagnostic</a></h3>
+            <h3><a href={diagnosticUrl}>Regional Diagnostic</a></h3>
             <p>{tc.diagnosticText}</p>
-            <a href={url('/regional-growth-diagnostic/')}>{t('Start Your Project')}</a>
+            <a href={diagnosticUrl}>{t('Start Your Project')}</a>
           </article>
         </div>
       </div>
