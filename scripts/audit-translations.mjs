@@ -106,12 +106,38 @@ for (const locale of ['ro', 'bg']) {
   const dictionary = JSON.parse(
     fs.readFileSync(`src/i18n/${locale}.json`, 'utf8'),
   );
-  const missing = [...usedKeys].sort().filter((key) => !(key in dictionary));
-  console.log(`${locale.toUpperCase()} content coverage: ${usedKeys.size} used, ${missing.length} missing`);
+  const missing = [];
+  const unchanged = [];
+
+  for (const key of [...usedKeys].sort()) {
+    if (!(key in dictionary)) {
+      missing.push(key);
+      continue;
+    }
+
+    const englishValue = english[key] ?? key;
+    const wordCount = englishValue.trim().split(/\s+/).length;
+    if (
+      dictionary[key] === englishValue &&
+      wordCount >= 3 &&
+      !allowedUnchanged.has(key)
+    ) {
+      unchanged.push(key);
+    }
+  }
+
+  console.log(
+    `${locale.toUpperCase()} content coverage: ${usedKeys.size} used, ` +
+    `${missing.length} missing, ${unchanged.length} unchanged English`,
+  );
   if (missing.length) {
     failed = true;
     console.error(`\n[${locale}] Missing used translation keys:`);
     console.error(missing.join('\n'));
+  }
+  if (unchanged.length) {
+    console.warn(`\n[${locale}] Informational — unchanged English values:`);
+    console.warn(unchanged.join('\n'));
   }
 }
 
