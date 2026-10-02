@@ -136,8 +136,9 @@ for (const locale of ['ro', 'bg']) {
     console.error(missing.join('\n'));
   }
   if (unchanged.length) {
-    console.warn(`\n[${locale}] Informational — unchanged English values:`);
-    console.warn(unchanged.join('\n'));
+    failed = true;
+    console.error(`\n[${locale}] Unchanged English values:`);
+    console.error(unchanged.join('\n'));
   }
 }
 
