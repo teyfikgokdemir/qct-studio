@@ -17,12 +17,13 @@ const isInsightsPath = /^\/insights(?:\/|$)/.test(currentPath);
 const isWorkPath = /^\/work(?:\/|$)/.test(currentPath);
 const isDiagnosticPath = /^\/regional-growth-diagnostic(?:\/|$)/.test(currentPath);
 const switchLanguages = Object.entries(languages).filter(([code]) => {
-  if (isInsightsPath || isDiagnosticPath) return ['en','sq','mk','sr'].includes(code);
+  if (isDiagnosticPath) return ['en','sq','mk','sr'].includes(code);
+  if (isInsightsPath) return ['en','sq','mk','sr','ro','bg'].includes(code);
   if (isWorkPath) return ['en','sq','mk','sr','ro','bg'].includes(code);
   return true;
 });
 const hasRegionalWork = ['en','sq','mk','sr','ro','bg'].includes(lang);
-const hasRegionalInsights = ['en','sq','mk','sr'].includes(lang);
+const hasRegionalInsights = ['en','sq','mk','sr','ro','bg'].includes(lang);
 ---
 <header id="masthead" class="site-header" data-site-header>
 	<div class="mobile-menu-backdrop" data-mobile-backdrop hidden></div>
