@@ -15,6 +15,7 @@ const redirectSources = new Set(
 
 const excludedIndexPaths = [
   /\/(?:sq\/|mk\/|sr\/|ro\/|bg\/)?work\/(?:misima|phiaderm)\/$/,
+  /\/(?:ro\/|bg\/)?work\/artman\/$/,
 ];
 
 // https://astro.build/config
