@@ -14,13 +14,15 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
 const seo = getPageSeo('about', lang);
-const diagnosticUrl = ['en','sq','mk','sr'].includes(lang) ? url('/regional-growth-diagnostic/') : url('/contact/');
+const diagnosticUrl = url('/regional-growth-diagnostic/');
 const englishInternational = lang === 'en';
 const trustCopy = {
   en: { selectedText: 'Selected systems across multilingual commerce, international trade and regional growth diagnostics.', ctsegLabel: 'Venture trade platform', ctsegText: 'A live multilingual trade system with a verified founder-level connection.', diagnosticLabel: 'Regional growth system', diagnosticText: 'A structured market, conversion and operations intake for Balkan businesses.', open: 'View evidence' },
   sq: { selectedText: 'Sisteme të përzgjedhura në commerce shumëgjuhësh, tregti ndërkombëtare dhe diagnostikim rajonal.', ctsegLabel: 'Platformë tregtie venture', ctsegText: 'Sistem aktiv shumëgjuhësh me lidhje të verifikuar në nivel themeluesi.', diagnosticLabel: 'Sistem rajonal i rritjes', diagnosticText: 'Intake i strukturuar për tregun, konvertimin dhe operimin e bizneseve të Ballkanit.', open: 'Shikoni dëshmitë' },
   mk: { selectedText: 'Избрани системи за повеќејазична commerce, меѓународна трговија и регионална дијагностика.', ctsegLabel: 'Venture trade platform', ctsegText: 'Активен повеќејазичен trade систем со потврдена founder-level врска.', diagnosticLabel: 'Регионален систем за раст', diagnosticText: 'Структуриран intake за пазар, конверзија и операции на балканските бизниси.', open: 'Погледнете докази' },
   sr: { selectedText: 'Izabrani sistemi za višejezični commerce, međunarodnu trgovinu i regionalnu dijagnostiku.', ctsegLabel: 'Venture trade platforma', ctsegText: 'Aktivan višejezični trade sistem sa potvrđenom vezom na nivou osnivača.', diagnosticLabel: 'Regionalni sistem rasta', diagnosticText: 'Strukturiran intake za tržište, konverziju i operacije balkanskih kompanija.', open: 'Pogledajte dokaze' },
+  ro: { selectedText: 'Sisteme selectate pentru commerce multilingv, comerț internațional și diagnostic regional de creștere.', ctsegLabel: 'Platformă venture pentru comerț', ctsegText: 'Un sistem comercial multilingv live cu o conexiune verificată la nivel de fondator.', diagnosticLabel: 'Sistem regional de creștere', diagnosticText: 'Un intake structurat pentru piață, conversie și operațiuni destinat afacerilor din Balcani.', open: 'Vezi dovezile' },
+  bg: { selectedText: 'Избрани системи за многоезичен commerce, международна търговия и регионална growth диагностика.', ctsegLabel: 'Venture trade платформа', ctsegText: 'Активна многоезична trade система с потвърдена founder-level връзка.', diagnosticLabel: 'Регионална growth система', diagnosticText: 'Структуриран intake за market, conversion и operations за балкански бизнеси.', open: 'Виж доказателствата' },
 };
 const tc = trustCopy[lang as keyof typeof trustCopy] ?? trustCopy.en;
 ---
