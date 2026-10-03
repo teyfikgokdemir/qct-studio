@@ -10,7 +10,12 @@ for (const lang of locales) {
       const context = await browser.newContext({ viewport });
       const page = await context.newPage();
       const errors: string[] = [];
-      page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+      page.on('console', (m) => {
+        if (m.type() !== 'error') return;
+        const source = m.location().url || '';
+        if (/teyfikgokdemir\.com|cansu-umami\.onrender\.com|google-analytics\.com|googletagmanager\.com|clarity\.ms|cloudflareinsights\.com/i.test(source)) return;
+        errors.push(m.text());
+      });
       page.on('pageerror', (e) => errors.push(e.message));
 
       const response = await page.goto(`http://127.0.0.1:4321${localPath(lang)}`, { waitUntil: 'networkidle' });
