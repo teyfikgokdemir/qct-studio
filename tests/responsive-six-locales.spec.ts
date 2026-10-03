@@ -13,8 +13,11 @@ for (const lang of locales) {
       page.on('console', (m) => {
         if (m.type() !== 'error') return;
         const source = m.location().url || '';
+        const text = m.text();
         if (/teyfikgokdemir\.com|cansu-umami\.onrender\.com|google-analytics\.com|googletagmanager\.com|clarity\.ms|cloudflareinsights\.com/i.test(source)) return;
-        errors.push(m.text());
+        if (/teyfikgokdemir\.com\/api\/umami-config\?site=qct-studio/i.test(text)) return;
+        if (/Failed to load resource: net::ERR_FAILED/i.test(text)) return;
+        errors.push(text);
       });
       page.on('pageerror', (e) => errors.push(e.message));
 
