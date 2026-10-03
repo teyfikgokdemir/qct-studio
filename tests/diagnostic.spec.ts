@@ -8,7 +8,8 @@ for (const route of routes) {
   test(`${route}: metadata and layout`, async ({ page }) => {
     const response = await page.goto(`http://127.0.0.1:4321${route}`, { waitUntil: 'networkidle' });
     expect(response?.status()).toBe(200);
-    await expect(page.locator('h1')).toBeVisible();
+    await expect(page.locator('#primary h1')).toHaveCount(1);
+    await expect(page.locator('#primary h1')).toBeVisible();
     await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(7);
     await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(3);
     const overflow = await page.evaluate(() => ({ width: document.documentElement.clientWidth, scroll: document.documentElement.scrollWidth }));
