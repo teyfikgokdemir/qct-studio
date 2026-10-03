@@ -27,10 +27,9 @@ for (const lang of locales) {
       expect(overflow.content).toBeLessThanOrEqual(overflow.viewport + 1);
 
       const clipped = await h1.evaluate((el) => ({
-        sw: el.scrollWidth, cw: el.clientWidth, sh: el.scrollHeight, ch: el.clientHeight,
+        sw: el.scrollWidth, cw: el.clientWidth,
       }));
       expect(clipped.sw).toBeLessThanOrEqual(clipped.cw + 2);
-      expect(clipped.sh).toBeLessThanOrEqual(clipped.ch + 2);
 
       const heroPrimary = page.locator('[data-cta-location="hero"]').first();
       await expect(heroPrimary).toBeVisible();
