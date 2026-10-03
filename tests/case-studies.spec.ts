@@ -11,7 +11,8 @@ for (const lang of languages) {
     test(`${lang}/${study}: metadata, evidence schema and layout`, async ({ page }) => {
       const response = await page.goto(`http://127.0.0.1:4321${route(lang, study)}`, { waitUntil: 'networkidle' });
       expect(response?.status()).toBe(200);
-      await expect(page.locator('h1')).toBeVisible();
+      await expect(page.locator('#primary h1')).toHaveCount(1);
+      await expect(page.locator('#primary h1')).toBeVisible();
       await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(study === 'ctseg' ? 7 : 0);
       await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(2);
       const robots = page.locator('meta[name="robots"]');
