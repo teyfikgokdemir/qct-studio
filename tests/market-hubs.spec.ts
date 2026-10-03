@@ -21,7 +21,8 @@ for (const language of languages) {
     test(`${language} ${market}: metadata, schema and layout`, async ({ page }) => {
       const response = await page.goto(`http://127.0.0.1:4321${route(language, market)}`, { waitUntil: 'networkidle' });
       expect(response?.status()).toBe(200);
-      await expect(page.locator('h1')).toBeVisible();
+      await expect(page.locator('#primary h1')).toHaveCount(1);
+      await expect(page.locator('#primary h1')).toBeVisible();
       await expect(page.locator('link[rel="canonical"]')).toHaveCount(1);
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://qctstudio.com${route(language, market)}`);
       await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(7);
