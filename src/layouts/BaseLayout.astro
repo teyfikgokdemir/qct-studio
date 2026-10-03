@@ -316,6 +316,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	<!-- Ported as-is from the WordPress theme's assets/js -->
 	<script src="/scripts/main.js?v=20260718-3" is:inline></script>
 	{useV2Foundation && <script src="/scripts/v2-foundation.js?v=20260928-1" is:inline></script>}
+	{v2Diagnostic && <script src="/scripts/diagnostic.js?v=20261003-1" is:inline></script>}
 	{isHome && <script is:inline>
 		{String.raw`(()=>{const load=()=>{if(document.querySelector('script[data-qct-home-animations]'))return;const s=document.createElement('script');s.src='/scripts/animations.js?v=20260718-3';s.defer=true;s.dataset.qctHomeAnimations='true';document.body.appendChild(s)};if('requestIdleCallback'in window)requestIdleCallback(load,{timeout:1800});else setTimeout(load,900)})()`}
 	</script>}
