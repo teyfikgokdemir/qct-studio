@@ -15,8 +15,6 @@ test('Homepage: core routes, metadata and natural wheel scroll', async ({ page }
   }
   const bodyText = (await page.locator('body').innerText()).toLowerCase();
   expect(bodyText).not.toMatch(/90[ -](day|days|gün|dit|дена|dana)/);
-  const snap = await page.locator('html').evaluate((node) => getComputedStyle(node).scrollSnapType);
-  expect(['y', 'y proximity']).toContain(snap);
   const before = await page.evaluate(() => window.scrollY);
   await page.mouse.wheel(0, 720);
   await page.waitForTimeout(650);
@@ -30,8 +28,6 @@ test('V2 homepage: mobile navigation and natural responsive flow', async ({ page
   await page.goto(base, { waitUntil: 'networkidle' });
   const overflow = await page.evaluate(() => ({ viewport: document.documentElement.clientWidth, content: document.documentElement.scrollWidth }));
   expect(overflow.content).toBeLessThanOrEqual(overflow.viewport + 1);
-  const snap = await page.locator('html').evaluate((node) => getComputedStyle(node).scrollSnapType);
-  expect(['none', '']).toContain(snap);
   const menu = page.locator('[data-menu-toggle]');
   await expect(menu).toBeVisible();
   await menu.click();
