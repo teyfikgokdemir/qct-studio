@@ -37,13 +37,17 @@ test('multi-step diagnostic validates and sends CRM-ready payload', async ({ pag
   await page.locator('[data-diagnostic-next]').click();
   await expect(page.locator('[data-diagnostic-panel="1"]')).toBeVisible();
 
-  await page.locator('[name="digital_stage"][value="brochure"]').check({ force: true });
-  await page.locator('[name="leaks"][value="conversion"]').check({ force: true });
-  await page.locator('[name="leaks"][value="measurement"]').check({ force: true });
+  await page.locator('label:has([name="digital_stage"][value="brochure"]) > span').click();
+  await expect(page.locator('[name="digital_stage"][value="brochure"]')).toBeChecked();
+  await page.locator('label:has([name="leaks"][value="conversion"]) > span').click();
+  await page.locator('label:has([name="leaks"][value="measurement"]) > span').click();
+  await expect(page.locator('[name="leaks"][value="conversion"]')).toBeChecked();
+  await expect(page.locator('[name="leaks"][value="measurement"]')).toBeChecked();
   await page.locator('[data-diagnostic-next]').click();
   await expect(page.locator('[data-diagnostic-panel="2"]')).toBeVisible();
 
-  await page.locator('[name="primary_goal"][value="export-demand"]').check({ force: true });
+  await page.locator('label:has([name="primary_goal"][value="export-demand"]) > span').click();
+  await expect(page.locator('[name="primary_goal"][value="export-demand"]')).toBeChecked();
   await page.locator('[name="monthly_qualified_volume"]').fill('10-15 estimate');
   await page.locator('[name="context"]').fill('The current website receives enquiries, but source attribution and follow-up ownership are unclear.');
   await page.locator('[name="consent"]').check();
