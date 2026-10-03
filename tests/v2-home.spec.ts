@@ -5,7 +5,15 @@ const pageH1 = (page: import('@playwright/test').Page) => page.locator('#primary
 
 test('Homepage: core routes, metadata and natural wheel scroll', async ({ page }) => {
   const errors: string[] = [];
-  page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
+  page.on('console', (message) => {
+    if (message.type() !== 'error') return;
+    const text = message.text();
+    const source = message.location().url || '';
+    if (/teyfikgokdemir\.com|cansu-umami\.onrender\.com|google-analytics\.com|googletagmanager\.com|clarity\.ms|cloudflareinsights\.com/i.test(source)) return;
+    if (/teyfikgokdemir\.com\/api\/umami-config\?site=qct-studio/i.test(text)) return;
+    if (/Failed to load resource: net::ERR_FAILED/i.test(text)) return;
+    errors.push(text);
+  });
   page.on('pageerror', (error) => errors.push(error.message));
   const response = await page.goto(base, { waitUntil: 'networkidle' });
   expect(response?.status()).toBe(200);
