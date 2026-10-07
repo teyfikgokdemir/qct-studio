@@ -1,12 +1,13 @@
 import { test, expect } from '@playwright/test';
 import fs from 'node:fs';
 import path from 'node:path';
+import { gotoPageReady } from './helpers/page-ready';
 
 const routes = ['/regional-growth-diagnostic/', '/sq/regional-growth-diagnostic/', '/mk/regional-growth-diagnostic/', '/sr/regional-growth-diagnostic/', '/ro/regional-growth-diagnostic/', '/bg/regional-growth-diagnostic/'];
 
 for (const route of routes) {
   test(`${route}: metadata and layout`, async ({ page }) => {
-    const response = await page.goto(`http://127.0.0.1:4321${route}`, { waitUntil: 'networkidle' });
+    const response = await gotoPageReady(page, `http://127.0.0.1:4321${route}`);
     expect(response?.status()).toBe(200);
     await expect(page.locator('#primary h1')).toHaveCount(1);
     await expect(page.locator('#primary h1')).toBeVisible();
@@ -24,7 +25,7 @@ test('multi-step diagnostic validates and sends CRM-ready payload', async ({ pag
     await route.fulfill({ status: 201, contentType: 'application/json', body: JSON.stringify({ ok: true, id: 'test-lead' }) });
   });
 
-  await page.goto('http://127.0.0.1:4321/regional-growth-diagnostic/?utm_source=meta&utm_medium=paid-social&utm_campaign=balkan-growth', { waitUntil: 'networkidle' });
+  await gotoPageReady(page, 'http://127.0.0.1:4321/regional-growth-diagnostic/?utm_source=meta&utm_medium=paid-social&utm_campaign=balkan-growth');
   await page.locator('[data-diagnostic-next]').click();
   await expect(page.locator('[data-diagnostic-panel="0"]')).toBeVisible();
   await expect(page.locator('[data-diagnostic-message]')).not.toBeEmpty();
@@ -66,7 +67,7 @@ test('mobile visual audit and navigation', async ({ browser }) => {
   fs.mkdirSync(resultsDir, { recursive: true });
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
   const page = await context.newPage();
-  await page.goto('http://127.0.0.1:4321/sq/regional-growth-diagnostic/', { waitUntil: 'networkidle' });
+  await gotoPageReady(page, 'http://127.0.0.1:4321/sq/regional-growth-diagnostic/');
   await page.locator('[data-v2-menu]').click();
   await expect(page.locator('[data-v2-nav]')).toHaveClass(/is-open/);
   await page.locator('[data-v2-nav] a').first().click();

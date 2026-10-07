@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import fs from 'node:fs';
 import path from 'node:path';
+import { gotoPageReady } from './helpers/page-ready';
 
 const languages = ['en','sq','mk','sr','ro','bg'] as const;
 const studies = ['ctseg','phiaderm','misima'] as const;
@@ -9,7 +10,7 @@ const route = (lang: typeof languages[number], study: typeof studies[number]) =>
 for (const lang of languages) {
   for (const study of studies) {
     test(`${lang}/${study}: metadata, evidence schema and layout`, async ({ page }) => {
-      const response = await page.goto(`http://127.0.0.1:4321${route(lang, study)}`, { waitUntil: 'networkidle' });
+      const response = await gotoPageReady(page, `http://127.0.0.1:4321${route(lang, study)}`);
       expect(response?.status()).toBe(200);
       await expect(page.locator('#primary h1')).toHaveCount(1);
       await expect(page.locator('#primary h1')).toBeVisible();
@@ -41,7 +42,7 @@ test('desktop and mobile evidence-case visual audit', async ({ browser }) => {
   ]) {
     const context = await browser.newContext({ viewport: { width: config.width, height: config.height } });
     const page = await context.newPage();
-    await page.goto(`http://127.0.0.1:4321${config.path}`, { waitUntil: 'networkidle' });
+    await gotoPageReady(page, `http://127.0.0.1:4321${config.path}`);
     const reveals = page.locator('[data-reveal]');
     for (let index = 0; index < await reveals.count(); index += 1) {
       await reveals.nth(index).scrollIntoViewIfNeeded();
