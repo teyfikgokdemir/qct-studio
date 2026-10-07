@@ -155,7 +155,7 @@ for (const file of htmlFiles) {
   const isV2Page = html.includes('data-v2-home');
   if (isV2Page) {
     if (!/<body\b[^>]*class=["'][^"']*\bv2-body\b/i.test(html)) errors.push(`${file}: V2 page is missing v2-body foundation class.`);
-    if (!html.includes('/styles/v2-foundation.css?v=20260928-1')) errors.push(`${file}: V2 page is missing shared foundation stylesheet.`);
+    if (!html.includes('/styles/v2-foundation.css?v=20261007-1')) errors.push(`${file}: V2 page is missing shared foundation stylesheet.`);
     if (!html.includes('/scripts/v2-foundation.js?v=20260928-1')) errors.push(`${file}: V2 page is missing shared interaction script.`);
   }
 
