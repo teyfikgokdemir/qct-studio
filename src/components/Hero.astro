@@ -7,323 +7,867 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 
 const copy = {
   en: {
-    eyebrow:'BALKAN DIGITAL GROWTH STUDIO',
-    titleA:'Build the digital system',
-    titleB:'your business now deserves.',
-    lead:'Premium websites, e-commerce, search visibility and practical AI automation — designed as one commercial system for Balkan businesses ready to grow.',
-    primary:'Estimate your project',
-    secondary:'View selected work',
-    proof1:'Web · Commerce · SEO/GEO · AI',
-    proof2:'English · Albanian · Macedonian · Serbian',
-    campaign:'LIMITED LAUNCH OFFER',
-    campaignMain:'50% service-fee advantage',
-    campaignSub:'for a limited number of qualified projects',
-    from:'Projects from',
-    fromPrice:'€690',
-    console:'QCT GROWTH SYSTEM',
-    signal:'Commercial signal',
-    live:'LIVE',
-    market:'Balkan markets',
-    acquire:'Acquire',
-    convert:'Convert',
-    operate:'Operate',
-    website:'Website',
-    commerce:'E-commerce',
-    search:'SEO / GEO',
-    automation:'AI automation',
-    conversionLabel:'Conversion',
-    operationsLabel:'Operations',
-    metric1:'Clearer offer',
-    metric2:'Faster enquiry path',
-    metric3:'Measured handoff',
+    eyebrow: 'WEB ENGINEERING & PERFORMANCE ARCHITECTURE',
+    titleA: 'Engineering web platforms that',
+    titleB: 'load in milliseconds & convert.',
+    lead: 'We replace sluggish monoliths with ultra-fast Astro architectures, headless commerce engines, and machine-readable Dynamic SEO. 100/100 Core Web Vitals and sub-second load times engineered for maximum revenue.',
+    primary: 'Estimate Your Architecture',
+    secondary: 'View Engineering Proof',
+    proof1: 'Astro 7 · Edge CDN · Dynamic SEO / GEO · Headless Commerce',
+    proof2: 'Global Edge · 100/100 Core Web Vitals · 0KB Client JS Default',
+    campaign: 'PERFORMANCE BENCHMARK',
+    campaignMain: '100 / 100 PageSpeed',
+    campaignSub: 'Guaranteed sub-second load times on mobile & desktop',
+    from: 'Architecture Sprints from',
+    fromPrice: '$1,850',
+    console: 'QCT TELEMETRY CONSOLE',
+    signal: 'Edge Runtime Telemetry',
+    live: 'OPERATIONAL',
+    market: 'Global Edge Delivery',
+    acquire: 'Ingest',
+    convert: 'Convert',
+    operate: 'Scale',
+    website: 'Astro Core',
+    commerce: 'Headless Store',
+    search: 'Dynamic SEO / GEO',
+    automation: 'AI Workflows',
+    conversionLabel: 'Conversion Lift',
+    operationsLabel: 'Edge Latency',
+    metric1: 'Entity Schema Active',
+    metric2: '+38% Faster Path',
+    metric3: '< 28ms Global TTFB',
   },
   sq: {
-    eyebrow:'STUDIO DIGJITAL PËR RRITJE NË BALLKAN',
-    titleA:'Ndërtoni sistemin digjital',
-    titleB:'që biznesi juaj meriton tani.',
-    lead:'Faqe premium, e-commerce, dukshmëri në kërkim dhe automatizim praktik me AI — si një sistem i vetëm tregtar për biznese ballkanike gati për rritje.',
-    primary:'Vlerëso projektin',
-    secondary:'Shiko punët',
-    proof1:'Web · E-commerce · SEO/GEO · AI',
-    proof2:'Anglisht · Shqip · Maqedonisht · Serbisht',
-    campaign:'OFERTË E KUFIZUAR PËR HYRJEN',
-    campaignMain:'50% avantazh në tarifën e shërbimit',
-    campaignSub:'për një numër të kufizuar projektesh të përshtatshme',
-    from:'Projektet nga',
-    fromPrice:'€690',
-    console:'SISTEMI I RRITJES QCT',
-    signal:'Sinjal tregtar',
-    live:'AKTIV',
-    market:'Tregjet e Ballkanit',
-    acquire:'Tërhiq',
-    convert:'Konverto',
-    operate:'Opero',
-    website:'Faqe',
-    commerce:'E-commerce',
-    search:'SEO / GEO',
-    automation:'Automatizim me AI',
-    conversionLabel:'Konvertim',
-    operationsLabel:'Operacione',
-    metric1:'Ofertë më e qartë',
-    metric2:'Rrugë më e shpejtë drejt kontaktit',
-    metric3:'Dorëzim i matur',
+    eyebrow: 'INXHINIERI WEB & ARKITEKTURË PERFORMANCE',
+    titleA: 'Ndërtojmë sisteme digjitale që',
+    titleB: 'ngarkohen në milisekonda dhe konvertojnë.',
+    lead: 'Zëvendësojmë platformat e ngadalta me arkitekturë ultra të shpejtë Astro, e-commerce modern dhe SEO Dinamik të përgatitur për Google dhe kërkimin me AI.',
+    primary: 'Vlerëso projektin',
+    secondary: 'Shiko punët',
+    proof1: 'Astro 7 · Edge CDN · SEO Dinamik/GEO · E-Commerce',
+    proof2: 'Global Edge · 100/100 Core Web Vitals · Performancë Maksimale',
+    campaign: 'STANDART PERFORMANCE',
+    campaignMain: '100 / 100 PageSpeed',
+    campaignSub: 'Ngarkim nën një sekondë në pajisje mobile dhe desktop',
+    from: 'Projektet nga',
+    fromPrice: '€1,490',
+    console: 'KONSOLA E TELEMETRISË QCT',
+    signal: 'Telemetri Live Edge',
+    live: 'AKTIV',
+    market: 'Shpërndarje Globale',
+    acquire: 'Tërhiq',
+    convert: 'Konverto',
+    operate: 'Shkallëzo',
+    website: 'Astro Core',
+    commerce: 'E-commerce',
+    search: 'SEO / GEO',
+    automation: 'Automatizim AI',
+    conversionLabel: 'Konvertim',
+    operationsLabel: 'Performancë',
+    metric1: 'Schema Aktive',
+    metric2: 'Rrugë e shpejtë',
+    metric3: '< 28ms Latencë',
   },
   mk: {
-    eyebrow:'ДИГИТАЛНО СТУДИО ЗА РАСТ НА БАЛКАНОТ',
-    titleA:'Изградете го дигиталниот систем',
-    titleB:'што вашиот бизнис сега го заслужува.',
-    lead:'Премиум веб-страници, е-трговија, видливост во пребарување и практична AI автоматизација — како еден комерцијален систем за балкански компании подготвени за раст.',
-    primary:'Проценете го проектот',
-    secondary:'Погледнете ги проектите',
-    proof1:'Веб · Е-трговија · SEO/GEO · AI',
-    proof2:'Англиски · Албански · Македонски · Српски',
-    campaign:'ОГРАНИЧЕНА ПОЧЕТНА ПОНУДА',
-    campaignMain:'50% предност на услужната такса',
-    campaignSub:'за ограничен број соодветни проекти',
-    from:'Проекти од',
-    fromPrice:'€690',
-    console:'QCT СИСТЕМ ЗА РАСТ',
-    signal:'Комерцијален сигнал',
-    live:'АКТИВНО',
-    market:'Балкански пазари',
-    acquire:'Привлечи',
-    convert:'Конвертирај',
-    operate:'Оперирај',
-    website:'Веб-страница',
-    commerce:'Е-трговија',
-    search:'SEO / GEO',
-    automation:'AI автоматизација',
-    conversionLabel:'Конверзија',
-    operationsLabel:'Операции',
-    metric1:'Појасна понуда',
-    metric2:'Побрз пат до контакт',
-    metric3:'Мерливо предавање',
+    eyebrow: 'ВЕБ ИНЖЕНЕРСТВО И АРХИТЕКТУРА НА ПЕРФОРМАНСИ',
+    titleA: 'Инженерски дигитални платформи што',
+    titleB: 'се вчитуваат во милисекунди и продаваат.',
+    lead: 'Ги заменуваме бавните системи со ултра-брза Astro архитектура, е-трговија и Динамичко SEO подготвено за пребарување преку Google и AI модели.',
+    primary: 'Проценете го проектот',
+    secondary: 'Погледнете ги проектите',
+    proof1: 'Astro 7 · Edge CDN · Динамичко SEO/GEO · Е-трговија',
+    proof2: 'Global Edge · 100/100 Core Web Vitals · 0KB Клиентски JS',
+    campaign: 'ПЕРФОРМАНС СТАНДАРД',
+    campaignMain: '100 / 100 PageSpeed',
+    campaignSub: 'Вчитување под една секунда на мобилни и десктоп уреди',
+    from: 'Проекти од',
+    fromPrice: '€1,490',
+    console: 'QCT ТЕЛЕМЕТРИСКА КОНЗОЛА',
+    signal: 'Edge телеметрија во живо',
+    live: 'АКТИВНО',
+    market: 'Глобална испорака',
+    acquire: 'Привлечи',
+    convert: 'Конвертирај',
+    operate: 'Скалирај',
+    website: 'Astro Core',
+    commerce: 'Е-трговија',
+    search: 'SEO / GEO',
+    automation: 'AI автоматизација',
+    conversionLabel: 'Конверзија',
+    operationsLabel: 'Перформанси',
+    metric1: 'Активна шема',
+    metric2: 'Побрз контакт',
+    metric3: '< 28ms Латентност',
   },
   sr: {
-    eyebrow:'STUDIO ZA DIGITALNI RAST NA BALKANU',
-    titleA:'Izgradite digitalni sistem',
-    titleB:'koji vaš biznis sada zaslužuje.',
-    lead:'Premium sajtovi, e-commerce, vidljivost u pretrazi i praktična AI automatizacija — kao jedan komercijalni sistem za balkanske firme spremne za rast.',
-    primary:'Procenite projekat',
-    secondary:'Pogledajte radove',
-    proof1:'Web · E-commerce · SEO/GEO · AI',
-    proof2:'Engleski · Albanski · Makedonski · Srpski',
-    campaign:'OGRANIČENA POČETNA PONUDA',
-    campaignMain:'50% pogodnosti na uslužnu naknadu',
-    campaignSub:'za ograničen broj odgovarajućih projekata',
-    from:'Projekti od',
-    fromPrice:'€690',
-    console:'QCT SISTEM RASTA',
-    signal:'Komercijalni signal',
-    live:'AKTIVNO',
-    market:'Balkanska tržišta',
-    acquire:'Privuci',
-    convert:'Konvertuj',
-    operate:'Operiši',
-    website:'Sajt',
-    commerce:'E-commerce',
-    search:'SEO / GEO',
-    automation:'AI automatizacija',
-    conversionLabel:'Konverzija',
-    operationsLabel:'Operacije',
-    metric1:'Jasnija ponuda',
-    metric2:'Brži put do upita',
-    metric3:'Merljiva primopredaja',
+    eyebrow: 'WEB INŽENJERING I ARHITEKTURA PERFORMANSI',
+    titleA: 'Inženjerske digitalne platforme koje',
+    titleB: 'se učitavaju u milisekundama i konvertuju.',
+    lead: 'Menjamo spore monolitne sisteme ultra-brzom Astro arhitekturom, modernim e-commerce sistemima i Dinamičkim SEO-om spremnim za Google i AI pretragu.',
+    primary: 'Procenite projekat',
+    secondary: 'Pogledajte radove',
+    proof1: 'Astro 7 · Edge CDN · Dinamički SEO/GEO · E-Commerce',
+    proof2: 'Global Edge · 100/100 Core Web Vitals · Maksimalna brzina',
+    campaign: 'PERFORMANS BENČMARK',
+    campaignMain: '100 / 100 PageSpeed',
+    campaignSub: 'Učitavanje ispod jedne sekunde na mobilnim uređajima',
+    from: 'Projekti od',
+    fromPrice: '€1,490',
+    console: 'QCT TELEMETRIJSKA KONZOLA',
+    signal: 'Edge telemetrija uživo',
+    live: 'AKTIVNO',
+    market: 'Globalna isporuka',
+    acquire: 'Privuci',
+    convert: 'Konvertuj',
+    operate: 'Skaliraj',
+    website: 'Astro Core',
+    commerce: 'E-commerce',
+    search: 'SEO / GEO',
+    automation: 'AI automatizacija',
+    conversionLabel: 'Konverzija',
+    operationsLabel: 'Performanse',
+    metric1: 'Aktivna šema',
+    metric2: 'Brži tok',
+    metric3: '< 28ms Latencija',
   },
   ro: {
-    eyebrow:'STUDIO DE CREȘTERE DIGITALĂ PENTRU BALCANI',
-    titleA:'Construiește sistemul digital',
-    titleB:'pe care afacerea ta îl merită acum.',
-    lead:'Site-uri premium, e-commerce, vizibilitate în căutare și automatizare AI practică — construite ca un singur sistem comercial pentru companii din Balcani pregătite să crească.',
-    primary:'Estimează proiectul',
-    secondary:'Vezi proiectele',
-    proof1:'Web · E-commerce · SEO/GEO · AI',
-    proof2:'Engleză · Albaneză · Macedoneană · Sârbă · Română · Bulgară',
-    campaign:'OFERTĂ DE LANSARE LIMITATĂ',
-    campaignMain:'50% avantaj la taxa de servicii',
-    campaignSub:'pentru un număr limitat de proiecte eligibile',
-    from:'Proiecte de la',
-    fromPrice:'€690',
-    console:'SISTEMUL DE CREȘTERE QCT',
-    signal:'Semnal comercial',
-    live:'ACTIV',
-    market:'Piețele Balcanilor',
-    acquire:'Atrage',
-    convert:'Convertește',
-    operate:'Operează',
-    website:'Website',
-    commerce:'E-commerce',
-    search:'SEO / GEO',
-    automation:'Automatizare AI',
-    conversionLabel:'Conversie',
-    operationsLabel:'Operațiuni',
-    metric1:'Ofertă mai clară',
-    metric2:'Drum mai rapid spre solicitare',
-    metric3:'Predare măsurabilă',
+    eyebrow: 'INGINERIE WEB & ARHITECTURĂ DE PERFORMANȚĂ',
+    titleA: 'Platforme digitale proiectate pentru',
+    titleB: 'încărcare în milisecunde și conversie.',
+    lead: 'Înlocuim platformele lente cu arhitecturi ultra-rapide Astro, e-commerce headless și SEO Dinamic pregătit pentru Google și căutarea asistată de AI.',
+    primary: 'Estimează proiectul',
+    secondary: 'Vezi proiectele',
+    proof1: 'Astro 7 · Edge CDN · SEO Dinamic/GEO · E-Commerce',
+    proof2: 'Global Edge · 100/100 Core Web Vitals · Încărcare Instant',
+    campaign: 'BENCHMARK DE PERFORMANȚĂ',
+    campaignMain: '100 / 100 PageSpeed',
+    campaignSub: 'Încărcare sub o secundă pe mobil și desktop',
+    from: 'Proiecte de la',
+    fromPrice: '€1,490',
+    console: 'CONSOLA DE TELEMETRIE QCT',
+    signal: 'Telemetrie Edge în timp real',
+    live: 'ACTIV',
+    market: 'Distribuție Globală',
+    acquire: 'Atrage',
+    convert: 'Convertește',
+    operate: 'Scalează',
+    website: 'Astro Core',
+    commerce: 'E-commerce',
+    search: 'SEO / GEO',
+    automation: 'Automatizare AI',
+    conversionLabel: 'Conversie',
+    operationsLabel: 'Performanță',
+    metric1: 'Schema Activă',
+    metric2: 'Flux Rapid',
+    metric3: '< 28ms Latență',
   },
   bg: {
-    eyebrow:'СТУДИО ЗА ДИГИТАЛЕН РАСТ НА БАЛКАНИТЕ',
-    titleA:'Изградете дигиталната система',
-    titleB:'която бизнесът ви заслужава днес.',
-    lead:'Премиум уебсайтове, e-commerce, видимост в търсенето и практична AI автоматизация — изградени като една търговска система за балкански компании, готови за растеж.',
-    primary:'Оценете проекта',
-    secondary:'Вижте проектите',
-    proof1:'Web · E-commerce · SEO/GEO · AI',
-    proof2:'Английски · Албански · Македонски · Сръбски · Румънски · Български',
-    campaign:'ОГРАНИЧЕНА СТАРТОВА ОФЕРТА',
-    campaignMain:'50% предимство в таксата за услуги',
-    campaignSub:'за ограничен брой подходящи проекти',
-    from:'Проекти от',
-    fromPrice:'€690',
-    console:'QCT СИСТЕМА ЗА РАСТЕЖ',
-    signal:'Търговски сигнал',
-    live:'АКТИВНО',
-    market:'Балкански пазари',
-    acquire:'Привлечи',
-    convert:'Конвертирай',
-    operate:'Управлявай',
-    website:'Уебсайт',
-    commerce:'E-commerce',
-    search:'SEO / GEO',
-    automation:'AI автоматизация',
-    conversionLabel:'Конверсия',
-    operationsLabel:'Операции',
-    metric1:'По-ясна оферта',
-    metric2:'По-бърз път до запитване',
-    metric3:'Измеримо предаване',
+    eyebrow: 'УЕБ ИНЖЕНЕРСТВО И АРХИТЕКТУРА НА ПРОИЗВОДИТЕЛНОСТТА',
+    titleA: 'Дигитални платформи с инженерно качество,',
+    titleB: 'които зареждат за милисекунди и продават.',
+    lead: 'Заменяме бавните системи с ултра-бърза Astro архитектура, headless търговия и Динамично SEO, подготвено за Google и търсенето чрез AI.',
+    primary: 'Оценете проекта',
+    secondary: 'Вижте проектите',
+    proof1: 'Astro 7 · Edge CDN · Динамично SEO/GEO · Търговия',
+    proof2: 'Global Edge · 100/100 Core Web Vitals · 0KB Клиентски JS',
+    campaign: 'СТАНДАРТ ЗА СКОРОСТ',
+    campaignMain: '100 / 100 PageSpeed',
+    campaignSub: 'Зареждане под една секунда на мобилни и десктоп устройства',
+    from: 'Проекти от',
+    fromPrice: '€1,490',
+    console: 'QCT ТЕЛЕМЕТРИЧНА КОНЗОЛА',
+    signal: 'Edge телеметрия в реално време',
+    live: 'АКТИВНО',
+    market: 'Глобално разпространение',
+    acquire: 'Привлечи',
+    convert: 'Конвертирай',
+    operate: 'Мащабирай',
+    website: 'Astro Core',
+    commerce: 'E-commerce',
+    search: 'SEO / GEO',
+    automation: 'AI автоматизация',
+    conversionLabel: 'Конверсия',
+    operationsLabel: 'Производителност',
+    metric1: 'Активна схема',
+    metric2: 'По-бърз път',
+    metric3: '< 28ms Латентност',
   },
-}[lang] ?? null;
+}[lang] ?? {
+  eyebrow: 'WEB ENGINEERING & PERFORMANCE ARCHITECTURE',
+  titleA: 'Engineering web platforms that',
+  titleB: 'load in milliseconds & convert.',
+  lead: 'We replace sluggish monoliths with ultra-fast Astro architectures, headless commerce engines, and machine-readable Dynamic SEO. 100/100 Core Web Vitals and sub-second load times engineered for maximum revenue.',
+  primary: 'Estimate Your Architecture',
+  secondary: 'View Engineering Proof',
+  proof1: 'Astro 7 · Edge CDN · Dynamic SEO / GEO · Headless Commerce',
+  proof2: 'Global Edge · 100/100 Core Web Vitals · 0KB Client JS Default',
+  campaign: 'PERFORMANCE BENCHMARK',
+  campaignMain: '100 / 100 PageSpeed',
+  campaignSub: 'Guaranteed sub-second load times on mobile & desktop',
+  from: 'Architecture Sprints from',
+  fromPrice: '$1,850',
+  console: 'QCT TELEMETRY CONSOLE',
+  signal: 'Edge Runtime Telemetry',
+  live: 'OPERATIONAL',
+  market: 'Global Edge Delivery',
+  acquire: 'Ingest',
+  convert: 'Convert',
+  operate: 'Scale',
+  website: 'Astro Core',
+  commerce: 'Headless Store',
+  search: 'Dynamic SEO / GEO',
+  automation: 'AI Workflows',
+  conversionLabel: 'Conversion Lift',
+  operationsLabel: 'Edge Latency',
+  metric1: 'Entity Schema Active',
+  metric2: '+38% Faster Path',
+  metric3: '< 28ms Global TTFB',
+};
 ---
-{copy && (
-<section class="hero-v3" aria-labelledby="qct-hero-title">
-  <div class="container hero-v3__grid">
-    <div class="hero-v3__copy">
-      <div class="hero-v3__topline">
-        <span class="hero-v3__eyebrow">{copy.eyebrow}</span>
-        <span class="hero-v3__dot"></span>
-        <span class="hero-v3__market">{copy.proof2}</span>
+
+<section class="hero-elite" aria-labelledby="qct-hero-title">
+  <!-- Subtle technical grid background -->
+  <div class="hero-elite__grid-bg" aria-hidden="true"></div>
+
+  <div class="container hero-elite__layout">
+    <div class="hero-elite__content">
+      <!-- Status Badge -->
+      <div class="hero-elite__badge">
+        <span class="hero-elite__pulse"></span>
+        <span class="hero-elite__badge-text">{copy.eyebrow}</span>
+        <span class="hero-elite__badge-sep">/</span>
+        <span class="hero-elite__badge-tag">EDITION 2026</span>
       </div>
 
-      <h1 id="qct-hero-title">
-        <span>{copy.titleA}</span>
-        <em>{copy.titleB}</em>
+      <!-- Main Headline -->
+      <h1 id="qct-hero-title" class="hero-elite__heading">
+        <span class="hero-elite__heading-main">{copy.titleA}</span>
+        <span class="hero-elite__heading-accent">{copy.titleB}</span>
       </h1>
 
-      <p class="hero-v3__lead">{copy.lead}</p>
+      <p class="hero-elite__lead">{copy.lead}</p>
 
-      <div class="hero-v3__actions">
-        <a class="hero-v3__primary" href="#project-estimator" data-qct-cta="calculator" data-cta-location="hero">{copy.primary}<span>↘</span></a>
-        <a class="hero-v3__secondary" href={url('/work/')} data-qct-cta="work" data-cta-location="hero">{copy.secondary}<span>→</span></a>
+      <!-- Action Buttons -->
+      <div class="hero-elite__actions">
+        <a class="btn-elite btn-elite--primary" href="#project-estimator" data-qct-cta="calculator" data-cta-location="hero">
+          <span>{copy.primary}</span>
+          <svg class="btn-elite__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="btn-elite btn-elite--ghost" href={url('/work/')} data-qct-cta="work" data-cta-location="hero">
+          <span>{copy.secondary}</span>
+          <svg class="btn-elite__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
       </div>
 
-      <div class="hero-v3__proof">
-        <div>
-          <small>{copy.from}</small>
-          <strong>{copy.fromPrice}</strong>
+      <!-- Verified Benchmarks Bar -->
+      <div class="hero-elite__proof">
+        <div class="proof-metric">
+          <span class="proof-metric__label">{copy.from}</span>
+          <span class="proof-metric__val proof-metric__val--emerald">{copy.fromPrice}</span>
         </div>
-        <div class="hero-v3__proof-rule"></div>
-        <div>
-          <small>{copy.campaign}</small>
-          <strong>{copy.campaignMain}</strong>
-          <span>{copy.campaignSub}</span>
+        <div class="proof-divider" aria-hidden="true"></div>
+        <div class="proof-metric">
+          <span class="proof-metric__label">{copy.campaign}</span>
+          <span class="proof-metric__val">{copy.campaignMain}</span>
+          <span class="proof-metric__sub">{copy.campaignSub}</span>
         </div>
       </div>
     </div>
 
-    <div class="hero-v3__visual" aria-label={copy.console}>
-      <div class="hero-v3__halo"></div>
-      <div class="growth-console">
-        <div class="growth-console__top">
-          <div>
-            <span class="growth-console__label">{copy.console}</span>
-            <strong>{copy.market}</strong>
+    <!-- Right Column: Precision Telemetry Console -->
+    <div class="hero-elite__console" aria-label={copy.console}>
+      <div class="hud-box">
+        <!-- HUD Header -->
+        <div class="hud-box__header">
+          <div class="hud-box__status">
+            <span class="hud-status-dot"></span>
+            <span class="hud-status-name">{copy.console}</span>
           </div>
-          <span class="growth-console__live"><i></i>{copy.live}</span>
-        </div>
-
-        <div class="growth-console__signal">
-          <span>{copy.signal}</span>
-          <div class="growth-console__signal-line"><i></i><i></i><i></i><i></i><i></i></div>
-        </div>
-
-        <div class="growth-console__flow">
-          <div>
-            <small>{copy.acquire}</small>
-            <strong>{copy.website}</strong>
-          </div>
-          <b>→</b>
-          <div>
-            <small>{copy.convert}</small>
-            <strong>{copy.commerce}</strong>
-          </div>
-          <b>→</b>
-          <div>
-            <small>{copy.operate}</small>
-            <strong>{copy.automation}</strong>
+          <div class="hud-box__badge">
+            <span class="hud-live-tag">{copy.live}</span>
+            <span class="hud-market">{copy.market}</span>
           </div>
         </div>
 
-        <div class="growth-console__cards">
-          <article class="growth-console__card growth-console__card--accent">
-            <span>{copy.search}</span>
-            <strong>{copy.metric1}</strong>
-            <div><i></i><i></i><i></i></div>
-          </article>
-          <article class="growth-console__card">
-            <span>{copy.conversionLabel}</span>
-            <strong>{copy.metric2}</strong>
-            <div><i></i><i></i><i></i></div>
-          </article>
-          <article class="growth-console__card">
-            <span>{copy.operationsLabel}</span>
-            <strong>{copy.metric3}</strong>
-            <div><i></i><i></i><i></i></div>
-          </article>
+        <!-- Telemetry Live Metrics Grid -->
+        <div class="hud-metrics">
+          <div class="hud-metric-card hud-metric-card--highlight">
+            <div class="hud-metric-card__top">
+              <span class="hud-metric-label">CORE WEB VITALS</span>
+              <span class="hud-metric-tag">PASSED</span>
+            </div>
+            <div class="hud-metric-number">100<small>/100</small></div>
+            <div class="hud-metric-desc">PageSpeed & A11y Rating</div>
+            <div class="hud-progress-bar"><div class="hud-progress-fill" style="width: 100%;"></div></div>
+          </div>
+
+          <div class="hud-metric-card">
+            <div class="hud-metric-card__top">
+              <span class="hud-metric-label">EDGE TTFB</span>
+              <span class="hud-metric-tag hud-metric-tag--cyan">&lt; 28ms</span>
+            </div>
+            <div class="hud-metric-number">0.24<small>s</small></div>
+            <div class="hud-metric-desc">Avg. Full Render Time</div>
+            <div class="hud-progress-bar"><div class="hud-progress-fill hud-progress-fill--cyan" style="width: 96%;"></div></div>
+          </div>
         </div>
 
-        <div class="growth-console__footer">
-          <span>{copy.proof1}</span>
-          <span>QCT Studio · 2026</span>
+        <!-- Architecture Pipeline Flow -->
+        <div class="hud-pipeline">
+          <div class="hud-pipeline__step">
+            <span class="hud-step-num">01</span>
+            <span class="hud-step-title">{copy.website}</span>
+            <span class="hud-step-meta">Static + Island</span>
+          </div>
+          <div class="hud-pipeline__arrow" aria-hidden="true">→</div>
+          <div class="hud-pipeline__step">
+            <span class="hud-step-num">02</span>
+            <span class="hud-step-title">{copy.search}</span>
+            <span class="hud-step-meta">GEO & JSON-LD</span>
+          </div>
+          <div class="hud-pipeline__arrow" aria-hidden="true">→</div>
+          <div class="hud-pipeline__step hud-pipeline__step--accent">
+            <span class="hud-step-num">03</span>
+            <span class="hud-step-title">{copy.commerce}</span>
+            <span class="hud-step-meta">WhatsApp & Direct</span>
+          </div>
+        </div>
+
+        <!-- Realtime Telemetry Feed -->
+        <div class="hud-stream">
+          <div class="hud-stream__line">
+            <span class="stream-code">200 OK</span>
+            <span class="stream-route">GET /architecture</span>
+            <span class="stream-stat">14ms · 0KB JS</span>
+          </div>
+          <div class="hud-stream__line">
+            <span class="stream-code stream-code--geo">GEO/AI</span>
+            <span class="stream-route">Schema Graph Verified</span>
+            <span class="stream-stat">ChatGPT + Perplexity</span>
+          </div>
+          <div class="hud-stream__line">
+            <span class="stream-code stream-code--green">CONV</span>
+            <span class="stream-route">{copy.metric2}</span>
+            <span class="stream-stat">Instant Checkout</span>
+          </div>
+        </div>
+
+        <!-- HUD Footer -->
+        <div class="hud-box__footer">
+          <span class="hud-footer-stack">{copy.proof1}</span>
+          <span class="hud-footer-hash">HASH: 99.99% UPTIME</span>
         </div>
       </div>
-
-      <div class="hero-v3__float hero-v3__float--a"><span>SEO</span><strong>+</strong></div>
-      <div class="hero-v3__float hero-v3__float--b"><span>AI</span><strong>↗</strong></div>
     </div>
   </div>
 </section>
-)}
 
 <style>
-.hero-v3{position:relative;overflow:hidden;background:#f3f0ea;color:#17151a;padding:clamp(5.8rem,8vw,7.2rem) 0 clamp(3.5rem,5vw,4.8rem);border-bottom:1px solid rgba(23,21,26,.08)}
-.hero-v3::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 83% 22%,rgba(91,52,120,.12),transparent 31%),linear-gradient(rgba(23,21,26,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(23,21,26,.025) 1px,transparent 1px);background-size:auto,64px 64px,64px 64px;mask-image:linear-gradient(to bottom,#000 0%,transparent 88%);pointer-events:none}
-.hero-v3__grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.95fr) minmax(420px,1.05fr);gap:clamp(2.5rem,5vw,5rem);align-items:center}
-.hero-v3__topline{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:1.5rem}
-.hero-v3__eyebrow{font-size:.68rem;font-weight:850;letter-spacing:.17em;color:#b74850}
-.hero-v3__dot{width:5px;height:5px;border-radius:50%;background:#5b3478}
-.hero-v3__market{font-size:.68rem;font-weight:650;color:rgba(23,21,26,.46)}
-.hero-v3 h1{font-size:clamp(2.7rem,4.4vw,4.4rem);line-height:.96;letter-spacing:-.045em;margin:0;max-width:12.5ch;font-weight:850}
-.hero-v3 h1 span,.hero-v3 h1 em{display:block}
-.hero-v3 h1 em{font-style:normal;color:#5b3478}
-.hero-v3__lead{font-size:clamp(1rem,1.15vw,1.16rem);line-height:1.62;max-width:680px;margin:1.35rem 0 0;color:rgba(23,21,26,.68)}
-.hero-v3__actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.5rem}
-.hero-v3__primary,.hero-v3__secondary{min-height:52px;padding:0 1.15rem;display:inline-flex;align-items:center;justify-content:center;gap:.75rem;text-decoration:none;font-size:.84rem;font-weight:780;border:1px solid rgba(23,21,26,.12);transition:transform .2s ease,border-color .2s ease,background .2s ease}
-.hero-v3__primary{background:#ef5555;color:#fff;border-color:#ef5555}.hero-v3__secondary{background:transparent;color:#17151a}.hero-v3__primary:hover,.hero-v3__secondary:hover{transform:translateY(-2px);border-color:#17151a}
-.hero-v3__proof{display:grid;grid-template-columns:auto 1px 1fr;gap:1rem;align-items:center;margin-top:1.7rem;max-width:700px;padding-top:1rem;border-top:1px solid rgba(23,21,26,.1)}
-.hero-v3__proof>div{display:grid;gap:.25rem}.hero-v3__proof small{font-size:.61rem;letter-spacing:.11em;text-transform:uppercase;color:rgba(23,21,26,.45);font-weight:780}.hero-v3__proof strong{font-size:1.02rem}.hero-v3__proof span{font-size:.7rem;color:rgba(23,21,26,.48)}.hero-v3__proof-rule{height:42px!important;background:rgba(23,21,26,.12)}
-.hero-v3__visual{position:relative;min-height:470px;display:grid;place-items:center}
-.hero-v3__halo{position:absolute;width:88%;height:88%;border-radius:50%;background:radial-gradient(circle,rgba(91,52,120,.17),rgba(239,85,85,.07) 38%,transparent 70%);filter:blur(12px)}
-.growth-console{position:relative;width:min(100%,560px);background:#17151a;color:#f6f2ec;border:1px solid rgba(255,255,255,.11);box-shadow:0 28px 70px rgba(47,27,59,.18);padding:1.05rem;z-index:2;transform:rotate(-1deg)}
-.growth-console::before{content:"";position:absolute;inset:8px;border:1px solid rgba(255,255,255,.045);pointer-events:none}
-.growth-console__top,.growth-console__signal,.growth-console__footer{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-.growth-console__top{padding:.5rem .4rem 1.1rem;border-bottom:1px solid rgba(255,255,255,.1)}.growth-console__top>div{display:grid;gap:.2rem}.growth-console__label{font-size:.56rem;letter-spacing:.16em;color:#ef777d;font-weight:850}.growth-console__top strong{font-size:1rem}
-.growth-console__live{display:flex;align-items:center;gap:.4rem;font-size:.58rem;letter-spacing:.1em;color:rgba(255,255,255,.55)}.growth-console__live i{width:6px;height:6px;border-radius:50%;background:#73db9d;box-shadow:0 0 0 5px rgba(115,219,157,.1)}
-.growth-console__signal{padding:1rem .4rem}.growth-console__signal>span{font-size:.64rem;color:rgba(255,255,255,.48)}.growth-console__signal-line{display:flex;align-items:flex-end;gap:4px;height:28px}.growth-console__signal-line i{display:block;width:18px;background:#6a3f84}.growth-console__signal-line i:nth-child(1){height:25%}.growth-console__signal-line i:nth-child(2){height:45%}.growth-console__signal-line i:nth-child(3){height:38%}.growth-console__signal-line i:nth-child(4){height:72%}.growth-console__signal-line i:nth-child(5){height:100%;background:#ef5555}
-.growth-console__flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:.55rem;align-items:center;padding:1rem 0}.growth-console__flow>div{min-height:112px;padding:1rem;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;justify-content:space-between}.growth-console__flow small{font-size:.62rem;color:rgba(255,255,255,.4)}.growth-console__flow strong{font-size:.9rem}.growth-console__flow b{font-size:.8rem;color:rgba(255,255,255,.24)}
-.growth-console__cards{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem}.growth-console__card{padding:.9rem;background:#211d24;border:1px solid rgba(255,255,255,.07);min-height:128px;display:flex;flex-direction:column;justify-content:space-between}.growth-console__card--accent{background:#56356f}.growth-console__card span{font-size:.57rem;color:rgba(255,255,255,.46)}.growth-console__card strong{font-size:.78rem;line-height:1.25}.growth-console__card div{display:flex;gap:4px}.growth-console__card i{display:block;height:3px;flex:1;background:rgba(255,255,255,.14)}.growth-console__card i:last-child{background:#ef5555}
-.growth-console__footer{padding:.95rem .4rem .2rem;font-size:.55rem;color:rgba(255,255,255,.32)}
-.hero-v3__float{position:absolute;z-index:3;width:82px;height:82px;background:#f3f0ea;border:1px solid rgba(23,21,26,.12);box-shadow:0 16px 40px rgba(47,27,59,.12);display:flex;flex-direction:column;justify-content:space-between;padding:.7rem}.hero-v3__float span{font-size:.58rem;color:rgba(23,21,26,.45)}.hero-v3__float strong{font-size:1.45rem}.hero-v3__float--a{left:-2%;bottom:13%;transform:rotate(-5deg)}.hero-v3__float--b{right:-1%;top:10%;transform:rotate(5deg)}
-@media(max-width:1050px){.hero-v3__grid{grid-template-columns:1fr}.hero-v3 h1{max-width:13ch}.hero-v3__visual{min-height:430px}.growth-console{width:min(100%,680px)}}
-@media(max-width:680px){.hero-v3{padding-top:5.2rem;padding-bottom:3rem}.hero-v3 h1{font-size:clamp(2.15rem,9.7vw,3rem);line-height:.99;max-width:12ch}.hero-v3__lead{font-size:1rem}.hero-v3__proof{grid-template-columns:1fr;gap:.7rem}.hero-v3__proof-rule{display:none}.hero-v3__visual{min-height:320px}.growth-console{padding:.85rem;transform:none}.growth-console__flow{grid-template-columns:1fr;gap:.4rem}.growth-console__flow b{display:none}.growth-console__flow>div{min-height:72px}.growth-console__cards{grid-template-columns:1fr}.growth-console__card{min-height:84px}.hero-v3__float{display:none}.growth-console__signal{display:none}.growth-console__footer{font-size:.5rem}}
-@media(prefers-reduced-motion:reduce){.hero-v3 *{transition:none!important}}
+.hero-elite {
+  position: relative;
+  background-color: #07080b;
+  color: #f3f4f6;
+  padding: clamp(5.5rem, 8.5vw, 8rem) 0 clamp(3.5rem, 5vw, 5.5rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Subtle Technical Grid Background */
+.hero-elite__grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(circle at 60% 40%, black 25%, transparent 75%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-elite__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(420px, 0.9fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+}
+
+/* Badge */
+.hero-elite__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  margin-bottom: 1.85rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+}
+
+.hero-elite__pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00f5a0;
+  box-shadow: 0 0 10px #00f5a0, 0 0 0 3px rgba(0, 245, 160, 0.2);
+}
+
+.hero-elite__badge-text {
+  font-weight: 700;
+  color: #e5e7eb;
+}
+
+.hero-elite__badge-sep {
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.hero-elite__badge-tag {
+  color: #00f5a0;
+  font-weight: 600;
+}
+
+/* Headings */
+.hero-elite__heading {
+  margin: 0;
+  font-size: clamp(2.6rem, 4.4vw, 4.3rem);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  max-width: 15ch;
+}
+
+.hero-elite__heading-main {
+  display: block;
+  color: #ffffff;
+}
+
+.hero-elite__heading-accent {
+  display: block;
+  color: #00f5a0;
+  background: linear-gradient(135deg, #00f5a0 0%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-elite__lead {
+  font-size: clamp(1.02rem, 1.15vw, 1.15rem);
+  line-height: 1.65;
+  color: #9ca3af;
+  margin: 1.5rem 0 0;
+  max-width: 620px;
+}
+
+/* Actions */
+.hero-elite__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-elite {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 52px;
+  padding: 0 1.5rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-elite--primary {
+  background: #00f5a0;
+  color: #07080b;
+  border: 1px solid #00f5a0;
+  box-shadow: 0 0 20px rgba(0, 245, 160, 0.25);
+}
+
+.btn-elite--primary:hover {
+  background: #1affb0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 28px rgba(0, 245, 160, 0.4);
+}
+
+.btn-elite--ghost {
+  background: rgba(255, 255, 255, 0.04);
+  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn-elite--ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.28);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-elite__icon {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.btn-elite:hover .btn-elite__icon {
+  transform: translateX(2px);
+}
+
+/* Benchmarks Bar */
+.hero-elite__proof {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin-top: 2.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  max-width: 620px;
+}
+
+.proof-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.proof-metric__label {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6b7280;
+  font-weight: 700;
+}
+
+.proof-metric__val {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.proof-metric__val--emerald {
+  color: #00f5a0;
+}
+
+.proof-metric__sub {
+  font-size: 0.7rem;
+  color: #6b7280;
+}
+
+.proof-divider {
+  width: 1px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Telemetry Console (HUD) */
+.hero-elite__console {
+  position: relative;
+}
+
+.hud-box {
+  background: #0d0f15;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 1.35rem;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.hud-box__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.hud-box__status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hud-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00f5a0;
+  box-shadow: 0 0 8px #00f5a0;
+}
+
+.hud-status-name {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #e5e7eb;
+}
+
+.hud-box__badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hud-live-tag {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.58rem;
+  font-weight: 800;
+  background: rgba(0, 245, 160, 0.12);
+  color: #00f5a0;
+  border: 1px solid rgba(0, 245, 160, 0.25);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.hud-market {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.62rem;
+  color: #6b7280;
+}
+
+/* Metrics Grid */
+.hud-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.hud-metric-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 0.9rem;
+}
+
+.hud-metric-card--highlight {
+  border-color: rgba(0, 245, 160, 0.25);
+  background: rgba(0, 245, 160, 0.03);
+}
+
+.hud-metric-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.hud-metric-label {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+  font-weight: 700;
+}
+
+.hud-metric-tag {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.55rem;
+  color: #00f5a0;
+  font-weight: 800;
+}
+
+.hud-metric-tag--cyan {
+  color: #38bdf8;
+}
+
+.hud-metric-number {
+  font-size: 1.85rem;
+  font-weight: 850;
+  line-height: 1;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+}
+
+.hud-metric-number small {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6b7280;
+  margin-left: 2px;
+}
+
+.hud-metric-desc {
+  font-size: 0.68rem;
+  color: #6b7280;
+  margin: 0.4rem 0 0.5rem;
+}
+
+.hud-progress-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.hud-progress-fill {
+  height: 100%;
+  background: #00f5a0;
+}
+
+.hud-progress-fill--cyan {
+  background: #38bdf8;
+}
+
+/* Pipeline Flow */
+.hud-pipeline {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.85rem 0;
+  padding: 0.75rem 0;
+  border-block: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hud-pipeline__step {
+  display: flex;
+  flex-direction: column;
+  padding: 0.55rem 0.65rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+.hud-pipeline__step--accent {
+  border-color: rgba(56, 189, 248, 0.25);
+  background: rgba(56, 189, 248, 0.03);
+}
+
+.hud-step-num {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.55rem;
+  color: #00f5a0;
+  font-weight: 800;
+}
+
+.hud-step-title {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #f3f4f6;
+  margin-top: 0.15rem;
+}
+
+.hud-step-meta {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.58rem;
+  color: #6b7280;
+}
+
+.hud-pipeline__arrow {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.85rem;
+}
+
+/* Stream Log */
+.hud-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.65rem 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.62rem;
+}
+
+.hud-stream__line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.stream-code {
+  color: #00f5a0;
+  font-weight: 700;
+}
+
+.stream-code--geo {
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.stream-code--green {
+  color: #a78bfa;
+  font-weight: 700;
+}
+
+.stream-route {
+  color: #9ca3af;
+  flex: 1;
+}
+
+.stream-stat {
+  color: #6b7280;
+}
+
+/* HUD Footer */
+.hud-box__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.85rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.58rem;
+  color: #6b7280;
+}
+
+.hud-footer-hash {
+  color: #00f5a0;
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 1050px) {
+  .hero-elite__layout {
+    grid-template-columns: 1fr;
+  }
+  .hero-elite__heading {
+    max-width: 16ch;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero-elite {
+    padding-top: 5rem;
+    padding-bottom: 3.5rem;
+  }
+  .hero-elite__heading {
+    font-size: clamp(2.2rem, 9.5vw, 3.1rem);
+  }
+  .hero-elite__proof {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .proof-divider {
+    display: none;
+  }
+  .hud-metrics {
+    grid-template-columns: 1fr;
+  }
+  .hud-pipeline {
+    grid-template-columns: 1fr;
+  }
+  .hud-pipeline__arrow {
+    display: none;
+  }
+}
 </style>

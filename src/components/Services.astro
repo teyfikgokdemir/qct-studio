@@ -12,7 +12,8 @@ const services = [
 	{
 		modifier: 'qct-service-card--website qct-service-card--featured qct-service-card--website-image',
 		preview: 'website',
-		image: 'homepage-service-website-design.webp',
+		badge: '01 // ARCHITECTURE',
+		image: 'astro-headless-hero.jpg',
 		href: url('/website-design/'),
 		kicker: t('Website Design'),
 		title: t('Premium websites'),
@@ -22,6 +23,7 @@ const services = [
 	{
 		modifier: 'qct-service-card--commerce qct-service-card--service-image',
 		preview: 'commerce',
+		badge: '02 // COMMERCE',
 		image: 'homepage-service-ecommerce.webp',
 		href: url('/e-commerce/'),
 		kicker: t('E-commerce'),
@@ -32,7 +34,8 @@ const services = [
 	{
 		modifier: 'qct-service-card--whatsapp-service qct-service-card--service-image',
 		preview: 'whatsapp',
-		image: 'homepage-service-whatsapp.webp',
+		badge: '03 // CONVERSATIONAL',
+		image: 'whatsapp-commerce-elite.jpg',
 		href: url('/whatsapp-commerce/'),
 		kicker: t('WhatsApp Commerce'),
 		title: t('Sell inside the conversation'),
@@ -42,7 +45,8 @@ const services = [
 	{
 		modifier: 'qct-service-card--performance qct-service-card--service-image',
 		preview: 'performance',
-		image: 'homepage-service-seo-geo.webp',
+		badge: '04 // GEO & SEARCH',
+		image: 'geo-ai-graph.jpg',
 		href: url('/seo-performance/'),
 		kicker: t('SEO & Performance'),
 		title: t('Fast, visible and measurable'),
@@ -52,6 +56,7 @@ const services = [
 	{
 		modifier: 'qct-service-card--landing qct-service-card--wide qct-service-card--service-image',
 		preview: 'landing',
+		badge: '05 // CAMPAIGNS',
 		image: 'homepage-service-meta-ads.webp',
 		href: url('/meta-ads-landing-pages/'),
 		kicker: t('Meta Ads Landing Pages'),
@@ -62,6 +67,7 @@ const services = [
 	{
 		modifier: 'qct-service-card--automation qct-service-card--service-image',
 		preview: 'automation',
+		badge: '06 // AI WORKFLOWS',
 		image: 'homepage-service-ai-automation.webp',
 		href: url('/ai-automation/'),
 		kicker: t('AI Automation'),
@@ -72,11 +78,14 @@ const services = [
 ];
 ---
 <link rel="stylesheet" href="/styles/services-compact.css" />
-<section id="services" class="qct-section qct-services" aria-labelledby="qct-services-title">
+<section id="services" class="qct-section qct-services qct-services-elite" aria-labelledby="qct-services-title">
 	<div class="container">
 		<div class="qct-section__header qct-section__header--split">
 			<div>
-				<p class="qct-section__eyebrow">{t('Services')}</p>
+				<div class="elite-pill">
+					<span class="elite-pill-dot"></span>
+					<span>CAPABILITIES & ARCHITECTURE</span>
+				</div>
 				<h2 id="qct-services-title" class="qct-section__title">
 					{t('Digital systems built for Balkan businesses ready to look premium.')}
 				</h2>
@@ -88,9 +97,9 @@ const services = [
 
 		<div class="qct-services__grid">
 			{services.map((service) => (
-				<a class={`qct-service-card ${service.modifier}`} href={service.href} data-qct-reveal>
+				<a class={`qct-service-card ${service.modifier} elite-card`} href={service.href} data-qct-reveal>
 					<span class="qct-service-card__top">
-						<span class="qct-service-card__icon" aria-hidden="true"></span>
+						<span class="elite-card-badge">{service.badge}</span>
 						<span class="qct-service-card__kicker">{service.kicker}</span>
 					</span>
 
@@ -99,17 +108,116 @@ const services = [
 						<span class="qct-service-card__text">{service.text}</span>
 					</span>
 
-					<span class={`qct-service-preview qct-svc-scene qct-svc-scene--${service.preview}`}>
-						{service.preview === 'website' ? (
-							<img class="qct-service-website-image" src={`/images/services/${service.image}`} width="1440" height="480" loading="lazy" decoding="async" alt={`${service.kicker}: ${service.title}`} />
-						) : (
-							<img class="qct-service-card-image" src={`/images/services/${service.image}`} width="1440" height="480" loading="lazy" decoding="async" alt={`${service.kicker}: ${service.title}`} />
-						)}
+					<span class={`qct-service-preview qct-svc-scene qct-svc-scene--${service.preview} elite-preview`}>
+						<img 
+							class={service.preview === 'website' ? "qct-service-website-image elite-service-img" : "qct-service-card-image elite-service-img"} 
+							src={`/images/services/${service.image}`} 
+							width="1440" 
+							height="480" 
+							loading="lazy" 
+							decoding="async" 
+							alt={`${service.kicker}: ${service.title}`} 
+						/>
 					</span>
 
-					<span class="qct-service-card__cta">{service.cta}</span>
+					<span class="qct-service-card__cta elite-card-cta">
+						<span>{service.cta}</span>
+						<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+							<path d="M2.5 7H11.5M11.5 7L7.5 3M11.5 7L7.5 11" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+						</svg>
+					</span>
 				</a>
 			))}
 		</div>
 	</div>
 </section>
+
+<style>
+.qct-services-elite {
+	background: #07080b;
+	position: relative;
+	padding: clamp(5rem, 8vw, 7.5rem) 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.elite-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.3rem 0.75rem;
+	background: rgba(255, 255, 255, 0.035);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 999px;
+	font-family: ui-monospace, SFMono-Regular, monospace;
+	font-size: 0.65rem;
+	font-weight: 750;
+	letter-spacing: 0.12em;
+	color: #9ca3af;
+	margin-bottom: 1rem;
+}
+
+.elite-pill-dot {
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: #00f5a0;
+	box-shadow: 0 0 8px #00f5a0;
+}
+
+.elite-card {
+	background: #0d0f15 !important;
+	border: 1px solid rgba(255, 255, 255, 0.08) !important;
+	border-radius: 14px !important;
+	padding: 1.6rem !important;
+	transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+	position: relative;
+	overflow: hidden;
+}
+
+.elite-card:hover {
+	border-color: rgba(0, 245, 160, 0.4) !important;
+	transform: translateY(-3px);
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(0, 245, 160, 0.1) !important;
+}
+
+.elite-card-badge {
+	font-family: ui-monospace, SFMono-Regular, monospace;
+	font-size: 0.62rem;
+	font-weight: 800;
+	color: #00f5a0;
+	letter-spacing: 0.1em;
+}
+
+.elite-preview {
+	border: 1px solid rgba(255, 255, 255, 0.07) !important;
+	border-radius: 10px !important;
+	overflow: hidden !important;
+	background: #040507 !important;
+	margin: 1.25rem 0 !important;
+	position: relative;
+}
+
+.elite-service-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.4s ease;
+}
+
+.elite-card:hover .elite-service-img {
+	transform: scale(1.03);
+}
+
+.elite-card-cta {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-weight: 750;
+	font-size: 0.85rem;
+	color: #00f5a0 !important;
+}
+
+.elite-card:hover .elite-card-cta svg {
+	transform: translateX(3px);
+}
+</style>
