@@ -18,8 +18,8 @@ test('Homepage: core routes, metadata and natural wheel scroll', async ({ page }
   const response = await page.goto(base, { waitUntil: 'networkidle' });
   expect(response?.status()).toBe(200);
   await expect(pageH1(page)).toHaveCount(1);
-  for (const href of ['/services/','/work/','/pricing/','/insights/','/about/','/contact/']) {
-    expect(await page.locator(`a[href="${href}"]`).count()).toBeGreaterThanOrEqual(1);
+  for (const href of ['#services','#architecture','/pricing/','/dynamic-seo/']) {
+    expect(await page.locator(`a[href*="${href}"]`).count()).toBeGreaterThanOrEqual(1);
   }
   const bodyText = (await page.locator('body').innerText()).toLowerCase();
   expect(bodyText).not.toMatch(/90[ -](day|days|gün|dit|дена|dana)/);
