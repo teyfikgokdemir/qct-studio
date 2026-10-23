@@ -7,6 +7,22 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
 const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk: 'Цени', sr: 'Cene', ro: 'Prețuri', bg: 'Цени' };
+const architectureLabel: Record<string, string> = {
+  en: 'Architecture',
+  sq: 'Arkitektura',
+  mk: 'Архитектура',
+  sr: 'Arhitektura',
+  ro: 'Arhitectură',
+  bg: 'Архитектура',
+};
+const estimatorNavLabel: Record<string, string> = {
+  en: 'Estimator',
+  sq: 'Vlerësuesi',
+  mk: 'Процена',
+  sr: 'Procena',
+  ro: 'Estimator',
+  bg: 'Калкулатор',
+};
 const hasRegionalEditorial = ['en','sq','mk','sr','ro','bg'].includes(lang);
 const footerEyebrow: Record<string,string> = { 
 	en: 'WEB ENGINEERING & PERFORMANCE ARCHITECTURE',
@@ -47,30 +63,26 @@ const footerEyebrow: Record<string,string> = {
 		<div class="footer-editorial__grid">
 			<nav aria-label={t('Services')}>
 				<p class="footer-editorial__label">{t('Services')}</p>
-				<a href={url('/website-design/')}>{t('Website Design')}</a>
-				<a href={url('/e-commerce/')}>{t('E-commerce')}</a>
-				<a href={url('/whatsapp-commerce/')}>{t('WhatsApp Commerce')}</a>
-				<a href={url('/seo-performance/')}>{t('SEO')}</a>
+				<a href={url('/#services')}>{t('Website Design')}</a>
+				<a href={url('/#services')}>{t('E-commerce')}</a>
+				<a href={url('/#services')}>{t('WhatsApp Commerce')}</a>
 				<a href={url('/dynamic-seo/')}>{t('Dynamic SEO')}</a>
-				<a href={url('/meta-ads-landing-pages/')}>{t('Meta Ads')}</a>
-				<a href={url('/ai-automation/')}>{t('AI Automation')}</a>
+				<a href={url('/#services')}>{t('AI Automation')}</a>
 			</nav>
 
 			<nav aria-label={t('Company')}>
 				<p class="footer-editorial__label">{t('Company')}</p>
-{hasRegionalEditorial && <a href={url('/work/')}>{t('Work')}</a>}
+				<a href={url('/#architecture')}>{architectureLabel[lang] ?? 'Architecture'}</a>
 				<a href={url('/pricing/')}>{pricingLabel[lang] ?? 'Pricing'}</a>
+				<a href={url('/#project-estimator')}>{estimatorNavLabel[lang] ?? 'Estimator'}</a>
 {hasRegionalEditorial && <a href={url('/insights/')}>{t('Insights')}</a>}
-				<a href={url('/about/')}>{t('About')}</a>
-				<a href={url('/careers/')}>{t('Careers')}</a>
-				<a href={url('/contact/')}>{t('Contact')}</a>
+				<a href={url('/#contact')}>{t('Contact')}</a>
 			</nav>
 
 			<div class="footer-editorial__contact">
 				<p class="footer-editorial__label">{t('Contact')}</p>
 				<a href="mailto:info@qctstudio.com">info@qctstudio.com</a>
 				<a href="mailto:support@qctstudio.com">support@qctstudio.com</a>
-				<a href="mailto:careers@qctstudio.com">careers@qctstudio.com</a>
 			</div>
 
 			<div class="footer-editorial__social-wrap">
@@ -124,7 +136,7 @@ const footerEyebrow: Record<string,string> = {
 .footer-status-tag{display:inline-flex;align-items:center;gap:.45rem;padding:.3rem .65rem;border-radius:6px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);font-family:ui-monospace,monospace;font-size:.6rem;color:#9ca3af;margin-top:1rem}
 .footer-status-dot{width:5px;height:5px;border-radius:50%;background:#00f5a0;box-shadow:0 0 6px #00f5a0}
 .footer-editorial__rule{height:1px;background:rgba(255,255,255,.08);margin:clamp(2rem,4vw,3.5rem) 0}
-.footer-editorial__grid{display:grid;grid-template-columns:1.15fr .9fr 1.1fr .85fr;gap:clamp(1.5rem,4vw,4rem)}
+.footer-editorial__grid{display:grid;grid-template-columns:1.15fr .9fr 1.1fr;gap:clamp(1.5rem,4vw,4rem)}
 .footer-editorial__grid nav,.footer-editorial__contact,.footer-editorial__social-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:.72rem}
 .footer-editorial__grid a{color:rgba(247,243,238,.62);font-size:.9rem;line-height:1.4;text-decoration:none;transition:color .2s ease}
 .footer-editorial__grid a:hover,.footer-editorial__grid a:focus-visible{color:#00f5a0;transform:none}
