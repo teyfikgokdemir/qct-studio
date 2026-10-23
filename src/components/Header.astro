@@ -10,8 +10,6 @@ const { lang, languagePath } = Astro.props;
 const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
 
-// Path of the current page with any locale prefix stripped, e.g. "/sq/about/" -> "/about/".
-// Used so the language switcher links to the translated version of THIS page, not just home.
 const currentPath = languagePath ?? getPathWithoutLocale(Astro.url.pathname);
 const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk: 'Цени', sr: 'Cene', ro: 'Prețuri', bg: 'Цени' };
 const architectureLabel: Record<string, string> = {
@@ -45,7 +43,7 @@ const switchLanguages = Object.entries(languages).filter(([code]) => {
 });
 const hasRegionalInsights = ['en','sq','mk','sr','ro','bg'].includes(lang);
 ---
-<header id="masthead" class="site-header" data-site-header>
+<header id="masthead" class="site-header qct-elite-header" data-site-header>
 	<div class="mobile-menu-backdrop" data-mobile-backdrop hidden></div>
 	<div class="site-header__inner container">
 		<div class="site-branding">
@@ -54,20 +52,20 @@ const hasRegionalInsights = ['en','sq','mk','sr','ro','bg'].includes(lang);
 			</a>
 		</div>
 
-		<button class="site-menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-menu-toggle>
+		<button class="site-menu-toggle elite-menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-menu-toggle>
 			<span class="screen-reader-text">{t('Open menu')}</span>
 			<span class="site-menu-toggle__bar"></span>
 			<span class="site-menu-toggle__bar"></span>
 		</button>
 
-		<nav id="site-navigation" class="main-navigation" aria-label={t('Primary menu')} aria-hidden="true">
+		<nav id="site-navigation" class="main-navigation elite-navigation" aria-label={t('Primary menu')} aria-hidden="true">
 			<div class="mobile-nav-head">
 				<span class="mobile-nav-title">{t('Menu')}</span>
 				<button class="mobile-nav-close" type="button" aria-label={t('Close menu')} data-mobile-close>
 					<span aria-hidden="true">✕</span>
 				</button>
 			</div>
-			<ul class="primary-menu">
+			<ul class="primary-menu elite-menu">
 				<li><a href={url('/#architecture')}>{architectureLabel[lang] ?? 'Architecture'}</a></li>
 				<li><a href={url('/#services')}>{t('Services')}</a></li>
 				<li><a href={url('/dynamic-seo/')}>{t('Dynamic SEO')}</a></li>
@@ -77,25 +75,23 @@ const hasRegionalInsights = ['en','sq','mk','sr','ro','bg'].includes(lang);
 				<li><a href={url('/#contact')}>{t('Contact')}</a></li>
 			</ul>
 
-			<div class="site-header-actions">
-				<a class="header-cta-pill" href={url('/#project-estimator')}>
+			<div class="site-header-actions elite-actions">
+				<a class="header-cta-pill elite-cta" href={url('/#project-estimator')}>
 					<span class="header-cta-pulse"></span>
 					<span>{ctaLabel[lang] ?? 'ESTIMATE ↘'}</span>
 				</a>
 			</div>
 
-			<div class="site-language-switcher">
-				<span class="site-language-switcher__icon" aria-hidden="true">
-					<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9S14.5 18.4 12 21M12 3C9.5 5.6 8.2 8.6 8.2 12s1.3 6.4 3.8 9"></path></svg>
-				</span>
+			<div class="site-language-switcher elite-lang-switcher">
 				{switchLanguages.map(([code, label]) => (
 					<a
+						class={code === lang ? 'is-active-lang' : ''}
 						href={getLocalizedUrl(code, currentPath)}
 						aria-current={code === lang ? 'true' : undefined}
 						hreflang={code}
 						lang={code}
 						aria-label={`${languageNames[code as keyof typeof languageNames]} (${label})`}
-					>{label}</a>
+					>{code.toUpperCase()}</a>
 				))}
 			</div>
 		</nav>
@@ -103,83 +99,245 @@ const hasRegionalInsights = ['en','sq','mk','sr','ro','bg'].includes(lang);
 </header>
 
 <style>
-	.mobile-nav-head {
-		display: none;
+	.qct-elite-header {
+		position: sticky;
+		top: 0;
+		z-index: 1000;
+		background: rgba(7, 8, 11, 0.88) !important;
+		backdrop-filter: blur(24px) !important;
+		-webkit-backdrop-filter: blur(24px) !important;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+		transition: all 0.25s ease;
 	}
 
-	@media (max-width: 999px) {
-		.mobile-nav-head {
-			display: flex;
-		}
-	}
-
-	.site-branding {
+	.site-header__inner {
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
+		height: 72px;
+		max-width: 1240px;
+		margin: 0 auto;
+		padding: 0 1.5rem;
 	}
 
 	.site-branding a {
 		text-decoration: none;
+		display: flex;
+		align-items: center;
 	}
 
-	.site-header-actions {
+	.elite-navigation {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		background: transparent !important;
+		border: 0 !important;
+		box-shadow: none !important;
+	}
+
+	.elite-menu {
+		display: flex;
+		align-items: center;
+		gap: 0.35rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.elite-menu li a {
+		color: #9ca3af !important;
+		font-size: 0.82rem !important;
+		font-weight: 600 !important;
+		letter-spacing: 0.02em;
+		padding: 0.5rem 0.85rem !important;
+		border-radius: 8px;
+		text-decoration: none !important;
+		transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+		min-height: auto !important;
+		display: inline-flex;
+		align-items: center;
+	}
+
+	.elite-menu li a:hover {
+		color: #ffffff !important;
+		background: rgba(255, 255, 255, 0.06) !important;
+	}
+
+	.elite-actions {
 		display: inline-flex;
 		align-items: center;
 		margin-left: 0.5rem;
 	}
 
-	.header-cta-pill {
+	.elite-cta {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.45rem;
-		padding: 0.35rem 0.85rem;
-		background: rgba(0, 245, 160, 0.08);
-		border: 1px solid rgba(0, 245, 160, 0.3);
-		border-radius: 999px;
-		color: #00f5a0;
+		gap: 0.5rem;
+		padding: 0.45rem 1.15rem;
+		background: #00f5a0 !important;
+		color: #07080b !important;
+		border: 1px solid #00f5a0 !important;
+		border-radius: 9999px;
 		font-family: ui-monospace, SFMono-Regular, monospace;
-		font-size: 0.68rem;
-		font-weight: 750;
+		font-size: 0.72rem;
+		font-weight: 800;
 		letter-spacing: 0.08em;
 		text-decoration: none;
-		transition: all 0.2s ease;
+		box-shadow: 0 0 20px rgba(0, 245, 160, 0.35);
+		transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 	}
 
-	.header-cta-pill:hover {
-		background: #00f5a0;
-		color: #07080b;
-		box-shadow: 0 0 16px rgba(0, 245, 160, 0.35);
+	.elite-cta:hover {
+		background: #22f8ab !important;
+		box-shadow: 0 0 30px rgba(0, 245, 160, 0.6);
+		transform: translateY(-1px);
 	}
 
 	.header-cta-pulse {
-		width: 5px;
-		height: 5px;
+		width: 6px;
+		height: 6px;
 		border-radius: 50%;
-		background: #00f5a0;
-		box-shadow: 0 0 6px #00f5a0;
-	}
-
-	.header-cta-pill:hover .header-cta-pulse {
 		background: #07080b;
+		box-shadow: 0 0 4px #07080b;
 	}
 
-	.site-language-switcher__icon {
-		display: inline-grid;
-		place-items: center;
-		width: 16px;
-		height: 16px;
-		color: currentColor;
-		opacity: 0.58;
-		flex: 0 0 16px;
+	.elite-lang-switcher {
+		display: inline-flex;
+		align-items: center;
+		gap: 3px;
+		padding: 3px 5px;
+		background: rgba(255, 255, 255, 0.04);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: 999px;
+		margin-left: 0.5rem;
 	}
 
-	.site-language-switcher__icon svg {
-		width: 16px;
-		height: 16px;
-		fill: none;
-		stroke: currentColor;
-		stroke-width: 1.5;
-		stroke-linecap: round;
-		stroke-linejoin: round;
+	.elite-lang-switcher a {
+		color: #6b7280;
+		font-family: ui-monospace, monospace;
+		font-size: 0.68rem;
+		font-weight: 700;
+		letter-spacing: 0.05em;
+		padding: 0.2rem 0.5rem;
+		border-radius: 999px;
+		text-decoration: none;
+		transition: all 0.15s ease;
+	}
+
+	.elite-lang-switcher a:hover {
+		color: #ffffff;
+	}
+
+	.elite-lang-switcher a.is-active-lang {
+		color: #00f5a0;
+		background: rgba(0, 245, 160, 0.12);
+	}
+
+	.mobile-nav-head {
+		display: none;
+	}
+
+	.elite-menu-toggle {
+		display: none;
+		background: transparent;
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		border-radius: 8px;
+		padding: 0.5rem;
+		cursor: pointer;
+	}
+
+	@media (max-width: 999px) {
+		.elite-menu-toggle {
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			width: 40px;
+			height: 40px;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.site-menu-toggle__bar {
+			width: 20px;
+			height: 2px;
+			background: #ffffff;
+			border-radius: 2px;
+			transition: all 0.2s;
+		}
+
+		.mobile-nav-head {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 1.25rem 1.5rem;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+		}
+
+		.mobile-nav-title {
+			color: #00f5a0;
+			font-family: ui-monospace, monospace;
+			font-size: 0.75rem;
+			font-weight: 800;
+			letter-spacing: 0.15em;
+			text-transform: uppercase;
+		}
+
+		.mobile-nav-close {
+			background: transparent;
+			border: 0;
+			color: #ffffff;
+			font-size: 1.2rem;
+			cursor: pointer;
+		}
+
+		.elite-navigation {
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			width: min(320px, 85vw);
+			background: #0d0f15 !important;
+			border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+			flex-direction: column;
+			align-items: stretch;
+			gap: 1.5rem;
+			padding: 0;
+			transform: translateX(100%);
+			transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+			z-index: 9999;
+		}
+
+		.elite-navigation.is-open {
+			transform: translateX(0);
+		}
+
+		.elite-menu {
+			flex-direction: column;
+			align-items: stretch;
+			padding: 1rem 1.25rem;
+			gap: 0.5rem;
+		}
+
+		.elite-menu li a {
+			font-size: 1rem !important;
+			padding: 0.75rem 1rem !important;
+		}
+
+		.elite-actions {
+			padding: 0 1.25rem;
+			margin: 0;
+		}
+
+		.elite-cta {
+			width: 100%;
+			justify-content: center;
+			padding: 0.75rem;
+			font-size: 0.85rem;
+		}
+
+		.elite-lang-switcher {
+			margin: 1rem 1.25rem;
+			justify-content: center;
+		}
 	}
 </style>

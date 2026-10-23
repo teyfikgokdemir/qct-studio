@@ -2,40 +2,39 @@
 interface Props {
   lang: string;
 }
-
 const { lang } = Astro.props;
 const phoneNumber = '905433856656';
 
 const copy = {
   en: {
     whatsappLabel: 'Chat with QCT Studio on WhatsApp',
-    whatsappMessage: 'Hello QCT Studio, I would like to discuss a digital project.',
+    whatsappMessage: 'Hi QCT Studio, I would like to discuss a project.',
     topLabel: 'Back to top',
   },
   sq: {
     whatsappLabel: 'Bisedoni me QCT Studio në WhatsApp',
-    whatsappMessage: 'Përshëndetje QCT Studio, dëshiroj të diskutoj një projekt digjital.',
+    whatsappMessage: 'Përshëndetje QCT Studio, do të doja të diskutoj për një projekt.',
     topLabel: 'Kthehu në krye',
   },
   mk: {
     whatsappLabel: 'Разговарајте со QCT Studio на WhatsApp',
-    whatsappMessage: 'Здраво QCT Studio, би сакал/а да разговарам за дигитален проект.',
-    topLabel: 'Назад на врвот',
+    whatsappMessage: 'Здраво QCT Studio, би сакал/а да разговараме за проект.',
+    topLabel: 'Врати се на врвот',
   },
   sr: {
-    whatsappLabel: 'Razgovarajte sa QCT Studio putem WhatsApp-a',
-    whatsappMessage: 'Zdravo QCT Studio, želeo/la bih da razgovaram o digitalnom projektu.',
+    whatsappLabel: 'Razgovarajte sa QCT Studio na WhatsApp-u',
+    whatsappMessage: 'Pozdrav QCT Studio, želeo/želela bih da porazgovaramo o projektu.',
     topLabel: 'Nazad na vrh',
   },
   ro: {
-    whatsappLabel: 'Discutați cu QCT Studio pe WhatsApp',
-    whatsappMessage: 'Bună QCT Studio, aș dori să discut despre un proiect digital.',
+    whatsappLabel: 'Discută cu QCT Studio pe WhatsApp',
+    whatsappMessage: 'Bună, aș dori să discutăm despre un proiect web cu QCT Studio.',
     topLabel: 'Înapoi sus',
   },
   bg: {
-    whatsappLabel: 'Свържете се с QCT Studio в WhatsApp',
-    whatsappMessage: 'Здравейте QCT Studio, бих искал/а да обсъдим дигитален проект.',
-    topLabel: 'Обратно нагоре',
+    whatsappLabel: 'Чат с QCT Studio в WhatsApp',
+    whatsappMessage: 'Здравейте, бих искал да обсъдим проект за уеб сайт с QCT Studio.',
+    topLabel: 'Обратно най-горе',
   },
 };
 
@@ -91,15 +90,13 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
         window.scrollTo({ top: 0, behavior: reduced.matches ? 'auto' : 'smooth' });
       });
     }
-
-
   })();
 </script>
 
 <style is:global>
   .qct-floating-action {
     position: fixed !important;
-    bottom: calc(1rem + env(safe-area-inset-bottom)) !important;
+    bottom: calc(1.2rem + env(safe-area-inset-bottom)) !important;
     width: 48px !important;
     height: 48px !important;
     min-width: 48px !important;
@@ -115,21 +112,21 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
     transition: transform 180ms ease, opacity 180ms ease, visibility 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 180ms ease !important;
   }
 
-  /* WhatsApp on LEFT */
+  /* WhatsApp on LEFT - Obsidian & Emerald */
   .qct-whatsapp {
-    left: max(1rem, env(safe-area-inset-left)) !important;
+    left: max(1.2rem, env(safe-area-inset-left)) !important;
     right: auto !important;
-    background: linear-gradient(145deg, rgba(77, 46, 98, 0.98), rgba(38, 23, 48, 0.98)) !important;
-    backdrop-filter: blur(18px) !important;
-    -webkit-backdrop-filter: blur(18px) !important;
-    border: 1px solid rgba(255, 122, 115, 0.42) !important;
-    color: #f8f5ef !important;
-    box-shadow: 0 16px 42px rgba(38, 23, 48, 0.32) !important;
+    background: #0d0f15 !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(0, 245, 160, 0.35) !important;
+    color: #00f5a0 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 245, 160, 0.2) !important;
   }
 
   .qct-whatsapp::after {
-    background: #25d366 !important;
-    border: 2px solid #2b1936 !important;
+    background: #00f5a0 !important;
+    border: 2px solid #07080b !important;
     border-radius: 50% !important;
     bottom: 3px !important;
     box-sizing: border-box !important;
@@ -138,18 +135,19 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
     position: absolute !important;
     right: 2px !important;
     width: 11px !important;
+    box-shadow: 0 0 6px #00f5a0 !important;
   }
 
   .qct-whatsapp:hover,
   .qct-whatsapp:focus-visible {
-    border-color: rgba(255, 122, 115, 0.78) !important;
-    box-shadow: 0 20px 48px rgba(38, 23, 48, 0.4), 0 0 0 4px rgba(255, 122, 115, 0.1) !important;
+    border-color: #00f5a0 !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 245, 160, 0.5) !important;
     color: #ffffff !important;
     transform: translateY(-2px) !important;
   }
 
   .qct-whatsapp:focus-visible {
-    outline: 2px solid #f8f5ef !important;
+    outline: 2px solid #00f5a0 !important;
     outline-offset: 3px !important;
   }
 
@@ -160,16 +158,16 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
     display: block !important;
   }
 
-  /* Back to Top on RIGHT */
+  /* Back to Top on RIGHT - Obsidian Glass */
   .qct-back-to-top {
-    right: max(1rem, env(safe-area-inset-right)) !important;
+    right: max(1.2rem, env(safe-area-inset-right)) !important;
     left: auto !important;
-    background: linear-gradient(145deg, rgba(77, 46, 98, 0.96), rgba(38, 23, 48, 0.96)) !important;
-    backdrop-filter: blur(18px) !important;
-    -webkit-backdrop-filter: blur(18px) !important;
-    border: 1px solid rgba(255, 122, 115, 0.42) !important;
-    color: #f8f5ef !important;
-    box-shadow: 0 12px 32px rgba(38, 23, 48, 0.28) !important;
+    background: #0d0f15 !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #f3f4f6 !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
     opacity: 0 !important;
     visibility: hidden !important;
     pointer-events: none !important;
@@ -184,47 +182,25 @@ const href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(c.whatsappM
   }
 
   .qct-back-to-top:hover {
-    border-color: rgba(255, 122, 115, 0.78) !important;
-    box-shadow: 0 16px 36px rgba(38, 23, 48, 0.36), 0 0 0 3px rgba(255, 122, 115, 0.15) !important;
-    color: #ffffff !important;
+    border-color: #00f5a0 !important;
+    color: #00f5a0 !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 245, 160, 0.3) !important;
     transform: translateY(-2px) !important;
   }
 
-  .qct-back-to-top:focus-visible {
-    outline: 2px solid #f8f5ef !important;
-    outline-offset: 3px !important;
-  }
-
-  .qct-back-to-top svg {
-    display: block !important;
-  }
-
-  @media (max-width: 720px) {
+  @media (max-width: 640px) {
     .qct-floating-action {
-      width: 42px !important;
-      height: 42px !important;
-      min-width: 42px !important;
-      min-height: 42px !important;
-      bottom: calc(18px + env(safe-area-inset-bottom)) !important;
+      bottom: calc(0.85rem + env(safe-area-inset-bottom)) !important;
+      width: 44px !important;
+      height: 44px !important;
+      min-width: 44px !important;
+      min-height: 44px !important;
     }
     .qct-whatsapp {
-      left: max(12px, env(safe-area-inset-left)) !important;
+      left: max(0.85rem, env(safe-area-inset-left)) !important;
     }
     .qct-back-to-top {
-      right: max(12px, env(safe-area-inset-right)) !important;
-    }
-    body.v2-body .qct-floating-action {
-      bottom: calc(72px + env(safe-area-inset-bottom)) !important;
-    }
-    body.is-menu-open .qct-floating-action,
-    body.has-open-menu .qct-floating-action {
-      display: none !important;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .qct-floating-action {
-      transition: none !important;
+      right: max(0.85rem, env(safe-area-inset-right)) !important;
     }
   }
 </style>
