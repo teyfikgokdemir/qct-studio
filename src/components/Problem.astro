@@ -104,12 +104,19 @@ const t = useTranslations(lang);
 }
 
 .elite-title {
-	font-size: clamp(2rem, 3.4vw, 3.2rem) !important;
-	font-weight: 850 !important;
-	line-height: 1.15 !important;
-	letter-spacing: -0.03em !important;
+	font-size: clamp(1.4rem, 2.3vw, 2.25rem) !important;
+	font-weight: 800 !important;
+	line-height: 1.25 !important;
+	letter-spacing: -0.025em !important;
 	color: #ffffff !important;
-	margin-bottom: 1.5rem !important;
+	margin-bottom: 1.15rem !important;
+	text-wrap: balance;
+}
+
+@media (min-width: 1100px) {
+	.elite-title {
+		white-space: nowrap !important;
+	}
 }
 
 .text-emerald {
