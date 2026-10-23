@@ -278,12 +278,12 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	     services.css is intentionally NOT loaded: its classes (.qct-premium-service-card,
 	     .qct-service-img) don't match any markup in this theme (real class is
 	     .qct-service-card) — it was dead weight in the original WP enqueue too. -->
-	<link rel="stylesheet" href="/styles/base.css?v=20260718-3" />
-	<link rel="stylesheet" href="/styles/components.css?v=20260718-3" />
+	<link rel="stylesheet" href="/styles/base.css?v=20261024-elite2" />
+	<link rel="stylesheet" href="/styles/components.css?v=20261024-elite2" />
 	{useV2Foundation && <link rel="stylesheet" href="/styles/v2-foundation.css?v=20261007-1" />}
 	{routeGroup === 'home' ? (
 		<>
-			<link rel="stylesheet" href="/styles/home.css?v=20260718-3" />
+			<link rel="stylesheet" href="/styles/home.css?v=20261024-elite2" />
 
 		</>
 	) : routeGroup === 'legal' ? (
@@ -295,7 +295,7 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	{v2Diagnostic && <link rel="stylesheet" href="/styles/diagnostic.css?v=20260722-1" />}
 	{v2Case && <link rel="stylesheet" href="/styles/case-study-v2.css?v=20260722-1" />}
 		<link rel="stylesheet" href="/styles/animations.css?v=20260826-1" />
-		<link rel="stylesheet" href="/styles/utilities.css?v=20260718-3" />
+		<link rel="stylesheet" href="/styles/utilities.css?v=20261024-elite2" />
 </head>
 <body class:list={{ 'v2-body': useV2Foundation }}>
 	<div id="page" class="site">
@@ -314,11 +314,11 @@ const graphSchema = { '@context': 'https://schema.org', '@graph': graph };
 	<WhatsAppButton lang={lang} />
 
 	<!-- Ported as-is from the WordPress theme's assets/js -->
-	<script src="/scripts/main.js?v=20260718-3" is:inline></script>
+	<script src="/scripts/main.js?v=20261024-elite2" is:inline></script>
 	{useV2Foundation && <script src="/scripts/v2-foundation.js?v=20260928-1" is:inline></script>}
 	{v2Diagnostic && <script src="/scripts/diagnostic.js?v=20261003-1" is:inline></script>}
 	{isHome && <script is:inline>
-		{String.raw`(()=>{const load=()=>{if(document.querySelector('script[data-qct-home-animations]'))return;const s=document.createElement('script');s.src='/scripts/animations.js?v=20260718-3';s.defer=true;s.dataset.qctHomeAnimations='true';document.body.appendChild(s)};if('requestIdleCallback'in window)requestIdleCallback(load,{timeout:1800});else setTimeout(load,900)})()`}
+		{String.raw`(()=>{const load=()=>{if(document.querySelector('script[data-qct-home-animations]'))return;const s=document.createElement('script');s.src='/scripts/animations.js?v=20261024-elite2';s.defer=true;s.dataset.qctHomeAnimations='true';document.body.appendChild(s)};if('requestIdleCallback'in window)requestIdleCallback(load,{timeout:1800});else setTimeout(load,900)})()`}
 	</script>}
   <script src="https://teyfikgokdemir.com/cansu-source-beacon.js" data-site="qct-studio" defer></script>
     <script src="/cansu-events.js" data-site="qct-studio" defer></script>

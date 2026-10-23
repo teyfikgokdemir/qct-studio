@@ -10,66 +10,45 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 
 const services = [
 	{
-		modifier: 'qct-service-card--website qct-service-card--featured qct-service-card--website-image',
-		preview: 'website',
-		badge: '01 // ARCHITECTURE',
+		badge: 'HEADLESS ARCHITECTURE',
 		image: 'astro-headless-hero.jpg',
-		href: url('/website-design/'),
+		href: url('/#architecture'),
 		kicker: t('Website Design'),
 		title: t('Premium websites'),
 		text: t('Clear positioning, sharp visuals and conversion-focused structure from the first screen.'),
 		cta: t('Explore Website Design'),
 	},
 	{
-		modifier: 'qct-service-card--commerce qct-service-card--service-image',
-		preview: 'commerce',
-		badge: '02 // COMMERCE',
-		image: 'homepage-service-ecommerce.webp',
-		href: url('/e-commerce/'),
+		badge: 'EDGE STOREFRONT',
+		image: 'ecommerce-store-elite.jpg',
+		href: url('/#project-estimator'),
 		kicker: t('E-commerce'),
 		title: t('E-commerce stores'),
 		text: t('Product pages, mobile checkout and order flows built for serious online selling.'),
 		cta: t('Explore E-commerce'),
 	},
 	{
-		modifier: 'qct-service-card--whatsapp-service qct-service-card--service-image',
-		preview: 'whatsapp',
-		badge: '03 // CONVERSATIONAL',
+		badge: 'CONVERSATIONAL COMMERCE',
 		image: 'whatsapp-commerce-elite.jpg',
-		href: url('/whatsapp-commerce/'),
+		href: url('/#contact'),
 		kicker: t('WhatsApp Commerce'),
 		title: t('Sell inside the conversation'),
 		text: t('Turn customer questions into catalog views, order summaries and follow-up flows inside WhatsApp.'),
 		cta: t('Explore WhatsApp Commerce'),
 	},
 	{
-		modifier: 'qct-service-card--performance qct-service-card--service-image',
-		preview: 'performance',
-		badge: '04 // GEO & SEARCH',
+		badge: 'DYNAMIC SEO & GEO',
 		image: 'geo-ai-graph.jpg',
-		href: url('/seo-performance/'),
+		href: url('/dynamic-seo/'),
 		kicker: t('SEO & Performance'),
 		title: t('Fast, visible and measurable'),
 		text: t('Technical SEO, Core Web Vitals and semantic structure for long-term visibility.'),
 		cta: t('Explore SEO & GEO Performance'),
 	},
 	{
-		modifier: 'qct-service-card--landing qct-service-card--wide qct-service-card--service-image',
-		preview: 'landing',
-		badge: '05 // CAMPAIGNS',
-		image: 'homepage-service-meta-ads.webp',
-		href: url('/meta-ads-landing-pages/'),
-		kicker: t('Meta Ads Landing Pages'),
-		title: t('Campaign landing pages'),
-		text: t('Focused pages that match ad intent, explain the offer and drive the next action.'),
-		cta: t('Explore Meta Ads Landing Pages'),
-	},
-	{
-		modifier: 'qct-service-card--automation qct-service-card--service-image',
-		preview: 'automation',
-		badge: '06 // AI WORKFLOWS',
-		image: 'homepage-service-ai-automation.webp',
-		href: url('/ai-automation/'),
+		badge: 'AUTONOMOUS WORKFLOWS',
+		image: 'ai-automation-elite.jpg',
+		href: url('/#project-estimator'),
 		kicker: t('AI Automation'),
 		title: t('AI automation'),
 		text: t('Automations that save time, reduce repetitive work and improve everyday operations.'),
@@ -77,56 +56,53 @@ const services = [
 	},
 ];
 ---
-<link rel="stylesheet" href="/styles/services-compact.css" />
 <section id="services" class="qct-section qct-services qct-services-elite" aria-labelledby="qct-services-title">
 	<div class="container">
-		<div class="qct-section__header qct-section__header--split">
-			<div>
-				<div class="elite-pill">
-					<span class="elite-pill-dot"></span>
-					<span>CAPABILITIES & ARCHITECTURE</span>
-				</div>
-				<h2 id="qct-services-title" class="qct-section__title">
-					{t('Digital systems built for Balkan businesses ready to look premium.')}
-				</h2>
+		<div class="qct-section__header elite-header">
+			<div class="elite-pill">
+				<span class="elite-pill-dot"></span>
+				<span>ENGINEERING CAPABILITIES</span>
 			</div>
-			<p class="qct-section__lead">
+			<h2 id="qct-services-title" class="qct-section__title elite-title">
+				{t('Digital systems built for Balkan businesses ready to look premium.')}
+			</h2>
+			<p class="qct-section__lead elite-lead">
 				{t('Each service is designed to improve trust, speed and conversion before you spend more on ads.')}
 			</p>
 		</div>
 
-		<div class="qct-services__grid">
-			{services.map((service) => (
-				<a class={`qct-service-card ${service.modifier} elite-card`} href={service.href} data-qct-reveal>
-					<span class="qct-service-card__top">
-						<span class="elite-card-badge">{service.badge}</span>
-						<span class="qct-service-card__kicker">{service.kicker}</span>
-					</span>
-
-					<span class="qct-service-card__body">
-						<span class="qct-service-card__title">{service.title}</span>
-						<span class="qct-service-card__text">{service.text}</span>
-					</span>
-
-					<span class={`qct-service-preview qct-svc-scene qct-svc-scene--${service.preview} elite-preview`}>
+		<div class="elite-services-grid">
+			{services.map((service, index) => (
+				<article class={`elite-service-card ${index === 0 ? 'elite-service-card--featured' : ''}`}>
+					<div class="service-card-media">
 						<img 
-							class={service.preview === 'website' ? "qct-service-website-image elite-service-img" : "qct-service-card-image elite-service-img"} 
 							src={`/images/services/${service.image}`} 
-							width="1440" 
-							height="480" 
+							width="1280" 
+							height="720" 
 							loading="lazy" 
 							decoding="async" 
 							alt={`${service.kicker}: ${service.title}`} 
 						/>
-					</span>
+						<div class="media-overlay"></div>
+					</div>
 
-					<span class="qct-service-card__cta elite-card-cta">
-						<span>{service.cta}</span>
-						<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-							<path d="M2.5 7H11.5M11.5 7L7.5 3M11.5 7L7.5 11" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-						</svg>
-					</span>
-				</a>
+					<div class="service-card-content">
+						<div class="card-meta">
+							<span class="service-badge-pill">{service.badge}</span>
+							<span class="service-kicker-text">{service.kicker}</span>
+						</div>
+
+						<h3 class="service-card-heading">{service.title}</h3>
+						<p class="service-card-desc">{service.text}</p>
+
+						<a class="service-card-cta" href={service.href}>
+							<span>{service.cta}</span>
+							<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+								<path d="M2.5 7H11.5M11.5 7L7.5 3M11.5 7L7.5 11" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						</a>
+					</div>
+				</article>
 			))}
 		</div>
 	</div>
@@ -134,26 +110,33 @@ const services = [
 
 <style>
 .qct-services-elite {
-	background: #07080b;
+	background: #07080b !important;
+	padding: clamp(5.5rem, 9vw, 8rem) 0;
 	position: relative;
-	padding: clamp(5rem, 8vw, 7.5rem) 0;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.elite-header {
+	max-width: 920px;
+	margin-inline: auto;
+	text-align: center;
+	margin-bottom: 4rem;
 }
 
 .elite-pill {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
-	padding: 0.3rem 0.75rem;
-	background: rgba(255, 255, 255, 0.035);
-	border: 1px solid rgba(255, 255, 255, 0.08);
+	padding: 0.35rem 0.85rem;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	background: rgba(255, 255, 255, 0.04);
 	border-radius: 999px;
 	font-family: ui-monospace, SFMono-Regular, monospace;
 	font-size: 0.65rem;
+	letter-spacing: 0.14em;
 	font-weight: 750;
-	letter-spacing: 0.12em;
 	color: #9ca3af;
-	margin-bottom: 1rem;
+	margin-bottom: 1.25rem;
 }
 
 .elite-pill-dot {
@@ -161,63 +144,170 @@ const services = [
 	height: 5px;
 	border-radius: 50%;
 	background: #00f5a0;
-	box-shadow: 0 0 8px #00f5a0;
+	box-shadow: 0 0 6px #00f5a0;
 }
 
-.elite-card {
-	background: #0d0f15 !important;
-	border: 1px solid rgba(255, 255, 255, 0.08) !important;
-	border-radius: 14px !important;
-	padding: 1.6rem !important;
-	transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
-	position: relative;
+.elite-title {
+	font-size: clamp(2.3rem, 4.2vw, 4rem) !important;
+	font-weight: 850 !important;
+	line-height: 1.08 !important;
+	letter-spacing: -0.04em !important;
+	color: #ffffff !important;
+	margin-bottom: 1.25rem !important;
+}
+
+.elite-lead {
+	font-size: clamp(1.05rem, 1.35vw, 1.2rem) !important;
+	line-height: 1.65 !important;
+	color: #9ca3af !important;
+	max-width: 740px;
+	margin-inline: auto;
+}
+
+/* Elite Luxury Grid */
+.elite-services-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 2rem;
+}
+
+.elite-service-card--featured {
+	grid-column: 1 / -1;
+	display: grid !important;
+	grid-template-columns: 1.3fr 1fr;
+	align-items: center;
+}
+
+.elite-service-card {
+	background: #0d0f15;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 20px;
 	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
 }
 
-.elite-card:hover {
-	border-color: rgba(0, 245, 160, 0.4) !important;
-	transform: translateY(-3px);
-	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(0, 245, 160, 0.1) !important;
+.elite-service-card:hover {
+	transform: translateY(-4px);
+	border-color: rgba(0, 245, 160, 0.35);
+	box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 245, 160, 0.12);
 }
 
-.elite-card-badge {
-	font-family: ui-monospace, SFMono-Regular, monospace;
-	font-size: 0.62rem;
-	font-weight: 800;
-	color: #00f5a0;
-	letter-spacing: 0.1em;
-}
-
-.elite-preview {
-	border: 1px solid rgba(255, 255, 255, 0.07) !important;
-	border-radius: 10px !important;
-	overflow: hidden !important;
-	background: #040507 !important;
-	margin: 1.25rem 0 !important;
+.service-card-media {
 	position: relative;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	background: #06070a;
 }
 
-.elite-service-img {
+.elite-service-card--featured .service-card-media {
+	height: 100%;
+	aspect-ratio: 16 / 10;
+}
+
+.service-card-media img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	transition: transform 0.4s ease;
+	display: block;
+	transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.elite-card:hover .elite-service-img {
-	transform: scale(1.03);
+.elite-service-card:hover .service-card-media img {
+	transform: scale(1.04);
 }
 
-.elite-card-cta {
+.media-overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, transparent 40%, rgba(13, 15, 21, 0.8) 100%);
+	pointer-events: none;
+}
+
+.service-card-content {
+	padding: clamp(1.75rem, 3vw, 2.5rem);
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.card-meta {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	margin-bottom: 1.15rem;
+}
+
+.service-badge-pill {
+	font-family: ui-monospace, SFMono-Regular, monospace;
+	font-size: 0.68rem;
+	font-weight: 750;
+	color: #00f5a0;
+	background: rgba(0, 245, 160, 0.08);
+	border: 1px solid rgba(0, 245, 160, 0.22);
+	border-radius: 999px;
+	padding: 0.3rem 0.75rem;
+	letter-spacing: 0.08em;
+	display: inline-flex;
+}
+
+.service-kicker-text {
+	font-family: ui-monospace, monospace;
+	font-size: 0.72rem;
+	color: #6b7280;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+}
+
+.service-card-heading {
+	font-size: clamp(1.35rem, 2vw, 1.75rem);
+	font-weight: 800;
+	color: #ffffff;
+	letter-spacing: -0.025em;
+	line-height: 1.25;
+	margin: 0 0 0.85rem 0;
+}
+
+.service-card-desc {
+	font-size: 0.98rem;
+	line-height: 1.65;
+	color: #9ca3af;
+	margin: 0 0 1.75rem 0;
+	flex: 1;
+}
+
+.service-card-cta {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.5rem;
+	color: #00f5a0;
+	font-size: 0.88rem;
 	font-weight: 750;
-	font-size: 0.85rem;
-	color: #00f5a0 !important;
+	text-decoration: none;
+	transition: all 0.2s ease;
+	width: fit-content;
 }
 
-.elite-card:hover .elite-card-cta svg {
-	transform: translateX(3px);
+.service-card-cta:hover {
+	gap: 0.8rem;
+	color: #22f8ab;
+}
+
+@media (max-width: 960px) {
+	.elite-services-grid {
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	.elite-service-card--featured {
+		grid-template-columns: 1fr;
+	}
+
+	.elite-service-card--featured .service-card-media {
+		aspect-ratio: 16 / 9;
+	}
 }
 </style>

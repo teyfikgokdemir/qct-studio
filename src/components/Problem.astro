@@ -25,8 +25,8 @@ const t = useTranslations(lang);
 		<div class="qct-problem__grid elite-problem-grid">
 			<article class="qct-problem-card elite-prob-card">
 				<div class="prob-card-header">
-					<span class="prob-card-num">01</span>
 					<span class="prob-card-indicator"></span>
+					<span class="prob-card-tag">PRINCIPLE</span>
 				</div>
 				<h3>{t('Clear Communication')}</h3>
 				<p>{t('No confusing process.')}<br />{t('No unnecessary meetings.')}<br />{t('No technical jargon.')}</p>
@@ -34,8 +34,8 @@ const t = useTranslations(lang);
 
 			<article class="qct-problem-card elite-prob-card">
 				<div class="prob-card-header">
-					<span class="prob-card-num">02</span>
 					<span class="prob-card-indicator"></span>
+					<span class="prob-card-tag">PURPOSE</span>
 				</div>
 				<h3>{t('Built Around Your Business')}</h3>
 				<p>{t('Every business is different.')}<br />{t('Your website should be too.')}</p>
@@ -43,8 +43,8 @@ const t = useTranslations(lang);
 
 			<article class="qct-problem-card elite-prob-card">
 				<div class="prob-card-header">
-					<span class="prob-card-num">03</span>
 					<span class="prob-card-indicator"></span>
+					<span class="prob-card-tag">ENDURANCE</span>
 				</div>
 				<h3>{t('Designed to Last')}</h3>
 				<p>{t('We build websites that still feel modern years from now.')}</p>
@@ -52,8 +52,8 @@ const t = useTranslations(lang);
 
 			<article class="qct-problem-card elite-prob-card">
 				<div class="prob-card-header">
-					<span class="prob-card-num">04</span>
 					<span class="prob-card-indicator"></span>
+					<span class="prob-card-tag">PARTNERSHIP</span>
 				</div>
 				<h3>{t('Long-Term Support')}</h3>
 				<p>{t('Launching your website is the beginning, not the end.')}</p>
@@ -100,29 +100,27 @@ const t = useTranslations(lang);
 	height: 5px;
 	border-radius: 50%;
 	background: #00f5a0;
+	box-shadow: 0 0 6px #00f5a0;
 }
 
 .elite-title {
-	font-size: clamp(2.2rem, 4.2vw, 3.8rem) !important;
+	font-size: clamp(2.4rem, 4.5vw, 4.2rem) !important;
 	font-weight: 850 !important;
 	line-height: 1.08 !important;
 	letter-spacing: -0.04em !important;
 	color: #ffffff !important;
-	margin: 0 0 1.2rem !important;
+	margin-bottom: 1.5rem !important;
 }
 
 .text-emerald {
-	color: #00f5a0;
-	background: linear-gradient(135deg, #00f5a0 0%, #38bdf8 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	color: #00f5a0 !important;
 }
 
 .elite-lead {
-	font-size: 1.05rem !important;
+	font-size: clamp(1.05rem, 1.4vw, 1.22rem) !important;
 	line-height: 1.65 !important;
 	color: #9ca3af !important;
-	max-width: 720px;
+	max-width: 780px;
 	margin-inline: auto;
 }
 
@@ -130,60 +128,60 @@ const t = useTranslations(lang);
 	display: grid;
 	grid-template-columns: repeat(4, 1fr) !important;
 	gap: 1.25rem !important;
-	margin-top: 3.5rem !important;
+	margin-top: 4rem;
 }
 
 .elite-prob-card {
 	background: #0d0f15 !important;
 	border: 1px solid rgba(255, 255, 255, 0.08) !important;
-	border-radius: 12px !important;
-	padding: 1.75rem !important;
-	min-height: 220px !important;
+	border-radius: 14px;
+	padding: 2rem 1.75rem !important;
+	transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+	position: relative;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
-	transition: all 0.25s ease !important;
 }
 
 .elite-prob-card:hover {
-	border-color: rgba(0, 245, 160, 0.3) !important;
-	transform: translateY(-2px);
-	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5) !important;
+	transform: translateY(-4px);
+	border-color: rgba(0, 245, 160, 0.35) !important;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 245, 160, 0.1);
 }
 
 .prob-card-header {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	margin-bottom: 1.2rem;
-}
-
-.prob-card-num {
-	font-family: ui-monospace, SFMono-Regular, monospace;
-	font-size: 0.72rem;
-	font-weight: 800;
-	color: #00f5a0;
-	letter-spacing: 0.1em;
+	gap: 0.5rem;
+	margin-bottom: 1.25rem;
 }
 
 .prob-card-indicator {
-	width: 5px;
-	height: 5px;
+	width: 6px;
+	height: 6px;
 	border-radius: 50%;
-	background: rgba(255, 255, 255, 0.2);
+	background: #00f5a0;
+	box-shadow: 0 0 8px #00f5a0;
+}
+
+.prob-card-tag {
+	font-family: ui-monospace, SFMono-Regular, monospace;
+	font-size: 0.65rem;
+	font-weight: 750;
+	letter-spacing: 0.12em;
+	color: #6b7280;
 }
 
 .elite-prob-card h3 {
-	font-size: 1.15rem !important;
-	font-weight: 800 !important;
+	font-size: 1.25rem !important;
+	font-weight: 750 !important;
 	color: #ffffff !important;
-	letter-spacing: -0.02em !important;
-	margin: 0 0 0.75rem 0 !important;
-	line-height: 1.25 !important;
+	line-height: 1.25;
+	margin-bottom: 0.85rem !important;
+	letter-spacing: -0.02em;
 }
 
 .elite-prob-card p {
-	font-size: 0.88rem !important;
+	font-size: 0.95rem !important;
 	line-height: 1.6 !important;
 	color: #9ca3af !important;
 	margin: 0 !important;
@@ -191,18 +189,19 @@ const t = useTranslations(lang);
 
 .elite-lead-bottom {
 	text-align: center;
-	font-size: 0.95rem !important;
+	font-size: 1rem !important;
 	color: #6b7280 !important;
-	margin-top: 2.5rem !important;
+	margin-top: 3.5rem !important;
+	font-style: italic;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
 	.elite-problem-grid {
 		grid-template-columns: repeat(2, 1fr) !important;
 	}
 }
 
-@media (max-width: 600px) {
+@media (max-width: 640px) {
 	.elite-problem-grid {
 		grid-template-columns: 1fr !important;
 	}
