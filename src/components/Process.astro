@@ -8,24 +8,24 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const steps = [
-	{ visual: 'audit', title: t('Understand'), text: t('We learn about your business, your customers and your goals before anything is designed.') },
-	{ visual: 'map', title: t('Plan'), text: t('We organise the structure, content and user journey before development begins.') },
-	{ visual: 'build', title: t('Design'), text: t('Every page is designed around clarity, trust and ease of use.') },
-	{ visual: 'launch', title: t('Build'), text: t('Fast, responsive and carefully developed for every screen size.') },
-	{ visual: 'improve', title: t('Launch'), text: t('After testing everything, your new website goes live with a smooth handover.') },
+	{ visual: 'audit', num: '01', title: t('Understand'), text: t('We learn about your business, your customers and your goals before anything is designed.') },
+	{ visual: 'map', num: '02', title: t('Plan'), text: t('We organise the structure, content and user journey before development begins.') },
+	{ visual: 'build', num: '03', title: t('Design'), text: t('Every page is designed around clarity, trust and ease of use.') },
+	{ visual: 'launch', num: '04', title: t('Build'), text: t('Fast, responsive and carefully developed for every screen size.') },
+	{ visual: 'improve', num: '05', title: t('Launch'), text: t('After testing everything, your new website goes live with a smooth handover.') },
 ];
 ---
-<section id="process" class="qct-section qct-process" aria-labelledby="qct-process-title">
+<section id="process" class="qct-section qct-process qct-process-elite" aria-labelledby="qct-process-title">
 	<div class="container">
 		<div class="qct-section__header qct-section__header--split">
 			<div>
-				<p class="qct-section__eyebrow">{t('OUR PROCESS')}</p>
+				<p class="qct-section__eyebrow elite-eyebrow">{t('OUR PROCESS')}</p>
 				<h2 id="qct-process-title" class="qct-section__title">
 					{t('A straightforward process from the first conversation')}<br />
 					{t('to launch.')}
 				</h2>
 			</div>
-			<p class="qct-section__lead">
+			<p class="qct-section__lead elite-process-lead">
 				{t('We keep things simple.')}<br />
 				{t("You'll always know what we're working on, what's coming next and why every decision is being made.")}
 			</p>
@@ -35,6 +35,7 @@ const steps = [
 			{steps.map((step) => (
 				<article class="qct-process-card" data-process-step data-qct-reveal>
 					<div class="qct-process-card__top">
+						<span class="step-badge">{step.num}</span>
 						<span class={`qct-process-card__detail qct-process-card__detail--${step.visual}`} aria-hidden="true">
 							{step.visual === 'audit' && (
 								<>
@@ -78,8 +79,103 @@ const steps = [
 			))}
 		</div>
 
-		<p class="qct-section__lead">
+		<p class="qct-section__lead elite-process-lead-bottom">
 			{t('No unnecessary complexity. Just a process that works.')}
 		</p>
 	</div>
 </section>
+
+<style>
+.qct-process-elite {
+	background: #080a0f !important;
+	padding: clamp(5rem, 8vw, 7.5rem) 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.elite-eyebrow {
+	font-family: ui-monospace, SFMono-Regular, monospace;
+	font-size: 0.65rem;
+	font-weight: 800;
+	letter-spacing: 0.15em;
+	color: #00f5a0;
+	text-transform: uppercase;
+	margin-bottom: 0.75rem;
+}
+
+.qct-process-elite h2 {
+	font-size: clamp(2.2rem, 4vw, 3.8rem) !important;
+	font-weight: 850 !important;
+	line-height: 1.05 !important;
+	letter-spacing: -0.04em !important;
+	color: #ffffff !important;
+}
+
+.elite-process-lead {
+	color: #9ca3af !important;
+	font-size: 1.05rem !important;
+	line-height: 1.65 !important;
+}
+
+.qct-process-elite .qct-process__timeline {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr) !important;
+	gap: 1rem !important;
+	margin-top: 3.5rem !important;
+}
+
+.qct-process-elite .qct-process-card {
+	background: #0d0f15 !important;
+	border: 1px solid rgba(255, 255, 255, 0.08) !important;
+	border-radius: 12px !important;
+	padding: 1.6rem !important;
+	transition: all 0.25s ease !important;
+}
+
+.qct-process-elite .qct-process-card:hover {
+	border-color: rgba(0, 245, 160, 0.35) !important;
+	transform: translateY(-2px);
+	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+.step-badge {
+	font-family: ui-monospace, SFMono-Regular, monospace;
+	font-size: 0.7rem;
+	font-weight: 800;
+	color: #00f5a0;
+	letter-spacing: 0.1em;
+}
+
+.qct-process-elite .qct-process-card h3 {
+	color: #ffffff !important;
+	font-size: 1.18rem !important;
+	font-weight: 800 !important;
+	margin: 1.25rem 0 0.5rem !important;
+	letter-spacing: -0.02em !important;
+}
+
+.qct-process-elite .qct-process-card p {
+	color: #9ca3af !important;
+	font-size: 0.85rem !important;
+	line-height: 1.55 !important;
+	margin: 0 !important;
+}
+
+.elite-process-lead-bottom {
+	text-align: center;
+	color: #6b7280 !important;
+	font-size: 0.95rem !important;
+	margin-top: 3rem !important;
+}
+
+@media (max-width: 1050px) {
+	.qct-process-elite .qct-process__timeline {
+		grid-template-columns: repeat(3, 1fr) !important;
+	}
+}
+
+@media (max-width: 680px) {
+	.qct-process-elite .qct-process__timeline {
+		grid-template-columns: 1fr !important;
+	}
+}
+</style>

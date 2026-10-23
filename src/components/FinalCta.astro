@@ -30,17 +30,179 @@ const t = useTranslations(lang);
 
 			<div class="qct-final-cta__visual" aria-hidden="true">
 				<div class="qct-system-card qct-system-card--brief">
-					<span></span>
+					<div class="qct-card-header">
+						<span class="qct-card-indicator"></span>
+						<span class="qct-card-tag">EDGE INFRASTRUCTURE</span>
+					</div>
 					<strong>{t('Based in the Balkans.')}</strong>
-					<em></em>
+					<p class="qct-card-sub">GLOBAL HIGH-CONVERSION DELIVERY</p>
 				</div>
 				<div class="qct-system-card qct-system-card--launch">
-					<strong>{t('Working with businesses that value quality.')}</strong>
-					<span></span>
-					<span></span>
-					<em></em>
+					<strong class="qct-card-title">{t('Working with businesses that value quality.')}</strong>
+					<div class="qct-card-metrics">
+						<span class="qct-card-pill">100/100 CWV</span>
+						<span class="qct-card-pill">&lt;28ms TTFB</span>
+						<span class="qct-card-pill">0KB RUNTIME JS</span>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
+<style>
+	.qct-final-cta {
+		background: #07080b;
+		padding: clamp(60px, 8vw, 100px) 0;
+		position: relative;
+	}
+	.qct-final-cta__panel {
+		background: radial-gradient(circle at 85% 20%, rgba(0, 245, 160, 0.08), transparent 45%), #0c0e14;
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: 20px;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: clamp(32px, 4vw, 56px);
+		padding: clamp(32px, 5vw, 64px);
+		position: relative;
+		overflow: hidden;
+		box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+	}
+	@media (min-width: 900px) {
+		.qct-final-cta__panel {
+			grid-template-columns: 1.2fr 0.8fr;
+			align-items: center;
+		}
+	}
+	.qct-section__eyebrow {
+		color: #00f5a0;
+		font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+		font-size: 0.8rem;
+		font-weight: 700;
+		letter-spacing: 0.15em;
+		margin-bottom: 0.85rem;
+		text-transform: uppercase;
+	}
+	.qct-section__title {
+		color: #ffffff;
+		font-size: clamp(2rem, 3.5vw, 3rem);
+		font-weight: 800;
+		letter-spacing: -0.03em;
+		line-height: 1.15;
+		margin: 0 0 1.25rem 0;
+	}
+	.qct-section__lead {
+		color: #9ca3af;
+		font-size: 1.1rem;
+		line-height: 1.6;
+		margin: 0 0 2rem 0;
+		max-width: 580px;
+	}
+	.qct-final-cta__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+	.qct-button--primary {
+		background: #00f5a0;
+		color: #07080b;
+		font-weight: 800;
+		padding: 0.9rem 2rem;
+		border-radius: 9999px;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+		box-shadow: 0 0 25px rgba(0, 245, 160, 0.35);
+	}
+	.qct-button--primary:hover {
+		background: #22f8ab;
+		transform: translateY(-2px);
+		box-shadow: 0 0 35px rgba(0, 245, 160, 0.55);
+	}
+	.qct-button--secondary {
+		background: rgba(255, 255, 255, 0.05);
+		color: #f3f4f6;
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		font-weight: 600;
+		padding: 0.9rem 2rem;
+		border-radius: 9999px;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.2s ease;
+	}
+	.qct-button--secondary:hover {
+		background: rgba(255, 255, 255, 0.1);
+		border-color: rgba(255, 255, 255, 0.3);
+		color: #ffffff;
+	}
+	.qct-final-cta__visual {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+	.qct-system-card {
+		background: #11141c;
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: 14px;
+		padding: 1.5rem;
+		position: relative;
+	}
+	.qct-system-card--brief {
+		border-left: 3px solid #00f5a0;
+	}
+	.qct-card-header {
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		margin-bottom: 0.75rem;
+	}
+	.qct-card-indicator {
+		display: inline-block;
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: #00f5a0;
+		box-shadow: 0 0 10px #00f5a0;
+	}
+	.qct-card-tag {
+		color: #00f5a0;
+		font-family: ui-monospace, monospace;
+		font-size: 0.7rem;
+		font-weight: 700;
+		letter-spacing: 0.1em;
+	}
+	.qct-system-card strong {
+		display: block;
+		color: #ffffff;
+		font-size: 1.05rem;
+		font-weight: 700;
+		margin-bottom: 0.35rem;
+	}
+	.qct-card-sub {
+		color: #6b7280;
+		font-family: ui-monospace, monospace;
+		font-size: 0.72rem;
+		letter-spacing: 0.08em;
+		margin: 0;
+	}
+	.qct-card-metrics {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 0.85rem;
+	}
+	.qct-card-pill {
+		background: rgba(0, 245, 160, 0.08);
+		border: 1px solid rgba(0, 245, 160, 0.25);
+		color: #00f5a0;
+		font-family: ui-monospace, monospace;
+		font-size: 0.72rem;
+		font-weight: 700;
+		padding: 0.3rem 0.65rem;
+		border-radius: 6px;
+	}
+</style>

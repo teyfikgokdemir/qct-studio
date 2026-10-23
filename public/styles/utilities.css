@@ -48,16 +48,16 @@
 
 .qct-button--primary,
 .qct-contact-form__submit {
-	background: #e75757;
-	border-color: #e75757;
-	color: #17151a;
+	background: var(--qct-color-accent);
+	border-color: var(--qct-color-accent);
+	color: #07080b;
 }
 
 .qct-button--secondary {
-	background: #ffffff;
-	border-color: rgba(23, 21, 26, .18);
-	color: #17151a;
-	box-shadow: 0 8px 24px rgba(23, 21, 26, .06);
+	background: rgba(255, 255, 255, 0.05);
+	border-color: rgba(255, 255, 255, 0.16);
+	color: var(--qct-color-text);
+	box-shadow: none;
 }
 
 .qct-work__links a,
@@ -83,14 +83,14 @@
 .qct-button--primary:focus-visible,
 .qct-contact-form__submit:hover,
 .qct-contact-form__submit:focus-visible {
-	background: #ef6666;
-	border-color: #ef6666;
+	background: #22f8ab;
+	border-color: #22f8ab;
 }
 
 .qct-button--secondary:hover,
 .qct-button--secondary:focus-visible {
-	background: #f8f5ef;
-	border-color: rgba(23, 21, 26, .32);
+	background: rgba(255, 255, 255, 0.1);
+	border-color: rgba(255, 255, 255, 0.3);
 }
 
 .qct-work__links a:hover,
@@ -99,9 +99,9 @@
 .qct-trust__grid article > a:focus-visible,
 .qct-trust__founder a:hover,
 .qct-trust__founder a:focus-visible {
-	background: #e75757;
-	border-color: #e75757;
-	color: #17151a !important;
+	background: var(--qct-color-accent);
+	border-color: var(--qct-color-accent);
+	color: #07080b !important;
 }
 
 /* Compact project cards and founder facts */

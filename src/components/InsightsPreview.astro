@@ -6,26 +6,164 @@ const { lang } = Astro.props;
 const labels = insightLabels[lang];
 const url = (path: string) => getLocalizedUrl(lang, path);
 ---
-<section class="qct-section qct-insights-preview" aria-labelledby="qct-insights-title">
+<section class="qct-section qct-insights-preview qct-insights-elite" aria-labelledby="qct-insights-title">
   <div class="container">
     <div class="qct-section__header qct-section__header--split">
-      <div><p class="qct-section__eyebrow">{labels.journal}</p><h2 id="qct-insights-title" class="qct-section__title">{labels.latest}</h2></div>
-      <a class="qct-button qct-button--secondary" href={url('/insights/')}>{labels.section} →</a>
+      <div>
+        <p class="qct-section__eyebrow elite-insights-eyebrow">{labels.journal}</p>
+        <h2 id="qct-insights-title" class="qct-section__title elite-insights-title">{labels.latest}</h2>
+      </div>
+      <a class="btn-insights-link" href={url('/insights/')}>
+        <span>{labels.section}</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2.5 7H11.5M11.5 7L7.5 3M11.5 7L7.5 11" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </div>
-    <div class="qct-insights-preview__grid">
-      {insights.map((article) => <article><p>{article.category} · {article.publishedAt}</p><h3><a href={url(`/insights/${article.slug}/`)}>{article.title[lang]}</a></h3><span>{article.excerpt[lang]}</span></article>)}
+    <div class="qct-insights-preview__grid elite-insights-grid">
+      {insights.map((article) => (
+        <article class="elite-insight-card">
+          <div class="insight-top">
+            <span class="insight-cat">{article.category}</span>
+            <span class="insight-date">{article.publishedAt}</span>
+          </div>
+          <h3>
+            <a href={url(`/insights/${article.slug}/`)}>{article.title[lang]}</a>
+          </h3>
+          <p class="insight-excerpt">{article.excerpt[lang]}</p>
+        </article>
+      ))}
     </div>
   </div>
 </section>
+
 <style>
-  .qct-insights-preview { border-top: 1px solid rgba(255,255,255,.12); }
-  .qct-insights-preview__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,.14); }
-  .qct-insights-preview article { min-height: 16rem; padding: clamp(1.2rem, 2.5vw, 2rem); background: #171418; }
-  .qct-insights-preview article > p { color: #e75757; font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
-  .qct-insights-preview h3 { margin: 2rem 0 1rem; font-size: clamp(1.35rem, 2.2vw, 2.2rem); letter-spacing: -.04em; line-height: 1; }
-  .qct-insights-preview h3 { color: #f7f3ee; }
-  .qct-insights-preview h3 a { color: #f7f3ee; text-decoration: none; }
-  .qct-insights-preview h3 a:hover, .qct-insights-preview h3 a:focus-visible { color: #e75757; }
-  .qct-insights-preview article > span { color: #c5bdc3; line-height: 1.6; }
-  @media (max-width: 760px) { .qct-insights-preview .qct-section__header--split{gap:1rem}.qct-insights-preview .qct-button{min-height:44px}.qct-insights-preview__grid { grid-template-columns: 1fr; } .qct-insights-preview article { min-height: auto; padding:1.15rem; } .qct-insights-preview h3{margin:1.1rem 0 .7rem;font-size:1.35rem;line-height:1.08}.qct-insights-preview article > span{font-size:.9rem;line-height:1.5} }
+.qct-insights-elite {
+  background: #080a0f !important;
+  padding: clamp(5rem, 8vw, 7.5rem) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.elite-insights-eyebrow {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #00f5a0;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.elite-insights-title {
+  font-size: clamp(2.2rem, 4vw, 3.8rem) !important;
+  font-weight: 850 !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.04em !important;
+  color: #ffffff !important;
+}
+
+.btn-insights-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: #f3f4f6;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.btn-insights-link:hover {
+  background: rgba(0, 245, 160, 0.08);
+  border-color: #00f5a0;
+  color: #00f5a0;
+  transform: translateY(-2px);
+}
+
+.elite-insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 1.25rem !important;
+  margin-top: 3.5rem;
+  background: transparent !important;
+}
+
+.elite-insight-card {
+  background: #0d0f15 !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px;
+  padding: 1.75rem !important;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+}
+
+.elite-insight-card:hover {
+  border-color: rgba(0, 245, 160, 0.35) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.insight-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.insight-cat {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #00f5a0;
+  text-transform: uppercase;
+}
+
+.insight-date {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.65rem;
+  color: #6b7280;
+}
+
+.elite-insight-card h3 {
+  margin: 0 0 0.85rem 0 !important;
+  font-size: 1.25rem !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.elite-insight-card h3 a {
+  color: #ffffff !important;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.elite-insight-card h3 a:hover {
+  color: #00f5a0 !important;
+}
+
+.insight-excerpt {
+  color: #9ca3af !important;
+  font-size: 0.88rem !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+  flex: 1;
+}
+
+@media (max-width: 950px) {
+  .elite-insights-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 650px) {
+  .elite-insights-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
 </style>

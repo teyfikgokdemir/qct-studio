@@ -12,6 +12,7 @@ const workItems = [
 	{
 		modifier: 'qct-work-card--editorial',
 		scene: 'editorial',
+		badge: '01 // ARCHITECTURE',
 		industry: t('Business Websites'),
 		type: '',
 		description: t('Professional websites built around your business, not around a template.'),
@@ -19,6 +20,7 @@ const workItems = [
 	{
 		modifier: 'qct-work-card--storefront',
 		scene: 'storefront',
+		badge: '02 // STOREFRONT',
 		industry: t('E-commerce'),
 		type: '',
 		description: t('Online stores designed to make buying simple and managing products easy.'),
@@ -26,6 +28,7 @@ const workItems = [
 	{
 		modifier: 'qct-work-card--operations',
 		scene: 'operations',
+		badge: '03 // AI AUTOMATION',
 		industry: t('AI Automation'),
 		type: '',
 		description: t('Automations that save time, reduce repetitive work and improve everyday operations.'),
@@ -40,17 +43,20 @@ const labelSets: Record<string, string[]> = {
 };
 const L = labelSets[lang] ?? labelSets.en;
 ---
-<section id="work" class="qct-section qct-work" aria-labelledby="qct-work-title">
+<section id="work" class="qct-section qct-work qct-work-elite" aria-labelledby="qct-work-title">
 	<div class="container">
 		<div class="qct-section__header qct-section__header--split">
 			<div>
-				<p class="qct-section__eyebrow">{L[0]}</p>
+				<div class="elite-eyebrow-pill">
+					<span class="pill-dot"></span>
+					<span>{L[0]}</span>
+				</div>
 				<h2 id="qct-work-title" class="qct-section__title">
 					{t('Every project starts with a business.')}<br />
-					{t('Not a template.')}
+					<span class="text-emerald">{t('Not a template.')}</span>
 				</h2>
 			</div>
-			<p class="qct-section__lead">
+			<p class="qct-section__lead elite-work-lead">
 				{t('Every company has different goals.')}<br />
 				{t('Different customers.')}<br />
 				{t('Different challenges.')}<br />
@@ -98,6 +104,7 @@ const L = labelSets[lang] ?? labelSets.en;
 						</div>
 
 						<div class="qct-work-card__meta">
+							<span class="elite-work-badge">{item.badge}</span>
 							<p>{item.industry}</p>
 							<span>{item.type}</span>
 						</div>
@@ -106,8 +113,11 @@ const L = labelSets[lang] ?? labelSets.en;
 							<p>{item.description}</p>
 						</div>
 
-						<a class="qct-work-card__link" href={url('/contact/')}>
-							{L[1]}
+						<a class="qct-work-card__link elite-work-link" href={url('/contact/')}>
+							<span>{L[1]}</span>
+							<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+								<path d="M2.5 7H11.5M11.5 7L7.5 3M11.5 7L7.5 11" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
 						</a>
 					</article>
 				))}
@@ -123,8 +133,121 @@ const L = labelSets[lang] ?? labelSets.en;
 			</div>
 		</div>
 
-		<p class="qct-section__lead">
+		<p class="qct-section__lead elite-work-lead-bottom">
 			{t('Every project is planned, designed and developed specifically for the business behind it.')}
 		</p>
 	</div>
 </section>
+
+<style>
+.qct-work-elite {
+	background: #07080b !important;
+	color: #f3f4f6 !important;
+	padding: clamp(5rem, 8vw, 7.5rem) 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.elite-eyebrow-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.35rem 0.8rem;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	background: rgba(255, 255, 255, 0.04);
+	border-radius: 999px;
+	font-family: ui-monospace, SFMono-Regular, monospace;
+	font-size: 0.65rem;
+	letter-spacing: 0.14em;
+	font-weight: 750;
+	color: #9ca3af;
+	margin-bottom: 1.25rem;
+}
+
+.pill-dot {
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background: #00f5a0;
+}
+
+.text-emerald {
+	color: #00f5a0;
+	background: linear-gradient(135deg, #00f5a0 0%, #38bdf8 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.qct-work-elite h2 {
+	font-size: clamp(2.2rem, 4vw, 3.8rem) !important;
+	font-weight: 850 !important;
+	line-height: 1.05 !important;
+	letter-spacing: -0.04em !important;
+	color: #ffffff !important;
+}
+
+.elite-work-lead {
+	color: #9ca3af !important;
+	font-size: 1.05rem !important;
+	line-height: 1.65 !important;
+}
+
+.qct-work-elite .qct-work-card {
+	background: #0d0f15 !important;
+	border: 1px solid rgba(255, 255, 255, 0.08) !important;
+	border-radius: 14px !important;
+	padding: 1.75rem !important;
+	transition: all 0.25s ease !important;
+}
+
+.qct-work-elite .qct-work-card:hover {
+	border-color: rgba(0, 245, 160, 0.35) !important;
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(0, 245, 160, 0.08) !important;
+}
+
+.elite-work-badge {
+	font-family: ui-monospace, SFMono-Regular, monospace;
+	font-size: 0.65rem;
+	font-weight: 800;
+	color: #00f5a0;
+	letter-spacing: 0.1em;
+	margin-bottom: 0.5rem;
+	display: block;
+}
+
+.qct-work-elite .qct-work-card__meta p {
+	color: #ffffff !important;
+	font-size: 1.25rem !important;
+	font-weight: 800 !important;
+	margin: 0 !important;
+}
+
+.qct-work-elite .qct-work-card__body p {
+	color: #9ca3af !important;
+	font-size: 0.9rem !important;
+	line-height: 1.6 !important;
+	margin: 0.75rem 0 1.25rem !important;
+}
+
+.elite-work-link {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	font-family: ui-monospace, SFMono-Regular, monospace;
+	font-size: 0.8rem;
+	font-weight: 750;
+	color: #00f5a0 !important;
+	text-decoration: none;
+	transition: gap 0.2s ease;
+}
+
+.elite-work-link:hover {
+	gap: 0.75rem;
+}
+
+.elite-work-lead-bottom {
+	text-align: center;
+	color: #6b7280 !important;
+	font-size: 0.95rem !important;
+	margin-top: 3rem !important;
+}
+</style>
