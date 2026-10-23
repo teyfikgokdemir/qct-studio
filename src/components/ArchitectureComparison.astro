@@ -1,0 +1,311 @@
+---
+interface Props { lang: string; }
+const { lang } = Astro.props;
+---
+
+<section id="architecture-benchmark" class="benchmark-section" aria-labelledby="benchmark-title">
+  <div class="container">
+    <div class="benchmark-header">
+      <div class="benchmark-tag">
+        <span class="benchmark-tag__dot"></span>
+        <span>ENGINEERING BENCHMARK</span>
+      </div>
+      <h2 id="benchmark-title" class="benchmark-title">
+        The Cost of Outdated Architecture vs. <span class="text-emerald">QCT Engineered Edge</span>
+      </h2>
+      <p class="benchmark-lead">
+        Most business websites leak 20% to 40% of their conversions before the page even finishes loading. See how traditional monolithic setups compare against modern Astro edge architecture.
+      </p>
+    </div>
+
+    <div class="benchmark-grid">
+      <!-- Legacy Column -->
+      <div class="benchmark-card benchmark-card--legacy">
+        <div class="benchmark-card__header">
+          <div class="badge-legacy">TRADITIONAL MONOLITH</div>
+          <h3 class="benchmark-card__name">WordPress / Monolithic Shopify</h3>
+          <p class="benchmark-card__desc">Heavy database lookups, 40+ plugins, client-side hydration choke.</p>
+        </div>
+
+        <ul class="benchmark-metrics">
+          <li class="metric-row">
+            <span class="metric-row__label">Page Load Time</span>
+            <span class="metric-row__val metric-row__val--bad">3.8s – 5.4s</span>
+          </li>
+          <li class="metric-row">
+            <span class="metric-row__label">Mobile Core Web Vitals</span>
+            <span class="metric-row__val metric-row__val--bad">38 / 100 (Failing)</span>
+          </li>
+          <li class="metric-row">
+            <span class="metric-row__label">Client Runtime JS</span>
+            <span class="metric-row__val metric-row__val--bad">850 KB – 2.4 MB</span>
+          </li>
+          <li class="metric-row">
+            <span class="metric-row__label">Monthly Server Overhead</span>
+            <span class="metric-row__val metric-row__val--bad">$80 – $350 / mo</span>
+          </li>
+          <li class="metric-row">
+            <span class="metric-row__label">Security Attack Surface</span>
+            <span class="metric-row__val metric-row__val--bad">High (SQLi & Plugin CVEs)</span>
+          </li>
+          <li class="metric-row">
+            <span class="metric-row__label">AI Search & GEO Indexing</span>
+            <span class="metric-row__val metric-row__val--bad">Ignored by AI Crawlers</span>
+          </li>
+        </ul>
+
+        <div class="benchmark-card__footer">
+          <span class="footer-impact">Average Revenue Lost: <strong>-26% Cart Drops</strong></span>
+        </div>
+      </div>
+
+      <!-- QCT Studio Column -->
+      <div class="benchmark-card benchmark-card--qct">
+        <div class="benchmark-card__header">
+          <div class="badge-qct">
+            <span class="badge-qct__pulse"></span>
+            QCT STUDIO ARCHITECTURE
+          </div>
+          <h3 class="benchmark-card__name">Astro 7 Edge + Dynamic SEO</h3>
+          <p class="benchmark-card__desc">Pre-rendered static HTML, zero client JS by default, instant global Edge CDN.</p>
+        </div>
+
+        <ul class="benchmark-metrics">
+          <li class="metric-row">
+            <span class="metric-row__label">Page Load Time</span>
+            <span class="metric-row__val metric-row__val--good">0.24s – 0.42s (Instant)</span>
+          </li>
+          <li class="metric-row">
+            <span class="metric-row__label">Mobile Core Web Vitals</span>
+            <span class="metric-row__val metric-row__val--good">100 / 100 (Guaranteed)</span>
+          </li>
+          <li class="metric-row">
+            <span class="metric-row__label">Client Runtime JS</span>
+            <span class="metric-row__val metric-row__val--good">0 KB (Zero-bloat Islands)</span>
+          </li>
+          <li class="metric-row">
+            <span class="metric-row__label">Monthly Server Overhead</span>
+            <span class="metric-row__val metric-row__val--good">$0 / mo (Serverless CDN)</span>
+          </li>
+          <li class="metric-row">
+            <span class="metric-row__label">Security Attack Surface</span>
+            <span class="metric-row__val metric-row__val--good">Zero (Immutable Static Files)</span>
+          </li>
+          <li class="metric-row">
+            <span class="metric-row__label">AI Search & GEO Indexing</span>
+            <span class="metric-row__val metric-row__val--good">Deep Semantic JSON-LD Graph</span>
+          </li>
+        </ul>
+
+        <div class="benchmark-card__footer benchmark-card__footer--good">
+          <span class="footer-impact">Average Conversion Lift: <strong>+34% Higher Inquiries</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.benchmark-section {
+  padding: clamp(4.5rem, 7vw, 6.5rem) 0;
+  background: #08090e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.benchmark-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+}
+
+.benchmark-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: #9ca3af;
+  padding: 0.3rem 0.75rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+}
+
+.benchmark-tag__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #38bdf8;
+}
+
+.benchmark-title {
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  font-weight: 850;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+  margin: 0 0 1rem;
+}
+
+.text-emerald {
+  color: #00f5a0;
+  background: linear-gradient(135deg, #00f5a0 0%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.benchmark-lead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #9ca3af;
+  margin: 0;
+}
+
+/* Grid */
+.benchmark-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.benchmark-card {
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.benchmark-card--legacy {
+  background: rgba(239, 68, 68, 0.02);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.benchmark-card--qct {
+  background: rgba(0, 245, 160, 0.03);
+  border: 1px solid rgba(0, 245, 160, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 245, 160, 0.07);
+}
+
+.badge-legacy {
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.badge-qct {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #00f5a0;
+  background: rgba(0, 245, 160, 0.12);
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.badge-qct__pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00f5a0;
+  box-shadow: 0 0 6px #00f5a0;
+}
+
+.benchmark-card__name {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 0.45rem;
+  letter-spacing: -0.02em;
+}
+
+.benchmark-card__desc {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin: 0 0 1.5rem;
+  line-height: 1.45;
+}
+
+/* Metric Rows */
+.benchmark-metrics {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.metric-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.88rem;
+}
+
+.metric-row__label {
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.metric-row__val {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.metric-row__val--bad {
+  color: #ef4444;
+}
+
+.metric-row__val--good {
+  color: #00f5a0;
+}
+
+/* Footer */
+.benchmark-card__footer {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-impact {
+  font-size: 0.88rem;
+  color: #9ca3af;
+}
+
+.footer-impact strong {
+  color: #ffffff;
+}
+
+.benchmark-card__footer--good .footer-impact strong {
+  color: #00f5a0;
+}
+
+@media (max-width: 860px) {
+  .benchmark-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

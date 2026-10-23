@@ -2,67 +2,96 @@
 interface Props { lang: string; }
 const { lang } = Astro.props;
 
-const items = {
-  en: ['STRATEGY','DIGITAL SYSTEMS','E-COMMERCE','SEARCH VISIBILITY','CONVERSION','AUTOMATION','MULTI-MARKET'],
-  sq: ['STRATEGJI','SISTEME DIGJITALE','E-COMMERCE','DUKSHMËRI NË KËRKIM','KONVERTIM','AUTOMATIZIM','SHUMË TREGJE'],
-  mk: ['СТРАТЕГИЈА','ДИГИТАЛНИ СИСТЕМИ','E-COMMERCE','ВИДЛИВОСТ ВО ПРЕБАРУВАЊЕ','КОНВЕРЗИЈА','АВТОМАТИЗАЦИЈА','ПОВЕЌЕ ПАЗАРИ'],
-  sr: ['STRATEGIJA','DIGITALNI SISTEMI','E-COMMERCE','VIDLJIVOST U PRETRAZI','KONVERZIJA','AUTOMATIZACIJA','VIŠE TRŽIŠTA'],
-  ro: ['STRATEGIE','SISTEME DIGITALE','E-COMMERCE','VIZIBILITATE ÎN CĂUTARE','CONVERSIE','AUTOMATIZARE','MAI MULTE PIEȚE'],
-  bg: ['СТРАТЕГИЯ','ДИГИТАЛНИ СИСТЕМИ','E-COMMERCE','ВИДИМОСТ В ТЪРСЕНЕТО','КОНВЕРСИЯ','АВТОМАТИЗАЦИЯ','НЯКОЛКО ПАЗАРА'],
-}[lang] ?? ['STRATEGY','DIGITAL SYSTEMS','E-COMMERCE','SEARCH VISIBILITY','CONVERSION','AUTOMATION','MULTI-MARKET'];
+const items = [
+  'ASTRO 7 EDGE ARCHITECTURE',
+  'DYNAMIC SEO & GEO CITATION',
+  '100/100 CORE WEB VITALS',
+  'SUB-30MS GLOBAL TTFB',
+  'HEADLESS COMMERCE & WHATSAPP',
+  'ZERO-BLOAT STATIC ISLE',
+  'AI WORKFLOW AUTOMATION',
+  'ENTERPRISE SCHEMA GRAPHS',
+];
 ---
-<section class="cap-marquee" aria-label="QCT Studio capabilities">
-  <div class="cap-marquee__track">
-    <div class="cap-marquee__group">
-      {items.map((item) => <><span>{item}</span><i>·</i></>)}
+<section class="cap-marquee-elite" aria-label="QCT Studio engineering capabilities">
+  <div class="cap-marquee-elite__track">
+    <div class="cap-marquee-elite__group">
+      {items.map((item) => (
+        <>
+          <span class="cap-item">{item}</span>
+          <i class="cap-dot" aria-hidden="true">·</i>
+        </>
+      ))}
     </div>
-    <div class="cap-marquee__group" aria-hidden="true">
-      {items.map((item) => <><span>{item}</span><i>·</i></>)}
+    <div class="cap-marquee-elite__group" aria-hidden="true">
+      {items.map((item) => (
+        <>
+          <span class="cap-item">{item}</span>
+          <i class="cap-dot" aria-hidden="true">·</i>
+        </>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
-.cap-marquee{
-  overflow:hidden;
-  border-block:1px solid rgba(23,21,26,.09);
-  background:rgba(23,21,26,.018);
-  padding:1.05rem 0;
+.cap-marquee-elite {
+  overflow: hidden;
+  border-block: 1px solid rgba(255, 255, 255, 0.08);
+  background: #090b10;
+  padding: 1rem 0;
+  position: relative;
+  user-select: none;
 }
-.cap-marquee__track{
-  display:flex;
-  width:max-content;
-  animation:cap-marquee-scroll 30s linear infinite;
-  will-change:transform;
+
+.cap-marquee-elite__track {
+  display: flex;
+  width: max-content;
+  animation: cap-marquee-scroll 32s linear infinite;
+  will-change: transform;
 }
-.cap-marquee__group{
-  display:flex;
-  align-items:center;
-  gap:1.15rem;
-  padding-right:1.15rem;
-  white-space:nowrap;
+
+.cap-marquee-elite__group {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+  white-space: nowrap;
 }
-.cap-marquee__group span{
-  font-size:.73rem;
-  font-weight:800;
-  letter-spacing:.145em;
-  color:rgba(23,21,26,.7);
+
+.cap-item {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #9ca3af;
+  transition: color 0.2s ease;
 }
-.cap-marquee__group i{
-  font-style:normal;
-  color:#5b3478;
-  font-weight:900;
+
+.cap-item:hover {
+  color: #00f5a0;
 }
-@keyframes cap-marquee-scroll{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
+
+.cap-dot {
+  font-style: normal;
+  color: #00f5a0;
+  font-weight: 800;
+  font-size: 1.1rem;
+  line-height: 1;
 }
-@media(max-width:640px){
-  .cap-marquee{padding:.9rem 0}
-  .cap-marquee__group{gap:.85rem;padding-right:.85rem}
-  .cap-marquee__group span{font-size:.68rem}
+
+@keyframes cap-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
-@media(prefers-reduced-motion:reduce){
-  .cap-marquee__track{animation:none}
+
+@media (prefers-reduced-motion: reduce) {
+  .cap-marquee-elite__track {
+    animation: none;
+  }
 }
 </style>
