@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from './Header.astro';
 import Footer from './Footer.astro';
+import Logo from './Logo.astro';
 import { getLocalizedUrl } from '../i18n';
 import { insightLabels, type InsightArticle, type InsightLocale } from '../data/insights';
 
@@ -12,32 +13,239 @@ const title = article.title[lang];
 const description = article.excerpt[lang];
 const url = (path: string) => getLocalizedUrl(lang, path);
 const canonical = new URL(url(`/insights/${article.slug}/`), 'https://qctstudio.com').toString();
-const schema = { '@context': 'https://schema.org', '@type': 'BlogPosting', headline: title, description, datePublished: article.publishedAt, dateModified: article.publishedAt, author: { '@type': 'Organization', name: 'QCT Studio', url: 'https://qctstudio.com' }, publisher: { '@type': 'Organization', name: 'QCT Studio', url: 'https://qctstudio.com' }, mainEntityOfPage: { '@type': 'WebPage', '@id': canonical }, inLanguage: lang };
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  datePublished: article.publishedAt,
+  dateModified: article.publishedAt,
+  author: { '@type': 'Organization', name: 'QCT Studio', url: 'https://qctstudio.com' },
+  publisher: { '@type': 'Organization', name: 'QCT Studio', url: 'https://qctstudio.com' },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+  inLanguage: lang
+};
 ---
 <BaseLayout title={`${title} — QCT Studio`} description={description} lang={lang} type="article" pageType="WebPage">
   <script slot="schema" type="application/ld+json" set:html={JSON.stringify(schema)} />
   <Header slot="header" lang={lang} languagePath={`/insights/${article.slug}/`} />
+  
   <main class="insight-post" aria-labelledby="insight-post-title">
-    <article class="container">
-      <a class="insight-post__back" href={url('/insights/')}>← {labels.back}</a>
-      <div class="insight-post__meta"><time datetime={article.publishedAt}>{article.publishedAt}</time><span>{article.category}</span><span>{article.readTime}</span></div>
-      <h1 id="insight-post-title">{title}</h1>
-      <p class="insight-post__excerpt">{description}</p>
+    <div class="insight-post__glow" aria-hidden="true"></div>
+
+    <article class="container insight-post__container">
+      <!-- Breadcrumb / Back button -->
+      <a class="insight-post__back" href={url('/insights/')}>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M10 12L6 8L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>{labels.back}</span>
+      </a>
+
+      <!-- Header Meta -->
+      <header class="insight-post__header">
+        <div class="insight-post__meta">
+          <span class="meta-pill">{article.category}</span>
+          <span class="meta-sep">/</span>
+          <time datetime={article.publishedAt}>{article.publishedAt}</time>
+          <span class="meta-sep">/</span>
+          <span>{article.readTime}</span>
+        </div>
+
+        <!-- Refined Elite Title (Replaced monstrous 7rem) -->
+        <h1 id="insight-post-title" class="insight-post__title">{title}</h1>
+
+        <!-- Excerpt -->
+        <p class="insight-post__excerpt">{description}</p>
+      </header>
+
+      <hr class="insight-post__divider" />
+
+      <!-- Post Body -->
       <div class="insight-post__body">
         {article.body[lang].map((paragraph) => <p>{paragraph}</p>)}
       </div>
-      <p class="insight-post__byline">{labels.byline}</p>
+
+      <!-- Author / Editorial Box -->
+      <footer class="insight-post__footer">
+        <div class="insight-post__author-card">
+          <div class="author-icon">
+            <Logo size="sm" showText={false} />
+          </div>
+          <div class="author-details">
+            <span class="author-role">{labels.byline}</span>
+            <span class="author-sub">Performance Architecture & Dynamic Search Research</span>
+          </div>
+        </div>
+      </footer>
     </article>
   </main>
+  
   <Footer slot="footer" lang={lang} />
 </BaseLayout>
+
 <style>
-  .insight-post { background: var(--qct-paper, #f4f1ec); color: #151316; padding: clamp(8rem, 15vw, 13rem) 0 8rem; }
-  .insight-post__back { color: #69477a; font-size: .76rem; font-weight: 800; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
-  .insight-post__meta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 4rem; color: #777176; font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
-  .insight-post h1 { max-width: 58rem; margin: 1.2rem 0 1.5rem; font-size: clamp(3rem, 7vw, 7rem); letter-spacing: -.07em; line-height: .9; }
-  .insight-post__excerpt { max-width: 40rem; color: #625d61; font-size: clamp(1.15rem, 1.8vw, 1.45rem); line-height: 1.6; }
-  .insight-post__body { max-width: 43rem; margin-top: 5rem; }
-  .insight-post__body p { color: #383438; font-size: 1.08rem; line-height: 1.85; }
-  .insight-post__byline { margin-top: 4rem; color: #69477a; font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+  .insight-post {
+    background: #07080b !important;
+    color: #f3f4f6;
+    padding: clamp(6.5rem, 11vw, 9.5rem) 0 7rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .insight-post__glow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1000px, 90vw);
+    height: 480px;
+    background: radial-gradient(circle at 50% 20%, rgba(0, 245, 160, 0.05), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .insight-post__container {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin-inline: auto;
+  }
+
+  .insight-post__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #00f5a0;
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.72rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 0.4rem 0.85rem;
+    border: 1px solid rgba(0, 245, 160, 0.2);
+    border-radius: 999px;
+    background: rgba(0, 245, 160, 0.04);
+    transition: all 0.2s ease;
+  }
+
+  .insight-post__back:hover {
+    background: rgba(0, 245, 160, 0.12);
+    border-color: rgba(0, 245, 160, 0.4);
+    transform: translateX(-2px);
+  }
+
+  .insight-post__header {
+    margin-top: 2.25rem;
+  }
+
+  .insight-post__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.65rem;
+    color: #94a3b8;
+    font-family: ui-monospace, SFMono-Regular, monospace;
+    font-size: 0.72rem;
+    font-weight: 650;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .meta-pill {
+    color: #00f5a0;
+    font-weight: 750;
+  }
+
+  .meta-sep {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Refined, Elegant Heading (Proportionate, elite hierarchy) */
+  .insight-post__title {
+    max-width: 50rem;
+    margin: 1.25rem 0 1.5rem;
+    font-size: clamp(2.1rem, 3.6vw, 3.1rem);
+    font-weight: 800;
+    letter-spacing: -0.028em;
+    line-height: 1.16;
+    color: #ffffff;
+  }
+
+  .insight-post__excerpt {
+    max-width: 44rem;
+    color: #94a3b8;
+    font-size: clamp(1.05rem, 1.3vw, 1.2rem);
+    line-height: 1.68;
+    margin: 0;
+    border-left: 2px solid rgba(0, 245, 160, 0.45);
+    padding-left: 1.25rem;
+  }
+
+  .insight-post__divider {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin: 3rem 0;
+    max-width: 48rem;
+  }
+
+  .insight-post__body {
+    max-width: 44rem;
+  }
+
+  .insight-post__body p {
+    color: #cbd5e1;
+    font-size: 1.08rem;
+    line-height: 1.85;
+    margin-bottom: 1.75rem;
+    font-weight: 400;
+  }
+
+  .insight-post__footer {
+    margin-top: 4rem;
+    max-width: 44rem;
+  }
+
+  .insight-post__author-card {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.25rem 1.5rem;
+    background: #0d0f15;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .author-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+  }
+
+  .author-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .author-role {
+    color: #ffffff;
+    font-size: 0.88rem;
+    font-weight: 750;
+    letter-spacing: -0.01em;
+  }
+
+  .author-sub {
+    color: #64748b;
+    font-size: 0.78rem;
+    font-family: ui-monospace, monospace;
+  }
 </style>
