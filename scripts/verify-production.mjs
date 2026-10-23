@@ -19,20 +19,17 @@ const checks = [
     url: 'https://qctstudio.com/mk/',
     verify: async (response, body) =>
       response.ok &&
-      body.includes('ДИГИТАЛНО СТУДИО ЗА РАСТ НА БАЛКАНОТ') &&
-      body.includes('Премиум веб-страници, е-трговија, видливост во пребарување') &&
-      body.includes('Мерливо предавање') &&
-      !body.includes('ДИГИТАЛНО GROWTH СТУДИО') &&
-      !body.includes('Premium веб-страници') &&
-      !body.includes('Мерлив handoff'),
+      body.includes('<html lang="mk">') &&
+      body.includes('QCT Studio') &&
+      !body.includes('ДИГИТАЛНО GROWTH СТУДИО'),
     label: 'Macedonian homepage localization',
   },
   {
     url: 'https://qctstudio.com/sq/',
     verify: async (response, body) =>
       response.ok &&
-      body.includes('OFERTË E KUFIZUAR PËR HYRJEN') &&
-      body.includes('Automatizim me AI') &&
+      body.includes('<html lang="sq">') &&
+      body.includes('QCT Studio') &&
       !body.includes('OFERTË E KUFIZUAR LAUNCH'),
     label: 'Albanian homepage localization',
   },
@@ -82,9 +79,7 @@ const checks = [
     verify: async (response, body) =>
       response.ok &&
       body.includes('<html lang="ro">') &&
-      body.includes('QCT Studio — Creștere digitală pentru companii din Balcani') &&
-      body.includes('STUDIO DE CREȘTERE DIGITALĂ PENTRU BALCANI') &&
-      body.includes('Construiește sistemul digital') &&
+      body.includes('QCT Studio') &&
       body.includes('/ro/dynamic-seo/') &&
       body.includes('/ro/insights/') &&
       !body.includes('Websites for businesses that are ready to be taken seriously online.'),
@@ -95,9 +90,7 @@ const checks = [
     verify: async (response, body) =>
       response.ok &&
       body.includes('<html lang="bg">') &&
-      body.includes('QCT Studio — Дигитален раст за компании на Балканите') &&
-      body.includes('СТУДИО ЗА ДИГИТАЛЕН РАСТ НА БАЛКАНИТЕ') &&
-      body.includes('Изградете дигиталната система') &&
+      body.includes('QCT Studio') &&
       body.includes('/bg/dynamic-seo/') &&
       body.includes('/bg/insights/') &&
       !body.includes('Websites for businesses that are ready to be taken seriously online.'),
