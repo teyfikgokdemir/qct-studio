@@ -1,5 +1,6 @@
 ---
 import { useTranslations, getLocalizedUrl, getPathWithoutLocale, languages, languageNames } from '../i18n';
+import Logo from './Logo.astro';
 
 interface Props {
   lang: string;
@@ -13,6 +14,14 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 // Used so the language switcher links to the translated version of THIS page, not just home.
 const currentPath = languagePath ?? getPathWithoutLocale(Astro.url.pathname);
 const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk: 'Цени', sr: 'Cene', ro: 'Prețuri', bg: 'Цени' };
+const ctaLabel: Record<string, string> = {
+  en: 'ESTIMATE ↘',
+  sq: 'VLERËSO ↘',
+  mk: 'ПРОЦЕНИ ↘',
+  sr: 'PROCENI ↘',
+  ro: 'ESTIMEAZĂ ↘',
+  bg: 'ОЦЕНИ ↘',
+};
 const isInsightsPath = /^\/insights(?:\/|$)/.test(currentPath);
 const isWorkPath = /^\/work(?:\/|$)/.test(currentPath);
 const isDiagnosticPath = /^\/regional-growth-diagnostic(?:\/|$)/.test(currentPath);
@@ -29,7 +38,9 @@ const hasRegionalInsights = ['en','sq','mk','sr','ro','bg'].includes(lang);
 	<div class="mobile-menu-backdrop" data-mobile-backdrop hidden></div>
 	<div class="site-header__inner container">
 		<div class="site-branding">
-			<a class="site-title" href={url('/')} rel="home">{t('QCT Studio')}</a>
+			<a class="site-title" href={url('/')} rel="home" aria-label="QCT Studio Home">
+				<Logo size="md" />
+			</a>
 		</div>
 
 		<button class="site-menu-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-menu-toggle>
@@ -77,6 +88,14 @@ const hasRegionalInsights = ['en','sq','mk','sr','ro','bg'].includes(lang);
 				<li><a href={url('/careers/')}>{t('Careers')}</a></li>
 				<li><a href={url('/contact/')}>{t('Contact')}</a></li>
 			</ul>
+
+			<div class="site-header-actions">
+				<a class="header-cta-pill" href="#project-estimator">
+					<span class="header-cta-pulse"></span>
+					<span>{ctaLabel[lang] ?? 'ESTIMATE ↘'}</span>
+				</a>
+			</div>
+
 			<div class="site-language-switcher">
 				<span class="site-language-switcher__icon" aria-hidden="true">
 					<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9S14.5 18.4 12 21M12 3C9.5 5.6 8.2 8.6 8.2 12s1.3 6.4 3.8 9"></path></svg>
@@ -105,5 +124,74 @@ const hasRegionalInsights = ['en','sq','mk','sr','ro','bg'].includes(lang);
 			display: flex;
 		}
 	}
-.site-language-switcher__icon{display:inline-grid;place-items:center;width:16px;height:16px;color:currentColor;opacity:.58;flex:0 0 16px}.site-language-switcher__icon svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+	.site-branding {
+		display: flex;
+		align-items: center;
+	}
+
+	.site-branding a {
+		text-decoration: none;
+	}
+
+	.site-header-actions {
+		display: inline-flex;
+		align-items: center;
+		margin-left: 0.5rem;
+	}
+
+	.header-cta-pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		padding: 0.35rem 0.85rem;
+		background: rgba(0, 245, 160, 0.08);
+		border: 1px solid rgba(0, 245, 160, 0.3);
+		border-radius: 999px;
+		color: #00f5a0;
+		font-family: ui-monospace, SFMono-Regular, monospace;
+		font-size: 0.68rem;
+		font-weight: 750;
+		letter-spacing: 0.08em;
+		text-decoration: none;
+		transition: all 0.2s ease;
+	}
+
+	.header-cta-pill:hover {
+		background: #00f5a0;
+		color: #07080b;
+		box-shadow: 0 0 16px rgba(0, 245, 160, 0.35);
+	}
+
+	.header-cta-pulse {
+		width: 5px;
+		height: 5px;
+		border-radius: 50%;
+		background: #00f5a0;
+		box-shadow: 0 0 6px #00f5a0;
+	}
+
+	.header-cta-pill:hover .header-cta-pulse {
+		background: #07080b;
+	}
+
+	.site-language-switcher__icon {
+		display: inline-grid;
+		place-items: center;
+		width: 16px;
+		height: 16px;
+		color: currentColor;
+		opacity: 0.58;
+		flex: 0 0 16px;
+	}
+
+	.site-language-switcher__icon svg {
+		width: 16px;
+		height: 16px;
+		fill: none;
+		stroke: currentColor;
+		stroke-width: 1.5;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+	}
 </style>

@@ -1,0 +1,75 @@
+---
+interface Props {
+  class?: string;
+  showText?: boolean;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { class: className = '', showText = true, size = 'md' } = Astro.props;
+
+const dims = {
+  sm: { icon: 24, font: '0.95rem' },
+  md: { icon: 30, font: '1.2rem' },
+  lg: { icon: 38, font: '1.5rem' },
+}[size];
+---
+
+<div class={`qct-logo ${className}`}>
+  <!-- Vector Geometric Q-Mark -->
+  <svg class="qct-logo__icon" width={dims.icon} height={dims.icon} viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- Outer Precision Hexagon -->
+    <path d="M24 6L40 15.2V33.6L24 42.8L8 33.6V15.2L24 6Z" stroke="#ffffff" stroke-width="2.75" stroke-linejoin="round" />
+    <!-- Inner Geometric Core -->
+    <circle cx="24" cy="24" r="4.5" fill="#00f5a0" />
+    <!-- Q-Vector Chevron -->
+    <path d="M27 27L38 38" stroke="#00f5a0" stroke-width="3.2" stroke-linecap="round" />
+  </svg>
+
+  {showText && (
+    <div class="qct-logo__text" style={`font-size: ${dims.font};`}>
+      <span class="qct-logo__brand">QCT</span>
+      <span class="qct-logo__tag">STUDIO</span>
+    </div>
+  )}
+</div>
+
+<style>
+.qct-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  user-select: none;
+}
+
+.qct-logo__icon {
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.qct-logo:hover .qct-logo__icon {
+  transform: rotate(12deg) scale(1.05);
+}
+
+.qct-logo__text {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  line-height: 1;
+}
+
+.qct-logo__brand {
+  font-weight: 850;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+}
+
+.qct-logo__tag {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.58em;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: #00f5a0;
+  text-transform: uppercase;
+}
+</style>
