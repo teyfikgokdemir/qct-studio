@@ -35,7 +35,7 @@ const copy = {
     operationsLabel: 'Edge Latency',
     metric1: 'Entity Schema Active',
     metric2: 'Optimised Funnel',
-    metric3: '< 50ms Edge Target',
+    metric3: 'Low-Latency Edge Target',
   },
   sq: {
     eyebrow: 'INXHINIERI WEB & ARKITEKTURË PERFORMANCE',
@@ -66,7 +66,7 @@ const copy = {
     operationsLabel: 'Performancë',
     metric1: 'Schema Aktive',
     metric2: 'Rrugë e shpejtë',
-    metric3: '< 50ms Synim Edge',
+    metric3: 'Synim me vonesë të ulët',
   },
   mk: {
     eyebrow: 'ВЕБ ИНЖЕНЕРСТВО И АРХИТЕКТУРА НА ПЕРФОРМАНСИ',
@@ -97,7 +97,7 @@ const copy = {
     operationsLabel: 'Перформанси',
     metric1: 'Активна шема',
     metric2: 'Побрз контакт',
-    metric3: '< 50ms Edge цел',
+    metric3: 'Цел за ниска латентност',
   },
   sr: {
     eyebrow: 'WEB INŽENJERING I ARHITEKTURA PERFORMANSI',
@@ -128,7 +128,7 @@ const copy = {
     operationsLabel: 'Performanse',
     metric1: 'Aktivna šema',
     metric2: 'Brži tok',
-    metric3: '< 50ms Edge cilj',
+    metric3: 'Cilj niske latencije',
   },
   ro: {
     eyebrow: 'INGINERIE WEB & ARHITECTURĂ DE PERFORMANȚĂ',
@@ -159,7 +159,7 @@ const copy = {
     operationsLabel: 'Performanță',
     metric1: 'Schema Activă',
     metric2: 'Flux Rapid',
-    metric3: '< 50ms Țintă Edge',
+    metric3: 'Țintă de latență redusă',
   },
   bg: {
     eyebrow: 'УЕБ ИНЖЕНЕРСТВО И АРХИТЕКТУРА НА ПРОИЗВОДИТЕЛНОСТТА',
@@ -190,7 +190,7 @@ const copy = {
     operationsLabel: 'Производителност',
     metric1: 'Активна схема',
     metric2: 'По-бърз път',
-    metric3: '< 50ms Edge цел',
+    metric3: 'Цел за ниска латентност',
   },
 }[lang] ?? {
   eyebrow: 'WEB ENGINEERING & PERFORMANCE ARCHITECTURE',
@@ -299,20 +299,20 @@ const copy = {
           <div class="hud-metric-card hud-metric-card--highlight">
             <div class="hud-metric-card__top">
               <span class="hud-metric-label">CORE WEB VITALS</span>
-              <span class="hud-metric-tag">GRADE A</span>
+              <span class="hud-metric-tag">ARCHITECTURE GOAL</span>
             </div>
-            <div class="hud-metric-number">95-100<small> Target</small></div>
-            <div class="hud-metric-desc">PageSpeed & A11y Benchmark</div>
+            <div class="hud-metric-number">Grade A<small> Target</small></div>
+            <div class="hud-metric-desc">Lighthouse 90+ & CWV Green Tier Standard</div>
             <div class="hud-progress-bar"><div class="hud-progress-fill" style="width: 100%;"></div></div>
           </div>
 
           <div class="hud-metric-card">
             <div class="hud-metric-card__top">
-              <span class="hud-metric-label">EDGE TTFB</span>
-              <span class="hud-metric-tag hud-metric-tag--cyan">&lt; 50ms Target</span>
+              <span class="hud-metric-label">GLOBAL EDGE TTFB</span>
+              <span class="hud-metric-tag hud-metric-tag--cyan">LOW LATENCY</span>
             </div>
-            <div class="hud-metric-number">&lt; 0.8<small>s</small></div>
-            <div class="hud-metric-desc">Sub-Second Render Benchmark</div>
+            <div class="hud-metric-number">Sub-1s<small> Goal</small></div>
+            <div class="hud-metric-desc">Edge-Cached Static Delivery Standard</div>
             <div class="hud-progress-bar"><div class="hud-progress-fill hud-progress-fill--cyan" style="width: 96%;"></div></div>
           </div>
         </div>
@@ -343,7 +343,7 @@ const copy = {
           <div class="hud-stream__line">
             <span class="stream-code">200 OK</span>
             <span class="stream-route">GET /architecture</span>
-            <span class="stream-stat">14ms · 0KB JS</span>
+            <span class="stream-stat">Edge-Cached · 0KB JS</span>
           </div>
           <div class="hud-stream__line">
             <span class="stream-code stream-code--geo">GEO/AI</span>
@@ -360,7 +360,7 @@ const copy = {
         <!-- HUD Footer -->
         <div class="hud-box__footer">
           <span class="hud-footer-stack">{copy.proof1}</span>
-          <span class="hud-footer-hash">EDGE CLUSTER: HIGH AVAILABILITY</span>
+          <span class="hud-footer-hash">DEMO SPEC · VARIES BY NETWORK &amp; DEVICE</span>
         </div>
       </div>
     </div>
