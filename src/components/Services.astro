@@ -8,9 +8,64 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
 
+const badges: Record<string, Record<string, string>> = {
+	en: {
+		headless: 'HEADLESS ARCHITECTURE',
+		storefront: 'EDGE STOREFRONT',
+		whatsapp: 'CONVERSATIONAL COMMERCE',
+		seo: 'DYNAMIC SEO & GEO',
+		ai: 'AUTONOMOUS WORKFLOWS',
+	},
+	bg: {
+		headless: 'HEADLESS АРХИТЕКТУРА',
+		storefront: 'EDGE МАГАЗИН',
+		whatsapp: 'WHATSAPP ТЪРГОВИЯ',
+		seo: 'ДИНАМИЧНО SEO & GEO',
+		ai: 'АВТОНОМНИ ПРОЦЕСИ',
+	},
+	mk: {
+		headless: 'HEADLESS АРХИТЕКТУРА',
+		storefront: 'EDGE ПРОДАВНИЦА',
+		whatsapp: 'WHATSAPP ТРГОВИЈА',
+		seo: 'ДИНАМИЧКО SEO & GEO',
+		ai: 'АВТОНОМНИ ПРОЦЕСИ',
+	},
+	sr: {
+		headless: 'HEADLESS ARHITEKTURA',
+		storefront: 'EDGE PRODAVNICA',
+		whatsapp: 'WHATSAPP PRODAJA',
+		seo: 'DINAMIČKI SEO & GEO',
+		ai: 'AUTONOMNI PROCESI',
+	},
+	sq: {
+		headless: 'ARKITEKTURË HEADLESS',
+		storefront: 'DYQAN ONLINE EDGE',
+		whatsapp: 'TREGTÍ NË WHATSAPP',
+		seo: 'SEO DINAMIKE & GEO',
+		ai: 'PROCESE AUTONOME',
+	},
+	ro: {
+		headless: 'ARHITECTURĂ HEADLESS',
+		storefront: 'MAGAZIN PE EDGE',
+		whatsapp: 'COMERȚ ÎN CONVERSAȚIE',
+		seo: 'SEO DINAMIC & GEO',
+		ai: 'FLUXURI AUTONOME',
+	},
+};
+const b = badges[lang] ?? badges.en;
+
+const headerPill: Record<string, string> = {
+	en: 'ENGINEERING CAPABILITIES',
+	bg: 'ИНЖЕНЕРНИ ВЪЗМОЖНОСТИ',
+	mk: 'ИНЖЕНЕРСКИ МОЖНОСТИ',
+	sr: 'INŽENJERSKE MOGUĆNOSTI',
+	sq: 'KAPACITETET INXHINIERIKE',
+	ro: 'CAPABILITĂȚI DE INGINERIE',
+};
+
 const services = [
 	{
-		badge: 'HEADLESS ARCHITECTURE',
+		badge: b.headless,
 		image: 'astro-headless-hero.jpg',
 		href: url('/#architecture'),
 		kicker: t('Website Design'),
@@ -19,7 +74,7 @@ const services = [
 		cta: t('Explore Website Design'),
 	},
 	{
-		badge: 'EDGE STOREFRONT',
+		badge: b.storefront,
 		image: 'ecommerce-store-elite.jpg',
 		href: url('/#project-estimator'),
 		kicker: t('E-commerce'),
@@ -28,7 +83,7 @@ const services = [
 		cta: t('Explore E-commerce'),
 	},
 	{
-		badge: 'CONVERSATIONAL COMMERCE',
+		badge: b.whatsapp,
 		image: 'whatsapp-commerce-elite.jpg',
 		href: url('/#contact'),
 		kicker: t('WhatsApp Commerce'),
@@ -37,7 +92,7 @@ const services = [
 		cta: t('Explore WhatsApp Commerce'),
 	},
 	{
-		badge: 'DYNAMIC SEO & GEO',
+		badge: b.seo,
 		image: 'geo-ai-graph.jpg',
 		href: url('/dynamic-seo/'),
 		kicker: t('SEO & Performance'),
@@ -46,7 +101,7 @@ const services = [
 		cta: t('Explore SEO & GEO Performance'),
 	},
 	{
-		badge: 'AUTONOMOUS WORKFLOWS',
+		badge: b.ai,
 		image: 'ai-automation-elite.jpg',
 		href: url('/#project-estimator'),
 		kicker: t('AI Automation'),
@@ -61,7 +116,7 @@ const services = [
 		<div class="qct-section__header elite-header">
 			<div class="elite-pill">
 				<span class="elite-pill-dot"></span>
-				<span>ENGINEERING CAPABILITIES</span>
+				<span>{headerPill[lang] ?? 'ENGINEERING CAPABILITIES'}</span>
 			</div>
 			<h2 id="qct-services-title" class="qct-section__title elite-title">
 				{t('Digital systems built for Balkan businesses ready to look premium.')}

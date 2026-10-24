@@ -6,6 +6,16 @@ interface Props {
 }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+
+const tags: Record<string, { principle: string; purpose: string; endurance: string; partnership: string }> = {
+	en: { principle: 'PRINCIPLE', purpose: 'PURPOSE', endurance: 'ENDURANCE', partnership: 'PARTNERSHIP' },
+	bg: { principle: 'ПРИНЦИП', purpose: 'ЦЕЛ', endurance: 'УСТОЙЧИВОСТ', partnership: 'ПАРТНЬОРСТВО' },
+	mk: { principle: 'ПРИНЦИП', purpose: 'ЦЕЛ', endurance: 'ИЗДРЖЛИВОСТ', partnership: 'ПАРТНЕРСТВО' },
+	sr: { principle: 'PRINCIP', purpose: 'SVRHA', endurance: 'TRAJNOST', partnership: 'PARTNERSTVO' },
+	sq: { principle: 'PARIM', purpose: 'QËLLIM', endurance: 'QËNDRUESHMËRI', partnership: 'PARTNERITET' },
+	ro: { principle: 'PRINCIPIU', purpose: 'SCOP', endurance: 'DURABILITATE', partnership: 'PARTENERIAT' },
+};
+const pTags = tags[lang] ?? tags.en;
 ---
 <section id="balkan-launch" class="qct-section qct-problem qct-problem-elite" aria-labelledby="qct-problem-title">
 	<div class="container">
@@ -26,7 +36,7 @@ const t = useTranslations(lang);
 			<article class="qct-problem-card elite-prob-card">
 				<div class="prob-card-header">
 					<span class="prob-card-indicator"></span>
-					<span class="prob-card-tag">PRINCIPLE</span>
+					<span class="prob-card-tag">{pTags.principle}</span>
 				</div>
 				<h3>{t('Clear Communication')}</h3>
 				<p>{t('No confusing process.')}<br />{t('No unnecessary meetings.')}<br />{t('No technical jargon.')}</p>
@@ -35,7 +45,7 @@ const t = useTranslations(lang);
 			<article class="qct-problem-card elite-prob-card">
 				<div class="prob-card-header">
 					<span class="prob-card-indicator"></span>
-					<span class="prob-card-tag">PURPOSE</span>
+					<span class="prob-card-tag">{pTags.purpose}</span>
 				</div>
 				<h3>{t('Built Around Your Business')}</h3>
 				<p>{t('Every business is different.')}<br />{t('Your website should be too.')}</p>
@@ -44,7 +54,7 @@ const t = useTranslations(lang);
 			<article class="qct-problem-card elite-prob-card">
 				<div class="prob-card-header">
 					<span class="prob-card-indicator"></span>
-					<span class="prob-card-tag">ENDURANCE</span>
+					<span class="prob-card-tag">{pTags.endurance}</span>
 				</div>
 				<h3>{t('Designed to Last')}</h3>
 				<p>{t('We build websites that still feel modern years from now.')}</p>
@@ -53,7 +63,7 @@ const t = useTranslations(lang);
 			<article class="qct-problem-card elite-prob-card">
 				<div class="prob-card-header">
 					<span class="prob-card-indicator"></span>
-					<span class="prob-card-tag">PARTNERSHIP</span>
+					<span class="prob-card-tag">{pTags.partnership}</span>
 				</div>
 				<h3>{t('Long-Term Support')}</h3>
 				<p>{t('Launching your website is the beginning, not the end.')}</p>

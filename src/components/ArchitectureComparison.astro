@@ -1,6 +1,292 @@
 ---
 interface Props { lang: string; }
 const { lang } = Astro.props;
+
+interface ComparisonData {
+  tag: string;
+  titleBefore: string;
+  titleHighlight: string;
+  lead: string;
+  legacyBadge: string;
+  legacyName: string;
+  legacyDesc: string;
+  qctBadge: string;
+  qctName: string;
+  qctDesc: string;
+  labels: {
+    loadTime: string;
+    coreWebVitals: string;
+    runtimeJs: string;
+    serverOverhead: string;
+    attackSurface: string;
+    aiIndexing: string;
+  };
+  legacyValues: {
+    loadTime: string;
+    coreWebVitals: string;
+    runtimeJs: string;
+    serverOverhead: string;
+    attackSurface: string;
+    aiIndexing: string;
+    impactLabel: string;
+    impactVal: string;
+  };
+  qctValues: {
+    loadTime: string;
+    coreWebVitals: string;
+    runtimeJs: string;
+    serverOverhead: string;
+    attackSurface: string;
+    aiIndexing: string;
+    impactLabel: string;
+    impactVal: string;
+  };
+}
+
+const copy: Record<string, ComparisonData> = {
+  en: {
+    tag: 'ENGINEERING BENCHMARK',
+    titleBefore: 'The Cost of Outdated Architecture vs. ',
+    titleHighlight: 'QCT Engineered Edge',
+    lead: 'Most business websites leak 20% to 40% of their conversions before the page even finishes loading. See how traditional monolithic setups compare against modern Astro edge architecture.',
+    legacyBadge: 'TRADITIONAL MONOLITH',
+    legacyName: 'WordPress / Monolithic Shopify',
+    legacyDesc: 'Heavy database lookups, 40+ plugins, client-side hydration choke.',
+    qctBadge: 'QCT STUDIO ARCHITECTURE',
+    qctName: 'Astro 7 Edge + Dynamic SEO',
+    qctDesc: 'Pre-rendered static HTML, zero client JS by default, instant global Edge CDN.',
+    labels: {
+      loadTime: 'Page Load Time',
+      coreWebVitals: 'Mobile Core Web Vitals',
+      runtimeJs: 'Client Runtime JS',
+      serverOverhead: 'Monthly Server Overhead',
+      attackSurface: 'Security Attack Surface',
+      aiIndexing: 'AI Search & GEO Indexing',
+    },
+    legacyValues: {
+      loadTime: '3.8s – 5.4s',
+      coreWebVitals: '38 / 100 (Failing)',
+      runtimeJs: '850 KB – 2.4 MB',
+      serverOverhead: '€80 – €350 / mo',
+      attackSurface: 'High (SQLi & Plugin CVEs)',
+      aiIndexing: 'Ignored by AI Crawlers',
+      impactLabel: 'Average Revenue Lost:',
+      impactVal: '-26% Cart Drops',
+    },
+    qctValues: {
+      loadTime: '0.24s – 0.42s (Instant)',
+      coreWebVitals: '100 / 100 (Guaranteed)',
+      runtimeJs: '0 KB (Zero-bloat Islands)',
+      serverOverhead: '€0 / mo (Serverless CDN)',
+      attackSurface: 'Zero (Immutable Static Files)',
+      aiIndexing: 'Deep Semantic JSON-LD Graph',
+      impactLabel: 'Average Conversion Lift:',
+      impactVal: '+34% Higher Inquiries',
+    },
+  },
+  bg: {
+    tag: 'ИНЖЕНЕРЕН СТАНДАРТ',
+    titleBefore: 'Цената на остарялата архитектура спрямо ',
+    titleHighlight: 'Инженерната Edge скорост на QCT',
+    lead: 'Повечето бизнес сайтове губят между 20% и 40% от своите запитвания и продажби още преди страницата да е заредила. Вижте разликата между тежките монолитни платформи и модерната Astro edge архитектура.',
+    legacyBadge: 'ТРАДИЦИОНЕН МОНОЛИТ',
+    legacyName: 'WordPress / Тежък Shopify',
+    legacyDesc: 'Бавни заявки към бази данни, над 40 плъгина и блокиране на браузъра при зареждане.',
+    qctBadge: 'АРХИТЕКТУРА НА QCT STUDIO',
+    qctName: 'Astro 7 Edge + Динамично SEO',
+    qctDesc: 'Предварително генериран статичен HTML, 0 KB излишен код по подразбиране и глобален Edge CDN.',
+    labels: {
+      loadTime: 'Време за зареждане',
+      coreWebVitals: 'Мобилни Core Web Vitals',
+      runtimeJs: 'Клиентски JavaScript код',
+      serverOverhead: 'Месечни разходи за сървър',
+      attackSurface: 'Уязвимост на сигурността',
+      aiIndexing: 'Индексиране от AI и GEO търсачки',
+    },
+    legacyValues: {
+      loadTime: '3.8s – 5.4s',
+      coreWebVitals: '38 / 100 (Неуспешен)',
+      runtimeJs: '850 KB – 2.4 MB',
+      serverOverhead: '€80 – €350 / мес',
+      attackSurface: 'Висока (SQL инжекции и уязвими плъгини)',
+      aiIndexing: 'Игнориран от AI ботове',
+      impactLabel: 'Средна загуба на приходи:',
+      impactVal: '-26% изоставени колички',
+    },
+    qctValues: {
+      loadTime: '0.24s – 0.42s (Мигновено)',
+      coreWebVitals: '100 / 100 (Гарантирано)',
+      runtimeJs: '0 KB (Чиста островна архитектура)',
+      serverOverhead: '€0 / мес (Сървърлес CDN)',
+      attackSurface: 'Нулева (Неизменими статични файлове)',
+      aiIndexing: 'Дълбока семантична JSON-LD структура',
+      impactLabel: 'Среден ръст на конверсиите:',
+      impactVal: '+34% повече запитвания',
+    },
+  },
+  mk: {
+    tag: 'ИНЖЕНЕРСКИ СТАНДАРД',
+    titleBefore: 'Цената на застарената архитектура наспроти ',
+    titleHighlight: 'QCT Инженерскиот Edge',
+    lead: 'Повеќето бизнис сајтови губат 20% до 40% од продажбите уште пред да заврши вчитувањето на страницата. Погледнете ја разликата меѓу традиционалните монолити и модерната Astro edge архитектура.',
+    legacyBadge: 'ТРАДИЦИОНАЛЕН МОНОЛИТ',
+    legacyName: 'WordPress / Монолитен Shopify',
+    legacyDesc: 'Тешки бази на податоци, 40+ додатоци и гушење на прелистувачот при вчитување.',
+    qctBadge: 'АРХИТЕКТУРА НА QCT STUDIO',
+    qctName: 'Astro 7 Edge + Динамичко SEO',
+    qctDesc: 'Претходно генериран статичен HTML, без клиентски JS по правило, инстантен глобален Edge CDN.',
+    labels: {
+      loadTime: 'Време на вчитување',
+      coreWebVitals: 'Мобилни Core Web Vitals',
+      runtimeJs: 'Клиентски JavaScript код',
+      serverOverhead: 'Месечни трошоци за сервер',
+      attackSurface: 'Безбедносен ризик',
+      aiIndexing: 'Индексирање од AI и GEO пребарувачи',
+    },
+    legacyValues: {
+      loadTime: '3.8s – 5.4s',
+      coreWebVitals: '38 / 100 (Неуспешно)',
+      runtimeJs: '850 KB – 2.4 MB',
+      serverOverhead: '€80 – €350 / мес',
+      attackSurface: 'Висок (SQL инјекции и ранливи додатоци)',
+      aiIndexing: 'Игнориран од AI роботи',
+      impactLabel: 'Просечна загуба на приход:',
+      impactVal: '-26% напуштени кошнички',
+    },
+    qctValues: {
+      loadTime: '0.24s – 0.42s (Инстантно)',
+      coreWebVitals: '100 / 100 (Гарантирано)',
+      runtimeJs: '0 KB (Чисти статички острови)',
+      serverOverhead: '€0 / мес (Serverless CDN)',
+      attackSurface: 'Нула (Неменливи статички фајлови)',
+      aiIndexing: 'Длабок семантички JSON-LD граф',
+      impactLabel: 'Просечен раст на конверзии:',
+      impactVal: '+34% повеќе барања',
+    },
+  },
+  sr: {
+    tag: 'INŽENJERSKI BENČMARK',
+    titleBefore: 'Cena zastarele arhitekture naspram ',
+    titleHighlight: 'QCT Inženjerskog Edge-a',
+    lead: 'Većina poslovnih sajtova gubi između 20% i 40% konverzija pre nego što se stranica uopšte učita. Pogledajte kako se tradicionalni monoliti porede sa modernom Astro edge arhitekturom.',
+    legacyBadge: 'TRADICIONALNI MONOLIT',
+    legacyName: 'WordPress / Monolitni Shopify',
+    legacyDesc: 'Teški upiti bazi podataka, 40+ dodataka i gušenje pretraživača pri učitavanju.',
+    qctBadge: 'ARHITEKTURA QCT STUDIJA',
+    qctName: 'Astro 7 Edge + Dinamički SEO',
+    qctDesc: 'Unapred generisan statički HTML, 0 KB klijentskog koda po pravilu, instant globalni Edge CDN.',
+    labels: {
+      loadTime: 'Vreme učitavanja stranice',
+      coreWebVitals: 'Mobilni Core Web Vitals',
+      runtimeJs: 'Klijentski JavaScript kod',
+      serverOverhead: 'Mesečni troškovi servera',
+      attackSurface: 'Bezbednosni rizik napada',
+      aiIndexing: 'Indeksiranje od strane AI i GEO pretraživača',
+    },
+    legacyValues: {
+      loadTime: '3.8s – 5.4s',
+      coreWebVitals: '38 / 100 (Neuspešno)',
+      runtimeJs: '850 KB – 2.4 MB',
+      serverOverhead: '€80 – €350 / mes',
+      attackSurface: 'Visok (SQL ranjivosti i dodaci)',
+      aiIndexing: 'Ignorisan od strane AI pretraživača',
+      impactLabel: 'Prosečan gubitak prihoda:',
+      impactVal: '-26% napuštenih korpi',
+    },
+    qctValues: {
+      loadTime: '0.24s – 0.42s (Trenutno)',
+      coreWebVitals: '100 / 100 (Garantovano)',
+      runtimeJs: '0 KB (Izolovana ostrva koda)',
+      serverOverhead: '€0 / mes (Serverless CDN)',
+      attackSurface: 'Nula (Nepromenljivi statički fajlovi)',
+      aiIndexing: 'Duboki semantički JSON-LD graf',
+      impactLabel: 'Prosečan rast konverzija:',
+      impactVal: '+34% više upita',
+    },
+  },
+  sq: {
+    tag: 'BENÇMARK INXHINIERIK',
+    titleBefore: 'Kostoja e arkitekturës së vjetruar kundrejt ',
+    titleHighlight: 'Inxhinierisë Edge të QCT',
+    lead: 'Shumica e faqeve të biznesit humbasin 20% deri në 40% të konvertimeve para se faqja të mbarojë ngarkimin. Shihni se si krahasohen sistemet tradicionale me arkitekturën moderne Astro edge.',
+    legacyBadge: 'MONOLIT TRADICIONAL',
+    legacyName: 'WordPress / Shopify Monolitik',
+    legacyDesc: 'Kërkime të rënda në bazën e të dhënave, mbi 40 shtojca dhe ngadalësim i shfletuesit.',
+    qctBadge: 'ARKITEKTURA E QCT STUDIO',
+    qctName: 'Astro 7 Edge + SEO Dinamike',
+    qctDesc: 'HTML statik i para-krijuar, zero JS klient pa nevojë, Edge CDN global i menjëhershëm.',
+    labels: {
+      loadTime: 'Koha e ngarkimit të faqes',
+      coreWebVitals: 'Core Web Vitals në celular',
+      runtimeJs: 'Kodi JavaScript në klient',
+      serverOverhead: 'Kosto mujore e serverit',
+      attackSurface: 'Sipërfaqja e rrezikut të sigurisë',
+      aiIndexing: 'Indeksimi nga kërkimet AI & GEO',
+    },
+    legacyValues: {
+      loadTime: '3.8s – 5.4s',
+      coreWebVitals: '38 / 100 (E pasuksesshme)',
+      runtimeJs: '850 KB – 2.4 MB',
+      serverOverhead: '€80 – €350 / muaj',
+      attackSurface: 'E lartë (Cenueshmëri nga shtojcat & SQL)',
+      aiIndexing: 'Injorohet nga robotët e AI',
+      impactLabel: 'Humbje mesatare e të ardhurave:',
+      impactVal: '-26% braktisje e shportës',
+    },
+    qctValues: {
+      loadTime: '0.24s – 0.42s (E menjëhershme)',
+      coreWebVitals: '100 / 100 (E garantuar)',
+      runtimeJs: '0 KB (Ishuj pa mbingarkesë)',
+      serverOverhead: '€0 / muaj (CDN pa server)',
+      attackSurface: 'Zero (Skedarë statikë të pandryshueshëm)',
+      aiIndexing: 'Graf semantik i thellë JSON-LD',
+      impactLabel: 'Rritje mesatare e konvertimit:',
+      impactVal: '+34% më shumë kërkesa',
+    },
+  },
+  ro: {
+    tag: 'BENCHMARK DE INGINERIE',
+    titleBefore: 'Costul arhitecturii învechite vs. ',
+    titleHighlight: 'Performanța Edge QCT',
+    lead: 'Majoritatea website-urilor de business pierd între 20% și 40% din conversii înainte ca pagina să termine încărcarea. Vezi cum se compară platformele tradiționale cu arhitectura modernă Astro pe rețea Edge.',
+    legacyBadge: 'MONOLIT TRADIȚIONAL',
+    legacyName: 'WordPress / Shopify Monolitic',
+    legacyDesc: 'Interogări grele pe baza de date, peste 40 de module și blocare la randarea în browser.',
+    qctBadge: 'ARHITECTURA QCT STUDIO',
+    qctName: 'Astro 7 Edge + SEO Dinamic',
+    qctDesc: 'HTML static pre-randat, 0 KB cod JavaScript inutil în client, livrare instantanee prin Edge CDN global.',
+    labels: {
+      loadTime: 'Timp de încărcare a paginii',
+      coreWebVitals: 'Core Web Vitals pe mobil',
+      runtimeJs: 'JavaScript rulat în client',
+      serverOverhead: 'Cost lunar de server',
+      attackSurface: 'Suprafață de risc pentru securitate',
+      aiIndexing: 'Indexare în căutările AI și GEO',
+    },
+    legacyValues: {
+      loadTime: '3.8s – 5.4s',
+      coreWebVitals: '38 / 100 (Eșuat)',
+      runtimeJs: '850 KB – 2.4 MB',
+      serverOverhead: '€80 – €350 / lună',
+      attackSurface: 'Ridicată (Injecții SQL și vulnerabilități plugin)',
+      aiIndexing: 'Ignorat de crawlerii AI',
+      impactLabel: 'Venit mediu pierdut:',
+      impactVal: '-26% coșuri abandonate',
+    },
+    qctValues: {
+      loadTime: '0.24s – 0.42s (Instant)',
+      coreWebVitals: '100 / 100 (Garantat)',
+      runtimeJs: '0 KB (Insule fără cod de prisos)',
+      serverOverhead: '€0 / lună (CDN Serverless)',
+      attackSurface: 'Zero (Fișiere statice imutabile)',
+      aiIndexing: 'Graf semantic detaliat JSON-LD',
+      impactLabel: 'Creștere medie de conversie:',
+      impactVal: '+34% mai multe solicitări',
+    },
+  },
+};
+
+const c = copy[lang] ?? copy.en;
 ---
 
 <section id="architecture-benchmark" class="benchmark-section" aria-labelledby="benchmark-title">
@@ -8,13 +294,13 @@ const { lang } = Astro.props;
     <div class="benchmark-header">
       <div class="benchmark-tag">
         <span class="benchmark-tag__dot"></span>
-        <span>ENGINEERING BENCHMARK</span>
+        <span>{c.tag}</span>
       </div>
       <h2 id="benchmark-title" class="benchmark-title">
-        The Cost of Outdated Architecture vs. <span class="text-emerald">QCT Engineered Edge</span>
+        {c.titleBefore}<span class="text-emerald">{c.titleHighlight}</span>
       </h2>
       <p class="benchmark-lead">
-        Most business websites leak 20% to 40% of their conversions before the page even finishes loading. See how traditional monolithic setups compare against modern Astro edge architecture.
+        {c.lead}
       </p>
     </div>
 
@@ -22,40 +308,40 @@ const { lang } = Astro.props;
       <!-- Legacy Column -->
       <div class="benchmark-card benchmark-card--legacy">
         <div class="benchmark-card__header">
-          <div class="badge-legacy">TRADITIONAL MONOLITH</div>
-          <h3 class="benchmark-card__name">WordPress / Monolithic Shopify</h3>
-          <p class="benchmark-card__desc">Heavy database lookups, 40+ plugins, client-side hydration choke.</p>
+          <div class="badge-legacy">{c.legacyBadge}</div>
+          <h3 class="benchmark-card__name">{c.legacyName}</h3>
+          <p class="benchmark-card__desc">{c.legacyDesc}</p>
         </div>
 
         <ul class="benchmark-metrics">
           <li class="metric-row">
-            <span class="metric-row__label">Page Load Time</span>
-            <span class="metric-row__val metric-row__val--bad">3.8s – 5.4s</span>
+            <span class="metric-row__label">{c.labels.loadTime}</span>
+            <span class="metric-row__val metric-row__val--bad">{c.legacyValues.loadTime}</span>
           </li>
           <li class="metric-row">
-            <span class="metric-row__label">Mobile Core Web Vitals</span>
-            <span class="metric-row__val metric-row__val--bad">38 / 100 (Failing)</span>
+            <span class="metric-row__label">{c.labels.coreWebVitals}</span>
+            <span class="metric-row__val metric-row__val--bad">{c.legacyValues.coreWebVitals}</span>
           </li>
           <li class="metric-row">
-            <span class="metric-row__label">Client Runtime JS</span>
-            <span class="metric-row__val metric-row__val--bad">850 KB – 2.4 MB</span>
+            <span class="metric-row__label">{c.labels.runtimeJs}</span>
+            <span class="metric-row__val metric-row__val--bad">{c.legacyValues.runtimeJs}</span>
           </li>
           <li class="metric-row">
-            <span class="metric-row__label">Monthly Server Overhead</span>
-            <span class="metric-row__val metric-row__val--bad">$80 – $350 / mo</span>
+            <span class="metric-row__label">{c.labels.serverOverhead}</span>
+            <span class="metric-row__val metric-row__val--bad">{c.legacyValues.serverOverhead}</span>
           </li>
           <li class="metric-row">
-            <span class="metric-row__label">Security Attack Surface</span>
-            <span class="metric-row__val metric-row__val--bad">High (SQLi & Plugin CVEs)</span>
+            <span class="metric-row__label">{c.labels.attackSurface}</span>
+            <span class="metric-row__val metric-row__val--bad">{c.legacyValues.attackSurface}</span>
           </li>
           <li class="metric-row">
-            <span class="metric-row__label">AI Search & GEO Indexing</span>
-            <span class="metric-row__val metric-row__val--bad">Ignored by AI Crawlers</span>
+            <span class="metric-row__label">{c.labels.aiIndexing}</span>
+            <span class="metric-row__val metric-row__val--bad">{c.legacyValues.aiIndexing}</span>
           </li>
         </ul>
 
         <div class="benchmark-card__footer">
-          <span class="footer-impact">Average Revenue Lost: <strong>-26% Cart Drops</strong></span>
+          <span class="footer-impact">{c.legacyValues.impactLabel} <strong>{c.legacyValues.impactVal}</strong></span>
         </div>
       </div>
 
@@ -64,41 +350,41 @@ const { lang } = Astro.props;
         <div class="benchmark-card__header">
           <div class="badge-qct">
             <span class="badge-qct__pulse"></span>
-            QCT STUDIO ARCHITECTURE
+            {c.qctBadge}
           </div>
-          <h3 class="benchmark-card__name">Astro 7 Edge + Dynamic SEO</h3>
-          <p class="benchmark-card__desc">Pre-rendered static HTML, zero client JS by default, instant global Edge CDN.</p>
+          <h3 class="benchmark-card__name">{c.qctName}</h3>
+          <p class="benchmark-card__desc">{c.qctDesc}</p>
         </div>
 
         <ul class="benchmark-metrics">
           <li class="metric-row">
-            <span class="metric-row__label">Page Load Time</span>
-            <span class="metric-row__val metric-row__val--good">0.24s – 0.42s (Instant)</span>
+            <span class="metric-row__label">{c.labels.loadTime}</span>
+            <span class="metric-row__val metric-row__val--good">{c.qctValues.loadTime}</span>
           </li>
           <li class="metric-row">
-            <span class="metric-row__label">Mobile Core Web Vitals</span>
-            <span class="metric-row__val metric-row__val--good">100 / 100 (Guaranteed)</span>
+            <span class="metric-row__label">{c.labels.coreWebVitals}</span>
+            <span class="metric-row__val metric-row__val--good">{c.qctValues.coreWebVitals}</span>
           </li>
           <li class="metric-row">
-            <span class="metric-row__label">Client Runtime JS</span>
-            <span class="metric-row__val metric-row__val--good">0 KB (Zero-bloat Islands)</span>
+            <span class="metric-row__label">{c.labels.runtimeJs}</span>
+            <span class="metric-row__val metric-row__val--good">{c.qctValues.runtimeJs}</span>
           </li>
           <li class="metric-row">
-            <span class="metric-row__label">Monthly Server Overhead</span>
-            <span class="metric-row__val metric-row__val--good">$0 / mo (Serverless CDN)</span>
+            <span class="metric-row__label">{c.labels.serverOverhead}</span>
+            <span class="metric-row__val metric-row__val--good">{c.qctValues.serverOverhead}</span>
           </li>
           <li class="metric-row">
-            <span class="metric-row__label">Security Attack Surface</span>
-            <span class="metric-row__val metric-row__val--good">Zero (Immutable Static Files)</span>
+            <span class="metric-row__label">{c.labels.attackSurface}</span>
+            <span class="metric-row__val metric-row__val--good">{c.qctValues.attackSurface}</span>
           </li>
           <li class="metric-row">
-            <span class="metric-row__label">AI Search & GEO Indexing</span>
-            <span class="metric-row__val metric-row__val--good">Deep Semantic JSON-LD Graph</span>
+            <span class="metric-row__label">{c.labels.aiIndexing}</span>
+            <span class="metric-row__val metric-row__val--good">{c.qctValues.aiIndexing}</span>
           </li>
         </ul>
 
         <div class="benchmark-card__footer benchmark-card__footer--good">
-          <span class="footer-impact">Average Conversion Lift: <strong>+34% Higher Inquiries</strong></span>
+          <span class="footer-impact">{c.qctValues.impactLabel} <strong>{c.qctValues.impactVal}</strong></span>
         </div>
       </div>
     </div>
@@ -145,10 +431,11 @@ const { lang } = Astro.props;
 .benchmark-title {
   font-size: clamp(2rem, 3.8vw, 3.2rem);
   font-weight: 850;
-  line-height: 1.1;
+  line-height: 1.15;
   letter-spacing: -0.035em;
   color: #ffffff;
   margin: 0 0 1rem;
+  text-wrap: balance;
 }
 
 .text-emerald {
@@ -163,6 +450,7 @@ const { lang } = Astro.props;
   line-height: 1.6;
   color: #9ca3af;
   margin: 0;
+  text-wrap: balance;
 }
 
 /* Grid */

@@ -2,16 +2,70 @@
 interface Props { lang: string; }
 const { lang } = Astro.props;
 
-const items = [
-  'ASTRO 7 EDGE ARCHITECTURE',
-  'DYNAMIC SEO & GEO CITATION',
-  '100/100 CORE WEB VITALS',
-  'SUB-30MS GLOBAL TTFB',
-  'HEADLESS COMMERCE & WHATSAPP',
-  'ZERO-BLOAT STATIC ISLE',
-  'AI WORKFLOW AUTOMATION',
-  'ENTERPRISE SCHEMA GRAPHS',
-];
+const itemsByLang: Record<string, string[]> = {
+  en: [
+    'ASTRO 7 EDGE ARCHITECTURE',
+    'DYNAMIC SEO & GEO CITATION',
+    '100/100 CORE WEB VITALS',
+    'SUB-30MS GLOBAL TTFB',
+    'HEADLESS COMMERCE & WHATSAPP',
+    'ZERO-BLOAT STATIC ISLES',
+    'AI WORKFLOW AUTOMATION',
+    'ENTERPRISE SCHEMA GRAPHS',
+  ],
+  bg: [
+    'АРХИТЕКТУРА ASTRO 7 EDGE',
+    'ДИНАМИЧНО SEO & GEO СИТИРАНЕ',
+    '100/100 CORE WEB VITALS',
+    'ПОД 30MS ГЛОБАЛЕН TTFB',
+    'HEADLESS ТЪРГОВИЯ & WHATSAPP',
+    'СТАТИЧНИ ОСТРОВИ БЕЗ ИЗЛИШЕН КОД',
+    'АВТОМАТИЗАЦИЯ НА ПРОЦЕСИ С AI',
+    'ENTERPRISE СХЕМА ГРАФОВЕ',
+  ],
+  mk: [
+    'АРХИТЕКТУРА ASTRO 7 EDGE',
+    'ДИНАМИЧКО SEO & GEO ЦИТИРАЊЕ',
+    '100/100 CORE WEB VITALS',
+    'ПОД 30MS ГЛОБАЛЕН TTFB',
+    'HEADLESS Е-ТРГОВИЈА & WHATSAPP',
+    'СТАТИЧКИ ОСТРОВИ БЕЗ ИЗЛИШЕН КОД',
+    'АВТОМАТИЗАЦИЈА НА ПРОЦЕСИ СО AI',
+    'ENTERPRISE ШЕМА ГРАФОВИ',
+  ],
+  sr: [
+    'ASTRO 7 EDGE ARHITEKTURA',
+    'DINAMIČKI SEO & GEO CITIRANJE',
+    '100/100 CORE WEB VITALS',
+    'ISPOD 30MS GLOBALNI TTFB',
+    'HEADLESS E-COMMERCE & WHATSAPP',
+    'STATIČKA OSTRVA BEZ SUVIŠNOG KODA',
+    'AI AUTOMATIZACIJA PROCESA',
+    'ENTERPRISE SCHEMA GRAFOVI',
+  ],
+  sq: [
+    'ARKITEKTURË ASTRO 7 EDGE',
+    'SEO DINAMIKE & CITIM GEO',
+    '100/100 CORE WEB VITALS',
+    'NËN 30MS TTFB GLOBALE',
+    'HEADLESS COMMERCE & WHATSAPP',
+    'ISHUJ STATIKË PA NGARKESË KODI',
+    'AUTOMATIZIM I PROCESEVE ME AI',
+    'GRAFE SKEME ENTERPRISE',
+  ],
+  ro: [
+    'ARHITECTURĂ ASTRO 7 EDGE',
+    'SEO DINAMIC & CITARE GEO',
+    '100/100 CORE WEB VITALS',
+    'SUB 30MS TTFB GLOBAL',
+    'HEADLESS COMMERCE & WHATSAPP',
+    'INSULE STATICE FĂRĂ COD DE PRISOS',
+    'AUTOMATIZARE DE PROCESE CU AI',
+    'GRAFURI SCHEMA ENTERPRISE',
+  ],
+};
+
+const items = itemsByLang[lang] ?? itemsByLang.en;
 ---
 <section class="cap-marquee-elite" aria-label="QCT Studio engineering capabilities">
   <div class="cap-marquee-elite__track">

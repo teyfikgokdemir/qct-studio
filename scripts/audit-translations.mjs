@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const sourceRoot = 'src';
-const locales = ['sq', 'mk', 'sr'];
+const locales = ['sq', 'mk', 'sr', 'ro', 'bg'];
 const usedKeys = new Set();
 
 const allowedUnchanged = new Set([
@@ -100,48 +100,6 @@ for (const locale of locales) {
     console.error(unchanged.join('\n'));
   }
 }
-
-
-for (const locale of ['ro', 'bg']) {
-  const dictionary = JSON.parse(
-    fs.readFileSync(`src/i18n/${locale}.json`, 'utf8'),
-  );
-  const missing = [];
-  const unchanged = [];
-
-  for (const key of [...usedKeys].sort()) {
-    if (!(key in dictionary)) {
-      missing.push(key);
-      continue;
-    }
-
-    const englishValue = english[key] ?? key;
-    const wordCount = englishValue.trim().split(/\s+/).length;
-    if (
-      dictionary[key] === englishValue &&
-      wordCount >= 3 &&
-      !allowedUnchanged.has(key)
-    ) {
-      unchanged.push(key);
-    }
-  }
-
-  console.log(
-    `${locale.toUpperCase()} content coverage: ${usedKeys.size} used, ` +
-    `${missing.length} missing, ${unchanged.length} unchanged English`,
-  );
-  if (missing.length) {
-    failed = true;
-    console.error(`\n[${locale}] Missing used translation keys:`);
-    console.error(missing.join('\n'));
-  }
-  if (unchanged.length) {
-    failed = true;
-    console.error(`\n[${locale}] Unchanged English values:`);
-    console.error(unchanged.join('\n'));
-  }
-}
-
 
 const extendedSharedKeys = [
   'Home','Services','Services overview','Website Design','E-commerce','WhatsApp Commerce',
