@@ -7,6 +7,15 @@ import { getLocalizedUrl } from '../i18n';
 interface Props { lang: 'en' | 'sq' | 'mk' | 'sr' | 'ro' | 'bg'; }
 const { lang } = Astro.props;
 
+const closeHeading: Record<string, string> = {
+  en: 'Let’s architect the right scope for your goals.',
+  sq: 'Le të përcaktojmë fushën e duhur për qëllimet tuaja.',
+  mk: 'Да го дефинираме вистинскиот опсег за вашите цели.',
+  sr: 'Definišimo pravi obim za vaše ciljeve.',
+  ro: 'Să stabilim scope-ul potrivit pentru obiectivele dumneavoastră.',
+  bg: 'Нека дефинираме правилния обхват за вашите цели.'
+};
+
 const copy = {
   en: {
     title: 'Pricing — QCT Studio',
@@ -17,21 +26,21 @@ const copy = {
     from: 'From',
     cta: 'Discuss your project',
     packages: [
-      ['Business Website', '€1,490', 'For established service businesses that need a credible, fast and conversion-focused website.', ['Strategy and information architecture', 'Responsive design and development', 'Core technical SEO', 'Analytics and conversion tracking', 'Launch and handover']],
-      ['Growth Website', '€2,490', 'For businesses that need stronger positioning, search structure and multiple conversion paths.', ['Everything in Business Website', 'Deeper content and service architecture', 'SEO/GEO-ready structure', 'Landing-page or lead-flow planning', 'Post-launch optimisation review']],
-      ['E-commerce', '€3,490', 'For product businesses that need a dependable mobile-first store and clearer commercial operations.', ['Store architecture and product structure', 'Responsive storefront', 'Checkout and conversion flow', 'Technical SEO foundations', 'Analytics and commerce tracking']],
+      ['Business Website', '€990', 'For established service businesses that need a credible, fast and conversion-focused website.', ['Strategy and information architecture', 'Responsive design and development', 'Core technical SEO', 'Analytics and conversion tracking', 'Launch and handover']],
+      ['Growth Website', '€1,790', 'For businesses that need stronger positioning, search structure and multiple conversion paths.', ['Everything in Business Website', 'Deeper content and service architecture', 'SEO/GEO-ready structure', 'Landing-page or lead-flow planning', 'Post-launch optimisation review']],
+      ['E-commerce', '€2,490', 'For product businesses that need a dependable mobile-first store and clearer commercial operations.', ['Store architecture and product structure', 'Responsive storefront', 'Checkout and conversion flow', 'Technical SEO foundations', 'Analytics and commerce tracking']],
     ],
     extrasTitle: 'Specialist services',
     extrasLead: 'Use these as standalone projects or add them to a broader website or commerce system.',
     extras: [
-      ['Campaign landing page', '€690'],
-      ['SEO & GEO foundation', '€790'],
-      ['SEO Care', '€290 / month'],
-      ['Dynamic SEO + GEO/AEO/AIO', '€490 / month'],
-      ['SEO Growth', '€690 / month'],
-      ['WhatsApp Commerce setup', '€890'],
-      ['AI automation workflow', '€1,290'],
-      ['Additional market / language rollout', '€390'],
+      ['Campaign landing page', '€490'],
+      ['SEO & GEO foundation', '€590'],
+      ['SEO Care', '€190 / month'],
+      ['Dynamic SEO + GEO/AEO/AIO', '€390 / month'],
+      ['SEO Growth', '€490 / month'],
+      ['WhatsApp Commerce setup', '€590'],
+      ['AI automation workflow', '€890'],
+      ['Additional market / language rollout', '€290'],
     ],
     noteTitle: 'What the price does not hide',
     note: 'Third-party software, paid media spend, payment-provider fees, premium licenses, unusual data migration and taxes are not included unless they are explicitly written into the proposal. Complex integrations, large catalogues and custom software are quoted separately.',
@@ -47,13 +56,13 @@ const copy = {
     from: 'Nga',
     cta: 'Diskuto projektin',
     packages: [
-      ['Faqe Biznesi', '€1,490', 'Për biznese shërbimesh që kanë nevojë për një faqe të besueshme, të shpejtë dhe të orientuar te konvertimi.', ['Strategji dhe arkitekturë informacioni', 'Dizajn dhe zhvillim responsive', 'SEO teknik bazë', 'Analitikë dhe matje konvertimi', 'Publikim dhe dorëzim']],
-      ['Faqe për Rritje', '€2,490', 'Për biznese që kanë nevojë për pozicionim më të fortë, strukturë kërkimi dhe disa rrugë konvertimi.', ['Gjithçka te Faqja e Biznesit', 'Arkitekturë më e thellë e përmbajtjes', 'Strukturë gati për SEO/GEO', 'Planifikim landing page ose lead flow', 'Rishikim pas publikimit']],
-      ['E-commerce', '€3,490', 'Për biznese produktesh që duan dyqan të besueshëm mobile-first dhe operacione më të qarta.', ['Arkitekturë dyqani dhe produktesh', 'Storefront responsive', 'Checkout dhe rrjedhë konvertimi', 'Bazat teknike të SEO', 'Analitikë dhe commerce tracking']],
+      ['Faqe Biznesi', '€990', 'Për biznese shërbimesh që kanë nevojë për një faqe të besueshme, të shpejtë dhe të orientuar te konvertimi.', ['Strategji dhe arkitekturë informacioni', 'Dizajn dhe zhvillim responsive', 'SEO teknik bazë', 'Analitikë dhe matje konvertimi', 'Publikim dhe dorëzim']],
+      ['Faqe për Rritje', '€1,790', 'Për biznese që kanë nevojë për pozicionim më të fortë, strukturë kërkimi dhe disa rrugë konvertimi.', ['Gjithçka te Faqja e Biznesit', 'Arkitekturë më e thellë e përmbajtjes', 'Strukturë gati për SEO/GEO', 'Planifikim landing page ose lead flow', 'Rishikim pas publikimit']],
+      ['E-commerce', '€2,490', 'Për biznese produktesh që duan dyqan të besueshëm mobile-first dhe operacione më të qarta.', ['Arkitekturë dyqani dhe produktesh', 'Storefront responsive', 'Checkout dhe rrjedhë konvertimi', 'Bazat teknike të SEO', 'Analitikë dhe commerce tracking']],
     ],
     extrasTitle: 'Shërbime të specializuara',
     extrasLead: 'Mund të përdoren si projekte më vete ose si shtesë në një sistem më të gjerë.',
-    extras: [['Landing page për fushatë','€690'],['Bazë SEO & GEO','€790'],['SEO Care','€290 / muaj'],['SEO Dinamik + GEO/AEO/AIO','€490 / muaj'],['SEO Growth','€690 / muaj'],['WhatsApp Commerce','€890'],['Workflow automatizimi me AI','€1,290'],['Treg / gjuhë shtesë','€390']],
+    extras: [['Landing page për fushatë','€490'],['Bazë SEO & GEO','€590'],['SEO Care','€190 / muaj'],['SEO Dinamik + GEO/AEO/AIO','€390 / muaj'],['SEO Growth','€490 / muaj'],['WhatsApp Commerce','€590'],['Workflow automatizimi me AI','€890'],['Treg / gjuhë shtesë','€290']],
     noteTitle: 'Çfarë nuk fshihet në çmim',
     note: 'Software i palëve të treta, buxheti i reklamave, tarifat e pagesave, licencat premium, migrimet e pazakonta dhe taksat nuk përfshihen nëse nuk shkruhen qartë në ofertë. Integrimet komplekse dhe software custom kuotohen veçmas.',
     close: 'Keni nevojë për një fushë të personalizuar?',
@@ -68,13 +77,13 @@ const copy = {
     from: 'Од',
     cta: 'Разговарајте за проектот',
     packages: [
-      ['Бизнис веб-страница', '€1,490', 'За услужни компании на кои им треба кредибилна, брза и конверзиски ориентирана веб-страница.', ['Стратегија и информациска архитектура', 'Responsive дизајн и развој', 'Основно техничко SEO', 'Аналитика и мерење конверзии', 'Лансирање и предавање']],
-      ['Growth веб-страница', '€2,490', 'За компании на кои им треба посилно позиционирање, структура за пребарување и повеќе конверзиски патеки.', ['Сè од Business Website', 'Подлабока содржинска архитектура', 'SEO/GEO подготвена структура', 'Landing page или lead-flow планирање', 'Пост-лансирачки review']],
-      ['E-commerce', '€3,490', 'За продуктни компании на кои им треба сигурна mobile-first продавница и појасни операции.', ['Архитектура на продавница и производи', 'Responsive storefront', 'Checkout и conversion flow', 'Технички SEO основи', 'Analytics и commerce tracking']],
+      ['Бизнис веб-страница', '€990', 'За услужни компании на кои им треба кредибилна, брза и конверзиски ориентирана веб-страница.', ['Стратегија и информациска архитектура', 'Responsive дизајн и развој', 'Основно техничко SEO', 'Аналитика и мерење конверзии', 'Лансирање и предавање']],
+      ['Growth веб-страница', '€1,790', 'За компании на кои им треба посилно позиционирање, структура за пребарување и повеќе конверзиски патеки.', ['Сè од Business Website', 'Подлабока содржинска архитектура', 'SEO/GEO подготвена структура', 'Landing page или lead-flow планирање', 'Пост-лансирачки review']],
+      ['E-commerce', '€2,490', 'За продуктни компании на кои им треба сигурна mobile-first продавница и појасни операции.', ['Архитектура на продавница и производи', 'Responsive storefront', 'Checkout и conversion flow', 'Технички SEO основи', 'Analytics и commerce tracking']],
     ],
     extrasTitle: 'Специјализирани услуги',
     extrasLead: 'Како самостојни проекти или додатоци на поширок веб/e-commerce систем.',
-    extras: [['Campaign landing page','€690'],['SEO & GEO основа','€790'],['SEO Care','€290 / месец'],['Динамичко SEO + GEO/AEO/AIO','€490 / месец'],['SEO Growth','€690 / месец'],['WhatsApp Commerce','€890'],['AI automation workflow','€1,290'],['Дополнителен пазар / јазик','€390']],
+    extras: [['Campaign landing page','€490'],['SEO & GEO основа','€590'],['SEO Care','€190 / месец'],['Динамичко SEO + GEO/AEO/AIO','€390 / месец'],['SEO Growth','€490 / месец'],['WhatsApp Commerce','€590'],['AI automation workflow','€890'],['Дополнителен пазар / јазик','€290']],
     noteTitle: 'Што не е скриено во цената',
     note: 'Third-party software, рекламниот буџет, payment-provider трошоци, premium лиценци, нестандардни миграции и даноци не се вклучени освен ако не се наведени во понудата. Комплексни интеграции и custom software се пресметуваат одделно.',
     close: 'Потребен е custom опсег?',
@@ -89,13 +98,13 @@ const copy = {
     from: 'Od',
     cta: 'Razgovarajte o projektu',
     packages: [
-      ['Poslovni sajt', '€1,490', 'Za uslužne firme kojima je potreban kredibilan, brz i konverzijski orijentisan sajt.', ['Strategija i informaciona arhitektura', 'Responsive dizajn i razvoj', 'Osnovni tehnički SEO', 'Analitika i praćenje konverzija', 'Lansiranje i primopredaja']],
-      ['Growth sajt', '€2,490', 'Za firme kojima trebaju jače pozicioniranje, bolja search struktura i više konverzijskih puteva.', ['Sve iz Poslovnog sajta', 'Dublja arhitektura sadržaja', 'SEO/GEO-ready struktura', 'Planiranje landing stranice ili lead flow-a', 'Post-launch optimizacioni pregled']],
-      ['E-commerce', '€3,490', 'Za produktne firme kojima je potrebna pouzdana mobile-first prodavnica i jasnije komercijalne operacije.', ['Arhitektura prodavnice i proizvoda', 'Responsive storefront', 'Checkout i conversion flow', 'Tehničke SEO osnove', 'Analytics i commerce tracking']],
+      ['Poslovni sajt', '€990', 'Za uslužne firme kojima je potreban kredibilan, brz i konverzijski orijentisan sajt.', ['Strategija i informaciona arhitektura', 'Responsive dizajn i razvoj', 'Osnovni tehnički SEO', 'Analitika i praćenje konverzija', 'Lansiranje i primopredaja']],
+      ['Growth sajt', '€1,790', 'Za firme kojima trebaju jače pozicioniranje, bolja search struktura i više konverzijskih puteva.', ['Sve iz Poslovnog sajta', 'Dublja arhitektura sadržaja', 'SEO/GEO-ready struktura', 'Planiranje landing stranice ili lead flow-a', 'Post-launch optimizacioni pregled']],
+      ['E-commerce', '€2,490', 'Za produktne firme kojima je potrebna pouzdana mobile-first prodavnica i jasnije komercijalne operacije.', ['Arhitektura prodavnice i proizvoda', 'Responsive storefront', 'Checkout i conversion flow', 'Tehničke SEO osnove', 'Analytics i commerce tracking']],
     ],
     extrasTitle: 'Specijalističke usluge',
     extrasLead: 'Kao samostalni projekti ili dodatak širem web/e-commerce sistemu.',
-    extras: [['Campaign landing page','€690'],['SEO & GEO osnova','€790'],['SEO Care','€290 / mesec'],['Dinamički SEO + GEO/AEO/AIO','€490 / mesec'],['SEO Growth','€690 / mesec'],['WhatsApp Commerce','€890'],['AI automation workflow','€1,290'],['Dodatno tržište / jezik','€390']],
+    extras: [['Campaign landing page','€490'],['SEO & GEO osnova','€590'],['SEO Care','€190 / mesec'],['Dinamički SEO + GEO/AEO/AIO','€390 / mesec'],['SEO Growth','€490 / mesec'],['WhatsApp Commerce','€590'],['AI automation workflow','€890'],['Dodatno tržište / jezik','€290']],
     noteTitle: 'Šta cena ne skriva',
     note: 'Third-party softver, budžet za oglase, naknade payment providera, premium licence, nestandardne migracije i porezi nisu uključeni osim ako su izričito navedeni u ponudi. Kompleksne integracije i custom softver se procenjuju zasebno.',
     close: 'Potreban vam je custom obim?',
@@ -110,13 +119,13 @@ const copy = {
     from: 'De la',
     cta: 'Discutați proiectul',
     packages: [
-      ['Site de business', '€1,490', 'Pentru companii de servicii care au nevoie de un site credibil, rapid și orientat spre conversie.', ['Strategie și arhitectură informațională', 'Design și dezvoltare responsive', 'SEO tehnic de bază', 'Analytics și măsurarea conversiilor', 'Lansare și predare']],
-      ['Growth Website', '€2,490', 'Pentru companii care au nevoie de poziționare mai puternică, structură de căutare și mai multe trasee de conversie.', ['Tot din Business Website', 'Arhitectură de conținut extinsă', 'Structură pregătită pentru SEO/GEO', 'Planificare landing page sau lead flow', 'Revizie de optimizare după lansare']],
-      ['E-commerce', '€3,490', 'Pentru companii de produse care au nevoie de un magazin mobile-first fiabil și operațiuni comerciale mai clare.', ['Arhitectură magazin și produse', 'Storefront responsive', 'Checkout și conversion flow', 'Fundații SEO tehnice', 'Analytics și commerce tracking']],
+      ['Site de business', '€990', 'Pentru companii de servicii care au nevoie de un site credibil, rapid și orientat spre conversie.', ['Strategie și arhitectură informațională', 'Design și dezvoltare responsive', 'SEO tehnic de bază', 'Analytics și măsurarea conversiilor', 'Lansare și predare']],
+      ['Growth Website', '€1,790', 'Pentru companii care au nevoie de poziționare mai puternică, structură de căutare și mai multe trasee de conversie.', ['Tot din Business Website', 'Arhitectură de conținut extinsă', 'Structură pregătită pentru SEO/GEO', 'Planificare landing page sau lead flow', 'Revizie de optimizare după lansare']],
+      ['E-commerce', '€2,490', 'Pentru companii de produse care au nevoie de un magazin mobile-first fiabil și operațiuni comerciale mai clare.', ['Arhitectură magazin și produse', 'Storefront responsive', 'Checkout și conversion flow', 'Fundații SEO tehnice', 'Analytics și commerce tracking']],
     ],
     extrasTitle: 'Servicii specializate',
     extrasLead: 'Ca proiecte independente sau ca extensii ale unui sistem web/e-commerce mai amplu.',
-    extras: [['Landing page de campanie','€690'],['Fundație SEO & GEO','€790'],['SEO Care','€290 / lună'],['SEO Dinamic + GEO/AEO/AIO','€490 / lună'],['SEO Growth','€690 / lună'],['WhatsApp Commerce','€890'],['Workflow de automatizare AI','€1,290'],['Piață / limbă suplimentară','€390']],
+    extras: [['Landing page de campanie','€490'],['Fundație SEO & GEO','€590'],['SEO Care','€190 / lună'],['SEO Dinamic + GEO/AEO/AIO','€390 / lună'],['SEO Growth','€490 / lună'],['WhatsApp Commerce','€590'],['Workflow de automatizare AI','€890'],['Piață / limbă suplimentară','€290']],
     noteTitle: 'Ce nu ascunde prețul',
     note: 'Software-ul terț, bugetele media, taxele procesatorilor de plăți, licențele premium, migrările neobișnuite și taxele nu sunt incluse decât dacă sunt menționate explicit. Integrările complexe și software-ul custom se estimează separat.',
     close: 'Aveți nevoie de un scope personalizat?',
@@ -131,13 +140,13 @@ const copy = {
     from: 'От',
     cta: 'Обсъдете проекта',
     packages: [
-      ['Бизнес уебсайт', '€1,490', 'За компании за услуги, които имат нужда от надежден, бърз и ориентиран към конверсии сайт.', ['Стратегия и информационна архитектура', 'Responsive дизайн и разработка', 'Основно техническо SEO', 'Analytics и проследяване на конверсии', 'Стартиране и предаване']],
-      ['Growth уебсайт', '€2,490', 'За компании, които се нуждаят от по-силно позициониране, search структура и повече конверсионни пътеки.', ['Всичко от Business Website', 'По-дълбока архитектура на съдържанието', 'SEO/GEO-ready структура', 'Планиране на landing page или lead flow', 'Оптимизационен преглед след старта']],
-      ['E-commerce', '€3,490', 'За продуктови компании, които се нуждаят от надежден mobile-first магазин и по-ясни търговски операции.', ['Архитектура на магазина и продуктите', 'Responsive storefront', 'Checkout и conversion flow', 'Технически SEO основи', 'Analytics и commerce tracking']],
+      ['Бизнес уебсайт', '€990', 'За компании за услуги, които имат нужда от надежден, бърз и ориентиран към конверсии сайт.', ['Стратегия и информационна архитектура', 'Responsive дизайн и разработка', 'Основно техническо SEO', 'Analytics и проследяване на конверсии', 'Стартиране и предаване']],
+      ['Growth уебсайт', '€1,790', 'За компании, които се нуждаят от по-силно позициониране, search структура и повече конверсионни пътеки.', ['Всичко от Business Website', 'По-дълбока архитектура на съдържанието', 'SEO/GEO-ready структура', 'Планиране на landing page или lead flow', 'Оптимизационен преглед след старта']],
+      ['E-commerce', '€2,490', 'За продуктови компании, които се нуждаят от надежден mobile-first магазин и по-ясни търговски операции.', ['Архитектура на магазина и продуктите', 'Responsive storefront', 'Checkout и conversion flow', 'Технически SEO основи', 'Analytics и commerce tracking']],
     ],
     extrasTitle: 'Специализирани услуги',
     extrasLead: 'Като самостоятелни проекти или допълнение към по-широка web/e-commerce система.',
-    extras: [['Campaign landing page','€690'],['SEO & GEO основа','€790'],['SEO Care','€290 / месец'],['Динамично SEO + GEO/AEO/AIO','€490 / месец'],['SEO Growth','€690 / месец'],['WhatsApp Commerce','€890'],['AI automation workflow','€1,290'],['Допълнителен пазар / език','€390']],
+    extras: [['Campaign landing page','€490'],['SEO & GEO основа','€590'],['SEO Care','€190 / месец'],['Динамично SEO + GEO/AEO/AIO','€390 / месец'],['SEO Growth','€490 / месец'],['WhatsApp Commerce','€590'],['AI automation workflow','€890'],['Допълнителен пазар / език','€290']],
     noteTitle: 'Какво не се крие в цената',
     note: 'Third-party софтуер, рекламни бюджети, такси на payment providers, premium лицензи, необичайни миграции и данъци не са включени, освен ако не са изрично посочени. Сложните интеграции и custom software се оценяват отделно.',
     close: 'Нужен е персонализиран обхват?',
@@ -222,16 +231,19 @@ const offerCatalog = {
     <p>{copy.note}</p>
   </section>
 
-  <section class="pricing-section container pricing-close">
-    <p class="pricing-eyebrow">{copy.close}</p>
-    <h2>{copy.closeText}</h2>
-    <a class="pricing-cta" href={getLocalizedUrl(lang, '/contact/')} data-qct-cta="contact" data-cta-location="pricing-final">{copy.cta}</a>
+  <section class="pricing-close-wrap container">
+    <div class="pricing-close-card">
+      <p class="pricing-eyebrow">{copy.close}</p>
+      <h2 class="pricing-close-heading">{closeHeading[lang]}</h2>
+      <p class="pricing-close-lead">{copy.closeText}</p>
+      <a class="pricing-cta" href={getLocalizedUrl(lang, '/contact/')} data-qct-cta="contact" data-cta-location="pricing-final">{copy.cta}</a>
+    </div>
   </section>
   <Footer slot="footer" lang={lang} />
 </BaseLayout>
 
 <style>
-.pricing-hero{padding-block:clamp(5rem,7vw,6.5rem) clamp(2.5rem,4vw,3.5rem);max-width:1180px;text-align:center}.pricing-eyebrow{font-size:.72rem;letter-spacing:.16em;font-weight:800;color:#00f5a0;margin:0 0 .85rem;text-align:center}.pricing-hero h1{font-size:clamp(2.1rem,3.2vw,3.0rem);line-height:1.15;letter-spacing:-.028em;max-width:980px;margin:0 auto;text-align:center;text-wrap:balance;color:#fff}.pricing-close h2{font-size:clamp(1.75rem,2.6vw,2.35rem);line-height:1.2;letter-spacing:-.025em;max-width:24ch;margin:0;color:#fff}.pricing-lead{max-width:820px;font-size:clamp(.98rem,1.15vw,1.08rem);line-height:1.65;opacity:.72;margin:1rem auto 0;text-align:center}.pricing-section{padding-block:clamp(2.25rem,4vw,4rem)}.pricing-marquee + .pricing-section{padding-top:clamp(1.25rem,2vw,2rem)}.pricing-section--soft{background:#0d0f15;border-block:1px solid rgba(255,255,255,.08)}.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}.pricing-card{display:flex;flex-direction:column;justify-content:space-between;gap:2rem;padding:clamp(1.5rem,3vw,2.3rem);border:1px solid rgba(255,255,255,.1);border-radius:22px;background:#0d0f15;min-height:540px}.pricing-card h2{font-size:1.3rem;margin:.35rem 0}.pricing-from{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;opacity:.55;margin:0}.pricing-price{font-size:clamp(2.2rem,4vw,3.8rem);font-weight:800;letter-spacing:-.04em;margin:.25rem 0 1rem}.pricing-copy{line-height:1.65;opacity:.78}.pricing-card ul{padding-left:1.2rem;margin:0;display:grid;gap:.7rem;line-height:1.5}.pricing-cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.85rem 1.1rem;border-radius:999px;background:#00f5a0;color:#07080b;font-weight:800;text-decoration:none;font-weight:750}.pricing-heading{max-width:760px;margin-bottom:2rem}.pricing-heading h2,.pricing-note h2{font-size:clamp(1.75rem,2.5vw,2.25rem);line-height:1.2;letter-spacing:-.025em;margin:0 0 .8rem;color:#fff}.pricing-heading p,.pricing-note p{line-height:1.7;opacity:.75}.extras-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.extra-row{display:flex;justify-content:space-between;gap:1rem;padding:1.1rem 1.2rem;border:1px solid rgba(255,255,255,.09);border-radius:14px}.pricing-note{max-width:900px}.pricing-close{padding-top:clamp(3rem,5vw,4.5rem);padding-bottom:clamp(4rem,7vw,6rem);max-width:980px}.pricing-close .pricing-cta{margin-top:2rem;width:max-content}
+.pricing-hero{padding-block:clamp(5rem,7vw,6.5rem) clamp(2.5rem,4vw,3.5rem);max-width:1180px;text-align:center}.pricing-eyebrow{font-size:.72rem;letter-spacing:.16em;font-weight:800;color:#00f5a0;margin:0 0 .85rem;text-align:center;text-transform:uppercase;font-family:ui-monospace,SFMono-Regular,monospace}.pricing-hero h1{font-size:clamp(2.1rem,3.2vw,3.0rem);line-height:1.15;letter-spacing:-.028em;max-width:980px;margin:0 auto;text-align:center;text-wrap:balance;color:#fff}.pricing-lead{max-width:820px;font-size:clamp(.98rem,1.15vw,1.08rem);line-height:1.65;opacity:.72;margin:1rem auto 0;text-align:center}.pricing-section{padding-block:clamp(2.25rem,4vw,4rem)}.pricing-marquee + .pricing-section{padding-top:clamp(1.25rem,2vw,2rem)}.pricing-section--soft{background:#0d0f15;border-block:1px solid rgba(255,255,255,.08)}.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem}.pricing-card{display:flex;flex-direction:column;justify-content:space-between;gap:2rem;padding:clamp(1.5rem,3vw,2.3rem);border:1px solid rgba(255,255,255,.1);border-radius:22px;background:#0d0f15;min-height:540px}.pricing-card h2{font-size:1.3rem;margin:.35rem 0}.pricing-from{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;opacity:.55;margin:0}.pricing-price{font-size:clamp(2.2rem,4vw,3.8rem);font-weight:800;letter-spacing:-.04em;margin:.25rem 0 1rem;color:#00f5a0}.pricing-copy{line-height:1.65;opacity:.78}.pricing-card ul{padding-left:1.2rem;margin:0;display:grid;gap:.7rem;line-height:1.5}.pricing-cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.85rem 1.6rem;border-radius:999px;background:#00f5a0;color:#07080b !important;font-weight:800;text-decoration:none;transition:all .2s ease}.pricing-cta:hover{background:#ffffff;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,245,160,0.35)}.pricing-heading{max-width:760px;margin-bottom:2rem}.pricing-heading h2,.pricing-note h2{font-size:clamp(1.75rem,2.5vw,2.25rem);line-height:1.2;letter-spacing:-.025em;margin:0 0 .8rem;color:#fff}.pricing-heading p,.pricing-note p{line-height:1.7;opacity:.75}.extras-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.extra-row{display:flex;justify-content:space-between;gap:1rem;padding:1.1rem 1.2rem;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:rgba(255,255,255,.02)}.extra-row strong{color:#00f5a0}.pricing-note{max-width:900px}
 .pricing-marquee{overflow:hidden;border-block:1px solid rgba(255,255,255,.08);background:#090b10;padding:1rem 0;margin:0}
 .pricing-marquee__track{display:flex;width:max-content;animation:pricing-marquee-scroll 28s linear infinite;will-change:transform}
 .pricing-marquee__group{display:flex;align-items:center;gap:1.5rem;padding-right:1.5rem;white-space:nowrap}
@@ -239,5 +251,14 @@ const offerCatalog = {
 .pricing-marquee__group i{font-style:normal;color:#00f5a0;font-weight:900;font-size:1.1rem;line-height:1}
 @keyframes pricing-marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.pricing-marquee__track{animation:none}}
+
+/* Redesigned Balanced Closing Section */
+.pricing-close-wrap{padding-block:clamp(4rem,7vw,6.5rem)}
+.pricing-close-card{background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,rgba(255,255,255,.015) 100%);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:clamp(2.5rem,5vw,4.2rem) clamp(1.5rem,4vw,3.5rem);text-align:center;max-width:920px;margin:0 auto;position:relative;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.pricing-close-card::before{content:"";position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,rgba(0,245,160,.6),transparent)}
+.pricing-close-heading{font-size:clamp(1.9rem,3.2vw,2.75rem);line-height:1.18;letter-spacing:-.03em;color:#fff;margin:.6rem auto 1rem;max-width:740px;text-wrap:balance;font-weight:800}
+.pricing-close-lead{font-size:clamp(.95rem,1.2vw,1.08rem);line-height:1.65;color:rgba(247,243,238,.7);max-width:640px;margin:0 auto 2.2rem}
+.pricing-close-card .pricing-cta{display:inline-flex}
+
 @media(min-width:1180px){.pricing-hero h1{white-space:nowrap}}@media(max-width:900px){.pricing-grid{grid-template-columns:1fr}.pricing-card{min-height:0}.extras-grid{grid-template-columns:1fr}.pricing-hero h1{white-space:normal;font-size:clamp(2rem,9vw,2.7rem)}.pricing-lead{font-size:.98rem}}
 </style>
