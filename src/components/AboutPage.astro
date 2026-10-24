@@ -17,12 +17,12 @@ const seo = getPageSeo('about', lang);
 const diagnosticUrl = url('/regional-growth-diagnostic/');
 const englishInternational = lang === 'en';
 const trustCopy = {
-  en: { selectedText: 'Selected systems across multilingual commerce, international trade and regional growth diagnostics.', ctsegLabel: 'Venture trade platform', ctsegText: 'A live multilingual trade system with a verified founder-level connection.', diagnosticLabel: 'Regional growth system', diagnosticText: 'A structured market, conversion and operations intake for Balkan businesses.', open: 'View evidence' },
-  sq: { selectedText: 'Sisteme të përzgjedhura në commerce shumëgjuhësh, tregti ndërkombëtare dhe diagnostikim rajonal.', ctsegLabel: 'Platformë tregtie venture', ctsegText: 'Sistem aktiv shumëgjuhësh me lidhje të verifikuar në nivel themeluesi.', diagnosticLabel: 'Sistem rajonal i rritjes', diagnosticText: 'Intake i strukturuar për tregun, konvertimin dhe operimin e bizneseve të Ballkanit.', open: 'Shikoni dëshmitë' },
-  mk: { selectedText: 'Избрани системи за повеќејазична commerce, меѓународна трговија и регионална дијагностика.', ctsegLabel: 'Venture trade platform', ctsegText: 'Активен повеќејазичен trade систем со потврдена founder-level врска.', diagnosticLabel: 'Регионален систем за раст', diagnosticText: 'Структуриран intake за пазар, конверзија и операции на балканските бизниси.', open: 'Погледнете докази' },
-  sr: { selectedText: 'Izabrani sistemi za višejezični commerce, međunarodnu trgovinu i regionalnu dijagnostiku.', ctsegLabel: 'Venture trade platforma', ctsegText: 'Aktivan višejezični trade sistem sa potvrđenom vezom na nivou osnivača.', diagnosticLabel: 'Regionalni sistem rasta', diagnosticText: 'Strukturiran intake za tržište, konverziju i operacije balkanskih kompanija.', open: 'Pogledajte dokaze' },
-  ro: { selectedText: 'Sisteme selectate pentru commerce multilingv, comerț internațional și diagnostic regional de creștere.', ctsegLabel: 'Platformă venture pentru comerț', ctsegText: 'Un sistem comercial multilingv live cu o conexiune verificată la nivel de fondator.', diagnosticLabel: 'Sistem regional de creștere', diagnosticText: 'Un intake structurat pentru piață, conversie și operațiuni destinat afacerilor din Balcani.', open: 'Vezi dovezile' },
-  bg: { selectedText: 'Избрани системи за многоезичен commerce, международна търговия и регионална growth диагностика.', ctsegLabel: 'Venture trade платформа', ctsegText: 'Активна многоезична trade система с потвърдена founder-level връзка.', diagnosticLabel: 'Регионална growth система', diagnosticText: 'Структуриран intake за market, conversion и operations за балкански бизнеси.', open: 'Виж доказателствата' },
+  en: { selectedText: 'Selected systems across multilingual commerce, international trade and regional growth diagnostics.', ctsegLabel: 'Venture trade platform', ctsegText: 'A live multilingual trade system with a verified founder-level connection.', diagnosticLabel: 'Regional growth system', diagnosticText: 'A structured market, conversion and operations intake for scaling businesses.', open: 'View evidence' },
+  sq: { selectedText: 'Sisteme të përzgjedhura në commerce shumëgjuhësh, tregti ndërkombëtare dhe diagnostikim rajonal.', ctsegLabel: 'Platformë tregtie venture', ctsegText: 'Sistem aktiv shumëgjuhësh me lidhje të verifikuar në nivel themeluesi.', diagnosticLabel: 'Sistem rajonal i rritjes', diagnosticText: 'Intake i strukturuar për tregun, konvertimin dhe operimin e bizneseve në rritje.', open: 'Shikoni dëshmitë' },
+  mk: { selectedText: 'Избрани системи за повеќејазична commerce, меѓународна трговија и регионална дијагностика.', ctsegLabel: 'Venture trade platform', ctsegText: 'Активен повеќејазичен trade систем со потврдена founder-level врска.', diagnosticLabel: 'Регионален систем за раст', diagnosticText: 'Структуриран intake за пазар, конверзија и операции на растечки бизниси.', open: 'Погледнете докази' },
+  sr: { selectedText: 'Izabrani sistemi za višejezični commerce, međunarodnu trgovinu i regionalnu dijagnostiku.', ctsegLabel: 'Venture trade platforma', ctsegText: 'Aktivan višejezični trade sistem sa potvrđenom vezom na nivou osnivača.', diagnosticLabel: 'Regionalni sistem rasta', diagnosticText: 'Strukturiran intake za tržište, konverziju i operacije rastućih kompanija.', open: 'Pogledajte dokaze' },
+  ro: { selectedText: 'Sisteme selectate pentru commerce multilingv, comerț internațional și diagnostic regional de creștere.', ctsegLabel: 'Platformă venture pentru comerț', ctsegText: 'Un sistem comercial multilingv live cu o conexiune verificată la nivel de fondator.', diagnosticLabel: 'Sistem regional de creștere', diagnosticText: 'Un intake structurat pentru piață, conversie și operațiuni destinat afacerilor în creștere.', open: 'Vezi dovezile' },
+  bg: { selectedText: 'Избрани системи за многоезичен commerce, международна търговия и регионална growth диагностика.', ctsegLabel: 'Venture trade платформа', ctsegText: 'Активна многоезична trade система с потвърдена founder-level връзка.', diagnosticLabel: 'Регионална growth система', diagnosticText: 'Структуриран intake за пазар, конверсии и операции на растящи бизнеси.', open: 'Виж доказателствата' },
 };
 const tc = trustCopy[lang as keyof typeof trustCopy] ?? trustCopy.en;
 ---
@@ -56,13 +56,13 @@ const tc = trustCopy[lang as keyof typeof trustCopy] ?? trustCopy.en;
       ],
     }}
     included={{
-      eyebrow: t('WHY THE BALKANS MATTER'),
+      eyebrow: t('WHY CLARITY MATTERS'),
       title: englishInternational ? 'Balkan expertise, with room for the next market.' : t('We work where businesses are moving faster than their websites.'),
-      lead: englishInternational ? 'Our work starts with the Balkan businesses we know best and extends to selected international projects where a clear digital system can support a new audience, market or commercial route.' : t('Across the Balkans, companies are investing, modernising and reaching new customers. Family businesses are becoming more formal. Exports are growing. Tourism is growing. Local brands are getting stronger. The digital side often has not kept up.'),
+      lead: englishInternational ? 'Our systems are engineered for companies modernising their operations, expanding into international markets, and demanding robust technical foundations.' : t('Companies are investing, modernising and reaching new international customers. Family businesses are becoming more formal. Exports are growing. Tourism is growing. Modern brands are getting stronger. The digital side often has not kept up.'),
       items: [
         { title: t('Regional businesses'), text: t('Many businesses are improving quickly, but their online presence still needs to catch up.') },
         { title: t('Cross-border teams'), text: t('Customers expect clear communication, fast pages and a straightforward path to contact.') },
-        { title: t('Balkan markets'), text: t('When the digital system is behind, trust has to be rebuilt before any conversation starts.') },
+        { title: t('International markets'), text: t('When the digital system is behind, trust has to be rebuilt before any conversation starts.') },
       ],
     }}
     process={{
@@ -79,10 +79,10 @@ const tc = trustCopy[lang as keyof typeof trustCopy] ?? trustCopy.en;
       eyebrow: t('FAQ'),
       title: t('Questions we hear most often.'),
       items: [
-        { q: t('When was QCT Studio founded?'), a: t('QCT Studio was founded in Istanbul in 2025 by Teyfik Gökdemir as the Balkan-focused digital growth venture within the wider QCT ecosystem.') },
-        { q: t('How is QCT Studio connected to QCT Commerce?'), a: t('Both ventures were founded by Teyfik Gökdemir in 2025. QCT Studio focuses on Balkan markets, while QCT Commerce focuses on Türkiye.') },
+        { q: t('When was QCT Studio founded?'), a: t('QCT Studio was founded in Istanbul in 2025 by Teyfik Gökdemir as a high-performance digital engineering venture within the wider QCT ecosystem.') },
+        { q: t('How is QCT Studio connected to QCT Commerce?'), a: t('Both ventures were founded by Teyfik Gökdemir in 2025. QCT Studio delivers international web engineering and digital systems, while QCT Commerce focuses on Türkiye.') },
         { q: t('What kind of work does QCT Studio focus on?'), a: t('We focus on websites, e-commerce, WhatsApp Commerce, SEO, GEO and campaign landing pages.') },
-        { q: t('Why do Balkan markets matter to your work?'), a: t('They are markets where businesses are investing, modernising and growing, but their digital systems have not always kept pace.') },
+        { q: t('Why does high performance matter to your work?'), a: t('Speed, stability and clean architecture directly determine whether visitors engage and convert, or abandon sluggish pages.') },
         { q: t('How does QCT Studio work with clients?'), a: t('We start by understanding the business first. Products. Services. Customers. Sales process. Only then do we decide what needs to be built.') },
       ],
     }}
@@ -100,8 +100,8 @@ const tc = trustCopy[lang as keyof typeof trustCopy] ?? trustCopy.en;
     <div class="container">
       <div class="qct-trust__intro">
         <p class="qct-trust__eyebrow">{t('FOUNDING STORY')}</p>
-        <h2 id="qct-founding-title">{t('Founded in Istanbul. Built for Balkan businesses.')}</h2>
-        <p>{t('QCT Studio was founded in Istanbul in 2025 by Teyfik Gökdemir. It is the Balkan-focused digital growth venture within the wider QCT ecosystem, alongside QCT Commerce for Türkiye and Mythborn for international markets.')}</p>
+        <h2 id="qct-founding-title">{t('Founded in Istanbul. Engineered for international scale.')}</h2>
+        <p>{t('QCT Studio was founded in Istanbul in 2025 by Teyfik Gökdemir. It is a high-performance digital engineering and web systems partner within the wider QCT ecosystem, alongside QCT Commerce and Mythborn.')}</p>
         <div class="qct-trust__founder">
           <strong>{t('Founder')}: Teyfik Gökdemir</strong>
           <a href="https://teyfikgokdemir.com/" target="_blank" rel="noopener">{t('Founder website')}</a>

@@ -102,7 +102,7 @@ const checks = [
       response.ok &&
       body.includes('Prețuri clare. Fără surprize.') &&
       body.includes('SEO Dinamic + GEO/AEO/AIO') &&
-      body.includes('CREȘTERE DIGITALĂ ÎN BALCANI'),
+      body.includes('INGINERIE WEB DE ÎNALTĂ PERFORMANȚĂ'),
     label: 'Romanian pricing localization',
   },
   {
@@ -111,7 +111,7 @@ const checks = [
       response.ok &&
       body.includes('Ясни цени. Без изненади.') &&
       body.includes('Динамично SEO + GEO/AEO/AIO') &&
-      body.includes('ДИГИТАЛЕН РАСТ НА БАЛКАНИТЕ'),
+      body.includes('УЕБ ИНЖЕНЕРСТВО С ВИСОКА ПРОИЗВОДИТЕЛНОСТ'),
     label: 'Bulgarian pricing localization',
   },
   {
