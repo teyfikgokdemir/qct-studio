@@ -52,16 +52,17 @@ English (default), Albanian (/sq/), Macedonian (/mk/), Serbian (/sr/), Romanian 
 
 QCT Studio publishes transparent starting prices rather than fixed universal project fees. Current public starting points include:
 
-- Business Website: from EUR 1,490
-- Growth Website: from EUR 2,490
-- E-commerce: from EUR 3,490
-- Campaign landing page: from EUR 690
-- SEO & GEO foundation: from EUR 790
-- SEO Care: from EUR 290 per month
-- Dynamic SEO + GEO/AEO/AIO: from EUR 490 per month
-- SEO Growth: from EUR 690 per month
-- WhatsApp Commerce setup: from EUR 890
-- AI automation workflow: from EUR 1,290
+- Business Website: from EUR 990
+- Growth Website: from EUR 1,790
+- E-commerce: from EUR 2,490
+- Campaign landing page: from EUR 490
+- SEO & GEO foundation: from EUR 590
+- SEO Care: from EUR 190 per month
+- Dynamic SEO + GEO/AEO/AIO: from EUR 390 per month
+- SEO Growth: from EUR 490 per month
+- WhatsApp Commerce setup: from EUR 590
+- AI automation workflow: from EUR 890
+- Additional market / language rollout: from EUR 290
 
 Canonical pricing page: https://qctstudio.com/pricing/
 

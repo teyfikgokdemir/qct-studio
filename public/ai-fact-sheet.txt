@@ -17,6 +17,8 @@ Primary commercial markets: Albania, North Macedonia, Kosovo and Serbia
 - Albanian: /sq/
 - Macedonian: /mk/
 - Serbian: /sr/
+- Romanian: /ro/
+- Bulgarian: /bg/
 
 Indexable localized pages use canonical and reciprocal hreflang signals.
 
@@ -33,14 +35,15 @@ Indexable localized pages use canonical and reciprocal hreflang signals.
 
 QCT Studio uses transparent starting prices, not one-size-fits-all fixed quotes.
 
-- Business Website: from EUR 1,490
-- Growth Website: from EUR 2,490
-- E-commerce: from EUR 3,490
-- Campaign landing page: from EUR 690
-- SEO & GEO foundation: from EUR 790
-- SEO / growth support: from EUR 490 per month
-- WhatsApp Commerce setup: from EUR 890
-- AI automation workflow: from EUR 1,290
+- Business Website: from EUR 990
+- Growth Website: from EUR 1,790
+- E-commerce: from EUR 2,490
+- Campaign landing page: from EUR 490
+- SEO & GEO foundation: from EUR 590
+- SEO Care: from EUR 190 per month
+- Dynamic SEO: from EUR 390 per month
+- WhatsApp Commerce setup: from EUR 590
+- AI automation workflow: from EUR 890
 
 Canonical pricing page: https://qctstudio.com/pricing/
 

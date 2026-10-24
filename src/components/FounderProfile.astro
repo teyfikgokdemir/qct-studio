@@ -46,9 +46,10 @@ const t = useTranslations(lang);
 
 <style>
   .qct-founder-profile {
-    background: #f4f0e8;
-    color: #17151a;
+    background: #07080b;
+    color: #f8f5ef;
     padding: clamp(4rem, 7vw, 7rem) 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .qct-founder-profile__layout {
@@ -66,6 +67,8 @@ const t = useTranslations(lang);
     display: block;
     height: auto;
     width: 100%;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .qct-founder-profile__content {
@@ -73,12 +76,13 @@ const t = useTranslations(lang);
   }
 
   .qct-founder-profile__eyebrow {
-    color: #a83d3d;
+    color: #00f5a0;
     font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 0.15em;
     margin: 0 0 0.9rem;
     text-transform: uppercase;
+    font-family: ui-monospace, SFMono-Regular, monospace;
   }
 
   .qct-founder-profile h2 {
@@ -86,24 +90,25 @@ const t = useTranslations(lang);
     letter-spacing: -0.05em;
     line-height: 0.98;
     margin: 0;
+    color: #ffffff;
   }
 
   .qct-founder-profile__role {
-    color: #4f494e;
+    color: #9ca3af;
     font-size: 1.06rem;
     font-weight: 750;
     margin: 1rem 0 0;
   }
 
   .qct-founder-profile__copy {
-    border-top: 1px solid rgba(23, 21, 26, 0.18);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     margin-top: clamp(2rem, 4vw, 3rem);
     padding-top: clamp(1.5rem, 3vw, 2.25rem);
   }
 
   .qct-founder-profile__copy p,
   .qct-founder-profile__approach p {
-    color: #5e575d;
+    color: rgba(247, 243, 238, 0.72);
     font-size: 1rem;
     line-height: 1.75;
     margin: 0 0 1.2rem;
@@ -111,20 +116,20 @@ const t = useTranslations(lang);
   }
 
   .qct-founder-profile__facts {
-    border-top: 1px solid rgba(23, 21, 26, 0.18);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     margin: clamp(2rem, 4vw, 3rem) 0 0;
   }
 
   .qct-founder-profile__facts div {
-    border-bottom: 1px solid rgba(23, 21, 26, 0.18);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     min-width: 0;
     padding: 1.15rem clamp(0.8rem, 2vw, 1.4rem) 1.15rem 0;
   }
 
   .qct-founder-profile__facts div:not(:last-child) {
-    border-right: 1px solid rgba(23, 21, 26, 0.18);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
     padding-left: clamp(0.8rem, 2vw, 1.4rem);
   }
 
@@ -133,11 +138,12 @@ const t = useTranslations(lang);
   }
 
   .qct-founder-profile__facts dt {
-    color: #6b6369;
+    color: #9ca3af;
     font-size: 0.76rem;
     font-weight: 800;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    font-family: ui-monospace, monospace;
   }
 
   .qct-founder-profile__facts dd {
@@ -145,6 +151,7 @@ const t = useTranslations(lang);
     line-height: 1.5;
     margin: 0.55rem 0 0;
     overflow-wrap: break-word;
+    color: #ffffff;
   }
 
   .qct-founder-profile__approach {
