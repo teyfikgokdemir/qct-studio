@@ -200,13 +200,17 @@ const services = [
 	box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 245, 160, 0.1);
 }
 
-/* Center the 2 bottom cards on desktop */
+/* Bottom row: widen the 2 cards to span 3 columns each (3+3=6), completely filling the row with zero side gaps */
 @media (min-width: 961px) {
 	.elite-service-card:nth-child(4) {
-		grid-column: 2 / span 2;
+		grid-column: 1 / span 3 !important;
 	}
 	.elite-service-card:nth-child(5) {
-		grid-column: 4 / span 2;
+		grid-column: 4 / span 3 !important;
+	}
+	.elite-service-card:nth-child(4) .service-card-media,
+	.elite-service-card:nth-child(5) .service-card-media {
+		height: 195px;
 	}
 }
 

@@ -29,8 +29,16 @@ const footerEyebrow: Record<string,string> = {
 	sq: 'INXHINIERI WEB & ARKITEKTURË PERFORMANCE',
 	mk: 'ВЕБ ИНЖЕНЕРСТВО И АРХИТЕКТУРА НА ПЕРФОРМАНСИ',
 	sr: 'WEB INŽENJERING I ARHITEKTURA PERFORMANSI',
-	ro: 'STUDIO DE CREȘTERE DIGITALĂ PENTRU BALCANI', 
-	bg: 'СТУДИО ЗА ДИГИТАЛЕН РАСТ НА БАЛКАНИТЕ' 
+	ro: 'INGINERIE WEB & ARHITECTURĂ DE PERFORMANȚĂ', 
+	bg: 'УЕБ ИНЖЕНЕРСТВО И АРХИТЕКТУРА НА ПРОИЗВОДИТЕЛНОСТТА' 
+};
+const footerLead: Record<string, string> = {
+  en: 'High-performance web engineering, sub-second headless architectures and AI search systems built for ambitious enterprises.',
+  sq: 'Inxhinieri moderne web, arkitekturë headless nën-sekondë dhe sisteme të kërkimit me AI për biznese ambicioze.',
+  mk: 'Модерно веб инженерство, headless архитектури со молскавична брзина и AI системи за пребарување.',
+  sr: 'Moderno web inženjerstvo, ultra-brza headless arhitektura i AI sistemi za pretragu za ambiciozne kompanije.',
+  ro: 'Inginerie web avansată, arhitecturi headless ultra-rapide și sisteme de căutare AI pentru companii ambițioase.',
+  bg: 'Модерно уеб инженерство, headless архитектури с мигновена скорост и AI системи за търсене.',
 };
 ---
 <footer id="colophon" class="site-footer site-footer--editorial">
@@ -50,7 +58,7 @@ const footerEyebrow: Record<string,string> = {
 				<h2>{t('QCT Studio')}</h2>
 			</div>
 			<div>
-				<p>{t('Websites, e-commerce and digital systems for businesses across the Balkans.')}</p>
+				<p>{footerLead[lang] ?? footerLead.en}</p>
 				<div class="footer-status-tag">
 					<span class="footer-status-dot"></span>
 					<span>GLOBAL EDGE: 99.99% UPTIME · 100 LIGHTHOUSE</span>
