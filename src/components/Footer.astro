@@ -6,6 +6,7 @@ interface Props { lang: string; }
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 const url = (path: string) => getLocalizedUrl(lang, path);
+
 const pricingLabel: Record<string, string> = { en: 'Pricing', sq: 'Çmimet', mk: 'Цени', sr: 'Cene', ro: 'Prețuri', bg: 'Цени' };
 const architectureLabel: Record<string, string> = {
   en: 'Architecture',
@@ -24,14 +25,25 @@ const estimatorNavLabel: Record<string, string> = {
   bg: 'Калкулатор',
 };
 const hasRegionalEditorial = ['en','sq','mk','sr','ro','bg'].includes(lang);
-const footerEyebrow: Record<string,string> = { 
-	en: 'WEB ENGINEERING & PERFORMANCE ARCHITECTURE',
-	sq: 'INXHINIERI WEB & ARKITEKTURË PERFORMANCE',
-	mk: 'ВЕБ ИНЖЕНЕРСТВО И АРХИТЕКТУРА НА ПЕРФОРМАНСИ',
-	sr: 'WEB INŽENJERING I ARHITEKTURA PERFORMANSI',
-	ro: 'INGINERIE WEB & ARHITECTURĂ DE PERFORMANȚĂ', 
-	bg: 'УЕБ ИНЖЕНЕРСТВО И АРХИТЕКТУРА НА ПРОИЗВОДИТЕЛНОСТТА' 
+
+const footerEyebrow: Record<string, string> = { 
+  en: 'WEB ENGINEERING & PERFORMANCE ARCHITECTURE',
+  sq: 'INXHINIERI WEB & ARKITEKTURË PERFORMANCE',
+  mk: 'ВЕБ ИНЖЕНЕРСТВО И АРХИТЕКТУРА НА ПЕРФОРМАНСИ',
+  sr: 'WEB INŽENJERING I ARHITEKTURA PERFORMANSI',
+  ro: 'INGINERIE WEB & ARHITECTURĂ DE PERFORMANȚĂ', 
+  bg: 'УЕБ ИНЖЕНЕРСТВО И АРХИТЕКТУРА НА ПРОИЗВОДИТЕЛНОСТТА' 
 };
+
+const footerTagline: Record<string, string> = {
+  en: 'Sub-second web engineering for ambitious enterprises.',
+  sq: 'Inxhinieri web nën-sekondë për biznese ambicioze.',
+  mk: 'Веб инженерство со молскавична брзина за амбициозни бизниси.',
+  sr: 'Ultra-brzi web inženjering za ambiciozne kompanije.',
+  ro: 'Inginerie web ultra-rapidă pentru companii ambițioase.',
+  bg: 'Уеб инженерство с мигновена скорост за амбициозен бизнес.'
+};
+
 const footerLead: Record<string, string> = {
   en: 'High-performance web engineering, sub-second headless architectures and AI search systems built for ambitious enterprises.',
   sq: 'Inxhinieri moderne web, arkitekturë headless nën-sekondë dhe sisteme të kërkimit me AI për biznese ambicioze.',
@@ -40,126 +52,614 @@ const footerLead: Record<string, string> = {
   ro: 'Inginerie web avansată, arhitecturi headless ultra-rapide și sisteme de căutare AI pentru companii ambițioase.',
   bg: 'Модерно уеб инженерство, headless архитектури с мигновена скорост и AI системи за търсене.',
 };
+
+const deskKicker: Record<string, string> = {
+  en: 'DIRECT ARCHITECTURE DESK',
+  sq: 'ZYRA DIREKTE E ARKITEKTURËS',
+  mk: 'ДИРЕКТНА АРХИТЕКТУРНА КАНЦЕЛАРИЈА',
+  sr: 'DIREKTNI ARHITEKTONSKI DESK',
+  ro: 'BIROUL DIRECT DE ARHITECTURĂ',
+  bg: 'ДИРЕКТНО АРХИТЕКТУРНО БЮРО'
+};
+
+const deskTitle: Record<string, string> = {
+  en: 'Ready to engineer your digital advantage?',
+  sq: 'Gati të ndërtoni avantazhin tuaj dixhital?',
+  mk: 'Подготвени да ја изградите вашата дигитална предност?',
+  sr: 'Spremni da izgradite svoju digitalnu prednost?',
+  ro: 'Sunteți gata să vă construiți avantajul digital?',
+  bg: 'Готови ли сте да изградите вашето дигитално предимство?'
+};
+
+const deskCta: Record<string, string> = {
+  en: 'Start Architecture Review',
+  sq: 'Fillo Rishikimin e Arkitekturës',
+  mk: 'Започни Архитектонски Преглед',
+  sr: 'Započni Arhitektonski Pregled',
+  ro: 'Începe Evaluarea Arhitecturală',
+  bg: 'Започнете Архитектурен Преглед'
+};
 ---
 <footer id="colophon" class="site-footer site-footer--editorial">
-	<div class="site-footer__marquee" aria-hidden="true">
-		<div class="site-footer__marquee-track">
-			<span>QCT STUDIO</span><span>QCT STUDIO</span><span>QCT STUDIO</span><span>QCT STUDIO</span>
-		</div>
-	</div>
+  <div class="site-footer__marquee" aria-hidden="true">
+    <div class="site-footer__marquee-track">
+      <span>QCT STUDIO</span><span>HIGH-PERFORMANCE WEB</span><span>SUB-SECOND HEADLESS</span><span>DYNAMIC SEO</span>
+      <span>QCT STUDIO</span><span>HIGH-PERFORMANCE WEB</span><span>SUB-SECOND HEADLESS</span><span>DYNAMIC SEO</span>
+    </div>
+  </div>
 
-	<div class="container footer-editorial">
-		<div class="footer-editorial__lead">
-			<div>
-				<div class="footer-logo-wrap">
-					<Logo size="lg" />
-				</div>
-				<p class="footer-editorial__eyebrow">{footerEyebrow[lang] ?? "WEB ENGINEERING & PERFORMANCE ARCHITECTURE"}</p>
-				<h2>{t('QCT Studio')}</h2>
-			</div>
-			<div>
-				<p>{footerLead[lang] ?? footerLead.en}</p>
-				<div class="footer-status-tag">
-					<span class="footer-status-dot"></span>
-					<span>GLOBAL EDGE: 99.99% UPTIME · 100 LIGHTHOUSE</span>
-				</div>
-			</div>
-		</div>
+  <div class="container footer-editorial">
+    <div class="footer-editorial__lead">
+      <div class="footer-lead__brand">
+        <a href={url('/')} class="footer-logo-link" aria-label={t('QCT Studio')}>
+          <Logo size="lg" />
+        </a>
+        <p class="footer-editorial__eyebrow">{footerEyebrow[lang] ?? "WEB ENGINEERING & PERFORMANCE ARCHITECTURE"}</p>
+        <h2 class="footer-brand-title">{footerTagline[lang] ?? "Sub-second web engineering for ambitious enterprises."}</h2>
+        <p class="footer-brand-text">{footerLead[lang] ?? footerLead.en}</p>
+        <div class="footer-status-tag">
+          <span class="footer-status-dot"></span>
+          <span>BALKANS & EU EDGE · 99.99% UPTIME · 100 LIGHTHOUSE</span>
+        </div>
+      </div>
 
-		<div class="footer-editorial__rule"></div>
+      <div class="footer-lead__desk">
+        <div class="footer-desk-card">
+          <span class="desk-badge">{deskKicker[lang] ?? 'DIRECT ARCHITECTURE DESK'}</span>
+          <h3 class="desk-heading">{deskTitle[lang] ?? 'Ready to engineer your digital advantage?'}</h3>
+          <p class="desk-sub">{footerLead[lang] ?? footerLead.en}</p>
+          <a href={url('/#contact')} class="desk-btn">
+            <span>{deskCta[lang] ?? 'Start Architecture Review'}</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2.5 7H11.5M11.5 7L7.5 3M11.5 7L7.5 11" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
 
-		<div class="footer-editorial__grid">
-			<nav aria-label={t('Services')}>
-				<p class="footer-editorial__label">{t('Services')}</p>
-				<a href={url('/#services')}>{t('Website Design')}</a>
-				<a href={url('/#services')}>{t('E-commerce')}</a>
-				<a href={url('/#services')}>{t('WhatsApp Commerce')}</a>
-				<a href={url('/dynamic-seo/')}>{t('Dynamic SEO')}</a>
-				<a href={url('/#services')}>{t('AI Automation')}</a>
-			</nav>
+    <div class="footer-editorial__rule"></div>
 
-			<nav aria-label={t('Company')}>
-				<p class="footer-editorial__label">{t('Company')}</p>
-				<a href={url('/#architecture')}>{architectureLabel[lang] ?? 'Architecture'}</a>
-				<a href={url('/pricing/')}>{pricingLabel[lang] ?? 'Pricing'}</a>
-				<a href={url('/#project-estimator')}>{estimatorNavLabel[lang] ?? 'Estimator'}</a>
-{hasRegionalEditorial && <a href={url('/insights/')}>{t('Insights')}</a>}
-				<a href={url('/#contact')}>{t('Contact')}</a>
-			</nav>
+    <div class="footer-editorial__grid">
+      <!-- Capabilities -->
+      <nav aria-label={t('Services')} class="footer-grid-col">
+        <p class="footer-editorial__label">{t('Services')}</p>
+        <a href={url('/#services')} class="footer-nav-item">
+          <span>{t('Website Design')}</span>
+        </a>
+        <a href={url('/#services')} class="footer-nav-item">
+          <span>{t('E-commerce')}</span>
+        </a>
+        <a href={url('/#services')} class="footer-nav-item">
+          <span>{t('WhatsApp Commerce')}</span>
+        </a>
+        <a href={url('/dynamic-seo/')} class="footer-nav-item">
+          <span>{t('Dynamic SEO')}</span>
+        </a>
+        <a href={url('/#services')} class="footer-nav-item">
+          <span>{t('AI Automation')}</span>
+        </a>
+      </nav>
 
-			<div class="footer-editorial__contact">
-				<p class="footer-editorial__label">{t('Contact')}</p>
-				<a href="mailto:info@qctstudio.com">info@qctstudio.com</a>
-				<a href="mailto:support@qctstudio.com">support@qctstudio.com</a>
-			</div>
+      <!-- Platform & Company -->
+      <nav aria-label={t('Company')} class="footer-grid-col">
+        <p class="footer-editorial__label">{t('Company')}</p>
+        <a href={url('/#architecture')} class="footer-nav-item">
+          <span>{architectureLabel[lang] ?? 'Architecture'}</span>
+        </a>
+        <a href={url('/pricing/')} class="footer-nav-item">
+          <span>{pricingLabel[lang] ?? 'Pricing'}</span>
+        </a>
+        <a href={url('/#project-estimator')} class="footer-nav-item">
+          <span>{estimatorNavLabel[lang] ?? 'Estimator'}</span>
+        </a>
+        {hasRegionalEditorial && (
+          <a href={url('/insights/')} class="footer-nav-item">
+            <span>{t('Insights')}</span>
+          </a>
+        )}
+        <a href={url('/#contact')} class="footer-nav-item">
+          <span>{t('Contact')}</span>
+        </a>
+      </nav>
 
-			<div class="footer-editorial__social-wrap">
-				<p class="footer-editorial__label">{t('Social')}</p>
-				<div class="site-footer__social" aria-label={t('Social links')}>
-					<p class="site-footer__group-title">{t('Social')}</p>
-					<a href="https://www.linkedin.com/company/qctstudio" target="_blank" rel="noopener noreferrer" aria-label={t('LinkedIn')}>
-						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.04H3.54V8.98H7.1v11.47Z"/></svg>
-						<span class="screen-reader-text">{t('LinkedIn')}</span>
-					</a>
-					<a href="https://www.instagram.com/qctstudio_albania/" target="_blank" rel="noopener noreferrer" aria-label={t('Instagram')}>
-						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM17 5.5A1.25 1.25 0 1 1 17 8a1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
-						<span class="screen-reader-text">{t('Instagram')}</span>
-					</a>
-					<a href="https://www.facebook.com/qctalbania/" target="_blank" rel="noopener noreferrer" aria-label={t('Facebook')}>
-						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-9h3l.5-3.5h-3.5V7.25c0-1.01.28-1.7 1.75-1.7H17V2.42A23.7 23.7 0 0 0 14.44 2C11.9 2 10 3.55 10 6.4v3.1H7V13h3v9h3.5Z"/></svg>
-						<span class="screen-reader-text">{t('Facebook')}</span>
-					</a>
-					<a href="https://www.tiktok.com/@qctstudio" target="_blank" rel="noopener noreferrer" aria-label={t('TikTok')}>
-						<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 2c.32 2.72 1.84 4.34 4.4 4.51v3.06a8.15 8.15 0 0 1-4.36-1.03v6.2c0 7.88-8.59 10.34-12.05 4.7-2.23-3.64-.87-10.03 5.43-10.28v3.23c-.5.08-1 .21-1.48.37-1.42.48-2.23 1.39-2 2.99.45 3.06 6.05 3.97 5.58-2.01V2h4.48Z"/></svg>
-						<span class="screen-reader-text">{t('TikTok')}</span>
-					</a>
-				</div>
-			</div>
-		</div>
+      <!-- Direct Inquiries -->
+      <div class="footer-editorial__contact footer-grid-col">
+        <p class="footer-editorial__label">{t('Contact')}</p>
+        <a href="mailto:info@qctstudio.com" class="footer-contact-card">
+          <span class="contact-card-type">INQUIRIES</span>
+          <span class="contact-card-val">info@qctstudio.com</span>
+        </a>
+        <a href="mailto:support@qctstudio.com" class="footer-contact-card">
+          <span class="contact-card-type">SUPPORT</span>
+          <span class="contact-card-val">support@qctstudio.com</span>
+        </a>
+        <a href="https://wa.me/355694000000" target="_blank" rel="noopener noreferrer" class="footer-contact-card footer-contact-card--wa">
+          <span class="contact-card-type contact-card-type--wa">DIRECT</span>
+          <span class="contact-card-val">WhatsApp Channel</span>
+        </a>
+      </div>
 
-		<div class="footer-editorial__bottom">
-			<p set:html={t('&copy; 2026 QCT Studio')} />
-			<div>
-				<a href={url('/privacy-policy/')}>{t('Privacy Policy')}</a>
-				<a href={url('/terms-conditions/')}>{t('Terms & Conditions')}</a>
-				<a href={url('/cookie-policy/')}>{t('Cookie Policy')}</a>
-			</div>
-		</div>
-	</div>
+      <!-- Social & Coverage -->
+      <div class="footer-editorial__social-wrap footer-grid-col">
+        <p class="footer-editorial__label">{t('Social')}</p>
+        <div class="site-footer__social" aria-label={t('Social links')}>
+          <p class="site-footer__group-title">{t('Social')}</p>
+          <a href="https://www.linkedin.com/company/qctstudio" target="_blank" rel="noopener noreferrer" aria-label={t('LinkedIn')} class="social-pill">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.04H3.54V8.98H7.1v11.47Z"/></svg>
+            <span>{t('LinkedIn')}</span>
+          </a>
+          <a href="https://www.instagram.com/qctstudio_albania/" target="_blank" rel="noopener noreferrer" aria-label={t('Instagram')} class="social-pill">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM17 5.5A1.25 1.25 0 1 1 17 8a1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+            <span>{t('Instagram')}</span>
+          </a>
+          <a href="https://www.facebook.com/qctalbania/" target="_blank" rel="noopener noreferrer" aria-label={t('Facebook')} class="social-pill">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-9h3l.5-3.5h-3.5V7.25c0-1.01.28-1.7 1.75-1.7H17V2.42A23.7 23.7 0 0 0 14.44 2C11.9 2 10 3.55 10 6.4v3.1H7V13h3v9h3.5Z"/></svg>
+            <span>{t('Facebook')}</span>
+          </a>
+          <a href="https://www.tiktok.com/@qctstudio" target="_blank" rel="noopener noreferrer" aria-label={t('TikTok')} class="social-pill">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 2c.32 2.72 1.84 4.34 4.4 4.51v3.06a8.15 8.15 0 0 1-4.36-1.03v6.2c0 7.88-8.59 10.34-12.05 4.7-2.23-3.64-.87-10.03 5.43-10.28v3.23c-.5.08-1 .21-1.48.37-1.42.48-2.23 1.39-2 2.99.45 3.06 6.05 3.97 5.58-2.01V2h4.48Z"/></svg>
+            <span>{t('TikTok')}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-editorial__bottom">
+      <div class="footer-bottom__left">
+        <p set:html={t('&copy; 2026 QCT Studio')} />
+        <span class="footer-bottom__sep" aria-hidden="true">·</span>
+        <span class="footer-bottom__tagline">High-Performance Web Engineering</span>
+      </div>
+      <div class="footer-bottom__links">
+        <a href={url('/privacy-policy/')}>{t('Privacy Policy')}</a>
+        <a href={url('/terms-conditions/')}>{t('Terms & Conditions')}</a>
+        <a href={url('/cookie-policy/')}>{t('Cookie Policy')}</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <style>
-.site-footer--editorial{position:relative;overflow:hidden;isolation:isolate;background:#06070a;color:#f7f3ee;border-top:1px solid rgba(255,255,255,.08)}
-.site-footer--editorial::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 16% 0,rgba(0,245,160,.04),transparent 28%),radial-gradient(circle at 84% 10%,rgba(56,189,248,.04),transparent 26%);pointer-events:none}
-.site-footer__marquee{height:clamp(4.2rem,6vw,5.6rem);display:flex;align-items:center;overflow:hidden;pointer-events:none;user-select:none;opacity:.8}
-.site-footer__marquee-track{display:flex;width:max-content;gap:clamp(1.5rem,3vw,3rem);animation:qctFooterMarquee 52s linear infinite}
-.site-footer__marquee span{color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.07);font-size:clamp(2.7rem,6vw,5.8rem);font-weight:800;line-height:.9;letter-spacing:-.045em;white-space:nowrap}
-@keyframes qctFooterMarquee{to{transform:translateX(calc(-25% - .75rem))}}
-.footer-editorial{position:relative;z-index:1;padding-top:clamp(2.5rem,4vw,4rem);padding-bottom:1.5rem}
-.footer-editorial__lead{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:clamp(2rem,6vw,6rem);align-items:end}
-.footer-logo-wrap{margin-bottom:1.25rem}
-.footer-editorial__eyebrow,.footer-editorial__label{margin:0;color:#00f5a0;font-size:.65rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;font-family:ui-monospace,SFMono-Regular,monospace}
-.footer-editorial__lead h2{margin:.45rem 0 0;color:#fff;font-size:clamp(2.5rem,5vw,4.5rem);line-height:.95;letter-spacing:-.05em;text-transform:none}
-.footer-editorial__lead>div>p{margin:0;color:rgba(247,243,238,.62);font-size:clamp(.95rem,1.2vw,1.08rem);line-height:1.65;max-width:470px}
-.footer-status-tag{display:inline-flex;align-items:center;gap:.45rem;padding:.3rem .65rem;border-radius:6px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);font-family:ui-monospace,monospace;font-size:.6rem;color:#9ca3af;margin-top:1rem}
-.footer-status-dot{width:5px;height:5px;border-radius:50%;background:#00f5a0;box-shadow:0 0 6px #00f5a0}
-.footer-editorial__rule{height:1px;background:rgba(255,255,255,.08);margin:clamp(2rem,4vw,3.5rem) 0}
-.footer-editorial__grid{display:grid;grid-template-columns:1.15fr .9fr 1.1fr;gap:clamp(1.5rem,4vw,4rem)}
-.footer-editorial__grid nav,.footer-editorial__contact,.footer-editorial__social-wrap{display:flex;flex-direction:column;align-items:flex-start;gap:.72rem}
-.footer-editorial__grid a{color:rgba(247,243,238,.62);font-size:.9rem;line-height:1.4;text-decoration:none;transition:color .2s ease}
-.footer-editorial__grid a:hover,.footer-editorial__grid a:focus-visible{color:#00f5a0;transform:none}
-.footer-editorial__label{margin-bottom:.4rem;color:rgba(247,243,238,.42)}
-.footer-editorial__social-wrap .site-footer__social{display:flex;flex-direction:row;flex-wrap:wrap;gap:.5rem}
-.footer-editorial__social-wrap .site-footer__group-title{display:none}
-.footer-editorial__social-wrap .site-footer__social a{width:38px;height:38px;min-height:38px;border:1px solid rgba(255,255,255,.12);border-radius:50%;display:grid;place-items:center;padding:0;transition:all .2s ease}
-.footer-editorial__social-wrap .site-footer__social a:hover{border-color:#00f5a0;color:#00f5a0}
-.footer-editorial__social-wrap .site-footer__social svg{width:16px;height:16px;fill:currentColor}
-.footer-editorial__bottom{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;margin-top:clamp(2.5rem,5vw,4rem);padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.08)}
-.footer-editorial__bottom p{margin:0;color:rgba(247,243,238,.5);font-size:.78rem}
-.footer-editorial__bottom>div{display:flex;gap:1.2rem;flex-wrap:wrap}
-.footer-editorial__bottom a{color:rgba(247,243,238,.45);font-size:.76rem;text-decoration:none;transition:color .2s ease}
-.footer-editorial__bottom a:hover{color:#00f5a0}
-@media(max-width:900px){.footer-editorial__lead{grid-template-columns:1fr}.footer-editorial__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:620px){.site-footer__marquee{height:3.8rem}.site-footer__marquee-track{animation:none;transform:translateX(-8%)}.site-footer__marquee span{font-size:2.9rem}.footer-editorial{padding-top:1.5rem}.footer-editorial__lead{gap:1rem}.footer-editorial__lead h2{font-size:2.45rem}.footer-editorial__lead>div>p{font-size:.9rem;line-height:1.55}.footer-editorial__rule{margin:1.5rem 0}.footer-editorial__grid{grid-template-columns:1fr 1fr;gap:1.5rem 1rem}.footer-editorial__grid a{font-size:.82rem}.footer-editorial__contact{grid-column:1 / -1}.footer-editorial__contact a{font-size:.8rem}.footer-editorial__social-wrap{grid-column:1 / -1}.footer-editorial__bottom{align-items:flex-start;flex-direction:column;gap:.8rem;margin-top:1.8rem}.footer-editorial__bottom>div{gap:.65rem 1rem}.footer-editorial__bottom a{font-size:.7rem}}
-@media(prefers-reduced-motion:reduce){.site-footer__marquee-track{animation:none;transform:translateX(-8%)}}
+.site-footer--editorial {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: #06070a !important;
+  color: #f7f3ee;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.site-footer--editorial::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 120px at 50% 0%, rgba(0, 245, 160, 0.07), transparent 70%),
+    radial-gradient(circle at 16% 20%, rgba(0, 245, 160, 0.03), transparent 30%),
+    radial-gradient(circle at 84% 30%, rgba(56, 189, 248, 0.03), transparent 30%);
+  pointer-events: none;
+}
+
+.site-footer__marquee {
+  height: clamp(3.2rem, 5vw, 4.5rem);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.35;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.site-footer__marquee-track {
+  display: flex;
+  width: max-content;
+  gap: clamp(2rem, 4vw, 4rem);
+  animation: qctFooterMarquee 50s linear infinite;
+}
+
+.site-footer__marquee span {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.08);
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+
+@keyframes qctFooterMarquee {
+  to { transform: translateX(-50%); }
+}
+
+.footer-editorial {
+  position: relative;
+  z-index: 1;
+  padding-top: clamp(3rem, 5vw, 5rem);
+  padding-bottom: 2rem;
+}
+
+.footer-editorial__lead {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.95fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.footer-logo-link {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 1.25rem;
+}
+
+.footer-editorial__eyebrow {
+  margin: 0 0 0.5rem 0;
+  color: #00f5a0;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+.footer-brand-title {
+  margin: 0 0 0.75rem 0;
+  color: #ffffff;
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  max-width: 580px;
+}
+
+.footer-brand-text {
+  margin: 0 0 1.25rem 0;
+  color: rgba(247, 243, 238, 0.62);
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  line-height: 1.6;
+  max-width: 540px;
+}
+
+.footer-status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(0, 245, 160, 0.04);
+  border: 1px solid rgba(0, 245, 160, 0.22);
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #d1fae5;
+}
+
+.footer-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00f5a0;
+  box-shadow: 0 0 8px #00f5a0;
+  animation: qctStatusPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes qctStatusPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* Desk Action Card */
+.footer-desk-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.015) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: clamp(1.5rem, 2.5vw, 2.2rem);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-desk-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 245, 160, 0.5), transparent);
+}
+
+.footer-desk-card:hover {
+  border-color: rgba(0, 245, 160, 0.35);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 245, 160, 0.08);
+}
+
+.desk-badge {
+  display: inline-block;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #00f5a0;
+  margin-bottom: 0.6rem;
+}
+
+.desk-heading {
+  margin: 0 0 0.5rem 0;
+  color: #ffffff;
+  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  font-weight: 750;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+}
+
+.desk-sub {
+  margin: 0 0 1.25rem 0;
+  color: rgba(247, 243, 238, 0.55);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.desk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.4rem;
+  background: #00f5a0;
+  color: #07080b !important;
+  font-size: 0.84rem;
+  font-weight: 800;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.desk-btn:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 245, 160, 0.3);
+}
+
+.footer-editorial__rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08) 15%, rgba(0, 245, 160, 0.25) 50%, rgba(255, 255, 255, 0.08) 85%, transparent);
+  margin: clamp(2.5rem, 4vw, 3.5rem) 0;
+}
+
+/* 4-Column Balanced Grid */
+.footer-editorial__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: clamp(1.75rem, 3.5vw, 3rem);
+}
+
+.footer-grid-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.footer-editorial__label {
+  margin: 0 0 0.5rem 0;
+  color: #00f5a0;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+.footer-nav-item {
+  color: rgba(247, 243, 238, 0.65);
+  font-size: 0.88rem;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-nav-item:hover,
+.footer-nav-item:focus-visible {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+/* Contact Cards */
+.footer-contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  width: 100%;
+  max-width: 240px;
+  transition: all 0.2s ease;
+}
+
+.footer-contact-card:hover {
+  border-color: rgba(0, 245, 160, 0.4);
+  background: rgba(0, 245, 160, 0.04);
+  transform: translateY(-2px);
+}
+
+.contact-card-type {
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #9ca3af;
+}
+
+.contact-card-type--wa {
+  color: #00f5a0;
+}
+
+.contact-card-val {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #f3f4f6;
+}
+
+/* Social Pills */
+.site-footer__social {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: 100%;
+}
+
+.site-footer__group-title {
+  display: none;
+}
+
+.social-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #e5e7eb;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  width: 100%;
+  max-width: 190px;
+}
+
+.social-pill svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+  flex-shrink: 0;
+  color: #9ca3af;
+  transition: color 0.2s ease;
+}
+
+.social-pill:hover {
+  background: rgba(0, 245, 160, 0.06);
+  border-color: #00f5a0;
+  color: #00f5a0;
+  transform: translateY(-2px);
+}
+
+.social-pill:hover svg {
+  color: #00f5a0;
+}
+
+/* Bottom Bar */
+.footer-editorial__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.footer-bottom__left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.footer-bottom__left p {
+  margin: 0;
+  color: rgba(247, 243, 238, 0.55);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.footer-bottom__sep {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.footer-bottom__tagline {
+  color: rgba(247, 243, 238, 0.38);
+  font-size: 0.76rem;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+.footer-bottom__links {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+}
+
+.footer-bottom__links a {
+  color: rgba(247, 243, 238, 0.45);
+  font-size: 0.76rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-bottom__links a:hover {
+  color: #00f5a0;
+}
+
+/* Responsive */
+@media (max-width: 1080px) {
+  .footer-editorial__lead {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .footer-editorial__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .site-footer__marquee {
+    height: 3rem;
+  }
+  .site-footer__marquee span {
+    font-size: 1.8rem;
+  }
+  .footer-editorial {
+    padding-top: 2rem;
+  }
+  .footer-editorial__lead {
+    gap: 1.5rem;
+  }
+  .footer-editorial__grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1.75rem 1rem;
+  }
+  .footer-contact-card,
+  .social-pill {
+    max-width: 100%;
+  }
+  .footer-editorial__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-footer__marquee-track {
+    animation: none;
+  }
+}
 </style>
