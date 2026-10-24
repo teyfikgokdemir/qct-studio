@@ -21,7 +21,7 @@ const url = (path: string) => getLocalizedUrl(lang, path);
       </a>
     </div>
     <div class="qct-insights-preview__grid elite-insights-grid">
-      {insights.map((article) => (
+      {insights.slice(0, 6).map((article) => (
         <article class="elite-insight-card">
           <div class="insight-top">
             <span class="insight-cat">{article.category}</span>
@@ -55,10 +55,10 @@ const url = (path: string) => getLocalizedUrl(lang, path);
 }
 
 .elite-insights-title {
-  font-size: clamp(2.2rem, 4vw, 3.8rem) !important;
+  font-size: clamp(1.8rem, 2.8vw, 2.5rem) !important;
   font-weight: 850 !important;
-  line-height: 1.05 !important;
-  letter-spacing: -0.04em !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.035em !important;
   color: #ffffff !important;
 }
 
