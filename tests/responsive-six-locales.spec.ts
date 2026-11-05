@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { gotoPageReady } from './helpers/page-ready';
 
 const locales = ['en','sq','mk','sr','ro','bg'] as const;
 const localPath = (lang: typeof locales[number], path = '/') => `${lang === 'en' ? '' : '/' + lang}${path}`;
@@ -21,7 +22,7 @@ for (const lang of locales) {
       });
       page.on('pageerror', (e) => errors.push(e.message));
 
-      const response = await page.goto(`http://127.0.0.1:4321${localPath(lang)}`, { waitUntil: 'networkidle' });
+      const response = await gotoPageReady(page, `http://127.0.0.1:4321${localPath(lang)}`);
       expect(response?.status()).toBe(200);
 
       const h1 = pageH1(page);
@@ -60,7 +61,7 @@ for (const lang of locales) {
   for (const route of ['/about/','/services/','/work/','/pricing/','/insights/','/regional-growth-diagnostic/']) {
     test(`${lang} ${route}: critical responsive route QA`, async ({ page }) => {
       await page.setViewportSize({ width: 390, height: 844 });
-      const response = await page.goto(`http://127.0.0.1:4321${localPath(lang, route)}`, { waitUntil: 'networkidle' });
+      const response = await gotoPageReady(page, `http://127.0.0.1:4321${localPath(lang, route)}`);
       expect(response?.status()).toBe(200);
 
       const h1 = pageH1(page);

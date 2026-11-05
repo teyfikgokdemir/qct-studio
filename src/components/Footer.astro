@@ -124,19 +124,19 @@ const deskCta: Record<string, string> = {
       <!-- Capabilities -->
       <nav aria-label={t('Services')} class="footer-grid-col">
         <p class="footer-editorial__label">{t('Services')}</p>
-        <a href={url('/#services')} class="footer-nav-item">
+        <a href={url('/website-design/')} class="footer-nav-item">
           <span>{t('Website Design')}</span>
         </a>
-        <a href={url('/#services')} class="footer-nav-item">
+        <a href={url('/e-commerce/')} class="footer-nav-item">
           <span>{t('E-commerce')}</span>
         </a>
-        <a href={url('/#services')} class="footer-nav-item">
+        <a href={url('/whatsapp-commerce/')} class="footer-nav-item">
           <span>{t('WhatsApp Commerce')}</span>
         </a>
         <a href={url('/dynamic-seo/')} class="footer-nav-item">
           <span>{t('Dynamic SEO')}</span>
         </a>
-        <a href={url('/#services')} class="footer-nav-item">
+        <a href={url('/ai-automation/')} class="footer-nav-item">
           <span>{t('AI Automation')}</span>
         </a>
       </nav>
@@ -146,6 +146,12 @@ const deskCta: Record<string, string> = {
         <p class="footer-editorial__label">{t('Company')}</p>
         <a href={url('/#architecture')} class="footer-nav-item">
           <span>{architectureLabel[lang] ?? 'Architecture'}</span>
+        </a>
+        <a href={url('/about/')} class="footer-nav-item">
+          <span>{t('About')}</span>
+        </a>
+        <a href={url('/work/')} class="footer-nav-item">
+          <span>{t('Work')}</span>
         </a>
         <a href={url('/pricing/')} class="footer-nav-item">
           <span>{pricingLabel[lang] ?? 'Pricing'}</span>
