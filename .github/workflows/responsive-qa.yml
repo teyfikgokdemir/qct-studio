@@ -1,12 +1,14 @@
 name: Responsive QA
 
 on:
+  pull_request:
+    branches: [main]
   push:
     branches: [main]
   workflow_dispatch:
 
 concurrency:
-  group: qct-studio-responsive-qa
+  group: qct-studio-responsive-qa-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:

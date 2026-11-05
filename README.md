@@ -1,5 +1,19 @@
 # QCT Studio — Astro site
 
+## Güncel çalışma bilgisi — 5 Kasım 2026
+
+Aşağıdaki WordPress taşıma notları tarihsel bağlamdır; güncel kurulum veya yayın talimatı olarak kullanılmamalıdır.
+
+- Yayınlanan altı dil: EN `/`, SQ `/sq/`, MK `/mk/`, SR `/sr/`, RO `/ro/`, BG `/bg/`.
+- QCT Studio, QCTONE ekosisteminin teknik mimari ve dijital sistemler çalışma alanıdır. Ortak ekosistem üyeliği müşteri ilişkisini kanıtlamaz.
+- Güncel derleme: 211 HTML dosyası, 192 sitemap URL’si. Sayılar 5 Kasım kontrolüne aittir.
+- Node.js 22 ve kilit dosyasıyla `npm ci`, ardından `npm run build` kullanın.
+- Analitik kontrolü: `npm run check:analytics`.
+- Backend testleri: `node --test tests/diagnostic-function.test.mjs`.
+- Tarayıcı testleri: `npx playwright install chromium`, ardından `npx playwright test`.
+- Değişiklikler ayrı dal ve PR üzerinden yürütülür; CI, responsive QA ve üretim doğrulaması ayrı değerlendirilir. Depoyu başka proje dosyalarıyla değiştirmeyin, doğrudan main’e push yapmayın.
+- Formun üretimde kayıt alması için depolama binding’i gerekir; statik derleme bunu kanıtlamaz.
+
 ## Durum (bu paketle birlikte)
 
 **Ana sayfa (Header, Hero, Problem, Services, Process, Work, FinalCta, Contact, Footer): gerçek WP temasından birebir taşındı.**
