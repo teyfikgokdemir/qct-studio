@@ -1,0 +1,31 @@
+---
+interface Props { lang: string }
+const { lang } = Astro.props;
+const copy = {
+  en: ['One ecosystem, distinct responsibilities.', 'Technical architecture, software, automation and digital products.', 'Websites, e-commerce, marketplaces and digital growth.', 'International trade, strategic sourcing and market entry.', 'Founder and operating portfolio.', 'An independent content and media venture.'],
+  sq: ['Një ekosistem, përgjegjësi të veçanta.', 'Arkitekturë teknike, softuer, automatizim dhe produkte digjitale.', 'Faqe web, e-commerce, platforma tregtare dhe rritje digjitale.', 'Tregti ndërkombëtare, furnizim strategjik dhe hyrje në treg.', 'Themeluesi dhe portofoli i sipërmarrjeve.', 'Një sipërmarrje më vete për përmbajtje dhe media.'],
+  mk: ['Еден екосистем, различни одговорности.', 'Техничка архитектура, софтвер, автоматизација и дигитални производи.', 'Веб-страници, е-трговија, пазари и дигитален раст.', 'Меѓународна трговија, стратешко снабдување и влез на пазар.', 'Основачот и портфолиото на потфати.', 'Посебен потфат за содржина и медиуми.'],
+  sr: ['Jedan ekosistem, različite odgovornosti.', 'Tehnička arhitektura, softver, automatizacija i digitalni proizvodi.', 'Veb-sajtovi, e-trgovina, prodajne platforme i digitalni rast.', 'Međunarodna trgovina, strateška nabavka i ulazak na tržište.', 'Osnivač i portfolio poduhvata.', 'Zaseban poduhvat za sadržaj i medije.'],
+  ro: ['Un ecosistem, responsabilități distincte.', 'Arhitectură tehnică, software, automatizare și produse digitale.', 'Site-uri web, comerț electronic, marketplace-uri și creștere digitală.', 'Comerț internațional, aprovizionare strategică și intrare pe piață.', 'Fondatorul și portofoliul de inițiative.', 'O inițiativă separată de conținut și media.'],
+  bg: ['Една екосистема, различни отговорности.', 'Техническа архитектура, софтуер, автоматизация и дигитални продукти.', 'Уебсайтове, електронна търговия, платформи и дигитален растеж.', 'Международна търговия, стратегическо снабдяване и навлизане на пазара.', 'Основателят и портфолиото от инициативи.', 'Отделна инициатива за съдържание и медии.']
+};
+const text = copy[lang as keyof typeof copy] ?? copy.en;
+const entries = [['QCT Studio', '/'], ['QCT Commerce', 'https://qctcommerce.com/'], ['CTSEG', 'https://ctseg.com.tr/'], ['Teyfik Gökdemir', 'https://teyfikgokdemir.com/'], ['Mythborn', 'https://mythborn.co/']];
+---
+<section class="ecosystem-roles" aria-labelledby="ecosystem-roles-title">
+  <div class="container">
+    <p class="ecosystem-roles__label" translate="no">QCTONE</p>
+    <h2 id="ecosystem-roles-title">{text[0]}</h2>
+    <ul>{entries.map(([name, href], i) => <li><a href={i === 0 ? (lang === 'en' ? '/' : `/${lang}/`) : href} translate="no">{name}</a><p>{text[i + 1]}</p></li>)}</ul>
+  </div>
+</section>
+<style>
+  .ecosystem-roles { padding-block: clamp(3rem, 6vw, 5rem); background: #17151a; color: #f8f5ef; }
+  .ecosystem-roles__label { color: #00f5a0; letter-spacing: .15em; font-weight: 700; }
+  h2 { font-size: clamp(1.75rem, 3vw, 3rem); line-height: 1.15; text-wrap: balance; }
+  ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1.5rem; margin-top: 2rem; }
+  li { min-width: 0; border-top: 1px solid #656269; padding-block: 1rem; }
+  a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; font-weight: 700; text-underline-offset: .25em; scroll-margin-block: 7rem 16rem; }
+  a:focus-visible { outline: 3px solid #00f5a0; outline-offset: 4px; }
+  li p { color: #d4d1d7; line-height: 1.6; }
+</style>
