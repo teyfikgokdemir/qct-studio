@@ -63,6 +63,13 @@ for (const lang of locales) {
       await page.setViewportSize({ width: 390, height: 844 });
       const response = await gotoPageReady(page, `http://127.0.0.1:4321${localPath(lang, route)}`);
       expect(response?.status()).toBe(200);
+      if (route === '/about/') {
+        const links = page.locator('.ecosystem-roles li a');
+        await expect(links).toHaveCount(5);
+        await expect(links.nth(1)).toHaveAttribute('href', 'https://qctcommerce.com/');
+        await expect(links.nth(2)).toHaveAttribute('href', 'https://ctseg.com.tr/');
+        for (const link of await links.all()) expect((await link.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+      }
 
       const h1 = pageH1(page);
       await expect(h1).toHaveCount(1);

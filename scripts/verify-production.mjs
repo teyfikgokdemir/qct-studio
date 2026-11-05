@@ -1,4 +1,8 @@
-const checks = [
+const checks = ['en', 'sq', 'mk', 'sr', 'ro', 'bg'].map((lang) => ({
+  url: `https://qctstudio.com/${lang === 'en' ? '' : `${lang}/`}about/`,
+  verify: async (response, body) => response.ok && body.includes('ecosystem-roles-title') && body.includes('https://ctseg.com.tr/') && body.includes('QCTONE'),
+  label: `${lang}: published QCTONE ecosystem roles`,
+})).concat([
   {
     url: 'https://www.qctstudio.com/',
     redirectManual: true,
@@ -138,7 +142,7 @@ const checks = [
       response.ok && body.includes('Sitemap: https://qctstudio.com/sitemap-index.xml'),
     label: 'Robots sitemap discovery',
   }
-];
+]);
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
