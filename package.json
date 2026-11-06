@@ -18,10 +18,10 @@
     "audit:locale-parity": "node scripts/audit-locale-parity.mjs"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.3",
-    "astro": "^7.3.4"
+    "@astrojs/sitemap": "3.7.4",
+    "astro": "7.4.7"
   },
   "devDependencies": {
-    "@playwright/test": "^1.62.1"
+    "@playwright/test": "1.65.0"
   }
 }
