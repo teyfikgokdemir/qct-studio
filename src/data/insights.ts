@@ -411,6 +411,110 @@ export const insights: InsightArticle[] = [
       ]
     },
   },
+  {
+    slug: 'website-development-cost-balkans-2026',
+    publishedAt: '2026-11-15', category: 'Pricing & Scope', readTime: '7 min',
+    title: {
+      en: 'Website Development Cost in the Balkans (2026): Scope, Speed & Multilingual SEO',
+      sq: 'Çmimi i ndërtimit të faqes web në Ballkan (2026): Fushëveprimi, shpejtësia dhe SEO',
+      mk: 'Цена за изработка на веб-страница на Балканот (2026): опсег, брзина и SEO',
+      sr: 'Izrada web sajta cena u Srbiji i regionu (2026): opseg, brzina i višejezični SEO',
+      ro: 'Preț creare site web în Balcani și România (2026): structură, viteză și SEO',
+      bg: 'Изработка на уеб сайт цена в България и Балканите (2026): обхват, скорост и SEO'
+    },
+    excerpt: {
+      en: 'A transparent breakdown of what drives website engineering costs across Serbia, Bulgaria, North Macedonia, Albania, and Romania—from static templates to high-converting Astro systems.',
+      sq: 'Një analizë transparente se çfarë e përcakton koston e zhvillimit web në Shqipëri, Kosovë dhe rajon—nga faqet bazë te sistemet e shpejta Astro me SEO shumëgjuhësh.',
+      mk: 'Транспарентна анализа на тоа што ја одредува цената за изработка на веб-страница во Македонија и регионот—од основни презентации до брзи Astro системи со повеќејазично SEO.',
+      sr: 'Transparentan pregled faktora koji određuju cenu izrade web sajta u Srbiji i regionu—od osnovnih prezentacija do brzih Astro sistema sa višejezičnim SEO-om.',
+      ro: 'O analiză transparentă a factorilor care determină prețul unui site web—de la pagini de prezentare la sisteme Astro rapide cu SEO multilingv.',
+      bg: 'Прозрачен разбор на факторите, които определят цената за изработка на уеб сайт в България—от базови страници до бързи Astro системи с многоезично SEO.'
+    },
+    body: {
+      en: [
+        'Businesses comparing website quotes across Southeast Europe often see proposals ranging from a few hundred euros to several thousand. The price gap rarely comes from visual styling alone; it comes from information architecture, Core Web Vitals engineering, multilingual hreflang setup, and conversion tracking.',
+        'A low-cost template site frequently ships with heavy plugins, broken mobile layouts, missing schema markup, and zero lead attribution—requiring a full rebuild within twelve months. Investing upfront in clean static-first Astro architecture, clear regional landing pages, and measurable WhatsApp or form conversion paths lowers total cost of ownership.',
+        'Before approving any scope, verify three concrete deliverables: sub-second mobile LCP performance, reciprocal multilingual canonical/hreflang tags for every target country, and direct ownership of your domain, codebase, and analytics.'
+      ],
+      sq: [
+        'Bizneset që krahasojnë ofertat për ndërtimin e faqeve web në Ballkan shpesh shohin çmime nga disa qindra deri në disa mijëra euro. Diferenca vjen nga arkitektura e informacionit, shpejtësia mobile (Core Web Vitals), konfigurimi shumëgjuhësh hreflang dhe gjurmimi i konvertimeve.',
+        'Një faqe me shabllon të lirë zakonisht ka shtesa të rënda, dizajn të dobët në celular dhe mungesë të të dhënave të strukturuara, duke kërkuar rindërtim brenda vitit. Arkitektura e pastër me Astro dhe rrugët e qarta të kontaktit (WhatsApp dhe formularë) ulin koston afatgjatë.',
+        'Përpara se të miratoni një projekt, kërkoni tri garanci konkrete: shpejtësi të lartë në celular, etiketa të sakta canonical/hreflang për çdo gjuhë dhe pronësi të plotë mbi domenin dhe kodin.'
+      ],
+      mk: [
+        'Компаниите што споредуваат понуди за изработка на веб-страница на Балканот често гледаат голема разлика во цената. Таа разлика произлегува од информациската архитектура, брзината на мобилни уреди, повеќејазичното SEO (hreflang) и мерењето на конверзиите.',
+        'Евтините шаблонски сајтови често имаат тешки додатоци, бавно вчитување и слаба видливост на Google. Модерната Astro архитектура со јасни страници за услуги и директни WhatsApp или формулар патеки носи мерливи деловни барања.',
+        'Пред да изберете понуда, проверете три конкретни ставки: мобилна брзина, правилни canonical и hreflang тагови за секој пазар и целосна сопственост на кодот и доменот.'
+      ],
+      sr: [
+        'Preduzeća koja porede ponude za izradu web sajta u Srbiji i regionu često dobijaju procene od nekoliko stotina do više hiljada evra. Razlika u ceni ne potiče samo od dizajna, već od arhitekture informacija, brzine učitavanja na mobilnom, višejezičnog SEO-a i praćenja konverzija.',
+        'Jeftini šablonski sajtovi često donose spore dodatke, loš mobilni prikaz i nepostojeću tehničku SEO osnovu. Čista Astro arhitektura sa jasnim stranicama usluga, lokalnim jezikom i direktnim WhatsApp/formular upitima smanjuje ukupnu cenu vlasništva.',
+        'Pre potpisivanja ugovora proverite tri ključne stavke: mobilni LCP ispod sekunde, ispravne canonical i hreflang oznake za svako tržište i puno vlasništvo nad domenom i kodom.'
+      ],
+      ro: [
+        'Companiile care compară oferte de creare site web în regiune observă diferențe mari de preț. Acestea sunt date de arhitectura informației, viteza pe mobil (Core Web Vitals), structura SEO multilingvă și integrarea măsurării conversiilor.',
+        'Un site ieftin pe șablon vine adesea cu module lente și fără structură SEO, necesitând refacere într-un an. O arhitectură rapidă bazată pe Astro și fluxuri clare de contact (WhatsApp și formulare) reduce costul total.',
+        'Înainte de a alege un furnizor, verificați trei livrabile concrete: viteză ridicată pe mobil, etichete canonical/hreflang corecte și control total asupra domeniului și codului sursă.'
+      ],
+      bg: [
+        'Бизнесите, които сравняват оферти за изработка на уеб сайт в България и региона, често виждат сериозна разлика в цените. Тя идва от информационната архитектура, мобилната скорост, многоезичното SEO (hreflang) и проследяването на запитванията.',
+        'Евтините шаблонни сайтове често страдат от тежки плъгини, бавно зареждане и липса на техническо SEO. Чистата Astro архитектура с ясни целеви страници и директни канали за контакт (WhatsApp и форми) носи реална възвръщаемост.',
+        'Преди да изберете изпълнител, изискайте три конкретни гаранции: бързо мобилно зареждане, точни canonical и hreflang тагове и пълна собственост върху домейна и кода.'
+      ]
+    },
+  },
+  {
+    slug: 'ecommerce-payments-cross-border-balkans-2026',
+    publishedAt: '2026-11-15', category: 'E-Commerce Systems', readTime: '7 min',
+    title: {
+      en: 'Cross-Border E-Commerce in the Balkans: Payments, Currencies & Logistics (2026)',
+      sq: 'E-Commerce ndërkufitar në Ballkan: Pagesat, valutat dhe logjistika (2026)',
+      mk: 'Е-трговија на Балканот: онлајн плаќања, валути и достава (2026)',
+      sr: 'Internet prodavnica u Srbiji i regionu: naplata karticama, valute i dostava (2026)',
+      ro: 'E-Commerce transfrontalier în Balcani: plăți online, monede și curierat (2026)',
+      bg: 'Онлайн магазин в България и Балканите: картови плащания, валути и логистика (2026)'
+    },
+    excerpt: {
+      en: 'How brands selling across Bulgaria, Serbia, North Macedonia, Albania, and Romania structure card gateways, cash-on-delivery (COD) workflows, and multi-currency SEO.',
+      sq: 'Si markat që shesin në Shqipëri, Kosovë, Maqedoni dhe rajon strukturojnë pagesat me kartë, pagesën në dorëzim (COD) dhe SEO-në me shumë valuta.',
+      mk: 'Како брендовите на Балканот ги поставуваат картичните плаќања, плаќањето при достава (COD) и повеќејазичните онлајн продавници.',
+      sr: 'Kako brendovi u Srbiji i regionu organizuju kartičnu naplatu, pouzeće (COD), lokalne valute i tehnički SEO za više tržišta.',
+      ro: 'Cum își configurează brandurile din regiune plățile cu cardul, rambursul (COD), afișarea multivalută și SEO-ul tehnic.',
+      bg: 'Как онлайн магазините в България и региона организират картови разплащания, наложен платеж (COD), мултивалутност и техническо SEO.'
+    },
+    body: {
+      en: [
+        'Selling online across Southeast Europe requires balancing international card acceptance (Visa, Mastercard, Apple Pay) with local cash-on-delivery (COD) expectations and country-specific courier integrations.',
+        'Instead of running fragmented storefronts that split SEO authority, high-performing regional brands use a unified headless or Shopify/WooCommerce core paired with localized currency display, clean regional URLs, and automated WhatsApp order confirmation to reduce COD return rates.',
+        'When checkout friction drops and delivery timelines are stated clearly in the buyer’s native language, conversion rates rise without increasing paid ad spend.'
+      ],
+      sq: [
+        'Shitja online në Ballkan kërkon balancimin e pagesave me kartë (Visa, Mastercard, Apple Pay) me pritshmëritë lokale për pagesë në dorëzim (COD) dhe integrimet me korrierët.',
+        'Në vend të dyqaneve të copëzuara, markat e suksesshme përdorin një infrastrukturë të unifikuar me gjuhë lokale, çmime të qarta në valutën përkatëse dhe konfirmim automatik në WhatsApp për të ulur kthimet e porosive.',
+        'Kur procesi i blerjes është i thjeshtë dhe afatet e dërgesës janë të qarta në gjuhën e klientit, shitjet rriten pa shtuar buxhetin e reklamave.'
+      ],
+      mk: [
+        'Онлајн продажбата на Балканот бара баланс помеѓу картично плаќање (Visa, Mastercard) и плаќање при достава (COD), заедно со локални курирски интеграции.',
+        'Наместо разделени продавници, успешните брендови користат унифицирана платформа со локален јазик, јасна валута и автоматска потврда на нарачките преку WhatsApp за намалување на враќањата.',
+        'Кога процесот на наплата е брз и роковите за испорака се јасни на мајчин јазик, конверзијата расте без дополнителен трошок за реклами.'
+      ],
+      sr: [
+        'Online prodaja u Srbiji i regionu zahteva kombinaciju kartičnog plaćanja (Visa, Mastercard, Apple Pay) i plaćanja pouzećem (COD), uz pouzdanu integraciju lokalnih kurirskih službi.',
+        'Umesto razdvojenih sajtova koji dele SEO autoritet, uspešni brendovi koriste jedinstvenu platformu sa lokalizovanim cenama i automatskom WhatsApp potvrdom porudžbine radi smanjenja povrata.',
+        'Kada je proces plaćanja brz i uslovi isporuke jasni na jeziku kupca, stopa konverzije raste bez povećanja budžeta za oglase.'
+      ],
+      ro: [
+        'Vânzarea online în Europa de Sud-Est necesită echilibru între plățile cu cardul (Visa, Mastercard, Apple Pay), plata ramburs (COD) și integrările cu firmele de curierat.',
+        'În loc de magazine fragmentate, brandurile performante folosesc o infrastructură unificată cu prețuri localizate și confirmare automată pe WhatsApp pentru reducerea retururilor.',
+        'Atunci când finalizarea comenzii este rapidă și termenul de livrare este clar în limba clientului, rata de conversie crește organic.'
+      ],
+      bg: [
+        'Онлайн продажбите в България и Балканите изискват баланс между картови плащания (Visa, Mastercard, Apple Pay), наложен платеж (COD) и интеграция с местни куриери.',
+        'Вместо разпокъсани сайтове, успешните брандове изграждат единна система с локални езици, ясни цени и автоматично потвърждение по WhatsApp за намаляване на отказаните пратки.',
+        'Когато поръчката е бърза и условията за доставка са ясни на родния език на клиента, конверсията расте без увеличаване на рекламния бюджет.'
+      ]
+    },
+  },
 ];
 
 export const insightLabels: Record<InsightLocale, { section: string; journal: string; latest: string; back: string; byline: string }> = {
