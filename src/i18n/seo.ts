@@ -113,8 +113,8 @@ const seo: Record<IndexedLang, Record<SeoPage, SeoEntry>> = {
       description: 'Dyqane online me faqe të qarta produktesh, pagesë të sigurt dhe blerje të rrjedhshme në celular për biznese dhe marka ndërkombëtare.'
     },
     'ai-automation': {
-      title: 'Automatizim me AI për Bizneset — QCT Studio',
-      description: 'Automatizim praktik me AI që ul punën e përsëritur, përmirëson menaxhimin e kërkesave dhe ruan kontrollin e ekipit.'
+      title: 'Automatizim Biznesi me AI & Procese Pune — QCT Studio',
+      description: 'Automatizim biznesi me AI për procese pune, menaxhim leads, WhatsApp dhe CRM. Sistem praktik që ul punën manuale dhe ruan kontrollin e ekipit.'
     },
     'seo-performance': {
       title: 'SEO & GEO për Google dhe Kërkimin me AI — QCT Studio',
